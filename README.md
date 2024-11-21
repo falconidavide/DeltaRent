@@ -1,5 +1,3 @@
-![Logo FakeRent](https://i.imgur.com/hAb9NSV.png)
-
 Autori:
 
 - <b>Andrea Birolini</b> - 1087070
