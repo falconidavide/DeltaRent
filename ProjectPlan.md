@@ -58,3 +58,46 @@ Il lavoro del team verrà organizzato sulla base delle caratteristiche definite 
     Per ultimi verranno selezionati i requisiti che non verranno implementati all'interno del progetto, potrebbero essere fuzionalità presenti in progetti simili ma inutili allo scopo del progetto di questo gruppo
 
 I requisiti verranno definiti tra i membri del gruppo non avendo clienti con cui andrebbero discussi per personalizzare al meglio il software.
+
+&nbsp;
+## 4. Standard, linee guida, procedure
+
+&nbsp;
+## 5. Attività di gestione
+
+&nbsp;
+## 6. Rischi
+
+&nbsp;
+## 7. Personale
+Il team è composto da 3 membri con uguali compiti e capacità:
+
+  - Falconi Davide 
+  - Patelli Marco
+  - Birolini Andrea
+
+la struttura del team è basata sulla struttura SWAT (Skilled With Advanced Tools) non ci sarà perciò nessun tipo di differenziazione.
+
+&nbsp;
+## 8. Metodi e Tecniche
+
+&nbsp;
+## 9. Garanzia di Qualità
+
+&nbsp;
+## 10. Pacchetti di Lavoro
+Il lavoro verrà suddiviso e gestito tramite kanban board e issue, nella kanban board sono presenti le task da compiere che verranno prese in carico da un membro, egli si occuperà di spostare la task nella colonna di avanzamento della kanban board e di aggiungere data di inizio e data di termine. Verrà aperta inoltre una issue appena un task viene preso inm carico.
+
+&nbsp;
+## 11. Risorse
+
+&nbsp;
+## 12. Budget
+
+&nbsp;
+## 13. Cambiamenti 
+I cambiamenti minori e legati all'user experience avverranno nella fase di testing del progetto e verranno discussi con gli utenti per rendere l'interfaccia più facilmente utilizzabile. I cambiamenti di maggior dimensione avveranno tramite commit su github con relativa issue che informerà tutti i membri del gruppo del cambiamento avvenuto al codice, verrà quindi aperta una issue che verrà poi commentata e discussa da tutti i membri prima di attuare la modifica. I membri potranno consigliare delle modifiche al codice scritto da altri membri sempre tramite issue.
+
+&nbsp;
+## 14. Consegna
+La consegna avverrà in due fasi, 1 mese prima dell'esame ci sarà la consegna del project plan mentre il progetto verrà consegnato il giorno dell'esame 
