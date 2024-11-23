@@ -62,8 +62,22 @@ I requisiti verranno definiti tra i membri del gruppo non avendo clienti con cui
 &nbsp;
 ## 4. Standard, linee guida, procedure
 
+
+
 &nbsp;
 ## 5. Attività di gestione
+
+Per garantire un ambiente di lavoro il più efficiente possibile il team farà utilizzo di alcuni tool integrati in github e non:
+
+  -**Issue** 
+  Le Issue garantiranno al team un elenco delle task da compiere con possibilità di aggiungere commenti che serviranno ad avvisare gli altri membri del gruppo sull'operato svolto su una certa issue.
+  
+  -**Kanban Board**
+  La Kanban Board permettrà ai membri di aver sotto controllo la situazione generale del progetto, si potrà vedere quali task hanno più priorità, in che fase si trova una certa task, avere una visuale completa della 
+   roadmap con scadenze dei vari compiti.
+  
+  -**Discord**
+  La Piattaforma di chat Discord verrà principalmente utilizzata per fare videocall di aggiornamento sull' andamento del progetto, o per pianificare attività da aggiungere alla roadmap, le chiamate avverranno con       frequenza variabile in base agli impegni dei vari membri del gruppo.
 
 &nbsp;
 ## 6. Rischi
@@ -91,8 +105,12 @@ Il lavoro verrà suddiviso e gestito tramite kanban board e issue, nella kanban 
 &nbsp;
 ## 11. Risorse
 
+
+
 &nbsp;
 ## 12. Budget
+
+
 
 &nbsp;
 ## 13. Cambiamenti 
