@@ -94,6 +94,23 @@ Per garantire un ambiente di lavoro il più efficiente possibile il team farà u
 &nbsp;
 ## 6. Rischi
 
+Di seguito vengono identificati i principali rischi e le relative contromisure per mitigarne l'impatto:
+
+  - **Carenza di informazioni critiche**:
+  la mancanza di dati o di chiarezza sui requisiti potrebbe portare ad errori durante lo sviluppo. Per questo, si utilizzano diverse tecniche di raccolta e revisione dei requisiti.
+
+  - **Problemi tecnici**:
+  malfunzionamenti critici potrebbero emergere in fase di sviluppo o di testing. Per questo motivo, verranno adottati test automatizzati, come SonarQube.
+
+  - **Integrazione di strumenti esterni**:
+  incompatibilità o malfunzionamenti potrebbero ostacolare lo sviluppo del software. Per contrastare questi problemi, il team ha familiarità con gli strumenti utilizzati.
+
+  - **Ritardi nella consegna**:
+  il team potrebbe riscontrare ritardi non calcolati e non riuscire a consegnare il progetto in tempo, quindi il team di sviluppo lavora utilizzando strumenti come le issue di GitHub per tenere traccia del progresso e mantenere margini di ritardo per eventuali problemi.
+
+  - **Comunicazione inefficace nel team**:
+  la mancata comunicazione o incomprensione tra i membri del team potrebbero generare errori nel progetto o ritardi, per questo il team ha programmato aggiornamenti regolari tramite Discord.
+
 &nbsp;
 ## 7. Personale
 Il team è composto da 3 membri con uguali compiti e capacità:
