@@ -62,7 +62,21 @@ I requisiti verranno definiti tra i membri del gruppo non avendo clienti con cui
 &nbsp;
 ## 4. Standard, linee guida, procedure
 
+  - **Standard di codifica**:
+  il progetto seguirà le convenzioni di programmazione per il linguaggio Java definite da Oracle, per assicurare un'alta leggibilità e manutenibilità del codice. Questa convenzione sarà condivisa tra i membri del team, per mantenere coerenza ed avere un alto standard di qualità.
+  
+  - **Documentazione**:
+  la documentazione seguirà gli standard UML (Unified Modeling Language), per rappresentare graficamente ed in maniera intuitiva il funzionamento del progetto. Saranno prodotti diversi diagrammi: use case diagram, class diagram, state machine diagram, sequence diagram, communication diagram/timing diagram, activity diagram e component diagram. Questi diagrammi verranno consegnati una volta terminata la progettazione del progetto ed una volta ultimati, e verranno aggiornati con ogni modifica del sistema.
 
+  - **Qualità del software**:
+  il progetto seguirà i seguenti quattro punti chiave delle normative ISO/IEC 9126 per garantire un prodotto di alta qualità:
+    - Affidabilità: il sistema sarà progettato per ridurre al minimo i malfunzionamenti e per garantire un funzionamento stabile anche in condizioni estreme, come di carico elevato.
+    - Usabilità: particolare attenzione sarà dedicata alla facilità d'uso dell'interfaccia utente, con un design intuitivo, accessibile e intuitivo per gli utenti finali.
+    - Performance: verranno ottimizzati i tempi di risposta e la gestione delle risorse, per garantire un'esperienza fluida, anche sui dispositivi più datati o meno performanti.
+    - Manutenibilità: il codice sarà scritto in modo tale da poter essere facilmente modificato, anche a lunga distanza dalla data di rilascio del programma e da nuovi sviluppatori che non hanno familiarità con il codice di questo programma.
+  
+  - **Strumenti utilizzati**:
+  Verranno utilizzati diversi tools per far sì che tutto il team possa scrivere codice in modo efficiente e privo di errori. In particolare, verrà utilizzato GitHub, SonarQube, Papyrus ed Eclipse IDE.
 
 &nbsp;
 ## 5. Attività di gestione
