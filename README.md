@@ -1,3 +1,5 @@
+![Logo DeltaRent](./Documenti/Logo/Logo%20DeltaRent%20small.png)
+
 Autori:
 
 - <b>Andrea Birolini</b> - 1087070
