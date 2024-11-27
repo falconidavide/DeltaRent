@@ -126,14 +126,17 @@ La struttura del team è basata sulla struttura SWAT (Skilled With Advanced Tool
 
 In questa sezione vengono illustrati i metodi e le tecniche adottati durante le fasi dell'ingegneria dei requisiti, della progettazione, dell'implementazione e del testing.
 
-  - **Ingegneria dei requisiti**
+  - **Ingegneria dei requisiti**:
     - **Tecnica MoSCoW**: verrà utilizzata per la classificazione dei requisiti in Must have, Should have, Could have e Won't have. Questa suddivisione garantirà una chiara comprensione delle priorità e una gestione ottimale delle risorse.
     - **Raccolta dei requisiti**: i requisiti saranno raccolti nella specifica dei requisiti, dove verranno strutturati e aggiornati periodicamente con revisioni condivise dal team.
-  - **Progettazione**
-    - **Diagramma dei casi d'uso**:
-    - **Diagramma delle classi**:
-    - **Diagramma di attività**:
-    - **Diagrammi di sequenza**: 
+  - **Progettazione**: Verranno creati i seguenti diagrammi UML per rappresentare il progetto in maniera semplice ed intuitiva: use case diagram, class diagram, state machine diagram, sequence diagram, communication diagram/timing diagram, activity diagram e component diagram.
+
+  - **Implementazione**:
+    -   **Strumenti di sviluppo**: verrà utilizzato Eclipse IDE per lo sviluppo del codice e GitHub per la gestione del repository e del versionamento.
+    - **Standard di codifica**: il codice seguirà le convenzioni Java definite da Oracle per assicurare leggibilità, manutenibilità e un'alta qualità del progetto in tutti i suoi aspetti.
+    - **Controllo della configurazione**: il sistema di versionamento Git sarà adottato per tracciare ogni modifica al codice. Ogni feature sarà sviluppata da uno sviluppatore del nostro team, e verrà poi caricata sulla repository GitHub del progetto.
+
+  - **Testing**: i test saranno eseguiti su dispositivi con differenti specifiche hardware e software per garantire la compatibilità ed il corretto funzionamento su diverse piattaforme. Verrà utilizzato SonarQube come strumento di analisi statica, e testing manuale da parte del team per verificare il funzionamento del software.
 
 &nbsp;
 ## 9. Garanzia di Qualità
@@ -159,4 +162,5 @@ I cambiamenti minori e legati all'user experience avverranno nella fase di testi
 &nbsp;
 ## 14. Consegna
 La consegna avverrà in due fasi, 1 mese prima dell'esame ci sarà la consegna del project plan mentre il progetto verrà consegnato il giorno dell'esame.
+
 
