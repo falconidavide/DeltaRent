@@ -124,6 +124,17 @@ La struttura del team è basata sulla struttura SWAT (Skilled With Advanced Tool
 &nbsp;
 ## 8. Metodi e Tecniche
 
+In questa sezione vengono illustrati i metodi e le tecniche adottati durante le fasi dell'ingegneria dei requisiti, della progettazione, dell'implementazione e del testing.
+
+  - **Ingegneria dei requisiti**
+    - **Tecnica MoSCoW**: verrà utilizzata per la classificazione dei requisiti in Must have, Should have, Could have e Won't have. Questa suddivisione garantirà una chiara comprensione delle priorità e una gestione ottimale delle risorse.
+    - **Raccolta dei requisiti**: i requisiti saranno raccolti nella specifica dei requisiti, dove verranno strutturati e aggiornati periodicamente con revisioni condivise dal team.
+  - **Progettazione**
+    - **Diagramma dei casi d'uso**:
+    - **Diagramma delle classi**:
+    - **Diagramma di attività**:
+    - **Diagrammi di sequenza**: 
+
 &nbsp;
 ## 9. Garanzia di Qualità
 
@@ -148,3 +159,4 @@ I cambiamenti minori e legati all'user experience avverranno nella fase di testi
 &nbsp;
 ## 14. Consegna
 La consegna avverrà in due fasi, 1 mese prima dell'esame ci sarà la consegna del project plan mentre il progetto verrà consegnato il giorno dell'esame.
+
