@@ -141,6 +141,23 @@ In questa sezione vengono illustrati i metodi e le tecniche adottati durante le 
 &nbsp;
 ## 9. Garanzia di Qualità
 
+Per garantire che il software sviluppato soddisfi i requisiti di qualità dichiarati, il progetto DeltaRent adotterà un piano di assicurazione della qualità articolato nei seguenti punti:
+
+  - **Organizzazione della qualità**:
+    - **Responsabilità condivisa:** L'intero team è responsabile della qualità del progetto. Non essendoci ruoli gerarchici, ciascun membro è tenuto a verificare la conformità del proprio lavoro agli standard stabiliti e a collaborare per identificare e risolvere eventuali problemi riscontrati.
+    - **Coordinamento:** Le sessioni di aggiornamento sulla piattaforma Discord e la continua comunicazione tramite WhatsApp, permetteranno di monitorare e migliorare continuamente la qualità del progetto.
+
+  - **Procedure per la garanzia di qualità:**
+    - **Revisione del codice:** Il codice sviluppato sarà sottoposto a revisioni da parte di tutti i membri del team, con feedback basati sugli standard di codifica definiti da Oracle.
+    - **Testing:** Strumenti come SonarQube saranno utilizzati per identificare vulnerabilità ed errori commessi nella scrittura del codice. Ogni release del software sarà sottoposta a verifiche manuali e test di usabilità per garantire che risponda ai requisiti definiti e offra un’esperienza ottimale per l'utente.
+
+  - **Standard di qualità adottati:**
+    - **Normative ISO/IEC 9126:** Il software sarà sviluppato seguendo i principi di affidabilità, usabilità, performance e manutenibilità, come descritto nel capitolo 4.
+    - **Documentazione UML:** Diagrammi aggiornati (use case, class diagram, sequence diagram, ecc.) saranno prodotti e mantenuti come supporto alla verifica della qualità durante tutto il ciclo di vita del progetto.
+  - **Metriche di qualità:** verrà tenuto conto dei seguenti fattori di qualità durante la creazione del progetto: correttezza, affidabilità, efficienza, integrità, usabilità, manutenibilità, testatbilità, flessibilità, portabilità, riutilizzabilità e interoperabilità.
+
+  - **Gestione dei problemi di qualità:** eventuali anomalie rilevate durante le revisioni o i test saranno documentate tramite issue su GitHub e assegnate al membro del team responsabile, che se ne occuperà della risoluzione.
+
 &nbsp;
 ## 10. Pacchetti di Lavoro
 Il lavoro verrà suddiviso e gestito tramite kanban board e issue, nella kanban board sono presenti le task da compiere che verranno prese in carico da un membro, egli si occuperà di spostare la task nella colonna di avanzamento della kanban board e di aggiungere data di inizio e data di termine. Verrà aperta inoltre una issue appena un task viene preso in carico.
@@ -162,5 +179,6 @@ I cambiamenti minori e legati all'user experience avverranno nella fase di testi
 &nbsp;
 ## 14. Consegna
 La consegna avverrà in due fasi, 1 mese prima dell'esame ci sarà la consegna del project plan mentre il progetto verrà consegnato il giorno dell'esame.
+
 
 
