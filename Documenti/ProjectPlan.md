@@ -112,34 +112,34 @@ La struttura del team è basata sulla struttura SWAT (Skilled With Advanced Tool
 
 In questa sezione vengono illustrati i metodi e le tecniche adottati durante le fasi dell'ingegneria dei requisiti, della progettazione, dell'implementazione e del testing.
 
-  - **Ingegneria dei requisiti:**
-    - **Tecnica MoSCoW:** verrà utilizzata per la classificazione dei requisiti in Must have, Should have, Could have e Won't have. Questa suddivisione garantirà una chiara comprensione delle priorità e una gestione ottimale delle risorse.
-    - **Raccolta dei requisiti:** i requisiti saranno raccolti nella specifica dei requisiti, dove verranno strutturati e aggiornati periodicamente con revisioni condivise dal team.
+**Ingegneria dei requisiti:**
+  - **Tecnica MoSCoW:** verrà utilizzata per la classificazione dei requisiti in Must have, Should have, Could have e Won't have. Questa suddivisione garantirà una chiara comprensione delle priorità e una gestione ottimale delle risorse.
+  - **Raccolta dei requisiti:** i requisiti saranno raccolti nella specifica dei requisiti, dove verranno strutturati e aggiornati periodicamente con revisioni condivise dal team.
   - **Progettazione:** verranno creati i seguenti diagrammi UML per rappresentare il progetto in maniera semplice ed intuitiva: use case diagram, class diagram, state machine diagram, sequence diagram, communication diagram/timing diagram, activity diagram e component diagram.
 
-  - **Implementazione:**
-    -   **Strumenti di sviluppo:** verrà utilizzato Eclipse IDE per lo sviluppo del codice e GitHub per la gestione del repository e del versionamento.
-    - **Standard di codifica:** il codice seguirà le convenzioni Java definite da Oracle per assicurare leggibilità, manutenibilità e un'alta qualità del progetto in tutti i suoi aspetti.
-    - **Controllo della configurazione:** il sistema di versionamento Git sarà adottato per tracciare ogni modifica al codice. Ogni feature sarà sviluppata da uno sviluppatore del nostro team, e verrà poi caricata sulla repository GitHub del progetto.
+**Implementazione:**
+  -   **Strumenti di sviluppo:** verrà utilizzato Eclipse IDE per lo sviluppo del codice e GitHub per la gestione del repository e del versionamento.
+  - **Standard di codifica:** il codice seguirà le convenzioni Java definite da Oracle per assicurare leggibilità, manutenibilità e un'alta qualità del progetto in tutti i suoi aspetti.
+  - **Controllo della configurazione:** il sistema di versionamento Git sarà adottato per tracciare ogni modifica al codice. Ogni feature sarà sviluppata da uno sviluppatore del nostro team, e verrà poi caricata sulla repository GitHub del progetto.
 
-  - **Testing:** i test saranno eseguiti su dispositivi con differenti specifiche hardware e software per garantire la compatibilità ed il corretto funzionamento su diverse piattaforme. Verrà utilizzato SonarQube come strumento di analisi statica, e testing manuale da parte del team per verificare il funzionamento del software.
+**Testing:** i test saranno eseguiti su dispositivi con differenti specifiche hardware e software per garantire la compatibilità ed il corretto funzionamento su diverse piattaforme. Verrà utilizzato SonarQube come strumento di analisi statica, e testing manuale da parte del team per verificare il funzionamento del software.
 
 &nbsp;
 ## 9. Garanzia di Qualità
 
 Per garantire che il software sviluppato soddisfi i requisiti di qualità dichiarati, il progetto DeltaRent adotterà un piano di assicurazione della qualità articolato nei seguenti punti:
 
-  - **Organizzazione della qualità:**
-    - **Responsabilità condivisa:** l'intero team è responsabile della qualità del progetto. Non essendoci ruoli gerarchici, ciascun membro è tenuto a verificare la conformità del proprio lavoro agli standard stabiliti e a collaborare per identificare e risolvere eventuali problemi riscontrati.
-    - **Coordinamento:** le sessioni di aggiornamento sulla piattaforma Discord e la continua comunicazione tramite WhatsApp, permetteranno di monitorare e migliorare continuamente la qualità del progetto.
+**Organizzazione della qualità:**
+  - **Responsabilità condivisa:** l'intero team è responsabile della qualità del progetto. Non essendoci ruoli gerarchici, ciascun membro è tenuto a verificare la conformità del proprio lavoro agli standard stabiliti e a collaborare per identificare e risolvere eventuali problemi riscontrati.
+  - **Coordinamento:** le sessioni di aggiornamento sulla piattaforma Discord e la continua comunicazione tramite WhatsApp, permetteranno di monitorare e migliorare continuamente la qualità del progetto.
 
-  - **Procedure per la garanzia di qualità:**
-    - **Revisione del codice:** il codice sviluppato sarà sottoposto a revisioni da parte di tutti i membri del team, con feedback basati sugli standard di codifica definiti da Oracle.
-    - **Testing:** strumenti come SonarQube saranno utilizzati per identificare vulnerabilità ed errori commessi nella scrittura del codice. Ogni release del software sarà sottoposta a verifiche manuali e test di usabilità per garantire che risponda ai requisiti definiti e offra un’esperienza ottimale per l'utente.
+**Procedure per la garanzia di qualità:**
+  - **Revisione del codice:** il codice sviluppato sarà sottoposto a revisioni da parte di tutti i membri del team, con feedback basati sugli standard di codifica definiti da Oracle.
+  - **Testing:** strumenti come SonarQube saranno utilizzati per identificare vulnerabilità ed errori commessi nella scrittura del codice. Ogni release del software sarà sottoposta a verifiche manuali e test di usabilità per garantire che risponda ai requisiti definiti e offra un’esperienza ottimale per l'utente.
 
-  - **Standard di qualità adottati:**
-    - **Normative ISO/IEC 9126:** il software sarà sviluppato seguendo i principi di affidabilità, usabilità, performance e manutenibilità, come descritto nel [capitolo 4](#4-standard-linee-guida-procedure).
-    - **Documentazione UML:** diagrammi aggiornati (use case, class diagram, sequence diagram, ecc.) saranno prodotti e mantenuti come supporto alla verifica della qualità durante tutto il ciclo di vita del progetto.
+**Standard di qualità adottati:**
+  - **Normative ISO/IEC 9126:** il software sarà sviluppato seguendo i principi di affidabilità, usabilità, performance e manutenibilità, come descritto nel [capitolo 4](#4-standard-linee-guida-procedure).
+  - **Documentazione UML:** diagrammi aggiornati (use case, class diagram, sequence diagram, ecc.) saranno prodotti e mantenuti come supporto alla verifica della qualità durante tutto il ciclo di vita del progetto.
   - **Metriche di qualità:** verrà tenuto conto dei seguenti fattori di qualità durante la creazione del progetto: correttezza, affidabilità, efficienza, integrità, usabilità, manutenibilità, testatbilità, flessibilità, portabilità, riutilizzabilità e interoperabilità.
 
   - **Gestione dei problemi di qualità:** eventuali anomalie rilevate durante le revisioni o i test saranno documentate tramite issue su GitHub e assegnate al membro del team responsabile, che se ne occuperà della risoluzione.
@@ -152,7 +152,29 @@ Il lavoro verrà suddiviso e gestito tramite kanban board e issue, nella kanban 
 &nbsp;
 ## 11. Risorse
 
+Durante lo sviluppo del progetto DeltaRent, saranno necessarie risorse sia materiali che umane per garantire il completamento delle attività secondo i tempi e gli standard di qualità previsti.
 
+#### Risorse Hardware:
+-   **Computer individuali:** ogni membro del team utilizzerà il computer che ha a disposizione per lavorare sul progetto, sul quale è installato Eclipse IDE, oltre ad uno smartphone personale che verrà utilizzato per la comunicazione giornaliera.
+
+#### Risorse Software:
+  - **Eclipse IDE**: ambiente di sviluppo integrato per la scrittura e il debug del codice.
+  - **GitHub**: per la gestione del versionamento e della collaborazione.
+  - **SonarQube**: per l'analisi statica del codice.
+  - **Papyrus**: per la creazione e la gestione dei diagrammi UML.
+
+#### Risorse Umane:
+  - **Team di sviluppo**: composto da Falconi Davide, Patelli Marco e Birolini Andrea. Ognuno contribuisce in egual misura alla programmazione, documentazione, testing e revisione del codice.
+
+#### Risorse Logistiche:
+  - **Piattaforme di comunicazione**:
+    - **Discord:** per videoconferenze e aggiornamenti settimanali.
+    - **WhatsApp:** per comunicazioni rapide.
+  - **Spazi virtuali**:
+    - **Repository GitHub:** per la conservazione e la condivisione del codice e della documentazione.
+    - **Kanban Board:** per il monitoraggio dello stato di avanzamento delle attività.
+
+Queste risorse saranno gestite in modo coordinato per assicurare il successo del progetto.
 
 &nbsp;
 ## 12. Budget
