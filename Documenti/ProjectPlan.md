@@ -1,3 +1,4 @@
+
 # **Project Plan**
 In questo documento viene descritto in modo dettagliato il modello di sviluppo del progetto **DeltaRent**; prenderne visione prima di analizzare il progetto è necessario.
 
@@ -179,7 +180,11 @@ Queste risorse saranno gestite in modo coordinato per assicurare il successo del
 &nbsp;
 ## 12. Budget
 
+Il budget totale del progetto DeltaRent è suddiviso tra le diverse attività e risorse necessarie per il completamento del progetto. Di seguito viene illustrato come le risorse finanziare e temporali sono allocate e monitorate per garantire un'efficiente gestione delle spese e il rispetto dei vincoli economici.
 
+  - **Progettazione e analisi:** il 70% del budget è destinato alla fase di analisi preliminare e alla creazione di diagrammi UML per garantire una pianificazione accurata e completa.
+  - **Sviluppo del software:** il 20% del budget è riservato alla fase di sviluppo, inclusa la scrittura e il debugging del codice tramite Eclipse IDE e la gestione del versionamento con GitHub.
+  - **Testing e controllo qualità:** il 10% del budget è assegnato alle attività di testing, inclusi i test manuali e automatizzati tramite strumenti come SonarQube, oltre alla revisione della qualità del codice.
 
 &nbsp;
 ## 13. Cambiamenti
