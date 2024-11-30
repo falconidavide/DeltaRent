@@ -71,7 +71,7 @@ I requisiti verranno definiti tra i membri del gruppo non avendo clienti con cui
 &nbsp;
 ## 5. Attività di gestione
 
-Per garantire un ambiente di lavoro il più efficiente possibile il team farà utilizzo di alcuni tool integrati in github e non:
+Per garantire un ambiente di lavoro il più efficiente possibile il team farà utilizzo di alcuni tool integrati in GitHub e non:
 
   - **Issue**: le Issue garantiranno al team un elenco delle task da compiere con possibilità di aggiungere commenti che serviranno ad avvisare gli altri membri del gruppo sull'operato svolto su una certa issue.
   
@@ -138,7 +138,7 @@ Per garantire che il software sviluppato soddisfi i requisiti di qualità dichia
     - **Testing:** strumenti come SonarQube saranno utilizzati per identificare vulnerabilità ed errori commessi nella scrittura del codice. Ogni release del software sarà sottoposta a verifiche manuali e test di usabilità per garantire che risponda ai requisiti definiti e offra un’esperienza ottimale per l'utente.
 
   - **Standard di qualità adottati:**
-    - **Normative ISO/IEC 9126:** il software sarà sviluppato seguendo i principi di affidabilità, usabilità, performance e manutenibilità, come descritto nel capitolo 4.
+    - **Normative ISO/IEC 9126:** il software sarà sviluppato seguendo i principi di affidabilità, usabilità, performance e manutenibilità, come descritto nel [capitolo 4](#4-standard-linee-guida-procedure).
     - **Documentazione UML:** diagrammi aggiornati (use case, class diagram, sequence diagram, ecc.) saranno prodotti e mantenuti come supporto alla verifica della qualità durante tutto il ciclo di vita del progetto.
   - **Metriche di qualità:** verrà tenuto conto dei seguenti fattori di qualità durante la creazione del progetto: correttezza, affidabilità, efficienza, integrità, usabilità, manutenibilità, testatbilità, flessibilità, portabilità, riutilizzabilità e interoperabilità.
 
@@ -162,7 +162,7 @@ Il lavoro verrà suddiviso e gestito tramite kanban board e issue, nella kanban 
 &nbsp;
 ## 13. Cambiamenti
 
-I cambiamenti minori e legati all'user experience avverranno nella fase di testing del progetto e verranno discussi con gli utenti per rendere l'interfaccia più facilmente utilizzabile. I cambiamenti di maggior dimensione avveranno tramite commit su github con relativa issue che informerà tutti i membri del gruppo del cambiamento avvenuto al codice, verrà quindi aperta una issue che verrà poi commentata e discussa da tutti i membri prima di attuare la modifica. I membri potranno consigliare delle modifiche al codice scritto da altri membri sempre tramite issue.
+I cambiamenti minori e legati all'user experience avverranno nella fase di testing del progetto e verranno discussi con gli utenti per rendere l'interfaccia più facilmente utilizzabile. I cambiamenti di maggior dimensione avveranno tramite commit su GitHub con relativa issue che informerà tutti i membri del gruppo del cambiamento avvenuto al codice, verrà quindi aperta una issue che verrà poi commentata e discussa da tutti i membri prima di attuare la modifica. I membri potranno consigliare delle modifiche al codice scritto da altri membri sempre tramite issue.
 
 &nbsp;
 ## 14. Consegna
