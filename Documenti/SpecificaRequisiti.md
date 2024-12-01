@@ -1,13 +1,26 @@
-## 1. Introduzione
-**1.1 Obiettivo:**
 
-**1.2 Scopo:**
+## 1. Introduzione
+
+**1.1 Obiettivo:** l'obiettivo del progetto DeltaRent è sviluppare una piattaforma intuitiva per il noleggio di automobili, accessibile sia a privati che ad aziende, che consenta di gestire account, prenotazioni, e pagamenti in modo efficiente.
+
+**1.2 Scopo:** lo scopo del progetto è fornire un sistema completo e affidabile che permetta di offrire un servizio moderno, scalabile e semplice da utilizzare, migliorando la gestione interna e l'esperienza utente.
 
 **1.3 Definizioni, acronimi e abbreviazioni:**
 
+- **RAD**: Rapid Application Development, metodologia adottata per organizzare il team
+- **MoSCoW**: tecnica per la classificazione dei requisiti (Must have, Should have, Could have, Won't have)
+- **UML**: Unified Modeling Language, utilizzato per la documentazione
+- **IDE**: Ambiente di sviluppo integrato (Eclipse IDE)
+- **Issue**: Task o problematica da gestire in GitHub
+- **UI**: User Interface, il layout visivo e i controlli che consentono all'utente di interagire col software
+
 **1.4 Riferimenti:**
 
-**1.5 Panoramica:**
+- Project Plan del progetto DeltaRent
+- Linee guida Java Oracle
+- Standard ISO/IEC 9126
+
+**1.5 Panoramica:** il documento descrive i requisiti del sistema DeltaRent, le sue funzionalità principali, le caratteristiche degli utenti, i vincoli progettuali e le dipendenze, fornendo dettagli per la progettazione e implementazione.
 
 ## 2. Descrizione generale
 
