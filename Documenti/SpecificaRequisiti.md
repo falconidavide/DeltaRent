@@ -13,6 +13,7 @@
 - **IDE**: Ambiente di sviluppo integrato (Eclipse IDE)
 - **Issue**: Task o problematica da gestire in GitHub
 - **UI**: User Interface, il layout visivo e i controlli che consentono all'utente di interagire col software
+- **PP**: Project Plan
 
 **1.4 Riferimenti:**
 
