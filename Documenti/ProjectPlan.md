@@ -67,7 +67,7 @@ I requisiti verranno definiti tra i membri del gruppo non avendo clienti con cui
     - **Manutenibilità:** il codice sarà scritto in modo tale da poter essere facilmente modificato, anche a lunga distanza dalla data di rilascio del programma e da nuovi sviluppatori che non hanno familiarità con il codice di questo programma.
   
   - **Strumenti utilizzati**:
-  Verranno utilizzati diversi tools per far sì che tutto il team possa scrivere codice in modo efficiente e privo di errori. In particolare, verrà utilizzato GitHub, SonarQube, Papyrus ed Eclipse IDE.
+  Verranno utilizzati diversi tools per far sì che tutto il team possa scrivere codice in modo efficiente e privo di errori. In particolare, verrà utilizzato GitHub, SonarQube, Papyrus ed Eclipse IDE e JUnit per effettuare test di unità al programma, garantendo una rapida identificazione di bug e una maggiore affidabilità del codice.
 
 &nbsp;
 ## 5. Attività di gestione
@@ -119,11 +119,11 @@ In questa sezione vengono illustrati i metodi e le tecniche adottati durante le 
   - **Progettazione:** verranno creati i seguenti diagrammi UML per rappresentare il progetto in maniera semplice ed intuitiva: use case diagram, class diagram, state machine diagram, sequence diagram, communication diagram/timing diagram, activity diagram e component diagram.
 
 **Implementazione:**
-  -   **Strumenti di sviluppo:** verrà utilizzato Eclipse IDE per lo sviluppo del codice e GitHub per la gestione del repository e del versionamento.
+  - **Strumenti di sviluppo:** verrà utilizzato Eclipse IDE per lo sviluppo del codice e GitHub per la gestione del repository e del versionamento.
   - **Standard di codifica:** il codice seguirà le convenzioni Java definite da Oracle per assicurare leggibilità, manutenibilità e un'alta qualità del progetto in tutti i suoi aspetti.
   - **Controllo della configurazione:** il sistema di versionamento Git sarà adottato per tracciare ogni modifica al codice. Ogni feature sarà sviluppata da uno sviluppatore del nostro team, e verrà poi caricata sulla repository GitHub del progetto.
 
-**Testing:** i test saranno eseguiti su dispositivi con differenti specifiche hardware e software per garantire la compatibilità ed il corretto funzionamento su diverse piattaforme. Verrà utilizzato SonarQube come strumento di analisi statica, e testing manuale da parte del team per verificare il funzionamento del software.
+**Testing:** i test saranno eseguiti su dispositivi con differenti specifiche hardware e software per garantire la compatibilità ed il corretto funzionamento su diverse piattaforme. Verrà utilizzato SonarQube come strumento di analisi statica, e testing manuale da parte del team per verificare il funzionamento del software. Verranno inoltre sviluppati ed eseguiti test di unità utilizzando il framework JUnit.
 
 &nbsp;
 ## 9. Garanzia di Qualità
@@ -163,6 +163,7 @@ Durante lo sviluppo del progetto DeltaRent, saranno necessarie risorse sia mater
   - **GitHub**: per la gestione del versionamento e della collaborazione.
   - **SonarQube**: per l'analisi statica del codice.
   - **Papyrus**: per la creazione e la gestione dei diagrammi UML.
+  - **JUnit**: framework per i test di unità che verrà utilizzato per verificare la correttezza e la stabilità dei moduli sviluppati durante il progetto.
 
 #### Risorse Umane:
   - **Team di sviluppo**: composto da Falconi Davide, Patelli Marco e Birolini Andrea. Ognuno contribuisce in egual misura alla programmazione, documentazione, testing e revisione del codice.
