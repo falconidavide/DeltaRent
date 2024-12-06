@@ -23,9 +23,10 @@ In questo documento viene descritto in modo dettagliato il modello di sviluppo d
 &nbsp;
 ## 1. Introduzione
 
-**DeltaRent** è una piattaforma per il noleggio auto per aziende e privati, la piattaforma offre una sezione personale con i veicoli preferiti, i veicoli noleggiati e i veicoli attualmente in utilizzo. La pagina offre una sezione con un elenco per permettere la scelta del veicolo attraverso dei filtri (es. colore, tipo carrozzeria, potenza del motore, tipologia della trazione, ecc...), si avrà inoltre una pagina iniziale in cui fare l'accesso o registrare il proprio account (nome, cognome, email, data di nascita, eventale partita iva) al software. 
+Il progetto DeltaRent mira a sviluppare una piattaforma innovativa per il noleggio di veicoli, dedicata sia ad utenti privati che aziendali. La piattaforma integra una sezione personale in cui gli utenti possono visualizzare i veicoli attualmente noleggiati e consultare lo storico dei noleggi effettuati in precedenza. Un sistema di ricerca avanzato, basato su filtri come colore e tipo di carrozzeria, consentirà di invidurare rapidamente il veicolo più adatto alle proprie esigenze.
+Gli utenti, previa registrazione, possono accedere alla piattaforma inserendo i dati richiesti in base alla categoria di utenza. I privati devono fornire informazioni personali come nome, cognome, indirizzo email, data di nascita e password, mentre le aziende devono inserire il nome aziendale, l'indirizzo email, la partita IVA e una password. Una volta registrati, i privati possono noleggiare automobili, mentre gli utenti aziendali hanno accesso esclusivo al noleggio dei furgoni.
 
-Ogni utente **privato** potrà noleggiare a proprio nome al massimo 2 veicoli, ogni utente registrato con **partita iva** invece potrà noleggiare quanti veicoli desideri, ogni veicolo avrà un massimo di kilometri percorribili annualmente nella tariffa base che potranno essere modificati in fase di scelta del veicolo con una tariffa aggiuntiva.
+Durante il noleggio, l'inizio dell'utilizzo viene registrato con l'orario della prenotazione, e il veicolo è contrassegnato come occupato. Il costo del noleggio è calcolato in base al tipo di veicolo e alla durata selezionata dall’utente in fase di prenotazione, garantendo trasparenza e flessibilità per entrambe le categorie di utenti.
 
 &nbsp;
 ## 2. Modello di Processo
