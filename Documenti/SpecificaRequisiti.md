@@ -7,17 +7,18 @@
 
 **1.3 Definizioni, acronimi e abbreviazioni:**
 
-- **RAD**: Rapid Application Development, metodologia adottata per organizzare il team
-- **MoSCoW**: tecnica per la classificazione dei requisiti (Must have, Should have, Could have, Won't have)
-- **UML**: Unified Modeling Language, utilizzato per la documentazione
-- **IDE**: Ambiente di sviluppo integrato (Eclipse IDE)
+- **RAD:** Rapid Application Development, metodologia adottata per organizzare il team
+- **MoSCoW:**:tecnica per la classificazione dei requisiti (Must have, Should have, Could have, Won't have)
+- **UML:** Unified Modeling Language, utilizzato per la documentazione
+- **IDE:** Ambiente di sviluppo integrato (Eclipse IDE)
 - **Issue**: Task o problematica da gestire in GitHub
-- **UI**: User Interface, il layout visivo e i controlli che consentono all'utente di interagire col software
-- **PP**: Project Plan
+- **GUI:** Graphical User Interface, il layout visivo e i controlli che consentono all'utente di interagire col software
+- **PP:** Project Plan
+- **DB:** DataBase, la base di dati che utilizza il programma
 
 **1.4 Riferimenti:**
 
-- Project Plan del progetto DeltaRent
+- PP del progetto DeltaRent
 - Linee guida Java Oracle
 - Standard ISO/IEC 9126
 
