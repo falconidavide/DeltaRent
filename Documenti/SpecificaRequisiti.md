@@ -26,15 +26,16 @@
 
 ## 2. Descrizione generale
 
-**2.1 Prospettiva del prodotto:**
+**2.1 Prospettiva del prodotto:** il prodotto finale sarà un'interfaccia applicativa in grado di permettere agli utenti di gestire il proprio profilo, di visualizzare le automobili disponibili al noleggio. La piattaforma offre una sezione personale per l'utente che mostra i veicoli preferiti e i veicoli attualmente noleggiati dall'utente stesso. L'interfaccia offre inoltre all'utente una sezione per permettere di cercare un veicolo attraverso dei filtri, come il colore o il tipo di carrozzeria. Gli utenti, che possono essere privati o azienda, potranno accedere oppure, se non hanno già creato un account, registrarsi fornendo le informazioni necessarie in base al tipo di utenza. 
 
-**2.2 Funzioni del prodotto:**
+**2.2 Funzioni del prodotto:** Le principali funzioni del prodotto saranno inerenti al noleggio auto, l'utente potrà programmare l'inizio di un noleggio piuttosto che terminarne un'altro, potrà selezionare dei veicoli da aggiungere alla lista dei veicoli preferiti, l'utente potrà inoltre visualizzare una prospettiva della rata mensile che pagherà in base ai servizi complementari del noleggio e aggiungendo il periodo del noleggio (in giorni) potrà visualizzare il prezzo finale per il noleggio. 
 
-**2.3 Caratteristiche dell'utente:**
+**2.3 Caratteristiche dell'utente:** L'utente sarà una persona fisica che opererà sulla poattaforma per proprio conto o per conto dell'azienda per cui lavora, nel caso di privato le informazioni rischieste saranno il proprio nome, cognome, indirizzo email e la data di nascita, nel caso di un'azienda privata l'operatore dovrà inserire la pec registrata dell'azienda, la partita iva e il nome dell'azienda.
 
-**2.4 Vincoli:**
+**2.4 Vincoli:** Ogni utente privato può noleggiare attraverso il proprio account solamente automobili, e al massimo di 1 veicolo alla volta, mentre gli utenti registrati come aziendali potranno noleggiare solamente i furgoni.
+All'inizio del noleggio, se l'auto è assegnata ad un utente privato verrà registrato l'orario di inizio del noleggio e il veicolo verrà contrassegnato come occupato, l'importo da pagare varia in base al numero di ore di noleggio che è scelto dall'utente in fase di prenotazione. Il costo del noleggio varia in base ai veicoli.
 
-**2.5 Presupposti e dipendenze:**
+**2.5 Presupposti e dipendenze:** 
 
 ## 3. Requisiti specifici
 
