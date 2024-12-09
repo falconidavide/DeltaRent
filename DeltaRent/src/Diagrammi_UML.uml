@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_fMuu4LY1Ee-xL_dcwtI9ow" name="Diagrammi_UML">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_fQZG4LY1Ee-xL_dcwtI9ow">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Interaction" xmi:id="_fOEysLY1Ee-xL_dcwtI9ow" name="Interaction2"/>
+</uml:Model>
