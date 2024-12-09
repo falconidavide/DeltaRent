@@ -41,23 +41,44 @@ All'inizio del noleggio, se l'auto è assegnata ad un utente privato verrà regi
 
 **3.1 Requisiti dell'interfaccia esterna:**
 
-**3.1.1 Interfacce utente:**
+<div style="margin-left: 32px;">
 
-**3.1.2 Interfacce hardware:**
+**3.1.1 Interfacce utente:** il programma è stato testato per supportare diverse risoluzioni differenti. Sono state implementate diverse schermate per effettuare le diverse funzioni del programma, e sono tutte state studiate in modo da essere intuitive per gli utenti.
 
-**3.1.3 Interfacce software:**
+**3.1.2 Interfacce hardware:** il programma è orientato all'utilizzo sullo schermo di un computer.
 
-**3.1.4 Interfacce di comunicazione:**
+**3.1.3 Interfacce software:** il sistema si integra con un sistema di database.
+
+**3.1.4 Interfacce di comunicazione:** non applicabile in questo caso.
+
+</div>
 
 **3.2 Richieste funzionali:**
 
-Esempio:
-3.2.1 Classe utente 1: 
-3.2.1.1 Requisito funzionale 1.1: 
-3.2.1.2 Requisito funzionale 1.2: 
+<div style="margin-left: 32px;">
+
+**3.2.1 Classe utente 1:** 
+
+<div style="margin-left: 32px;">
+
+**3.2.1.1 Requisito funzionale 1.1:** 
+
+**3.2.1.2 Requisito funzionale 1.2:** 
+
 ...
-3.2.2 Classe utente 2:
-... 
+
+</div>
+
+**3.2.2 Classe utente 2:**
+
+
+<div style="margin-left: 32px;">
+
+**3.2.2.1 ...:** 
+
+</div>
+
+</div>
 
 **3.3 Requisiti di prestazione:**
 
