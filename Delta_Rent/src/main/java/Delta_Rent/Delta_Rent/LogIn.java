@@ -8,21 +8,21 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 
 public class LogIn extends JFrame {
-	private JPasswordField passwordField_1;
 	private JTextField textField;
-	private JPasswordField passwordField_2;
-	private JPasswordField passwordField_3;
-	private JPasswordField passwordField_4;
-	private JPasswordField passwordField_5;
-	private JPasswordField passwordField_6;
-	private JPasswordField passwordField_7;
-	private JPasswordField passwordField_8;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+	private JTextField textField_4;
+	private JTextField textField_5;
+	private JTextField textField_6;
+	private JTextField textField_7;
+	private JTextField textField_8;
 
     public LogIn() {
         // Impostazioni della finestra principale
         setTitle("DeltaRent");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(1000, 800);
+        setSize(1200, 950);
         setLocationRelativeTo(null);
 
         // Layout principale
@@ -32,9 +32,9 @@ public class LogIn extends JFrame {
 
         // Colonna sinistra
         JPanel leftColumn = new JPanel();
-        leftColumn.setBackground(new Color(245, 239, 231));
+        leftColumn.setBackground(new Color(62, 88, 121));
         leftColumn.setLayout(new BoxLayout(leftColumn, BoxLayout.Y_AXIS));
-        leftColumn.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        leftColumn.setBorder(new LineBorder(new Color(216, 195, 182), 3));
 
         JLabel avatarLabel = new JLabel(new ImageIcon("path/to/avatar/image")); // Sostituisci con il percorso immagine
         avatarLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -55,7 +55,7 @@ public class LogIn extends JFrame {
         JPanel rightColumn = new JPanel();
         rightColumn.setBackground(new Color(32, 52, 85));
         rightColumn.setLayout(new BoxLayout(rightColumn, BoxLayout.Y_AXIS));
-        rightColumn.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        rightColumn.setBorder(null);
 
         JLabel lblTitle = new JLabel("LOG-IN TO DELTARENT");
         lblTitle.setForeground(new Color(216, 195, 182));
@@ -66,13 +66,13 @@ public class LogIn extends JFrame {
         emailField.setBackground(new Color(245, 239, 231));
         emailField.setAlignmentX(Component.CENTER_ALIGNMENT);
         emailField.setMaximumSize(new Dimension(300, 30));
-        emailField.setBorder(BorderFactory.createTitledBorder("E-mail"));
+        emailField.setBorder(null);
 
         JPasswordField passwordField = new JPasswordField();
         passwordField.setBackground(new Color(245, 239, 231));
         passwordField.setAlignmentX(Component.CENTER_ALIGNMENT);
         passwordField.setMaximumSize(new Dimension(300, 30));
-        passwordField.setBorder(BorderFactory.createTitledBorder("Password"));
+        passwordField.setBorder(null);
 
         JButton btnForgotPassword = new JButton("Password Dimenticata?");
         btnForgotPassword.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
@@ -94,48 +94,12 @@ public class LogIn extends JFrame {
         JTabbedPane tabbedPane = new JTabbedPane();
         JPanel panel_1 = new JPanel();
         panel_1.setForeground(new Color(216, 195, 182));
-        panel_1.setBorder(new LineBorder(new Color(216, 195, 182), 2, true));
+        panel_1.setBorder(new LineBorder(new Color(216, 195, 182), 4, true));
         panel_1.setBackground(new Color(62, 88, 121));
         tabbedPane.add("Azienda", panel_1);
         tabbedPane.setBackgroundAt(0, new Color(216, 195, 182));
         tabbedPane.setForegroundAt(0, new Color(32, 52, 85));
         panel_1.setLayout(null);
-        
-        passwordField_5 = new JPasswordField();
-        passwordField_5.setBackground(new Color(245, 239, 231));
-        passwordField_5.setForeground(new Color(32, 52, 85));
-        passwordField_5.setMaximumSize(new Dimension(300, 30));
-        passwordField_5.setBorder(BorderFactory.createTitledBorder("Nome Azienda"));
-        passwordField_5.setAlignmentX(0.5f);
-        passwordField_5.setBounds(88, 32, 300, 31);
-        panel_1.add(passwordField_5);
-        
-        passwordField_6 = new JPasswordField();
-        passwordField_6.setBackground(new Color(245, 239, 231));
-        passwordField_6.setForeground(new Color(32, 52, 85));
-        passwordField_6.setMaximumSize(new Dimension(300, 30));
-        passwordField_6.setBorder(BorderFactory.createTitledBorder("PEC Registrata"));
-        passwordField_6.setAlignmentX(0.5f);
-        passwordField_6.setBounds(88, 87, 300, 31);
-        panel_1.add(passwordField_6);
-        
-        passwordField_7 = new JPasswordField();
-        passwordField_7.setBackground(new Color(245, 239, 231));
-        passwordField_7.setForeground(new Color(32, 52, 85));
-        passwordField_7.setMaximumSize(new Dimension(300, 30));
-        passwordField_7.setBorder(BorderFactory.createTitledBorder("Partita Iva"));
-        passwordField_7.setAlignmentX(0.5f);
-        passwordField_7.setBounds(88, 143, 300, 31);
-        panel_1.add(passwordField_7);
-        
-        passwordField_8 = new JPasswordField();
-        passwordField_8.setBackground(new Color(245, 239, 231));
-        passwordField_8.setForeground(new Color(32, 52, 85));
-        passwordField_8.setMaximumSize(new Dimension(300, 30));
-        passwordField_8.setBorder(BorderFactory.createTitledBorder("Password"));
-        passwordField_8.setAlignmentX(0.5f);
-        passwordField_8.setBounds(88, 196, 300, 31);
-        panel_1.add(passwordField_8);
         
         JButton btnRegistrati_1 = new JButton("Registrati");
         btnRegistrati_1.setForeground(new Color(62, 88, 121));
@@ -147,17 +111,89 @@ public class LogIn extends JFrame {
         btnRegistrati_1.setContentAreaFilled(true);
         btnRegistrati_1.setBorderPainted(true);
         btnRegistrati_1.setAlignmentX(0.5f);
-        btnRegistrati_1.setBounds(150, 245, 188, 29);
+        btnRegistrati_1.setBounds(150, 302, 188, 29);
         panel_1.add(btnRegistrati_1);
-        tabbedPane.setMaximumSize(new Dimension(500, 340));
         
-        Component rigidArea_1 = Box.createRigidArea(new Dimension(0, 100));
+        JLabel lblNomeAzienda = new JLabel("Nome Azienda");
+        lblNomeAzienda.setForeground(new Color(216, 195, 182));
+        lblNomeAzienda.setFont(new Font("Arial", Font.PLAIN, 15));
+        lblNomeAzienda.setAlignmentX(0.5f);
+        lblNomeAzienda.setBounds(88, 22, 113, 18);
+        panel_1.add(lblNomeAzienda);
+        
+        JLabel lblPecRegistrata = new JLabel("PEC Registrata");
+        lblPecRegistrata.setForeground(new Color(216, 195, 182));
+        lblPecRegistrata.setFont(new Font("Arial", Font.PLAIN, 15));
+        lblPecRegistrata.setAlignmentX(0.5f);
+        lblPecRegistrata.setBounds(88, 83, 113, 18);
+        panel_1.add(lblPecRegistrata);
+        
+        JLabel lblPartitaIva = new JLabel("Partita IVA");
+        lblPartitaIva.setForeground(new Color(216, 195, 182));
+        lblPartitaIva.setFont(new Font("Arial", Font.PLAIN, 15));
+        lblPartitaIva.setAlignmentX(0.5f);
+        lblPartitaIva.setBounds(88, 151, 113, 18);
+        panel_1.add(lblPartitaIva);
+        
+        JLabel lblPassword_1 = new JLabel("Password");
+        lblPassword_1.setForeground(new Color(216, 195, 182));
+        lblPassword_1.setFont(new Font("Arial", Font.PLAIN, 15));
+        lblPassword_1.setAlignmentX(0.5f);
+        lblPassword_1.setBounds(88, 212, 113, 18);
+        panel_1.add(lblPassword_1);
+        
+        textField_1 = new JTextField();
+        textField_1.setMaximumSize(new Dimension(300, 30));
+        textField_1.setBorder(null);
+        textField_1.setBackground(new Color(245, 239, 231));
+        textField_1.setAlignmentX(0.5f);
+        textField_1.setBounds(88, 41, 300, 30);
+        panel_1.add(textField_1);
+        
+        textField_2 = new JTextField();
+        textField_2.setMaximumSize(new Dimension(300, 30));
+        textField_2.setBorder(null);
+        textField_2.setBackground(new Color(245, 239, 231));
+        textField_2.setAlignmentX(0.5f);
+        textField_2.setBounds(88, 101, 300, 30);
+        panel_1.add(textField_2);
+        
+        textField_3 = new JTextField();
+        textField_3.setMaximumSize(new Dimension(300, 30));
+        textField_3.setBorder(null);
+        textField_3.setBackground(new Color(245, 239, 231));
+        textField_3.setAlignmentX(0.5f);
+        textField_3.setBounds(88, 170, 300, 30);
+        panel_1.add(textField_3);
+        
+        textField_4 = new JTextField();
+        textField_4.setMaximumSize(new Dimension(300, 30));
+        textField_4.setBorder(null);
+        textField_4.setBackground(new Color(245, 239, 231));
+        textField_4.setAlignmentX(0.5f);
+        textField_4.setBounds(88, 232, 300, 30);
+        panel_1.add(textField_4);
+        tabbedPane.setMaximumSize(new Dimension(500, 400));
+        
+        Component rigidArea_1 = Box.createRigidArea(new Dimension(0, 70));
         rightColumn.add(rigidArea_1);
 
         rightColumn.add(lblTitle);
         rightColumn.add(Box.createRigidArea(new Dimension(0, 45)));
+        
+        JLabel lblEmail = new JLabel("E-mail");
+        lblEmail.setForeground(new Color(216, 195, 182));
+        lblEmail.setFont(new Font("Arial", Font.PLAIN, 15));
+        lblEmail.setAlignmentX(0.5f);
+        rightColumn.add(lblEmail);
         rightColumn.add(emailField);
         rightColumn.add(Box.createRigidArea(new Dimension(0, 30)));
+        
+        JLabel lblPassword = new JLabel("Password");
+        lblPassword.setForeground(new Color(216, 195, 182));
+        lblPassword.setFont(new Font("Arial", Font.PLAIN, 15));
+        lblPassword.setAlignmentX(0.5f);
+        rightColumn.add(lblPassword);
         rightColumn.add(passwordField);
         rightColumn.add(Box.createRigidArea(new Dimension(0, 30)));
         rightColumn.add(btnForgotPassword);
@@ -189,45 +225,13 @@ public class LogIn extends JFrame {
         panel.setLayout(null);
         panel.setLayout(null);
         
-        passwordField_1 = new JPasswordField();
-        passwordField_1.setBackground(new Color(245, 239, 231));
-        passwordField_1.setMaximumSize(new Dimension(300, 30));
-        passwordField_1.setBorder(BorderFactory.createTitledBorder("Cognome"));
-        passwordField_1.setAlignmentX(0.5f);
-        passwordField_1.setBounds(99, 67, 300, 31);
-        panel.add(passwordField_1);
-        
         textField = new JTextField();
         textField.setBackground(new Color(245, 239, 231));
         textField.setMaximumSize(new Dimension(300, 30));
-        textField.setBorder(BorderFactory.createTitledBorder("Nome"));
+        textField.setBorder(null);
         textField.setAlignmentX(0.5f);
         textField.setBounds(99, 24, 300, 31);
         panel.add(textField);
-        
-        passwordField_2 = new JPasswordField();
-        passwordField_2.setBackground(new Color(245, 239, 231));
-        passwordField_2.setMaximumSize(new Dimension(300, 30));
-        passwordField_2.setBorder(BorderFactory.createTitledBorder("E-mail"));
-        passwordField_2.setAlignmentX(0.5f);
-        passwordField_2.setBounds(99, 157, 300, 31);
-        panel.add(passwordField_2);
-        
-        passwordField_3 = new JPasswordField();
-        passwordField_3.setBackground(new Color(245, 239, 231));
-        passwordField_3.setMaximumSize(new Dimension(300, 30));
-        passwordField_3.setBorder(BorderFactory.createTitledBorder("Password"));
-        passwordField_3.setAlignmentX(0.5f);
-        passwordField_3.setBounds(99, 200, 300, 31);
-        panel.add(passwordField_3);
-        
-        passwordField_4 = new JPasswordField();
-        passwordField_4.setBackground(new Color(245, 239, 231));
-        passwordField_4.setMaximumSize(new Dimension(300, 30));
-        passwordField_4.setBorder(BorderFactory.createTitledBorder("Data Di Nascita"));
-        passwordField_4.setAlignmentX(0.5f);
-        passwordField_4.setBounds(99, 114, 300, 31);
-        panel.add(passwordField_4);
         
         JButton btnRegistrati = new JButton("Registrati");
         btnRegistrati.setBackground(new Color(245, 239, 231));
@@ -235,8 +239,75 @@ public class LogIn extends JFrame {
         btnRegistrati.setContentAreaFilled(true);
         btnRegistrati.setBorderPainted(true);
         btnRegistrati.setAlignmentX(0.5f);
-        btnRegistrati.setBounds(150, 245, 188, 29);
+        btnRegistrati.setBounds(150, 302, 188, 29);
         panel.add(btnRegistrati);
+        
+        JLabel lblNome = new JLabel("Nome");
+        lblNome.setForeground(new Color(216, 195, 182));
+        lblNome.setFont(new Font("Arial", Font.PLAIN, 15));
+        lblNome.setAlignmentX(0.5f);
+        lblNome.setBounds(98, 6, 66, 18);
+        panel.add(lblNome);
+        
+        JLabel lblCognome = new JLabel("Cognome");
+        lblCognome.setForeground(new Color(216, 195, 182));
+        lblCognome.setFont(new Font("Arial", Font.PLAIN, 15));
+        lblCognome.setAlignmentX(0.5f);
+        lblCognome.setBounds(99, 61, 66, 18);
+        panel.add(lblCognome);
+        
+        JLabel lblDataDiNascita = new JLabel("Data di Nascita");
+        lblDataDiNascita.setForeground(new Color(216, 195, 182));
+        lblDataDiNascita.setFont(new Font("Arial", Font.PLAIN, 15));
+        lblDataDiNascita.setAlignmentX(0.5f);
+        lblDataDiNascita.setBounds(99, 119, 116, 18);
+        panel.add(lblDataDiNascita);
+        
+        JLabel lblEmail_1 = new JLabel("E-mail");
+        lblEmail_1.setForeground(new Color(216, 195, 182));
+        lblEmail_1.setFont(new Font("Arial", Font.PLAIN, 15));
+        lblEmail_1.setAlignmentX(0.5f);
+        lblEmail_1.setBounds(99, 180, 116, 18);
+        panel.add(lblEmail_1);
+        
+        JLabel lblEmail_1_1 = new JLabel("Password");
+        lblEmail_1_1.setForeground(new Color(216, 195, 182));
+        lblEmail_1_1.setFont(new Font("Arial", Font.PLAIN, 15));
+        lblEmail_1_1.setAlignmentX(0.5f);
+        lblEmail_1_1.setBounds(99, 241, 116, 18);
+        panel.add(lblEmail_1_1);
+        
+        textField_5 = new JTextField();
+        textField_5.setMaximumSize(new Dimension(300, 30));
+        textField_5.setBorder(null);
+        textField_5.setBackground(new Color(245, 239, 231));
+        textField_5.setAlignmentX(0.5f);
+        textField_5.setBounds(99, 80, 300, 31);
+        panel.add(textField_5);
+        
+        textField_6 = new JTextField();
+        textField_6.setMaximumSize(new Dimension(300, 30));
+        textField_6.setBorder(null);
+        textField_6.setBackground(new Color(245, 239, 231));
+        textField_6.setAlignmentX(0.5f);
+        textField_6.setBounds(99, 137, 300, 31);
+        panel.add(textField_6);
+        
+        textField_7 = new JTextField();
+        textField_7.setMaximumSize(new Dimension(300, 30));
+        textField_7.setBorder(null);
+        textField_7.setBackground(new Color(245, 239, 231));
+        textField_7.setAlignmentX(0.5f);
+        textField_7.setBounds(99, 198, 300, 31);
+        panel.add(textField_7);
+        
+        textField_8 = new JTextField();
+        textField_8.setMaximumSize(new Dimension(300, 30));
+        textField_8.setBorder(null);
+        textField_8.setBackground(new Color(245, 239, 231));
+        textField_8.setAlignmentX(0.5f);
+        textField_8.setBounds(99, 259, 300, 31);
+        panel.add(textField_8);
 
         // Aggiunta dei pannelli al layout principale
         mainPanel.add(leftColumn, BorderLayout.WEST);
