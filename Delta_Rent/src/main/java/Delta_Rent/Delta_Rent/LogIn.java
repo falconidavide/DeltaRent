@@ -76,11 +76,11 @@ public class LogIn extends JFrame {
 
         JButton btnForgotPassword = new JButton("Password Dimenticata?");
         btnForgotPassword.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-        btnForgotPassword.setBackground(new Color(245, 239, 231));
-        btnForgotPassword.setForeground(new Color(62, 88, 121));
+        btnForgotPassword.setBackground(new Color(32, 52, 85));
+        btnForgotPassword.setForeground(new Color(216, 195, 182));
         btnForgotPassword.setAlignmentX(Component.CENTER_ALIGNMENT);
-        btnForgotPassword.setBorderPainted(true);
-        btnForgotPassword.setContentAreaFilled(true);
+        btnForgotPassword.setBorderPainted(false);
+        btnForgotPassword.setContentAreaFilled(false);
 
         JSeparator separator = new JSeparator();
         separator.setForeground(new Color(245, 239, 231));
@@ -161,7 +161,7 @@ public class LogIn extends JFrame {
         rightColumn.add(passwordField);
         rightColumn.add(Box.createRigidArea(new Dimension(0, 30)));
         rightColumn.add(btnForgotPassword);
-        Component rigidArea = Box.createRigidArea(new Dimension(0, 30));
+        Component rigidArea = Box.createRigidArea(new Dimension(0, 15));
         rightColumn.add(rigidArea);
         
         JButton btnLogin = new JButton("LOG-IN");
@@ -172,6 +172,9 @@ public class LogIn extends JFrame {
         btnLogin.setBackground(new Color(245, 239, 231));
         btnLogin.setAlignmentX(0.5f);
         rightColumn.add(btnLogin);
+        
+        Component rigidArea_2 = Box.createRigidArea(new Dimension(0, 20));
+        rightColumn.add(rigidArea_2);
         rightColumn.add(separator);
         rightColumn.add(Box.createRigidArea(new Dimension(0, 20)));
         rightColumn.add(lblRegister);
