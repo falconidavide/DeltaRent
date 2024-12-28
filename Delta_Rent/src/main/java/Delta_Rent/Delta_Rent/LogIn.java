@@ -41,7 +41,15 @@ public class LogIn extends JFrame {
 
         JButton btnFavorites = createButton("Preferiti");
         JButton btnSearch = createButton("Ricerca");
-        JButton btnOther = createButton("Button");
+        JButton btnOther = createButton("Profilo");
+        btnSearch.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new SearchPage().setVisible(true);
+                dispose(); // Chiude la finestra corrente
+            }
+        });
+        
 
         leftColumn.add(avatarLabel);
         leftColumn.add(Box.createRigidArea(new Dimension(0, 20))); // Spaziatura
@@ -325,5 +333,6 @@ public class LogIn extends JFrame {
         	LogIn loginPage = new LogIn();
             loginPage.setVisible(true);
         });
+       
     }
 }
