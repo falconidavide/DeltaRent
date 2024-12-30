@@ -1,4 +1,4 @@
-package Delta_Rent.Delta_Rent;
+package GUI;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,15 +8,15 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 
 public class LogIn extends JFrame {
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
-	private JTextField textField_8;
+    private JTextField textField;
+    private JTextField textField_1;
+    private JTextField textField_2;
+    private JTextField textField_3;
+    private JTextField textField_4;
+    private JTextField textField_5;
+    private JTextField textField_6;
+    private JTextField textField_7;
+    private JTextField textField_8;
 
     public LogIn() {
         // Impostazioni della finestra principale
@@ -39,25 +39,8 @@ public class LogIn extends JFrame {
         JLabel avatarLabel = new JLabel(new ImageIcon("path/to/avatar/image")); // Sostituisci con il percorso immagine
         avatarLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        JButton btnFavorites = createButton("Preferiti");
-        JButton btnSearch = createButton("Ricerca");
-        JButton btnOther = createButton("Profilo");
-        btnSearch.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new SearchPage().setVisible(true);
-                dispose(); // Chiude la finestra corrente
-            }
-        });
-        
-
         leftColumn.add(avatarLabel);
         leftColumn.add(Box.createRigidArea(new Dimension(0, 20))); // Spaziatura
-        leftColumn.add(btnFavorites);
-        leftColumn.add(Box.createRigidArea(new Dimension(0, 20)));
-        leftColumn.add(btnSearch);
-        leftColumn.add(Box.createRigidArea(new Dimension(0, 20)));
-        leftColumn.add(btnOther);
 
         // Colonna destra
         JPanel rightColumn = new JPanel();
@@ -108,48 +91,48 @@ public class LogIn extends JFrame {
         tabbedPane.setBackgroundAt(0, new Color(216, 195, 182));
         tabbedPane.setForegroundAt(0, new Color(32, 52, 85));
         panel_1.setLayout(null);
-        
+
         JButton btnRegistrati_1 = new JButton("Registrati");
         btnRegistrati_1.setForeground(new Color(62, 88, 121));
         btnRegistrati_1.setBackground(new Color(245, 239, 231));
         btnRegistrati_1.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        	}
+            public void actionPerformed(ActionEvent e) {
+            }
         });
         btnRegistrati_1.setContentAreaFilled(true);
         btnRegistrati_1.setBorderPainted(true);
         btnRegistrati_1.setAlignmentX(0.5f);
         btnRegistrati_1.setBounds(150, 302, 188, 29);
         panel_1.add(btnRegistrati_1);
-        
+
         JLabel lblNomeAzienda = new JLabel("Nome Azienda");
         lblNomeAzienda.setForeground(new Color(216, 195, 182));
         lblNomeAzienda.setFont(new Font("Arial", Font.PLAIN, 15));
         lblNomeAzienda.setAlignmentX(0.5f);
         lblNomeAzienda.setBounds(88, 22, 113, 18);
         panel_1.add(lblNomeAzienda);
-        
+
         JLabel lblPecRegistrata = new JLabel("PEC Registrata");
         lblPecRegistrata.setForeground(new Color(216, 195, 182));
         lblPecRegistrata.setFont(new Font("Arial", Font.PLAIN, 15));
         lblPecRegistrata.setAlignmentX(0.5f);
         lblPecRegistrata.setBounds(88, 83, 113, 18);
         panel_1.add(lblPecRegistrata);
-        
+
         JLabel lblPartitaIva = new JLabel("Partita IVA");
         lblPartitaIva.setForeground(new Color(216, 195, 182));
         lblPartitaIva.setFont(new Font("Arial", Font.PLAIN, 15));
         lblPartitaIva.setAlignmentX(0.5f);
         lblPartitaIva.setBounds(88, 151, 113, 18);
         panel_1.add(lblPartitaIva);
-        
+
         JLabel lblPassword_1 = new JLabel("Password");
         lblPassword_1.setForeground(new Color(216, 195, 182));
         lblPassword_1.setFont(new Font("Arial", Font.PLAIN, 15));
         lblPassword_1.setAlignmentX(0.5f);
         lblPassword_1.setBounds(88, 212, 113, 18);
         panel_1.add(lblPassword_1);
-        
+
         textField_1 = new JTextField();
         textField_1.setMaximumSize(new Dimension(300, 30));
         textField_1.setBorder(null);
@@ -157,7 +140,7 @@ public class LogIn extends JFrame {
         textField_1.setAlignmentX(0.5f);
         textField_1.setBounds(88, 41, 300, 30);
         panel_1.add(textField_1);
-        
+
         textField_2 = new JTextField();
         textField_2.setMaximumSize(new Dimension(300, 30));
         textField_2.setBorder(null);
@@ -165,7 +148,7 @@ public class LogIn extends JFrame {
         textField_2.setAlignmentX(0.5f);
         textField_2.setBounds(88, 101, 300, 30);
         panel_1.add(textField_2);
-        
+
         textField_3 = new JTextField();
         textField_3.setMaximumSize(new Dimension(300, 30));
         textField_3.setBorder(null);
@@ -173,7 +156,7 @@ public class LogIn extends JFrame {
         textField_3.setAlignmentX(0.5f);
         textField_3.setBounds(88, 170, 300, 30);
         panel_1.add(textField_3);
-        
+
         textField_4 = new JTextField();
         textField_4.setMaximumSize(new Dimension(300, 30));
         textField_4.setBorder(null);
@@ -182,13 +165,13 @@ public class LogIn extends JFrame {
         textField_4.setBounds(88, 232, 300, 30);
         panel_1.add(textField_4);
         tabbedPane.setMaximumSize(new Dimension(500, 400));
-        
+
         Component rigidArea_1 = Box.createRigidArea(new Dimension(0, 70));
         rightColumn.add(rigidArea_1);
 
         rightColumn.add(lblTitle);
         rightColumn.add(Box.createRigidArea(new Dimension(0, 45)));
-        
+
         JLabel lblEmail = new JLabel("E-mail");
         lblEmail.setForeground(new Color(216, 195, 182));
         lblEmail.setFont(new Font("Arial", Font.PLAIN, 15));
@@ -196,7 +179,7 @@ public class LogIn extends JFrame {
         rightColumn.add(lblEmail);
         rightColumn.add(emailField);
         rightColumn.add(Box.createRigidArea(new Dimension(0, 30)));
-        
+
         JLabel lblPassword = new JLabel("Password");
         lblPassword.setForeground(new Color(216, 195, 182));
         lblPassword.setFont(new Font("Arial", Font.PLAIN, 15));
@@ -207,7 +190,7 @@ public class LogIn extends JFrame {
         rightColumn.add(btnForgotPassword);
         Component rigidArea = Box.createRigidArea(new Dimension(0, 15));
         rightColumn.add(rigidArea);
-        
+
         JButton btnLogin = new JButton("LOG-IN");
         btnLogin.setForeground(new Color(62, 88, 121));
         btnLogin.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
@@ -216,7 +199,7 @@ public class LogIn extends JFrame {
         btnLogin.setBackground(new Color(245, 239, 231));
         btnLogin.setAlignmentX(0.5f);
         rightColumn.add(btnLogin);
-        
+
         Component rigidArea_2 = Box.createRigidArea(new Dimension(0, 20));
         rightColumn.add(rigidArea_2);
         rightColumn.add(separator);
@@ -231,8 +214,7 @@ public class LogIn extends JFrame {
         tabbedPane.setBackgroundAt(1, new Color(216, 195, 182));
         tabbedPane.setForegroundAt(1, new Color(32, 52, 85));
         panel.setLayout(null);
-        panel.setLayout(null);
-        
+
         textField = new JTextField();
         textField.setBackground(new Color(245, 239, 231));
         textField.setMaximumSize(new Dimension(300, 30));
@@ -240,7 +222,7 @@ public class LogIn extends JFrame {
         textField.setAlignmentX(0.5f);
         textField.setBounds(99, 24, 300, 31);
         panel.add(textField);
-        
+
         JButton btnRegistrati = new JButton("Registrati");
         btnRegistrati.setBackground(new Color(245, 239, 231));
         btnRegistrati.setForeground(new Color(62, 88, 121));
@@ -249,42 +231,42 @@ public class LogIn extends JFrame {
         btnRegistrati.setAlignmentX(0.5f);
         btnRegistrati.setBounds(150, 302, 188, 29);
         panel.add(btnRegistrati);
-        
+
         JLabel lblNome = new JLabel("Nome");
         lblNome.setForeground(new Color(216, 195, 182));
         lblNome.setFont(new Font("Arial", Font.PLAIN, 15));
         lblNome.setAlignmentX(0.5f);
         lblNome.setBounds(98, 6, 66, 18);
         panel.add(lblNome);
-        
+
         JLabel lblCognome = new JLabel("Cognome");
         lblCognome.setForeground(new Color(216, 195, 182));
         lblCognome.setFont(new Font("Arial", Font.PLAIN, 15));
         lblCognome.setAlignmentX(0.5f);
         lblCognome.setBounds(99, 61, 66, 18);
         panel.add(lblCognome);
-        
+
         JLabel lblDataDiNascita = new JLabel("Data di Nascita");
         lblDataDiNascita.setForeground(new Color(216, 195, 182));
         lblDataDiNascita.setFont(new Font("Arial", Font.PLAIN, 15));
         lblDataDiNascita.setAlignmentX(0.5f);
         lblDataDiNascita.setBounds(99, 119, 116, 18);
         panel.add(lblDataDiNascita);
-        
+
         JLabel lblEmail_1 = new JLabel("E-mail");
         lblEmail_1.setForeground(new Color(216, 195, 182));
         lblEmail_1.setFont(new Font("Arial", Font.PLAIN, 15));
         lblEmail_1.setAlignmentX(0.5f);
         lblEmail_1.setBounds(99, 180, 116, 18);
         panel.add(lblEmail_1);
-        
+
         JLabel lblEmail_1_1 = new JLabel("Password");
         lblEmail_1_1.setForeground(new Color(216, 195, 182));
         lblEmail_1_1.setFont(new Font("Arial", Font.PLAIN, 15));
         lblEmail_1_1.setAlignmentX(0.5f);
         lblEmail_1_1.setBounds(99, 241, 116, 18);
         panel.add(lblEmail_1_1);
-        
+
         textField_5 = new JTextField();
         textField_5.setMaximumSize(new Dimension(300, 30));
         textField_5.setBorder(null);
@@ -292,7 +274,7 @@ public class LogIn extends JFrame {
         textField_5.setAlignmentX(0.5f);
         textField_5.setBounds(99, 80, 300, 31);
         panel.add(textField_5);
-        
+
         textField_6 = new JTextField();
         textField_6.setMaximumSize(new Dimension(300, 30));
         textField_6.setBorder(null);
@@ -300,7 +282,7 @@ public class LogIn extends JFrame {
         textField_6.setAlignmentX(0.5f);
         textField_6.setBounds(99, 137, 300, 31);
         panel.add(textField_6);
-        
+
         textField_7 = new JTextField();
         textField_7.setMaximumSize(new Dimension(300, 30));
         textField_7.setBorder(null);
@@ -308,7 +290,7 @@ public class LogIn extends JFrame {
         textField_7.setAlignmentX(0.5f);
         textField_7.setBounds(99, 198, 300, 31);
         panel.add(textField_7);
-        
+
         textField_8 = new JTextField();
         textField_8.setMaximumSize(new Dimension(300, 30));
         textField_8.setBorder(null);
@@ -320,19 +302,31 @@ public class LogIn extends JFrame {
         // Aggiunta dei pannelli al layout principale
         mainPanel.add(leftColumn, BorderLayout.WEST);
         mainPanel.add(rightColumn, BorderLayout.CENTER);
-    }
+        
+                // Cancella Button at bottom left of the form
+                
+                
+             // Aggiunta dei pannelli al layout principale
+                mainPanel.add(leftColumn, BorderLayout.WEST);
+                mainPanel.add(rightColumn, BorderLayout.CENTER);
 
-    private JButton createButton(String text) {
-        JButton button = new JButton(text);
-        button.setMaximumSize(new Dimension(150, 30));
-        return button;
-    }
+                // Cancella Button at bottom left of the form
+                JButton btnCancel = new JButton("Cancella");
+                btnCancel.addActionListener(new ActionListener() {
+                	public void actionPerformed(ActionEvent e) {
+                		LogIn.this.setVisible(false);
+                		new HomePage().setVisible(true);
+                		
+                	}
+                });
+                btnCancel.setAlignmentX(Component.CENTER_ALIGNMENT);
+                btnCancel.setForeground(new Color(62, 88, 121));
+                btnCancel.setBackground(new Color(245, 239, 231));
+                btnCancel.setMaximumSize(new Dimension(200, 30));
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-        	LogIn loginPage = new LogIn();
-            loginPage.setVisible(true);
-        });
-       
-    }
+                // Aggiungi il pulsante al pannello sinistro
+                leftColumn.add(Box.createRigidArea(new Dimension(0, 20))); // Spaziatura
+                leftColumn.add(btnCancel);
+
+}
 }

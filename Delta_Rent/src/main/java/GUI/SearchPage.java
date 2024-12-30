@@ -1,4 +1,4 @@
-package Delta_Rent.Delta_Rent;
+package GUI;
 
 import javax.swing.*;
 import java.awt.*;

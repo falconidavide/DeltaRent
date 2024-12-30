@@ -1,4 +1,4 @@
-package Delta_Rent.Delta_Rent;
+package GUI;
 
 public class Veicolo {
 
