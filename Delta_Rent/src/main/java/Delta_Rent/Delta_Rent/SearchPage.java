@@ -139,16 +139,16 @@ public class SearchPage extends JFrame {
 
 
         JComboBox<String> brandComboBox = new JComboBox<>();
-        brandComboBox.setBounds(28, 35, 117, 27);
+        brandComboBox.setBounds(21, 43, 117, 27);
         panel.add(brandComboBox);
 
         modelComboBox = new JComboBox<>();
-        modelComboBox.setBounds(178, 35, 117, 27);
+        modelComboBox.setBounds(179, 43, 117, 27);
         panel.add(modelComboBox);
 
         JLabel lblMarca = new JLabel("Marca");
         lblMarca.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
-        lblMarca.setBounds(31, 20, 61, 16);
+        lblMarca.setBounds(26, 20, 61, 16);
         panel.add(lblMarca);
 
         JLabel lblModello = new JLabel("Modello");
