@@ -2,15 +2,27 @@ package Delta_Rent.Delta_Rent;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 import java.util.Calendar;
 import java.util.HashMap;
 
+@SuppressWarnings("serial")
 public class SearchPage extends JFrame {
-    private JTextField textField_2;
-    private JTextField textField_3;
-    private JComboBox<String> modelComboBox;
+    @SuppressWarnings("unused")
+	private JTextField textField_2;
+    @SuppressWarnings("unused")
+	private JTextField textField_3;
+    static JComboBox<String> modelComboBox;
     private HashMap<String, String[]> carData;
+    static JComboBox<String> brandComboBox = new JComboBox<>();
+ // Combobox per giorno, mese e anno di ritiro
+     JComboBox<Integer> pickupDay = new JComboBox<>();
+     JComboBox<Integer> pickupMonth = new JComboBox<>();
+     JComboBox<Integer> pickupYear = new JComboBox<>();
+    // Combobox per giorno, mese e anno di restituzione
+     JComboBox<Integer> returnDay = new JComboBox<>();
+     JComboBox<Integer> returnMonth = new JComboBox<>();
+     JComboBox<Integer> returnYear = new JComboBox<>();
+
 
     public SearchPage() {
         // Impostazioni della finestra principale
@@ -91,9 +103,6 @@ public class SearchPage extends JFrame {
         lblDataDiRestituzione.setBounds(570, 20, 171, 16);
         panel.add(lblDataDiRestituzione);
         // Combobox per giorno, mese e anno di ritiro
-        JComboBox<Integer> pickupDay = new JComboBox<>();
-        JComboBox<Integer> pickupMonth = new JComboBox<>();
-        JComboBox<Integer> pickupYear = new JComboBox<>();
 
         for (int i = 1; i <= 31; i++) {
             pickupDay.addItem(i);
@@ -114,10 +123,6 @@ public class SearchPage extends JFrame {
         panel.add(pickupMonth);
         panel.add(pickupYear);
 
-        // Combobox per giorno, mese e anno di restituzione
-        JComboBox<Integer> returnDay = new JComboBox<>();
-        JComboBox<Integer> returnMonth = new JComboBox<>();
-        JComboBox<Integer> returnYear = new JComboBox<>();
 
         for (int i = 1; i <= 31; i++) {
             returnDay.addItem(i);
@@ -136,13 +141,10 @@ public class SearchPage extends JFrame {
         panel.add(returnDay);
         panel.add(returnMonth);
         panel.add(returnYear);
-
-
-        JComboBox<String> brandComboBox = new JComboBox<>();
+        
         brandComboBox.setBounds(21, 43, 117, 27);
         panel.add(brandComboBox);
 
-        modelComboBox = new JComboBox<>();
         modelComboBox.setBounds(179, 43, 117, 27);
         panel.add(modelComboBox);
 
@@ -195,6 +197,50 @@ public class SearchPage extends JFrame {
             }
         }
     }
+    public static String getMarca() {
+    	String selectedBrand;
+		selectedBrand=(String) brandComboBox.getSelectedItem();
+		return selectedBrand;
+    }
+    public static String getModello() {
+    	String selectedModel;
+    	selectedModel=(String) modelComboBox.getSelectedItem();
+		return selectedModel;
+    }
+    public  String getpickupDay() {
+    	String Giornoritiro;
+    	Giornoritiro=(String) pickupDay.getSelectedItem() ;
+		return Giornoritiro;
+    }
+    public  String getpickupMonth() {
+    	String Meseritiro;
+    	Meseritiro=(String) pickupMonth.getSelectedItem() ;
+		return Meseritiro;
+    }
+    public  String getpickupYear() {
+    	String Annoritiro;
+    	Annoritiro=(String) pickupYear.getSelectedItem() ;
+		return Annoritiro;
+    }
+    public  String getreturnDay() {
+    	String Giornorrestituzione;
+    	Giornorrestituzione=(String) pickupDay.getSelectedItem() ;
+		return Giornorrestituzione;
+    }
+    public  String getreturnMonth() {
+    	String Meserestituzione;
+    	Meserestituzione=(String) pickupMonth.getSelectedItem() ;
+		return Meserestituzione;
+    }
+    public  String getreturnYear() {
+    	String Annorestituzione;
+    	Annorestituzione=(String) pickupYear.getSelectedItem() ;
+		return Annorestituzione;
+    }
+    
+    
+    
+    
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {

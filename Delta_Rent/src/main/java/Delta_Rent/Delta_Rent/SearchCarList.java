@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SearchCarList extends JFrame {
-    public SearchCarList(String brand, String model, String pickupDate, String returnDate) {
-        // Impostazioni della finestra
+    public SearchCarList(String brand, String model, String pickupDay , String pickupMonth, String pickupYear, String returnDay, String returnMonth,  String returnYear) {
+        // Impostazioni della finestra 
         setTitle("DeltaRent - Auto Disponibili");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(1300, 950);
@@ -62,11 +62,11 @@ public class SearchCarList extends JFrame {
         lblModel.setForeground(new Color(216, 195, 182));
         lblModel.setFont(new Font("Arial", Font.PLAIN, 20));
 
-        JLabel lblPickupDate = new JLabel("Data di ritiro: " + pickupDate);
+        JLabel lblPickupDate = new JLabel("Data di ritiro: " + pickupDay+"/"+pickupMonth+"/"+pickupYear);
         lblPickupDate.setForeground(new Color(216, 195, 182));
         lblPickupDate.setFont(new Font("Arial", Font.PLAIN, 20));
 
-        JLabel lblReturnDate = new JLabel("Data di restituzione: " + returnDate);
+        JLabel lblReturnDate = new JLabel("Data di restituzione: " + returnDay+"/"+returnMonth+"/"+returnYear);
         lblReturnDate.setForeground(new Color(216, 195, 182));
         lblReturnDate.setFont(new Font("Arial", Font.PLAIN, 20));
 
@@ -118,12 +118,12 @@ public class SearchCarList extends JFrame {
             cars.add(new String[]{"Generico", "Generico", "50", "Disponibile"});
         }
 
-        return cars;
+        return cars; 
     }
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-        	SearchCarList availableCarsPage = new SearchCarList("Audi", "A3", "01/01/2024", "10/01/2024");
+        	SearchCarList availableCarsPage = new SearchCarList(SearchPage.getMarca(), SearchPage.getModello(),SearchPage.getpickupDay(),SearchPage.getpickupMonth(), SearchPage.getpickupYear(), SearchPage.getreturnDay(),SearchPage.getreturnMonth(),SearchPage.getreturnYear());
             availableCarsPage.setVisible(true);
         });
     }
