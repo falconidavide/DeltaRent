@@ -7,16 +7,19 @@ import java.awt.event.ActionEvent;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 
+import DB.Registration;
+import Utente.Utente;
+
 public class LogIn extends JFrame {
     private JTextField textField;
     private JTextField textField_1;
-    private JTextField textField_2;
+    private JTextField emailFieldReg;
     private JTextField textField_3;
-    private JTextField textField_4;
+    private JTextField passwordFieldReg;
     private JTextField textField_5;
     private JTextField textField_6;
-    private JTextField textField_7;
-    private JTextField textField_8;
+    private JTextField emailFieldRegUser;
+    private JTextField passwordFieldRegUser;
 
     public LogIn() {
         // Impostazioni della finestra principale
@@ -95,10 +98,6 @@ public class LogIn extends JFrame {
         JButton btnRegistrati_1 = new JButton("Registrati");
         btnRegistrati_1.setForeground(new Color(62, 88, 121));
         btnRegistrati_1.setBackground(new Color(245, 239, 231));
-        btnRegistrati_1.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            }
-        });
         btnRegistrati_1.setContentAreaFilled(true);
         btnRegistrati_1.setBorderPainted(true);
         btnRegistrati_1.setAlignmentX(0.5f);
@@ -116,14 +115,14 @@ public class LogIn extends JFrame {
         lblPecRegistrata.setForeground(new Color(216, 195, 182));
         lblPecRegistrata.setFont(new Font("Arial", Font.PLAIN, 15));
         lblPecRegistrata.setAlignmentX(0.5f);
-        lblPecRegistrata.setBounds(88, 83, 113, 18);
+        lblPecRegistrata.setBounds(88, 147, 113, 18);
         panel_1.add(lblPecRegistrata);
 
         JLabel lblPartitaIva = new JLabel("Partita IVA");
         lblPartitaIva.setForeground(new Color(216, 195, 182));
         lblPartitaIva.setFont(new Font("Arial", Font.PLAIN, 15));
         lblPartitaIva.setAlignmentX(0.5f);
-        lblPartitaIva.setBounds(88, 151, 113, 18);
+        lblPartitaIva.setBounds(88, 82, 113, 18);
         panel_1.add(lblPartitaIva);
 
         JLabel lblPassword_1 = new JLabel("Password");
@@ -141,29 +140,29 @@ public class LogIn extends JFrame {
         textField_1.setBounds(88, 41, 300, 30);
         panel_1.add(textField_1);
 
-        textField_2 = new JTextField();
-        textField_2.setMaximumSize(new Dimension(300, 30));
-        textField_2.setBorder(null);
-        textField_2.setBackground(new Color(245, 239, 231));
-        textField_2.setAlignmentX(0.5f);
-        textField_2.setBounds(88, 101, 300, 30);
-        panel_1.add(textField_2);
+        emailFieldReg = new JTextField();
+        emailFieldReg.setMaximumSize(new Dimension(300, 30));
+        emailFieldReg.setBorder(null);
+        emailFieldReg.setBackground(new Color(245, 239, 231));
+        emailFieldReg.setAlignmentX(0.5f);
+        emailFieldReg.setBounds(88, 171, 300, 30);
+        panel_1.add(emailFieldReg);
 
         textField_3 = new JTextField();
         textField_3.setMaximumSize(new Dimension(300, 30));
         textField_3.setBorder(null);
         textField_3.setBackground(new Color(245, 239, 231));
         textField_3.setAlignmentX(0.5f);
-        textField_3.setBounds(88, 170, 300, 30);
+        textField_3.setBounds(88, 106, 300, 30);
         panel_1.add(textField_3);
 
-        textField_4 = new JTextField();
-        textField_4.setMaximumSize(new Dimension(300, 30));
-        textField_4.setBorder(null);
-        textField_4.setBackground(new Color(245, 239, 231));
-        textField_4.setAlignmentX(0.5f);
-        textField_4.setBounds(88, 232, 300, 30);
-        panel_1.add(textField_4);
+        passwordFieldReg = new JTextField();
+        passwordFieldReg.setMaximumSize(new Dimension(300, 30));
+        passwordFieldReg.setBorder(null);
+        passwordFieldReg.setBackground(new Color(245, 239, 231));
+        passwordFieldReg.setAlignmentX(0.5f);
+        passwordFieldReg.setBounds(88, 232, 300, 30);
+        panel_1.add(passwordFieldReg);
         tabbedPane.setMaximumSize(new Dimension(500, 400));
 
         Component rigidArea_1 = Box.createRigidArea(new Dimension(0, 70));
@@ -283,21 +282,83 @@ public class LogIn extends JFrame {
         textField_6.setBounds(99, 137, 300, 31);
         panel.add(textField_6);
 
-        textField_7 = new JTextField();
-        textField_7.setMaximumSize(new Dimension(300, 30));
-        textField_7.setBorder(null);
-        textField_7.setBackground(new Color(245, 239, 231));
-        textField_7.setAlignmentX(0.5f);
-        textField_7.setBounds(99, 198, 300, 31);
-        panel.add(textField_7);
+        emailFieldRegUser = new JTextField();
+        emailFieldRegUser.setMaximumSize(new Dimension(300, 30));
+        emailFieldRegUser.setBorder(null);
+        emailFieldRegUser.setBackground(new Color(245, 239, 231));
+        emailFieldRegUser.setAlignmentX(0.5f);
+        emailFieldRegUser.setBounds(99, 198, 300, 31);
+        panel.add(emailFieldRegUser);
 
-        textField_8 = new JTextField();
-        textField_8.setMaximumSize(new Dimension(300, 30));
-        textField_8.setBorder(null);
-        textField_8.setBackground(new Color(245, 239, 231));
-        textField_8.setAlignmentX(0.5f);
-        textField_8.setBounds(99, 259, 300, 31);
-        panel.add(textField_8);
+        passwordFieldRegUser = new JTextField();
+        passwordFieldRegUser.setMaximumSize(new Dimension(300, 30));
+        passwordFieldRegUser.setBorder(null);
+        passwordFieldRegUser.setBackground(new Color(245, 239, 231));
+        passwordFieldRegUser.setAlignmentX(0.5f);
+        passwordFieldRegUser.setBounds(99, 259, 300, 31);
+        panel.add(passwordFieldRegUser);
+        
+        
+        btnLogin.addActionListener(new ActionListener() {
+        	 public void actionPerformed(ActionEvent e) {
+                 String email = emailField.getText();
+                 String password = new String(passwordField.getPassword());
+                 Utente user = Utente.getUserByEmailAndPassword(email, password);
+                 if (user != null) {
+                     // Login riuscito, apri la pagina principale
+                	 JOptionPane.showMessageDialog(LogIn.this, "Credenziali Corrette.", "LogIn", JOptionPane.INFORMATION_MESSAGE);
+                     new HomePage().setVisible(true);
+                     dispose();
+                 } else {
+                     // Login fallito, mostra un messaggio di errore
+                     JOptionPane.showMessageDialog(LogIn.this, "Credenziali errate.", "Errore di accesso", JOptionPane.ERROR_MESSAGE);
+                 }
+             }
+        });
+        
+ 	  
+       
+        
+        ActionListener lAzienda = new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	
+            	 String email, password;
+             	   email= emailFieldReg.getText();
+             	   password= passwordFieldReg.getText();
+ 
+                if (Registration.registerUser(email, password)) {
+                    // Registrazione riuscita, mostra un messaggio di conferma
+                    JOptionPane.showMessageDialog(LogIn.this, "Registrazione completata.", "Registrazione", JOptionPane.INFORMATION_MESSAGE);
+                    dispose();
+                } else {
+                    // Registrazione fallita, mostra un messaggio di errore
+                    JOptionPane.showMessageDialog(LogIn.this, "Errore durante la registrazione.", "Errore di registrazione", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        };
+        
+        
+        ActionListener lPrivato = new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	
+            	 String email, password;
+            	
+             	   email= emailFieldRegUser.getText();
+             	   password= passwordFieldRegUser.getText();
+                if (Registration.registerUser(email, password)) {
+                    // Registrazione riuscita, mostra un messaggio di conferma
+                    JOptionPane.showMessageDialog(LogIn.this, "Registrazione completata.", "Registrazione", JOptionPane.INFORMATION_MESSAGE);
+                    dispose();
+                } else {
+                    // Registrazione fallita, mostra un messaggio di errore
+                    JOptionPane.showMessageDialog(LogIn.this, "Errore durante la registrazione.", "Errore di registrazione", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        };
+        
+        btnRegistrati_1.addActionListener(lAzienda);
+        btnRegistrati.addActionListener(lPrivato);
+        		
 
         // Aggiunta dei pannelli al layout principale
         mainPanel.add(leftColumn, BorderLayout.WEST);
