@@ -2,21 +2,21 @@ package Delta_Rent.Delta_Rent;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.border.LineBorder;
+import java.awt.event.*;
+import java.util.Calendar;
+import java.util.HashMap;
 
 public class SearchPage extends JFrame {
-	private JTextField textField_2;
-	private JTextField textField_3;
-	static Veicolo[] veicoli;
+    private JTextField textField_2;
+    private JTextField textField_3;
+    private JComboBox<String> modelComboBox;
+    private HashMap<String, String[]> carData;
 
     public SearchPage() {
         // Impostazioni della finestra principale
         setTitle("DeltaRent - Home");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(1200, 950);
+        setSize(1300, 950);
         setLocationRelativeTo(null);
 
         // Layout principale
@@ -36,22 +36,18 @@ public class SearchPage extends JFrame {
         JButton btnFavorites = createButton("Preferiti");
         JButton btnSearch = createButton("Ricerca");
         JButton btnProfile = createButton("Profilo");
-        btnProfile.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new LogIn().setVisible(true);
-                dispose(); // Chiude la finestra corrente
-            }
+        btnProfile.addActionListener(e -> {
+            new LogIn().setVisible(true);
+            dispose(); // Chiude la finestra corrente
         });
 
         leftColumn.add(avatarLabel);
         leftColumn.add(Box.createRigidArea(new Dimension(0, 20))); // Spaziatura
         leftColumn.add(btnFavorites);
-        leftColumn.add(Box.createRigidArea(new Dimension(0, 20)));
+        leftColumn.add(Box.createRigidArea(new Dimension(0, 20))); // Spaziatura
         leftColumn.add(btnSearch);
-        leftColumn.add(Box.createRigidArea(new Dimension(0, 20)));
+        leftColumn.add(Box.createRigidArea(new Dimension(0, 20))); // Spaziatura
         leftColumn.add(btnProfile);
-       
 
         // Colonna destra
         JPanel rightColumn = new JPanel();
@@ -65,83 +61,119 @@ public class SearchPage extends JFrame {
 
         rightColumn.add(searchPanel);
         searchPanel.setLayout(null);
-        
+
         JLabel lblSubtitle = new JLabel("Scegli la tua prossima auto da noleggiare");
         lblSubtitle.setForeground(new Color(216, 195, 182));
         lblSubtitle.setFont(new Font("Arial", Font.PLAIN, 50));
         lblSubtitle.setAlignmentX(0.5f);
         lblSubtitle.setBounds(162, 31, 922, 59);
         searchPanel.add(lblSubtitle);
-        
+
         JPanel panel = new JPanel();
         panel.setBackground(new Color(62, 88, 121));
-        panel.setBorder(new LineBorder(new Color(216, 195, 182), 3));
-        panel.setBounds(119, 176, 922, 100);
-        panel.setSize(900, 100);
+        panel.setBorder(BorderFactory.createLineBorder(new Color(216, 195, 182), 3));
+        panel.setBounds(119, 176, 956, 100);
+        panel.setSize(1000, 100);
         searchPanel.add(panel);
         panel.setLayout(null);
-        
+
         JButton btnNewButton = new JButton("Mostra Auto");
-        btnNewButton.setBounds(750, 25, 117, 45);
+        btnNewButton.setBounds(850, 25, 117, 45);
         panel.add(btnNewButton);
-        
-        textField_2 = new JTextField();
-        textField_2.setColumns(10);
-        textField_2.setBounds(359, 35, 130, 35);
-        panel.add(textField_2);
-        
-        textField_3 = new JTextField();
-        textField_3.setColumns(10);
-        textField_3.setBounds(530, 35, 130, 35);
-        panel.add(textField_3);
-        
-        JLabel lblNewLabel = new JLabel("Marca");
-        lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
-        lblNewLabel.setBounds(31, 20, 61, 16);
-        panel.add(lblNewLabel);
-        
+
+        JLabel lblDataDiRitiro = new JLabel("Data di ritiro");
+        lblDataDiRitiro.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
+        lblDataDiRitiro.setBounds(345, 20, 110, 16);
+        panel.add(lblDataDiRitiro);
+
+        JLabel lblDataDiRestituzione = new JLabel("Data di restituzione");
+        lblDataDiRestituzione.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
+        lblDataDiRestituzione.setBounds(570, 20, 171, 16);
+        panel.add(lblDataDiRestituzione);
+        // Combobox per giorno, mese e anno di ritiro
+        JComboBox<Integer> pickupDay = new JComboBox<>();
+        JComboBox<Integer> pickupMonth = new JComboBox<>();
+        JComboBox<Integer> pickupYear = new JComboBox<>();
+
+        for (int i = 1; i <= 31; i++) {
+            pickupDay.addItem(i);
+        }
+        for (int i = 1; i <= 12; i++) {
+            pickupMonth.addItem(i);
+        }
+        int currentYear = Calendar.getInstance().get(Calendar.YEAR);
+        for (int i = currentYear; i <= currentYear + 5; i++) {
+            pickupYear.addItem(i);
+        }
+
+        pickupDay.setBounds(337, 45, 60, 25);
+        pickupMonth.setBounds(389, 45, 66, 25);
+        pickupYear.setBounds(447, 45, 86, 25);
+
+        panel.add(pickupDay);
+        panel.add(pickupMonth);
+        panel.add(pickupYear);
+
+        // Combobox per giorno, mese e anno di restituzione
+        JComboBox<Integer> returnDay = new JComboBox<>();
+        JComboBox<Integer> returnMonth = new JComboBox<>();
+        JComboBox<Integer> returnYear = new JComboBox<>();
+
+        for (int i = 1; i <= 31; i++) {
+            returnDay.addItem(i);
+        }
+        for (int i = 1; i <= 12; i++) {
+            returnMonth.addItem(i);
+        }
+        for (int i = currentYear; i <= currentYear + 5; i++) {
+            returnYear.addItem(i);
+        }
+
+        returnDay.setBounds(567, 45, 60, 25);
+        returnMonth.setBounds(619, 45, 66, 25);
+        returnYear.setBounds(677, 45, 86, 25);
+
+        panel.add(returnDay);
+        panel.add(returnMonth);
+        panel.add(returnYear);
+
+
+        JComboBox<String> brandComboBox = new JComboBox<>();
+        brandComboBox.setBounds(28, 35, 117, 27);
+        panel.add(brandComboBox);
+
+        modelComboBox = new JComboBox<>();
+        modelComboBox.setBounds(178, 35, 117, 27);
+        panel.add(modelComboBox);
+
+        JLabel lblMarca = new JLabel("Marca");
+        lblMarca.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
+        lblMarca.setBounds(31, 20, 61, 16);
+        panel.add(lblMarca);
+
         JLabel lblModello = new JLabel("Modello");
         lblModello.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
         lblModello.setBounds(183, 20, 93, 16);
         panel.add(lblModello);
-        
-        JLabel lblDataDiRitiro = new JLabel("Data di ritiro");
-        lblDataDiRitiro.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
-        lblDataDiRitiro.setBounds(360, 20, 110, 16);
-        panel.add(lblDataDiRitiro);
-        
-        JLabel lblDataDiRestituzione = new JLabel("Data di restituzione");
-        lblDataDiRestituzione.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
-        lblDataDiRestituzione.setBounds(530, 20, 171, 16);
-        panel.add(lblDataDiRestituzione);
-        
-        Choice choice = new Choice();
-        choice.setBounds(28, 35, 117, 27);
-        panel.add(choice);
-        choice.add("...");
-        choice.add("Audi");
-        choice.add("volskwagen");
-        choice.add("Lancia");
-        choice.add("Fiat");
-        choice.add("Mercedes-Benz");
-        choice.add("Seat");
-        choice.add("Skoda");
-        choice.add("BMW");
-        //aggiungere il throws exception per leggere ogni volta che cambia la prima selezione 
-        if (choice.getSelectedItem()=="BMW") {
-        	Choice choice_1 = new Choice();
-            choice_1.setBounds(178, 35, 117, 27);
-            panel.add(choice_1);
-            choice_1.add("...");
-            choice_1.add("X1");
-            choice_1.add("X2");
-            choice_1.add("X3");
-            choice_1.add("X4");
-            choice_1.add("X5");
-            choice_1.add("X6");
-            choice_1.add("X7");
+
+        // Popola i dati delle marche e modelli
+        carData = new HashMap<>();
+        carData.put("Audi", new String[]{"A1", "A2", "A3", "A4", "A5", "A6", "A7"});
+        carData.put("BMW", new String[]{"X1", "X2", "X3", "X4", "X5", "X6", "X7"});
+        carData.put("Volkswagen", new String[]{"T-Roc", "T-Cross", "Tiguan", "Touareg", "Passat", "Golf"});
+        carData.put("Fiat", new String[]{"Panda", "500", "Bravo", "Fiorino", "Freemont"});
+        carData.put("Mercedes-Benz", new String[]{"A-180d", "B-200d", "C63-AMG", "EQA", "G63-AMG"});
+
+        // Aggiunge le marche al primo menu a scelta
+        brandComboBox.addItem("...");
+        for (String brand : carData.keySet()) {
+            brandComboBox.addItem(brand);
         }
-      
+
+        brandComboBox.addActionListener(e -> {
+            String selectedBrand = (String) brandComboBox.getSelectedItem();
+            updateModelComboBox(selectedBrand);
+        });
 
         // Aggiunta dei pannelli al layout principale
         mainPanel.add(leftColumn, BorderLayout.WEST);
@@ -155,13 +187,19 @@ public class SearchPage extends JFrame {
         return button;
     }
 
+    private void updateModelComboBox(String brand) {
+        modelComboBox.removeAllItems();
+        if (brand != null && carData.containsKey(brand)) {
+            for (String model : carData.get(brand)) {
+                modelComboBox.addItem(model);
+            }
+        }
+    }
+
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-        	SearchPage homePage = new SearchPage();
-            homePage.setVisible(true);
+            SearchPage searchPage = new SearchPage();
+            searchPage.setVisible(true);
         });
-       Veicolo BMWX52020 = new Veicolo(2020, "BMW", "X5", true, "Automobile");
-        veicoli[0]= BMWX52020;
-        
     }
 }
