@@ -1,90 +1,60 @@
 package GUI;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 
 import DB.Registration;
 import Utente.Utente;
 
-public class LogIn extends JFrame {
-    private JTextField textField;
-    private JTextField textField_1;
-    private JTextField emailFieldReg;
-    private JTextField textField_3;
-    private JTextField passwordFieldReg;
-    private JTextField textField_5;
-    private JTextField textField_6;
-    private JTextField emailFieldRegUser;
-    private JTextField passwordFieldRegUser;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class LogIn extends JPanel {
+	
+	 private JTextField textField;
+	    private JTextField textField_1;
+	    private JTextField emailFieldReg;
+	    private JTextField textField_3;
+	    private JTextField passwordFieldReg;
+	    private JTextField textField_5;
+	    private JTextField textField_6;
+	    private JTextField emailFieldRegUser;
+	    private JTextField passwordFieldRegUser;
+
 
     public LogIn() {
-        // Impostazioni della finestra principale
-        setTitle("DeltaRent");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(1200, 950);
-        setLocationRelativeTo(null);
+        setLayout(new BorderLayout());
+        setBackground(new Color(32, 52, 85));
 
-        // Layout principale
-        JPanel mainPanel = new JPanel(new BorderLayout());
-        mainPanel.setBackground(Color.DARK_GRAY);
-        getContentPane().add(mainPanel);
-
-        // Colonna sinistra
-        JPanel leftColumn = new JPanel();
-        leftColumn.setBackground(new Color(62, 88, 121));
-        leftColumn.setLayout(new BoxLayout(leftColumn, BoxLayout.Y_AXIS));
-        leftColumn.setBorder(new LineBorder(new Color(216, 195, 182), 3));
-
-        JLabel avatarLabel = new JLabel(new ImageIcon("path/to/avatar/image")); // Sostituisci con il percorso immagine
-        avatarLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        leftColumn.add(avatarLabel);
-        leftColumn.add(Box.createRigidArea(new Dimension(0, 20))); // Spaziatura
-
-        // Colonna destra
         JPanel rightColumn = new JPanel();
-        rightColumn.setBackground(new Color(32, 52, 85));
         rightColumn.setLayout(new BoxLayout(rightColumn, BoxLayout.Y_AXIS));
-        rightColumn.setBorder(null);
+        rightColumn.setBackground(new Color(32, 52, 85));
 
         JLabel lblTitle = new JLabel("LOG-IN TO DELTARENT");
         lblTitle.setForeground(new Color(216, 195, 182));
-        lblTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
         lblTitle.setFont(new Font("Arial", Font.BOLD, 50));
+        lblTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         JTextField emailField = new JTextField();
         emailField.setBackground(new Color(245, 239, 231));
-        emailField.setAlignmentX(Component.CENTER_ALIGNMENT);
         emailField.setMaximumSize(new Dimension(300, 30));
         emailField.setBorder(null);
 
         JPasswordField passwordField = new JPasswordField();
         passwordField.setBackground(new Color(245, 239, 231));
-        passwordField.setAlignmentX(Component.CENTER_ALIGNMENT);
         passwordField.setMaximumSize(new Dimension(300, 30));
         passwordField.setBorder(null);
-
-        JButton btnForgotPassword = new JButton("Password Dimenticata?");
-        btnForgotPassword.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-        btnForgotPassword.setBackground(new Color(32, 52, 85));
-        btnForgotPassword.setForeground(new Color(216, 195, 182));
-        btnForgotPassword.setAlignmentX(Component.CENTER_ALIGNMENT);
-        btnForgotPassword.setBorderPainted(false);
-        btnForgotPassword.setContentAreaFilled(false);
 
         JSeparator separator = new JSeparator();
         separator.setForeground(new Color(245, 239, 231));
         separator.setMaximumSize(new Dimension(300, 10));
-
+        
         JLabel lblRegister = new JLabel("Non ti sei mai registrato?");
         lblRegister.setFont(new Font("Lucida Grande", Font.PLAIN, 30));
         lblRegister.setForeground(new Color(216, 195, 182));
         lblRegister.setAlignmentX(Component.CENTER_ALIGNMENT);
-
+        
         JTabbedPane tabbedPane = new JTabbedPane();
         JPanel panel_1 = new JPanel();
         panel_1.setForeground(new Color(216, 195, 182));
@@ -103,7 +73,7 @@ public class LogIn extends JFrame {
         btnRegistrati_1.setAlignmentX(0.5f);
         btnRegistrati_1.setBounds(150, 302, 188, 29);
         panel_1.add(btnRegistrati_1);
-
+        
         JLabel lblNomeAzienda = new JLabel("Nome Azienda");
         lblNomeAzienda.setForeground(new Color(216, 195, 182));
         lblNomeAzienda.setFont(new Font("Arial", Font.PLAIN, 15));
@@ -186,7 +156,6 @@ public class LogIn extends JFrame {
         rightColumn.add(lblPassword);
         rightColumn.add(passwordField);
         rightColumn.add(Box.createRigidArea(new Dimension(0, 30)));
-        rightColumn.add(btnForgotPassword);
         Component rigidArea = Box.createRigidArea(new Dimension(0, 15));
         rightColumn.add(rigidArea);
 
@@ -308,7 +277,6 @@ public class LogIn extends JFrame {
                      // Login riuscito, apri la pagina principale
                 	 JOptionPane.showMessageDialog(LogIn.this, "Credenziali Corrette.", "LogIn", JOptionPane.INFORMATION_MESSAGE);
                      new HomePage().setVisible(true);
-                     dispose();
                  } else {
                      // Login fallito, mostra un messaggio di errore
                      JOptionPane.showMessageDialog(LogIn.this, "Credenziali errate.", "Errore di accesso", JOptionPane.ERROR_MESSAGE);
@@ -329,7 +297,6 @@ public class LogIn extends JFrame {
                 if (Registration.registerUser(email, password)) {
                     // Registrazione riuscita, mostra un messaggio di conferma
                     JOptionPane.showMessageDialog(LogIn.this, "Registrazione completata.", "Registrazione", JOptionPane.INFORMATION_MESSAGE);
-                    dispose();
                 } else {
                     // Registrazione fallita, mostra un messaggio di errore
                     JOptionPane.showMessageDialog(LogIn.this, "Errore durante la registrazione.", "Errore di registrazione", JOptionPane.ERROR_MESSAGE);
@@ -348,7 +315,6 @@ public class LogIn extends JFrame {
                 if (Registration.registerUser(email, password)) {
                     // Registrazione riuscita, mostra un messaggio di conferma
                     JOptionPane.showMessageDialog(LogIn.this, "Registrazione completata.", "Registrazione", JOptionPane.INFORMATION_MESSAGE);
-                    dispose();
                 } else {
                     // Registrazione fallita, mostra un messaggio di errore
                     JOptionPane.showMessageDialog(LogIn.this, "Errore durante la registrazione.", "Errore di registrazione", JOptionPane.ERROR_MESSAGE);
@@ -361,33 +327,14 @@ public class LogIn extends JFrame {
         		
 
         // Aggiunta dei pannelli al layout principale
-        mainPanel.add(leftColumn, BorderLayout.WEST);
-        mainPanel.add(rightColumn, BorderLayout.CENTER);
+
         
                 // Cancella Button at bottom left of the form
                 
                 
              // Aggiunta dei pannelli al layout principale
-                mainPanel.add(leftColumn, BorderLayout.WEST);
-                mainPanel.add(rightColumn, BorderLayout.CENTER);
+                this.add(rightColumn, BorderLayout.CENTER);
 
-                // Cancella Button at bottom left of the form
-                JButton btnCancel = new JButton("Cancella");
-                btnCancel.addActionListener(new ActionListener() {
-                	public void actionPerformed(ActionEvent e) {
-                		LogIn.this.setVisible(false);
-                		new HomePage().setVisible(true);
-                		
-                	}
-                });
-                btnCancel.setAlignmentX(Component.CENTER_ALIGNMENT);
-                btnCancel.setForeground(new Color(62, 88, 121));
-                btnCancel.setBackground(new Color(245, 239, 231));
-                btnCancel.setMaximumSize(new Dimension(200, 30));
-
-                // Aggiungi il pulsante al pannello sinistro
-                leftColumn.add(Box.createRigidArea(new Dimension(0, 20))); // Spaziatura
-                leftColumn.add(btnCancel);
-
-}
+        add(rightColumn, BorderLayout.CENTER);
+    }
 }

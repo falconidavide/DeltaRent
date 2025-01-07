@@ -5,6 +5,9 @@ import java.awt.*;
 
 public class HomePage extends JFrame {
 
+    private CardLayout cardLayout;
+    private JPanel mainContentPanel;
+
     public HomePage() {
         // Impostazioni della finestra principale
         setTitle("DeltaRent - Home");
@@ -26,6 +29,7 @@ public class HomePage extends JFrame {
         JLabel avatarLabel = new JLabel(new ImageIcon("path/to/avatar/image")); // Sostituisci con il percorso immagine
         avatarLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
+        JButton btnDeltaRent = createButton("Delta Rent");
         JButton btnRentCar = createButton("Noleggia Auto");
         JButton btnViewBookings = createButton("Le Mie Prenotazioni");
         JButton btnProfile = createButton("Profilo");
@@ -33,6 +37,8 @@ public class HomePage extends JFrame {
 
         // Aggiunta dei pulsanti
         leftColumn.add(avatarLabel);
+        leftColumn.add(Box.createRigidArea(new Dimension(0, 20)));
+        leftColumn.add(btnDeltaRent);
         leftColumn.add(Box.createRigidArea(new Dimension(0, 20))); // Spaziatura
         leftColumn.add(btnRentCar);
         leftColumn.add(Box.createRigidArea(new Dimension(0, 20)));
@@ -42,10 +48,49 @@ public class HomePage extends JFrame {
         leftColumn.add(Box.createRigidArea(new Dimension(0, 20)));
         leftColumn.add(btnSupport);
 
-        // Contenuto principale
-        JPanel mainContent = new JPanel();
-        mainContent.setBackground(new Color(245, 239, 231));
-        mainContent.setLayout(new BorderLayout());
+        // Contenuto principale con CardLayout
+        cardLayout = new CardLayout();
+        mainContentPanel = new JPanel(cardLayout);
+
+        JPanel homePanel = createHomePanel();
+       // JPanel rentCarPanel = new SearchCarList();  // Replace with actual panel
+        //JPanel bookingsPanel = new Prenotazione(); // Replace with actual panel
+        JPanel profilePanel = new LogIn();         // Replace with actual panel
+        JPanel supportPanel = new LogIn();         // Replace with actual panel
+
+        mainContentPanel.add(homePanel, "home");
+        //mainContentPanel.add(rentCarPanel, "rentCar");
+       // mainContentPanel.add(bookingsPanel, "bookings");
+        mainContentPanel.add(profilePanel, "profile");
+        mainContentPanel.add(supportPanel, "support");
+
+        // Aggiunta dei pannelli al layout principale
+        mainPanel.add(leftColumn, BorderLayout.WEST);
+        mainPanel.add(mainContentPanel, BorderLayout.CENTER);
+
+        // Eventi pulsanti
+        btnDeltaRent.addActionListener(e -> cardLayout.show(mainContentPanel, "home"));
+        btnRentCar.addActionListener(e -> cardLayout.show(mainContentPanel, "rentCar"));
+        btnViewBookings.addActionListener(e -> cardLayout.show(mainContentPanel, "bookings"));
+        btnProfile.addActionListener(e -> cardLayout.show(mainContentPanel, "profile"));
+        btnSupport.addActionListener(e -> cardLayout.show(mainContentPanel, "support"));
+    }
+
+    private JButton createButton(String text) {
+        JButton button = new JButton(text);
+        button.setMaximumSize(new Dimension(200, 40));
+        button.setAlignmentX(Component.CENTER_ALIGNMENT);
+        button.setBackground(new Color(245, 239, 231));
+        button.setForeground(new Color(62, 88, 121));
+        button.setFont(new Font("Arial", Font.BOLD, 16));
+        button.setFocusPainted(false);
+        return button;
+    }
+
+    private JPanel createHomePanel() {
+        JPanel homePanel = new JPanel();
+        homePanel.setBackground(new Color(245, 239, 231));
+        homePanel.setLayout(new BorderLayout());
 
         JLabel lblWelcome = new JLabel("Benvenuto su DeltaRent!");
         lblWelcome.setFont(new Font("Arial", Font.BOLD, 36));
@@ -68,47 +113,10 @@ public class HomePage extends JFrame {
         btnExploreFleet.setForeground(new Color(245, 239, 231));
         btnExploreFleet.setFocusPainted(false);
 
-        mainContent.add(lblWelcome, BorderLayout.NORTH);
-        mainContent.add(descriptionArea, BorderLayout.CENTER);
-        mainContent.add(btnExploreFleet, BorderLayout.SOUTH);
-
-        // Aggiunta dei pannelli al layout principale
-        mainPanel.add(leftColumn, BorderLayout.WEST);
-        mainPanel.add(mainContent, BorderLayout.CENTER);
-
-        // Eventi pulsanti
-        btnRentCar.addActionListener(e -> {
-            String brand = "Audi"; // Dati di esempio
-            String model = "A4";
-            String pickupDay = "01";
-            String pickupMonth = "01";
-            String pickupYear = "2024";
-            String returnDay = "10";
-            String returnMonth = "01";
-            String returnYear = "2024";
-            switchToPanel(new SearchCarList(brand, model, pickupDay, pickupMonth, pickupYear, returnDay, returnMonth, returnYear), this);
-        });
-
-        btnViewBookings.addActionListener(e -> switchToPanel(new Prenotazione(), this));
-        btnProfile.addActionListener(e -> switchToPanel(new LogIn(), this));
-        btnSupport.addActionListener(e -> switchToPanel(new LogIn(), this));
-        btnExploreFleet.addActionListener(e -> switchToPanel(new SearchPage(), this));
-    }
-
-    private JButton createButton(String text) {
-        JButton button = new JButton(text);
-        button.setMaximumSize(new Dimension(200, 40));
-        button.setAlignmentX(Component.CENTER_ALIGNMENT);
-        button.setBackground(new Color(245, 239, 231));
-        button.setForeground(new Color(62, 88, 121));
-        button.setFont(new Font("Arial", Font.BOLD, 16));
-        button.setFocusPainted(false);
-        return button;
-    }
-
-    private void switchToPanel(JFrame targetPanel, JFrame currentFrame) {
-        currentFrame.setVisible(false); // Nasconde il pannello attuale
-        targetPanel.setVisible(true); // Mostra il nuovo pannello
+        homePanel.add(lblWelcome, BorderLayout.NORTH);
+        homePanel.add(descriptionArea, BorderLayout.CENTER);
+        homePanel.add(btnExploreFleet, BorderLayout.SOUTH);
+        return homePanel;
     }
 
     public static void main(String[] args) {
