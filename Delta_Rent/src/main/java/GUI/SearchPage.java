@@ -6,60 +6,27 @@ import java.util.Calendar;
 import java.util.HashMap;
 
 @SuppressWarnings("serial")
-public class SearchPage extends JFrame {
+public class SearchPage extends JPanel {
     @SuppressWarnings("unused")
-	private JTextField textField_2;
+    private JTextField textField_2;
     @SuppressWarnings("unused")
-	private JTextField textField_3;
+    private JTextField textField_3;
     static JComboBox<String> modelComboBox;
     private HashMap<String, String[]> carData;
     static JComboBox<String> brandComboBox = new JComboBox<>();
- // Combobox per giorno, mese e anno di ritiro
-     JComboBox<Integer> pickupDay = new JComboBox<>();
-     JComboBox<Integer> pickupMonth = new JComboBox<>();
-     JComboBox<Integer> pickupYear = new JComboBox<>();
+    // Combobox per giorno, mese e anno di ritiro
+    JComboBox<Integer> pickupDay = new JComboBox<>();
+    JComboBox<Integer> pickupMonth = new JComboBox<>();
+    JComboBox<Integer> pickupYear = new JComboBox<>();
     // Combobox per giorno, mese e anno di restituzione
-     JComboBox<Integer> returnDay = new JComboBox<>();
-     JComboBox<Integer> returnMonth = new JComboBox<>();
-     JComboBox<Integer> returnYear = new JComboBox<>();
-
+    JComboBox<Integer> returnDay = new JComboBox<>();
+    JComboBox<Integer> returnMonth = new JComboBox<>();
+    JComboBox<Integer> returnYear = new JComboBox<>();
 
     public SearchPage() {
-        // Impostazioni della finestra principale
-        setTitle("DeltaRent - Home");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(1300, 950);
-        setLocationRelativeTo(null);
-
         // Layout principale
-        JPanel mainPanel = new JPanel(new BorderLayout());
-        mainPanel.setBackground(Color.DARK_GRAY);
-        getContentPane().add(mainPanel);
-
-        // Colonna sinistra (Invariata)
-        JPanel leftColumn = new JPanel();
-        leftColumn.setBackground(new Color(62, 88, 121));
-        leftColumn.setLayout(new BoxLayout(leftColumn, BoxLayout.Y_AXIS));
-        leftColumn.setBorder(BorderFactory.createLineBorder(new Color(216, 195, 182), 3));
-
-        JLabel avatarLabel = new JLabel(new ImageIcon("path/to/avatar/image")); // Sostituisci con il percorso immagine
-        avatarLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        JButton btnFavorites = createButton("Preferiti");
-        JButton btnSearch = createButton("Ricerca");
-        JButton btnProfile = createButton("Profilo");
-        btnProfile.addActionListener(e -> {
-            new LogIn().setVisible(true);
-            dispose(); // Chiude la finestra corrente
-        });
-
-        leftColumn.add(avatarLabel);
-        leftColumn.add(Box.createRigidArea(new Dimension(0, 20))); // Spaziatura
-        leftColumn.add(btnFavorites);
-        leftColumn.add(Box.createRigidArea(new Dimension(0, 20))); // Spaziatura
-        leftColumn.add(btnSearch);
-        leftColumn.add(Box.createRigidArea(new Dimension(0, 20))); // Spaziatura
-        leftColumn.add(btnProfile);
+        setLayout(new BorderLayout());
+        setBackground(Color.DARK_GRAY);
 
         // Colonna destra
         JPanel rightColumn = new JPanel();
@@ -102,8 +69,8 @@ public class SearchPage extends JFrame {
         lblDataDiRestituzione.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
         lblDataDiRestituzione.setBounds(570, 20, 171, 16);
         panel.add(lblDataDiRestituzione);
-        // Combobox per giorno, mese e anno di ritiro
 
+        // Combobox per giorno, mese e anno di ritiro
         for (int i = 1; i <= 31; i++) {
             pickupDay.addItem(i);
         }
@@ -123,7 +90,6 @@ public class SearchPage extends JFrame {
         panel.add(pickupMonth);
         panel.add(pickupYear);
 
-
         for (int i = 1; i <= 31; i++) {
             returnDay.addItem(i);
         }
@@ -141,10 +107,11 @@ public class SearchPage extends JFrame {
         panel.add(returnDay);
         panel.add(returnMonth);
         panel.add(returnYear);
-        
+
         brandComboBox.setBounds(21, 43, 117, 27);
         panel.add(brandComboBox);
 
+        modelComboBox = new JComboBox<>();
         modelComboBox.setBounds(179, 43, 117, 27);
         panel.add(modelComboBox);
 
@@ -178,8 +145,7 @@ public class SearchPage extends JFrame {
         });
 
         // Aggiunta dei pannelli al layout principale
-        mainPanel.add(leftColumn, BorderLayout.WEST);
-        mainPanel.add(rightColumn, BorderLayout.CENTER);
+        add(rightColumn, BorderLayout.CENTER);
     }
 
     private JButton createButton(String text) {
@@ -196,56 +162,5 @@ public class SearchPage extends JFrame {
                 modelComboBox.addItem(model);
             }
         }
-    }
-    public static String getMarca() {
-    	String selectedBrand;
-		selectedBrand=(String) brandComboBox.getSelectedItem();
-		return selectedBrand;
-    }
-    public static String getModello() {
-    	String selectedModel;
-    	selectedModel=(String) modelComboBox.getSelectedItem();
-		return selectedModel;
-    }
-    public  String getpickupDay() {
-    	String Giornoritiro;
-    	Giornoritiro=(String) pickupDay.getSelectedItem() ;
-		return Giornoritiro;
-    }
-    public  String getpickupMonth() {
-    	String Meseritiro;
-    	Meseritiro=(String) pickupMonth.getSelectedItem() ;
-		return Meseritiro;
-    }
-    public  String getpickupYear() {
-    	String Annoritiro;
-    	Annoritiro=(String) pickupYear.getSelectedItem() ;
-		return Annoritiro;
-    }
-    public  String getreturnDay() {
-    	String Giornorrestituzione;
-    	Giornorrestituzione=(String) pickupDay.getSelectedItem() ;
-		return Giornorrestituzione;
-    }
-    public  String getreturnMonth() {
-    	String Meserestituzione;
-    	Meserestituzione=(String) pickupMonth.getSelectedItem() ;
-		return Meserestituzione;
-    }
-    public  String getreturnYear() {
-    	String Annorestituzione;
-    	Annorestituzione=(String) pickupYear.getSelectedItem() ;
-		return Annorestituzione;
-    }
-    
-    
-    
-    
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            SearchPage searchPage = new SearchPage();
-            searchPage.setVisible(true);
-        });
     }
 }

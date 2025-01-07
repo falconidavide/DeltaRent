@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
+@SuppressWarnings("serial")
 public class LogIn extends JPanel {
 	
 	 private JTextField textField;
