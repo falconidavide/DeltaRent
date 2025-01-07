@@ -2,44 +2,14 @@ package GUI;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchCarList extends JFrame {
-    public SearchCarList(String brand, String model, String pickupDay , String pickupMonth, String pickupYear, String returnDay, String returnMonth,  String returnYear) {
-        // Impostazioni della finestra 
-        setTitle("DeltaRent - Auto Disponibili");
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(1300, 950);
-        setLocationRelativeTo(null);
-
+public class SearchCarList extends JPanel {
+    public SearchCarList(String brand, String model, String pickupDay, String pickupMonth, String pickupYear, String returnDay, String returnMonth, String returnYear) {
         // Layout principale
-        JPanel mainPanel = new JPanel(new BorderLayout());
-        mainPanel.setBackground(Color.DARK_GRAY);
-        getContentPane().add(mainPanel);
-
-        // Colonna sinistra (Invariata)
-        JPanel leftColumn = new JPanel();
-        leftColumn.setBackground(new Color(62, 88, 121));
-        leftColumn.setLayout(new BoxLayout(leftColumn, BoxLayout.Y_AXIS));
-        leftColumn.setBorder(BorderFactory.createLineBorder(new Color(216, 195, 182), 3));
-
-        JLabel avatarLabel = new JLabel(new ImageIcon("path/to/avatar/image")); // Sostituisci con il percorso immagine
-        avatarLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        JButton btnBack = createButton("Indietro");
-        btnBack.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new SearchPage().setVisible(true);
-                dispose(); // Chiude la finestra corrente
-            }
-        }); // Chiude questa finestra
-        leftColumn.add(avatarLabel);
-        leftColumn.add(Box.createRigidArea(new Dimension(0, 20))); // Spaziatura
-        leftColumn.add(btnBack);
+        setLayout(new BorderLayout());
+        setBackground(Color.DARK_GRAY);
 
         // Colonna destra
         JPanel rightColumn = new JPanel();
@@ -62,11 +32,11 @@ public class SearchCarList extends JFrame {
         lblModel.setForeground(new Color(216, 195, 182));
         lblModel.setFont(new Font("Arial", Font.PLAIN, 20));
 
-        JLabel lblPickupDate = new JLabel("Data di ritiro: " + pickupDay+"/"+pickupMonth+"/"+pickupYear);
+        JLabel lblPickupDate = new JLabel("Data di ritiro: " + pickupDay + "/" + pickupMonth + "/" + pickupYear);
         lblPickupDate.setForeground(new Color(216, 195, 182));
         lblPickupDate.setFont(new Font("Arial", Font.PLAIN, 20));
 
-        JLabel lblReturnDate = new JLabel("Data di restituzione: " + returnDay+"/"+returnMonth+"/"+returnYear);
+        JLabel lblReturnDate = new JLabel("Data di restituzione: " + returnDay + "/" + returnMonth + "/" + returnYear);
         lblReturnDate.setForeground(new Color(216, 195, 182));
         lblReturnDate.setFont(new Font("Arial", Font.PLAIN, 20));
 
@@ -92,16 +62,8 @@ public class SearchCarList extends JFrame {
         tableScrollPane.setPreferredSize(new Dimension(1000, 600));
         rightColumn.add(tableScrollPane);
 
-        // Aggiunta dei pannelli al layout principale
-        mainPanel.add(leftColumn, BorderLayout.WEST);
-        mainPanel.add(rightColumn, BorderLayout.CENTER);
-    }
-
-    private JButton createButton(String text) {
-        JButton button = new JButton(text);
-        button.setMaximumSize(new Dimension(150, 30));
-        button.setAlignmentX(Component.CENTER_ALIGNMENT);
-        return button;
+        // Aggiunta della colonna destra al layout principale
+        add(rightColumn, BorderLayout.CENTER);
     }
 
     private List<String[]> getAvailableCars(String brand, String model) {
@@ -118,13 +80,6 @@ public class SearchCarList extends JFrame {
             cars.add(new String[]{"Generico", "Generico", "50", "Disponibile"});
         }
 
-        return cars; 
-    }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-        	SearchCarList availableCarsPage = new SearchCarList(SearchPage.getMarca(), SearchPage.getModello(),SearchPage.getpickupDay(),SearchPage.getpickupMonth(), SearchPage.getpickupYear(), SearchPage.getreturnDay(),SearchPage.getreturnMonth(),SearchPage.getreturnYear());
-            availableCarsPage.setVisible(true);
-        });
+        return cars;
     }
 }

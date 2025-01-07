@@ -54,13 +54,13 @@ public class HomePage extends JFrame {
 
         JPanel homePanel = createHomePanel();
         JPanel rentCarPanel = new SearchPage();  // Replace with actual panel
-        //JPanel bookingsPanel = new Prenotazione(); // Replace with actual panel
+        //JPanel CarList = new SearchCarList(title, title, title, title, title, title, title, title); // Replace with actual panel
         JPanel profilePanel = new LogIn();         // Replace with actual panel
         JPanel gestioneAccount = new GestioneAccount();
 
         mainContentPanel.add(homePanel, "home");
         mainContentPanel.add(rentCarPanel, "rentCar");
-       // mainContentPanel.add(bookingsPanel, "bookings");
+        mainContentPanel.add(CarList, "bookings");
         mainContentPanel.add(profilePanel, "login");
         mainContentPanel.add(gestioneAccount, "account");
 

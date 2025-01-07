@@ -143,6 +143,7 @@ public class SearchPage extends JPanel {
             String selectedBrand = (String) brandComboBox.getSelectedItem();
             updateModelComboBox(selectedBrand);
         });
+        //btnNewButton.addActionListener(e -> ));
 
         // Aggiunta dei pannelli al layout principale
         add(rightColumn, BorderLayout.CENTER);
