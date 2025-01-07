@@ -10,6 +10,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
 public class LogIn extends JPanel {
 	
 	 private JTextField textField;
@@ -275,8 +276,9 @@ public class LogIn extends JPanel {
                  Utente user = Utente.getUserByEmailAndPassword(email, password);
                  if (user != null) {
                      // Login riuscito, apri la pagina principale
+                	 HomePage.logged = true;
                 	 JOptionPane.showMessageDialog(LogIn.this, "Credenziali Corrette.", "LogIn", JOptionPane.INFORMATION_MESSAGE);
-                     new HomePage().setVisible(true);
+                     HomePage.cardLayout.show(HomePage.mainContentPanel, "home");
                  } else {
                      // Login fallito, mostra un messaggio di errore
                      JOptionPane.showMessageDialog(LogIn.this, "Credenziali errate.", "Errore di accesso", JOptionPane.ERROR_MESSAGE);

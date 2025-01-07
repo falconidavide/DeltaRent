@@ -1,23 +1,28 @@
 package GUI;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
-public class GestioneAccount extends JFrame {
+public class GestioneAccount extends JPanel {
+
     public GestioneAccount() {
-        setTitle("DeltaRent - Gestione Account");
-        setSize(800, 600);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        // Impostazioni del pannello
+        setBackground(new Color(245, 239, 231));
+        setLayout(new BorderLayout());
 
-        JPanel panel = new JPanel();
-        panel.setBackground(Color.LIGHT_GRAY);
-        panel.setLayout(new BorderLayout());
+        // Etichetta del pannello
+        JLabel lblAccount = new JLabel("Gestione Account");
+        lblAccount.setFont(new Font("Arial", Font.BOLD, 36));
+        lblAccount.setHorizontalAlignment(SwingConstants.CENTER);
+        lblAccount.setForeground(new Color(32, 52, 85));
 
-        JLabel label = new JLabel("Pagina Gestione Account", JLabel.CENTER);
-        label.setFont(new Font("Arial", Font.BOLD, 24));
-        panel.add(label, BorderLayout.CENTER);
+        // Aggiungi ulteriori componenti per la gestione dell'account, come pulsanti o campi di testo
 
-        getContentPane().add(panel);
+        // Aggiunta dell'etichetta al pannello
+        add(lblAccount, BorderLayout.CENTER);
     }
 }

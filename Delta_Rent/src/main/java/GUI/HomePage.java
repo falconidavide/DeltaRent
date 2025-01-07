@@ -5,8 +5,11 @@ import java.awt.*;
 
 public class HomePage extends JFrame {
 
-    private CardLayout cardLayout;
-    private JPanel mainContentPanel;
+    protected static CardLayout cardLayout;
+    protected static  JPanel mainContentPanel;
+    
+    static boolean logged = false;  // Stato del login
+
 
     public HomePage() {
         // Impostazioni della finestra principale
@@ -33,7 +36,6 @@ public class HomePage extends JFrame {
         JButton btnRentCar = createButton("Noleggia Auto");
         JButton btnViewBookings = createButton("Le Mie Prenotazioni");
         JButton btnProfile = createButton("Profilo");
-        JButton btnSupport = createButton("Supporto");
 
         // Aggiunta dei pulsanti
         leftColumn.add(avatarLabel);
@@ -45,8 +47,6 @@ public class HomePage extends JFrame {
         leftColumn.add(btnViewBookings);
         leftColumn.add(Box.createRigidArea(new Dimension(0, 20)));
         leftColumn.add(btnProfile);
-        leftColumn.add(Box.createRigidArea(new Dimension(0, 20)));
-        leftColumn.add(btnSupport);
 
         // Contenuto principale con CardLayout
         cardLayout = new CardLayout();
@@ -56,13 +56,13 @@ public class HomePage extends JFrame {
        // JPanel rentCarPanel = new SearchCarList();  // Replace with actual panel
         //JPanel bookingsPanel = new Prenotazione(); // Replace with actual panel
         JPanel profilePanel = new LogIn();         // Replace with actual panel
-        JPanel supportPanel = new LogIn();         // Replace with actual panel
+        JPanel gestioneAccount = new GestioneAccount();
 
         mainContentPanel.add(homePanel, "home");
         //mainContentPanel.add(rentCarPanel, "rentCar");
        // mainContentPanel.add(bookingsPanel, "bookings");
-        mainContentPanel.add(profilePanel, "profile");
-        mainContentPanel.add(supportPanel, "support");
+        mainContentPanel.add(profilePanel, "login");
+        mainContentPanel.add(gestioneAccount, "account");
 
         // Aggiunta dei pannelli al layout principale
         mainPanel.add(leftColumn, BorderLayout.WEST);
@@ -72,8 +72,16 @@ public class HomePage extends JFrame {
         btnDeltaRent.addActionListener(e -> cardLayout.show(mainContentPanel, "home"));
         btnRentCar.addActionListener(e -> cardLayout.show(mainContentPanel, "rentCar"));
         btnViewBookings.addActionListener(e -> cardLayout.show(mainContentPanel, "bookings"));
-        btnProfile.addActionListener(e -> cardLayout.show(mainContentPanel, "profile"));
-        btnSupport.addActionListener(e -> cardLayout.show(mainContentPanel, "support"));
+        btnProfile.addActionListener(e -> {
+            if (logged) {
+                // Se l'utente è loggato, mostra il pannello di gestione account
+                cardLayout.show(mainContentPanel, "account");
+            } else {
+                // Altrimenti, mostra il pannello di login
+                cardLayout.show(mainContentPanel, "login");
+            }
+        });
+
     }
 
     private JButton createButton(String text) {
@@ -119,10 +127,5 @@ public class HomePage extends JFrame {
         return homePanel;
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            HomePage homePage = new HomePage();
-            homePage.setVisible(true);
-        });
+
     }
-}
