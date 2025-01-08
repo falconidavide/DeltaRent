@@ -10,8 +10,8 @@ public class Privato extends Utente{
 	private Date dataDiNascita;
 	
 	
-	public Privato(int id, String email, String password, String nome, String cognome, Date nascita) {
-		super(id, email, password);
+	public Privato( String email, String password, String nome, String cognome, Date nascita) {
+		super(email, password);
 		this.nome=nome;
 		this.cognome=cognome;
 		this.dataDiNascita=nascita;

@@ -6,19 +6,14 @@ import DB.DatabaseConnection;
 
 public class Utente {
 
-    private int ID;
     private String email;
     private String password;
 
-    public Utente(int id, String email, String password) {
-        this.ID = id;
+    public Utente( String email, String password) {
         this.email = email;
         this.password = password;
     }
 
-    public int getId() {
-        return ID;
-    }
 
     public String getEmail() {
         return email;
@@ -36,7 +31,7 @@ public class Utente {
             stmt.setString(2, password);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                return new Utente(rs.getInt("ID"), rs.getString("email"), rs.getString("password"));
+                return new Utente(rs.getString("email"), rs.getString("password"));
             }
         } catch (SQLException e) {
             System.err.println("Errore durante la ricerca dell'utente: " + e.getMessage());

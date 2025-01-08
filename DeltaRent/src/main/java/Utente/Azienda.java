@@ -6,8 +6,8 @@ public class Azienda extends Utente{
 	private String partitaIVA;
 	
 	
-	public Azienda(int id, String email, String password, String nomeAzienda, String partitaIVA) {
-		super(id, email, password);
+	public Azienda(String email, String password, String nomeAzienda, String partitaIVA) {
+		super(email, password);
 		this.nomeAzienda=nomeAzienda;
 		this.partitaIVA=partitaIVA;
 	}
