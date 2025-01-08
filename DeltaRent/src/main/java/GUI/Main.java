@@ -8,11 +8,10 @@ import Veicolo.Automobile;
 public class Main {
     public static void main(String[] args) {
         new HomePage().setVisible(true);
-        GestoreVeicoli g = new GestoreVeicoli();
 
-        g.getListaAutomobili();
+        GestoreVeicoli.aggiornaListaAutomobili();
 
-		for (Automobile a : g.automobili) {
+		for (Automobile a : GestoreVeicoli.automobili) {
 			System.out.println("Targa: " + a.getTarga());
 		}
     }

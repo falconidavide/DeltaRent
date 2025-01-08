@@ -15,11 +15,11 @@ import Veicolo.Veicolo;
 
 public class GestoreVeicoli {
 
-	Connection conn = DatabaseConnection.getConnection();
-	public List<Automobile> automobili = new ArrayList<>();
-	public List<Furgone> furgoni = new ArrayList<>();
+	private static Connection conn = DatabaseConnection.getConnection();
+	public static List<Automobile> automobili = new ArrayList<>();
+	public static List<Furgone> furgoni = new ArrayList<>();
 
-	public List<Automobile> getListaAutomobili() {
+	public static List<Automobile> aggiornaListaAutomobili() {
 		try {
 			String query = "SELECT targa, marca, modello, disponibile, prezzoOrario FROM Veicolo WHERE isFurgone=0";
 			try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(query)) {
@@ -46,7 +46,7 @@ public class GestoreVeicoli {
 		return automobili;
 	}
 
-	public List<Furgone> getListaFurgoni() {
+	public static List<Furgone> aggiornaListaFurgoni() {
 		try {
 			String query = "SELECT targa, marca, modello, disponibile, prezzoGiornaliero FROM Veicolo WHERE isFurgone=1";
 			try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(query)) {
