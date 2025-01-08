@@ -83,7 +83,7 @@ public class LogIn extends JPanel {
 		lblNomeAzienda.setBounds(88, 22, 113, 18);
 		panel_1.add(lblNomeAzienda);
 
-		JLabel lblPecRegistrata = new JLabel("PEC Registrata");
+		JLabel lblPecRegistrata = new JLabel("E-mail");
 		lblPecRegistrata.setForeground(new Color(216, 195, 182));
 		lblPecRegistrata.setFont(new Font("Arial", Font.PLAIN, 15));
 		lblPecRegistrata.setAlignmentX(0.5f);
@@ -128,7 +128,7 @@ public class LogIn extends JPanel {
 		textField_3.setBounds(88, 106, 300, 30);
 		panel_1.add(textField_3);
 
-		passwordFieldReg = new JTextField();
+		passwordFieldReg = new JPasswordField();
 		passwordFieldReg.setMaximumSize(new Dimension(300, 30));
 		passwordFieldReg.setBorder(null);
 		passwordFieldReg.setBackground(new Color(245, 239, 231));
@@ -261,7 +261,7 @@ public class LogIn extends JPanel {
 		emailFieldRegUser.setBounds(99, 198, 300, 31);
 		panel.add(emailFieldRegUser);
 
-		passwordFieldRegUser = new JTextField();
+		passwordFieldRegUser = new JPasswordField();
 		passwordFieldRegUser.setMaximumSize(new Dimension(300, 30));
 		passwordFieldRegUser.setBorder(null);
 		passwordFieldRegUser.setBackground(new Color(245, 239, 231));
@@ -291,11 +291,13 @@ public class LogIn extends JPanel {
 		ActionListener lAzienda = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				String email, password;
+				String email, password, nomeAzienda, partitaIva;
 				email = emailFieldReg.getText();
 				password = passwordFieldReg.getText();
+				nomeAzienda= textField_1.getText();
+				partitaIva= textField_3.getText();
 
-				if (Registration.registerUser(email, password)) {
+				if (Registration.registerUser(email, password, null, null, null, nomeAzienda, partitaIva)) {
 					// Registrazione riuscita, mostra un messaggio di conferma
 					JOptionPane.showMessageDialog(LogIn.this, "Registrazione completata.", "Registrazione",
 							JOptionPane.INFORMATION_MESSAGE);
@@ -310,11 +312,15 @@ public class LogIn extends JPanel {
 		ActionListener lPrivato = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				String email, password;
+				String email, password, nome, cognome, dataNascita;
 
 				email = emailFieldRegUser.getText();
 				password = passwordFieldRegUser.getText();
-				if (Registration.registerUser(email, password)) {
+				nome= textField.getText();
+				cognome= textField_5.getText();
+				dataNascita= textField_6.getText();
+				
+				if (Registration.registerUser(email, password, nome, cognome, dataNascita, null, null)) {
 					// Registrazione riuscita, mostra un messaggio di conferma
 					JOptionPane.showMessageDialog(LogIn.this, "Registrazione completata.", "Registrazione",
 							JOptionPane.INFORMATION_MESSAGE);
@@ -383,7 +389,7 @@ public class LogIn extends JPanel {
 			}
 
 			public void updatePrivatoButton() {
-				if (areAllFieldsFilledForAzienda()) {
+				if (areAllFieldsFilledForPrivato()) {
 					btnRegistrati_1.setEnabled(true);
 					btnRegistrati.setEnabled(true);
 				} else {
