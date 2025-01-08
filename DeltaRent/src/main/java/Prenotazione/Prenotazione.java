@@ -2,7 +2,7 @@ package Prenotazione;
 
 import java.util.Date;
 
-import GUI.Veicolo;
+import Veicolo.Veicolo;
 import Utente.Utente;
 
 public class Prenotazione {

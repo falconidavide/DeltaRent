@@ -16,12 +16,12 @@ import Veicolo.Veicolo;
 public class GestoreVeicoli {
 
 	Connection conn = DatabaseConnection.getConnection();
-	public List<Veicolo> automobili = new ArrayList<>();
-	public List<Veicolo> furgoni = new ArrayList<>();
+	public List<Automobile> automobili = new ArrayList<>();
+	public List<Furgone> furgoni = new ArrayList<>();
 
-	public List<Veicolo> getListaAutomobili() {
+	public List<Automobile> getListaAutomobili() {
 		try {
-			String query = "SELECT targa, marca, modello, disponibile, prezzoOrario FROM veicoli WHERE isFurgone=0";
+			String query = "SELECT targa, marca, modello, disponibile, prezzoOrario FROM Veicolo WHERE isFurgone=0";
 			try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(query)) {
 				while (rs.next()) {
 					String targa = rs.getString("targa");
@@ -36,18 +36,19 @@ public class GestoreVeicoli {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		// Stampa la lista dei veicoli per verificare
-		for (Veicolo veicolo : automobili) {
+		/*
+		for (Automobile veicolo : automobili) {
 			System.out.println("Targa: " + veicolo.getTarga() + ", Marca: " + veicolo.getMarca() + ", Modello: "
-					+ veicolo.getModello() + ", Disponibile: " + veicolo.getDisponibile());
+					+ veicolo.getModello() + ", Disponibile: " + veicolo.getDisponibile() + ", Prezzo orario: "
+					+ veicolo.getPrezzoOrario());
 		}
+		*/
 		return automobili;
 	}
-	
-	
-	public List<Veicolo> getListaFurgoni() {
+
+	public List<Furgone> getListaFurgoni() {
 		try {
-			String query = "SELECT targa, marca, modello, disponibile, prezzoGiornaliero FROM veicoli WHERE isFurgone=1";
+			String query = "SELECT targa, marca, modello, disponibile, prezzoGiornaliero FROM Veicolo WHERE isFurgone=1";
 			try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(query)) {
 				while (rs.next()) {
 					String targa = rs.getString("targa");
@@ -62,11 +63,13 @@ public class GestoreVeicoli {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		// Stampa la lista dei veicoli per verificare
-		for (Veicolo veicolo : furgoni) {
+		/*
+		for (Furgone veicolo : furgoni) {
 			System.out.println("Targa: " + veicolo.getTarga() + ", Marca: " + veicolo.getMarca() + ", Modello: "
-					+ veicolo.getModello() + ", Disponibile: " + veicolo.getDisponibile());
+					+ veicolo.getModello() + ", Disponibile: " + veicolo.getDisponibile() + ", Prezzo giornaliero: "
+					+ veicolo.getPrezzoGiornaliero());
 		}
+		*/
 		return furgoni;
 	}
 }
