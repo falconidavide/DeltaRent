@@ -3,15 +3,8 @@ package GUI;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
-
 import DB.DatabaseConnection;
-
 import java.sql.*;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 public class GestioneAccount extends JPanel {
 
@@ -36,7 +29,7 @@ public class GestioneAccount extends JPanel {
         // Pannello di visualizzazione dei dati utente
         JPanel userPanel = createUserPanel();
         if (userPanel != null) {
-            add(userPanel, BorderLayout.SOUTH);
+            add(userPanel, BorderLayout.CENTER);
         }
 
         // Pannello di modifica dell'email
@@ -53,7 +46,7 @@ public class GestioneAccount extends JPanel {
         centerPanel.add(passwordPanel);
 
         JScrollPane scrollPanel = new JScrollPane(centerPanel);
-        add(scrollPanel, BorderLayout.CENTER);
+        add(scrollPanel, BorderLayout.SOUTH);
 
         this.connection = DatabaseConnection.getConnection();
     }
@@ -65,30 +58,39 @@ public class GestioneAccount extends JPanel {
             return null;
         }
 
-        JPanel userPanel = new JPanel();
-        userPanel.setLayout(new GridLayout(0, 1));
+        JPanel userPanel = new JPanel(new GridBagLayout());
         userPanel.setBackground(new Color(44, 62, 80));
         userPanel.setBorder(new LineBorder(new Color(236, 240, 241), 2, true));
-     
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(5, 10, 5, 10);
+        gbc.anchor = GridBagConstraints.WEST;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+
         Boolean isPrivato = HomePage.loggedUser.getIsPrivato();
         if (isPrivato) {
-            addUserInfo(userPanel, "Nome", HomePage.loggedUser.getNome());
-            addUserInfo(userPanel, "Cognome", HomePage.loggedUser.getCognome());
-            addUserInfo(userPanel, "Data di Nascita", HomePage.loggedUser.getDataDiNascita());
+            addUserInfo(userPanel, "Nome", HomePage.loggedUser.getNome(), gbc);
+            gbc.gridy++;
+            addUserInfo(userPanel, "Cognome", HomePage.loggedUser.getCognome(), gbc);
+            gbc.gridy++;
+            addUserInfo(userPanel, "Data di Nascita", HomePage.loggedUser.getDataDiNascita(), gbc);
         } else {
-            addUserInfo(userPanel, "Nome Azienda", HomePage.loggedUser.getNomeAzienda());
-            addUserInfo(userPanel, "Partita IVA", HomePage.loggedUser.getPartitaIVA());
+            addUserInfo(userPanel, "Nome Azienda", HomePage.loggedUser.getNomeAzienda(), gbc);
+            gbc.gridy++;
+            addUserInfo(userPanel, "Partita IVA", HomePage.loggedUser.getPartitaIVA(), gbc);
         }
 
         return userPanel;
     }
 
     // Metodo di utilità per aggiungere informazioni utente al pannello
-    private void addUserInfo(JPanel panel, String label, String value) {
+    private void addUserInfo(JPanel panel, String label, String value, GridBagConstraints gbc) {
         JLabel lbl = new JLabel(label + ": " + value);
-        lbl.setFont(new Font("Helvetica Neue", Font.PLAIN, 16));
+        lbl.setFont(new Font("Helvetica Neue", Font.PLAIN, 20));
         lbl.setForeground(new Color(236, 240, 241));
-        panel.add(lbl);
+        panel.add(lbl, gbc);
     }
 
     // Crea la sezione di modifica email
