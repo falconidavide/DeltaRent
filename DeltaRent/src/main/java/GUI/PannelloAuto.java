@@ -43,10 +43,9 @@ public class PannelloAuto extends JPanel {
         immagineAuto.setBounds(6, 76, 279, 218);
 
         // Carica l'immagine
-        ImageIcon icon = new ImageIcon("/DeltaRent/userIcon.png"); // Sostituisci con il percorso corretto
-        immagineAuto.setIcon(new ImageIcon("userIcon.png"));
+        immagineAuto.setIcon(new ImageIcon("audi_a7.jpg"));
         add(immagineAuto);
-        ImageIcon originalIcon = new ImageIcon("userIcon.png");
+        ImageIcon originalIcon = new ImageIcon("audi_a7.jpg");
         Image scaledImage = originalIcon.getImage().getScaledInstance(279, 218, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(scaledImage);
         immagineAuto.setIcon(scaledIcon);
