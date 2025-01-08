@@ -15,13 +15,13 @@ import java.awt.event.ActionListener;
 @SuppressWarnings("serial")
 public class LogIn extends JPanel {
 
-    private JTextField textField;
-    private JTextField textField_1;
+    private JTextField nomeFieldReg;
+    private JTextField nomeAziendaFieldReg;
     private JTextField emailFieldReg;
-    private JTextField textField_3;
+    private JTextField partitaIvaFieldReg;
     private JTextField passwordFieldReg;
-    private JTextField textField_5;
-    private JTextField textField_6;
+    private JTextField cognomeFieldReg;
+    private JTextField dataNascitaFieldReg;
     private JTextField emailFieldRegUser;
     private JTextField passwordFieldRegUser;
 
@@ -104,13 +104,13 @@ public class LogIn extends JPanel {
         lblPassword_1.setBounds(88, 212, 113, 18);
         panel_1.add(lblPassword_1);
 
-        textField_1 = new JTextField();
-        textField_1.setMaximumSize(new Dimension(300, 30));
-        textField_1.setBorder(null);
-        textField_1.setBackground(new Color(245, 239, 231));
-        textField_1.setAlignmentX(0.5f);
-        textField_1.setBounds(88, 41, 300, 30);
-        panel_1.add(textField_1);
+        nomeAziendaFieldReg = new JTextField();
+        nomeAziendaFieldReg.setMaximumSize(new Dimension(300, 30));
+        nomeAziendaFieldReg.setBorder(null);
+        nomeAziendaFieldReg.setBackground(new Color(245, 239, 231));
+        nomeAziendaFieldReg.setAlignmentX(0.5f);
+        nomeAziendaFieldReg.setBounds(88, 41, 300, 30);
+        panel_1.add(nomeAziendaFieldReg);
 
         emailFieldReg = new JTextField();
         emailFieldReg.setMaximumSize(new Dimension(300, 30));
@@ -120,13 +120,13 @@ public class LogIn extends JPanel {
         emailFieldReg.setBounds(88, 171, 300, 30);
         panel_1.add(emailFieldReg);
 
-        textField_3 = new JTextField();
-        textField_3.setMaximumSize(new Dimension(300, 30));
-        textField_3.setBorder(null);
-        textField_3.setBackground(new Color(245, 239, 231));
-        textField_3.setAlignmentX(0.5f);
-        textField_3.setBounds(88, 106, 300, 30);
-        panel_1.add(textField_3);
+        partitaIvaFieldReg = new JTextField();
+        partitaIvaFieldReg.setMaximumSize(new Dimension(300, 30));
+        partitaIvaFieldReg.setBorder(null);
+        partitaIvaFieldReg.setBackground(new Color(245, 239, 231));
+        partitaIvaFieldReg.setAlignmentX(0.5f);
+        partitaIvaFieldReg.setBounds(88, 106, 300, 30);
+        panel_1.add(partitaIvaFieldReg);
 
         passwordFieldReg = new JPasswordField();
         passwordFieldReg.setMaximumSize(new Dimension(300, 30));
@@ -185,13 +185,13 @@ public class LogIn extends JPanel {
         tabbedPane.setForegroundAt(1, new Color(32, 52, 85));
         panel.setLayout(null);
 
-        textField = new JTextField();
-        textField.setBackground(new Color(245, 239, 231));
-        textField.setMaximumSize(new Dimension(300, 30));
-        textField.setBorder(null);
-        textField.setAlignmentX(0.5f);
-        textField.setBounds(99, 24, 300, 31);
-        panel.add(textField);
+        nomeFieldReg = new JTextField();
+        nomeFieldReg.setBackground(new Color(245, 239, 231));
+        nomeFieldReg.setMaximumSize(new Dimension(300, 30));
+        nomeFieldReg.setBorder(null);
+        nomeFieldReg.setAlignmentX(0.5f);
+        nomeFieldReg.setBounds(99, 24, 300, 31);
+        panel.add(nomeFieldReg);
 
         JButton btnRegistrati = new JButton("Registrati");
         btnRegistrati.setBackground(new Color(245, 239, 231));
@@ -237,21 +237,21 @@ public class LogIn extends JPanel {
         lblEmail_1_1.setBounds(99, 241, 116, 18);
         panel.add(lblEmail_1_1);
 
-        textField_5 = new JTextField();
-        textField_5.setMaximumSize(new Dimension(300, 30));
-        textField_5.setBorder(null);
-        textField_5.setBackground(new Color(245, 239, 231));
-        textField_5.setAlignmentX(0.5f);
-        textField_5.setBounds(99, 80, 300, 31);
-        panel.add(textField_5);
+        cognomeFieldReg = new JTextField();
+        cognomeFieldReg.setMaximumSize(new Dimension(300, 30));
+        cognomeFieldReg.setBorder(null);
+        cognomeFieldReg.setBackground(new Color(245, 239, 231));
+        cognomeFieldReg.setAlignmentX(0.5f);
+        cognomeFieldReg.setBounds(99, 80, 300, 31);
+        panel.add(cognomeFieldReg);
 
-        textField_6 = new JTextField();
-        textField_6.setMaximumSize(new Dimension(300, 30));
-        textField_6.setBorder(null);
-        textField_6.setBackground(new Color(245, 239, 231));
-        textField_6.setAlignmentX(0.5f);
-        textField_6.setBounds(99, 137, 300, 31);
-        panel.add(textField_6);
+        dataNascitaFieldReg = new JTextField();
+        dataNascitaFieldReg.setMaximumSize(new Dimension(300, 30));
+        dataNascitaFieldReg.setBorder(null);
+        dataNascitaFieldReg.setBackground(new Color(245, 239, 231));
+        dataNascitaFieldReg.setAlignmentX(0.5f);
+        dataNascitaFieldReg.setBounds(99, 137, 300, 31);
+        panel.add(dataNascitaFieldReg);
 
         emailFieldRegUser = new JTextField();
         emailFieldRegUser.setMaximumSize(new Dimension(300, 30));
@@ -296,8 +296,8 @@ public class LogIn extends JPanel {
                 String email, password, nomeAzienda, partitaIva;
                 email = emailFieldReg.getText();
                 password = passwordFieldReg.getText();
-                nomeAzienda= textField_1.getText();
-                partitaIva= textField_3.getText();
+                nomeAzienda= nomeAziendaFieldReg.getText();
+                partitaIva= partitaIvaFieldReg.getText();
 
                 if (Registration.registerUser(email, password, null, null, null, nomeAzienda, partitaIva)) {
                     // Registrazione riuscita, mostra un messaggio di conferma
@@ -318,9 +318,9 @@ public class LogIn extends JPanel {
 
                 email = emailFieldRegUser.getText();
                 password = passwordFieldRegUser.getText();
-                nome= textField.getText();
-                cognome= textField_5.getText();
-                dataNascita= textField_6.getText();
+                nome= nomeFieldReg.getText();
+                cognome= cognomeFieldReg.getText();
+                dataNascita= dataNascitaFieldReg.getText();
                 
                 if (Registration.registerUser(email, password, nome, cognome, dataNascita, null, null)) {
                     // Registrazione riuscita, mostra un messaggio di conferma
@@ -384,27 +384,27 @@ public class LogIn extends JPanel {
 				}
 			}
 		};
-	    textField_1.getDocument().addDocumentListener(aziendaListener);
-	    textField_3.getDocument().addDocumentListener(aziendaListener);
+	    nomeAziendaFieldReg.getDocument().addDocumentListener(aziendaListener);
+	    partitaIvaFieldReg.getDocument().addDocumentListener(aziendaListener);
 	    emailFieldReg.getDocument().addDocumentListener(aziendaListener);
 	    passwordFieldReg.getDocument().addDocumentListener(aziendaListener);
 	    
-	    textField.getDocument().addDocumentListener(privatoListener);
-	    textField_5.getDocument().addDocumentListener(privatoListener);
-	    textField_6.getDocument().addDocumentListener(privatoListener);
+	    nomeFieldReg.getDocument().addDocumentListener(privatoListener);
+	    cognomeFieldReg.getDocument().addDocumentListener(privatoListener);
+	    dataNascitaFieldReg.getDocument().addDocumentListener(privatoListener);
 	    emailFieldRegUser.getDocument().addDocumentListener(privatoListener);
 	    passwordFieldRegUser.getDocument().addDocumentListener(privatoListener);
 	}
 
 	// Metodo per verificare se tutti i campi sono riempiti
 	private boolean areAllFieldsFilledForAzienda() {
-		return !textField_1.getText().trim().isEmpty() && !textField_3.getText().trim().isEmpty()
+		return !nomeAziendaFieldReg.getText().trim().isEmpty() && !partitaIvaFieldReg.getText().trim().isEmpty()
 				&& isValidEmail(emailFieldReg.getText().trim()) && !passwordFieldReg.getText().trim().isEmpty();
 	}
 
 	private boolean areAllFieldsFilledForPrivato() {
-		return !textField.getText().trim().isEmpty() && !textField_5.getText().trim().isEmpty()
-				&& !textField_6.getText().trim().isEmpty() && isValidEmail(emailFieldRegUser.getText().trim())
+		return !nomeFieldReg.getText().trim().isEmpty() && !cognomeFieldReg.getText().trim().isEmpty()
+				&& !dataNascitaFieldReg.getText().trim().isEmpty() && isValidEmail(emailFieldRegUser.getText().trim())
 				&& !passwordFieldRegUser.getText().trim().isEmpty();
 	}
 	
