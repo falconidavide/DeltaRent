@@ -14,11 +14,21 @@ import java.awt.Font;
 public class PannelloAuto extends JPanel {
 
     private static final long serialVersionUID = 1L;
-
+    String modello;
+    Boolean disponibile;
+    String potenza;
+    String alimentazione;
+    String prezzo;
+    
     /**
      * Create the panel.
      */
     public PannelloAuto() {
+        
+        GestoreVeicoli.aggiornaListaAutomobili();
+        for(Automobile a : GestoreVeicoli.automobili) {
+      
+        }
 
         setBackground(new Color(220, 221, 222));
         setSize(500, 300);
@@ -60,11 +70,7 @@ public class PannelloAuto extends JPanel {
         ImageIcon scaledIcon = new ImageIcon(scaledImage);
         immagineAuto.setIcon(scaledIcon);
         
-        
-        GestoreVeicoli.aggiornaListaAutomobili();
-        for(Automobile a : GestoreVeicoli.automobili) {
-        	System.out.println(a.getTarga());
-        }
+  
 
     }
 }

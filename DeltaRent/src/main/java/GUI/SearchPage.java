@@ -135,9 +135,9 @@ public class SearchPage extends JPanel {
 		carData = new HashMap<>();
 		carData.put("Audi", new String[] { "A1", "A2", "A3", "A4", "A5", "A6", "A7" });
 		carData.put("BMW", new String[] { "X1", "X2", "X3", "X4", "X5", "X6", "X7" });
-		carData.put("Volkswagen", new String[] { "T-Roc", "T-Cross", "Tiguan", "Touareg", "Passat", "Golf" });
-		carData.put("Fiat", new String[] { "Panda", "500", "Bravo", "Fiorino", "Freemont" });
-		carData.put("Mercedes-Benz", new String[] { "A-180d", "B-200d", "C63-AMG", "EQA", "G63-AMG" });
+		carData.put("Volkswagen", new String[] { "T-Roc", "T-Cross", "Tiguan", "Touareg", "Passat", "Golf","Caddy","Transporter","Crafter" });
+		carData.put("Fiat", new String[] { "Panda", "500", "Bravo", "Fiorino", "Freemont","Ducato","Fiorino" });
+		carData.put("Mercedes-Benz", new String[] { "A-180d", "B-200d", "C63-AMG", "EQA", "G63-AMG","Vito","Sprinter","Tourer" });
 
 		// Aggiunge le marche al primo menu a scelta
 		brandComboBox.addItem("...");
