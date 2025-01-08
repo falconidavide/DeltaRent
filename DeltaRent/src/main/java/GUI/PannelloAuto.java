@@ -1,6 +1,10 @@
 package GUI;
 
 import javax.swing.JPanel;
+
+import DB.GestoreVeicoli;
+import Veicolo.Automobile;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import java.awt.Color;
@@ -55,6 +59,12 @@ public class PannelloAuto extends JPanel {
         Image scaledImage = originalIcon.getImage().getScaledInstance(279, 218, Image.SCALE_SMOOTH);
         ImageIcon scaledIcon = new ImageIcon(scaledImage);
         immagineAuto.setIcon(scaledIcon);
+        
+        
+        GestoreVeicoli.aggiornaListaAutomobili();
+        for(Automobile a : GestoreVeicoli.automobili) {
+        	System.out.println(a.getTarga());
+        }
 
     }
 }
