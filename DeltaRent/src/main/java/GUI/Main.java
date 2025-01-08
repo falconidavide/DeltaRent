@@ -1,7 +1,5 @@
 package GUI;
 
-import java.util.List;
-
 import DB.GestoreVeicoli;
 import Veicolo.Automobile;
 

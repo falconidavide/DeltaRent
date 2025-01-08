@@ -1,8 +1,7 @@
 package DB;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -11,7 +10,6 @@ import java.util.List;
 
 import Veicolo.Automobile;
 import Veicolo.Furgone;
-import Veicolo.Veicolo;
 
 public class GestoreVeicoli {
 
@@ -21,7 +19,7 @@ public class GestoreVeicoli {
 
 	public static List<Automobile> aggiornaListaAutomobili() {
 		try {
-			String query = "SELECT targa, marca, modello, disponibile, prezzoOrario FROM Veicolo WHERE isFurgone=0";
+			String query = "SELECT targa, marca, modello, disponibile, prezzoOrario, dataConsegna FROM Veicolo WHERE isFurgone=0";
 			try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(query)) {
 				while (rs.next()) {
 					String targa = rs.getString("targa");
@@ -29,7 +27,8 @@ public class GestoreVeicoli {
 					String modello = rs.getString("modello");
 					boolean disponibile = rs.getBoolean("disponibile");
 					int prezzoOrario = rs.getInt("prezzoOrario");
-					Automobile auto = new Automobile(targa, marca, modello, disponibile, prezzoOrario);
+					Date dataConsegna = rs.getDate("dataconsegna");
+					Automobile auto = new Automobile(targa, marca, modello, disponibile, prezzoOrario, dataConsegna);
 					automobili.add(auto);
 				}
 			}
@@ -48,7 +47,7 @@ public class GestoreVeicoli {
 
 	public static List<Furgone> aggiornaListaFurgoni() {
 		try {
-			String query = "SELECT targa, marca, modello, disponibile, prezzoGiornaliero FROM Veicolo WHERE isFurgone=1";
+			String query = "SELECT targa, marca, modello, disponibile, prezzoGiornaliero, dataConsegna FROM Veicolo WHERE isFurgone=1";
 			try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(query)) {
 				while (rs.next()) {
 					String targa = rs.getString("targa");
@@ -56,7 +55,8 @@ public class GestoreVeicoli {
 					String modello = rs.getString("modello");
 					boolean disponibile = rs.getBoolean("disponibile");
 					int prezzoGiornaliero = rs.getInt("prezzoGiornaliero");
-					Furgone furgone = new Furgone(targa, marca, modello, disponibile, prezzoGiornaliero);
+					Date dataConsegna = rs.getDate("dataconsegna");
+					Furgone furgone = new Furgone(targa, marca, modello, disponibile, prezzoGiornaliero, dataConsegna);
 					furgoni.add(furgone);
 				}
 			}
