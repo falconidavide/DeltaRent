@@ -87,14 +87,10 @@ public class HomePage extends JFrame {
         btnProfile.addActionListener(e -> {
             System.out.println("btnProfile clicked"); // Debug
             if (logged) {
-                System.out.println("User is logged in"); // Debug
-                System.out.println(loggedUser);
-                System.out.println(gestioneAccount);
                 // Se l'utente è loggato, mostra il pannello di gestione account
                 ensureGestioneAccountPanel();
-                
+                cardLayout.show(mainContentPanel, "account");
             } else {
-                System.out.println("User is not logged in"); // Debug
                 // Altrimenti, mostra il pannello di login
                 cardLayout.show(mainContentPanel, "login");
             }
@@ -106,7 +102,6 @@ public class HomePage extends JFrame {
             System.out.println("Creating GestioneAccount panel"); // Debug
             gestioneAccount = new GestioneAccount();
             mainContentPanel.add(gestioneAccount, "account");
-            cardLayout.show(mainContentPanel, "account");
         }
     }
 
