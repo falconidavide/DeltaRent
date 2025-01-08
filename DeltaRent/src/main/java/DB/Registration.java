@@ -5,8 +5,9 @@ import java.sql.*;
 public class Registration {
 
     public static boolean registerUser(String email, String password) {
-        try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement("INSERT INTO Utente (email, password) VALUES (?, ?)")) {
+        try {
+        	Connection conn = DatabaseConnection.getConnection();
+        	PreparedStatement stmt = conn.prepareStatement("INSERT INTO Utente (email, password) VALUES (?, ?)");
             stmt.setString(1, email);
             stmt.setString(2, password);
 

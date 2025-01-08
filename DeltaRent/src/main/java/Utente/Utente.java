@@ -29,8 +29,9 @@ public class Utente {
     }
 
     public static Utente getUserByEmailAndPassword(String email, String password) {
-        try (Connection conn = DatabaseConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Utente WHERE email = ? AND password = ?")) {
+        try {
+        	Connection conn = DatabaseConnection.getConnection();
+        	PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Utente WHERE email = ? AND password = ?");
             stmt.setString(1, email);
             stmt.setString(2, password);
             ResultSet rs = stmt.executeQuery();
