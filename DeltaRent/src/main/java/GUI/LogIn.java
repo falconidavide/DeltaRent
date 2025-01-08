@@ -279,6 +279,7 @@ public class LogIn extends JPanel {
                     HomePage.loggedUser = Utente.getUserByEmailAndPassword(email, password);
                     // Login riuscito, apri la pagina principale
                     HomePage.logged = true;
+                    HomePage.btnLogout.setVisible(true);
                     JOptionPane.showMessageDialog(LogIn.this, "Credenziali Corrette.", "LogIn",
                             JOptionPane.INFORMATION_MESSAGE);
                     HomePage.cardLayout.show(HomePage.mainContentPanel, "home");

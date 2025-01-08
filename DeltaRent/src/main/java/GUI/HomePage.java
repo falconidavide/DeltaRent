@@ -11,6 +11,7 @@ public class HomePage extends JFrame {
     static boolean logged = false; // Stato del login
     public static Utente loggedUser; // Oggetto utente loggato
     private JPanel gestioneAccount; // Pannello gestioneAccount
+    protected static JButton btnLogout; // Pulsante di logout
 
     public HomePage() {
         // Impostazioni della finestra principale
@@ -33,25 +34,24 @@ public class HomePage extends JFrame {
         JLabel avatarLabel = new JLabel(new ImageIcon("path/to/avatar/image")); // Sostituisci con il percorso immagine
         avatarLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        JButton btnDeltaRent = createButton("Delta Rent");
-        JButton btnRentCar = createButton("Noleggia Auto");
-        JButton btnViewBookings = createButton("Le Mie Prenotazioni");
+        JButton btnDeltaRent = createUniformButton("Delta Rent");
+        JButton btnRentCar = createUniformButton("Noleggia Auto");
+        JButton btnViewBookings = createUniformButton("Le Mie Prenotazioni");
 
-        JButton btnProfile = new JButton();
+        JButton btnProfile = createUniformButton("");
         ImageIcon userIcon = new ImageIcon(
                 new ImageIcon("userIcon.png").getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH));
         btnProfile.setIcon(userIcon);
-        btnProfile.setMaximumSize(new Dimension(200, 40));
-        btnProfile.setHorizontalTextPosition(SwingConstants.CENTER);
-        btnProfile.setVerticalTextPosition(SwingConstants.BOTTOM);
-        btnProfile.setHorizontalTextPosition(SwingConstants.RIGHT);
-        btnProfile.setVerticalTextPosition(SwingConstants.CENTER);
-        btnProfile.setAlignmentX(Component.CENTER_ALIGNMENT);
-        btnProfile.setBackground(new Color(245, 239, 231));
-        btnProfile.setForeground(new Color(62, 88, 121));
-        btnProfile.setFont(new Font("Arial", Font.BOLD, 16));
-        btnProfile.setFocusPainted(false);
-        btnProfile.setIconTextGap(10);
+
+        // Pulsante di logout
+        btnLogout = createUniformButton("Logout");
+        btnLogout.setVisible(logged); // Mostra il pulsante solo se l'utente è loggato
+        btnLogout.addActionListener(e -> {
+            logged = false;
+            loggedUser = null;
+            updateLogoutButton();
+            cardLayout.show(mainContentPanel, "login");
+        });
 
         // Aggiunta dei pulsanti
         leftColumn.add(avatarLabel);
@@ -63,6 +63,9 @@ public class HomePage extends JFrame {
         leftColumn.add(btnViewBookings);
         leftColumn.add(Box.createRigidArea(new Dimension(0, 20)));
         leftColumn.add(btnProfile);
+        leftColumn.add(Box.createVerticalGlue()); // Aggiunge spazio flessibile per spingere il logout in fondo
+        leftColumn.add(Box.createRigidArea(new Dimension(0, 20)));
+        leftColumn.add(btnLogout);
 
         // Contenuto principale con CardLayout
         cardLayout = new CardLayout();
@@ -95,6 +98,7 @@ public class HomePage extends JFrame {
                 cardLayout.show(mainContentPanel, "login");
             }
         });
+
     }
 
     private void ensureGestioneAccountPanel() {
@@ -105,9 +109,16 @@ public class HomePage extends JFrame {
         }
     }
 
-    private JButton createButton(String text) {
+    private void updateLogoutButton() {
+        btnLogout.setVisible(logged);
+    }
+
+
+    private JButton createUniformButton(String text) {
         JButton button = new JButton(text);
+        button.setPreferredSize(new Dimension(200, 40));
         button.setMaximumSize(new Dimension(200, 40));
+        button.setMinimumSize(new Dimension(200, 40));
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
         button.setBackground(new Color(245, 239, 231));
         button.setForeground(new Color(62, 88, 121));
@@ -148,4 +159,6 @@ public class HomePage extends JFrame {
         homePanel.add(btnExploreFleet, BorderLayout.SOUTH);
         return homePanel;
     }
+
+   
 }
