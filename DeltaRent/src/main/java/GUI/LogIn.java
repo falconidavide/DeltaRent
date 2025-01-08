@@ -409,12 +409,17 @@ public class LogIn extends JPanel {
 	// Metodo per verificare se tutti i campi sono riempiti
 	private boolean areAllFieldsFilledForAzienda() {
 		return !textField_1.getText().trim().isEmpty() && !textField_3.getText().trim().isEmpty()
-				&& !emailFieldReg.getText().trim().isEmpty() && !passwordFieldReg.getText().trim().isEmpty();
+				&& isValidEmail(emailFieldReg.getText().trim()) && !passwordFieldReg.getText().trim().isEmpty();
 	}
 
 	private boolean areAllFieldsFilledForPrivato() {
 		return !textField.getText().trim().isEmpty() && !textField_5.getText().trim().isEmpty()
-				&& !textField_6.getText().trim().isEmpty() && !emailFieldRegUser.getText().trim().isEmpty()
+				&& !textField_6.getText().trim().isEmpty() && isValidEmail(emailFieldRegUser.getText().trim())
 				&& !passwordFieldRegUser.getText().trim().isEmpty();
+	}
+	
+	// Metodo per validare l'email
+	private boolean isValidEmail(String email) {
+	    return email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
 	}
 }
