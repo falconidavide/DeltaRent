@@ -19,7 +19,7 @@ public class GestoreVeicoli {
 
 	public static List<Automobile> aggiornaListaAutomobili() {
 		try {
-			String query = "SELECT targa, marca, modello, disponibile, prezzoOrario, dataConsegna FROM Veicolo WHERE isFurgone=0";
+			String query = "SELECT targa, marca, modello, disponibile, prezzoOrario, pathImg FROM Veicolo WHERE isFurgone=0";
 			try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(query)) {
 				while (rs.next()) {
 					String targa = rs.getString("targa");
@@ -27,8 +27,8 @@ public class GestoreVeicoli {
 					String modello = rs.getString("modello");
 					boolean disponibile = rs.getBoolean("disponibile");
 					int prezzoOrario = rs.getInt("prezzoOrario");
-					Date dataConsegna = rs.getDate("dataconsegna");
-					Automobile auto = new Automobile(targa, marca, modello, disponibile, prezzoOrario, dataConsegna);
+					String pathImg = rs.getString("pathImg");
+					Automobile auto = new Automobile(targa, marca, modello, disponibile, prezzoOrario, pathImg);
 					automobili.add(auto);
 				}
 			}
@@ -36,18 +36,17 @@ public class GestoreVeicoli {
 			e.printStackTrace();
 		}
 		/*
-		for (Automobile veicolo : automobili) {
-			System.out.println("Targa: " + veicolo.getTarga() + ", Marca: " + veicolo.getMarca() + ", Modello: "
-					+ veicolo.getModello() + ", Disponibile: " + veicolo.getDisponibile() + ", Prezzo orario: "
-					+ veicolo.getPrezzoOrario());
-		}
-		*/
+		 * for (Automobile veicolo : automobili) { System.out.println("Targa: " +
+		 * veicolo.getTarga() + ", Marca: " + veicolo.getMarca() + ", Modello: " +
+		 * veicolo.getModello() + ", Disponibile: " + veicolo.getDisponibile() +
+		 * ", Prezzo orario: " + veicolo.getPrezzoOrario()); }
+		 */
 		return automobili;
 	}
 
 	public static List<Furgone> aggiornaListaFurgoni() {
 		try {
-			String query = "SELECT targa, marca, modello, disponibile, prezzoGiornaliero, dataConsegna FROM Veicolo WHERE isFurgone=1";
+			String query = "SELECT targa, marca, modello, disponibile, prezzoGiornaliero, pathImg FROM Veicolo WHERE isFurgone=1";
 			try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(query)) {
 				while (rs.next()) {
 					String targa = rs.getString("targa");
@@ -55,8 +54,8 @@ public class GestoreVeicoli {
 					String modello = rs.getString("modello");
 					boolean disponibile = rs.getBoolean("disponibile");
 					int prezzoGiornaliero = rs.getInt("prezzoGiornaliero");
-					Date dataConsegna = rs.getDate("dataconsegna");
-					Furgone furgone = new Furgone(targa, marca, modello, disponibile, prezzoGiornaliero, dataConsegna);
+					String pathImg = rs.getString("pathImg");
+					Furgone furgone = new Furgone(targa, marca, modello, disponibile, prezzoGiornaliero, pathImg);
 					furgoni.add(furgone);
 				}
 			}
@@ -64,12 +63,59 @@ public class GestoreVeicoli {
 			e.printStackTrace();
 		}
 		/*
-		for (Furgone veicolo : furgoni) {
-			System.out.println("Targa: " + veicolo.getTarga() + ", Marca: " + veicolo.getMarca() + ", Modello: "
-					+ veicolo.getModello() + ", Disponibile: " + veicolo.getDisponibile() + ", Prezzo giornaliero: "
-					+ veicolo.getPrezzoGiornaliero());
-		}
-		*/
+		 * for (Furgone veicolo : furgoni) { System.out.println("Targa: " +
+		 * veicolo.getTarga() + ", Marca: " + veicolo.getMarca() + ", Modello: " +
+		 * veicolo.getModello() + ", Disponibile: " + veicolo.getDisponibile() +
+		 * ", Prezzo giornaliero: " + veicolo.getPrezzoGiornaliero()); }
+		 */
 		return furgoni;
+	}
+
+	public static List<String> getMarcheVeicoli() {
+
+		List<String> marche = new ArrayList<>();
+
+		try {
+			String query = "SELECT DISTINCT marca FROM Veicolo";
+			try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(query)) {
+				while (rs.next()) {
+					String marca = rs.getString("marca");
+					marche.add(marca);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		/*
+		 * for (Furgone veicolo : furgoni) { System.out.println("Targa: " +
+		 * veicolo.getTarga() + ", Marca: " + veicolo.getMarca() + ", Modello: " +
+		 * veicolo.getModello() + ", Disponibile: " + veicolo.getDisponibile() +
+		 * ", Prezzo giornaliero: " + veicolo.getPrezzoGiornaliero()); }
+		 */
+		return marche;
+	}
+
+	public static List<String> getModelliByMarca(String marca) {
+		
+		List<String> modelli = new ArrayList<>();
+
+		try {
+			String query = "SELECT DISTINCT modello FROM Veicolo WHERE marca='"+marca+"'";
+			try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(query)) {
+				while (rs.next()) {
+					String modello = rs.getString("modello");
+					modelli.add(modello);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		/*
+		 * for (Furgone veicolo : furgoni) { System.out.println("Targa: " +
+		 * veicolo.getTarga() + ", Marca: " + veicolo.getMarca() + ", Modello: " +
+		 * veicolo.getModello() + ", Disponibile: " + veicolo.getDisponibile() +
+		 * ", Prezzo giornaliero: " + veicolo.getPrezzoGiornaliero()); }
+		 */
+		return modelli;
 	}
 }

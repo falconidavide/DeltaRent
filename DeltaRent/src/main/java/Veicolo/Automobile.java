@@ -6,12 +6,8 @@ public class Automobile extends Veicolo {
 
 	private int prezzoOrario;
 
-	public Automobile(String targa, String marca, String modello, Boolean disponibile, int prezzoO) {
-		super(targa, marca, modello, disponibile, null);
-		this.prezzoOrario = prezzoO;
-	}
-	public Automobile(String targa, String marca, String modello, Boolean disponibile, int prezzoO, Date dataConsegna) {
-		super(targa, marca, modello, disponibile, dataConsegna);
+	public Automobile(String targa, String marca, String modello, Boolean disponibile, int prezzoO,  String pathImg) {
+		super(targa, marca, modello, disponibile, pathImg);
 		this.prezzoOrario = prezzoO;
 	}
 

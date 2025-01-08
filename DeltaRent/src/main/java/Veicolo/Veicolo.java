@@ -8,14 +8,14 @@ public class Veicolo {
 	private String marca;
 	private String modello;
 	private Boolean disponibile;
-	private Date dataConsegna;
+	private String pathImg;
 
-	public Veicolo(String targa, String marca, String modello, Boolean disponibile, Date dataConsegna) {
+	public Veicolo(String targa, String marca, String modello, Boolean disponibile, String pathImg) {
 		this.targa = targa;
 		this.marca = marca;
 		this.modello = modello;
 		this.disponibile = disponibile;
-		this.dataConsegna = dataConsegna;
+		this.pathImg=pathImg;
 	}
 
 	public String getTarga() {
@@ -50,12 +50,12 @@ public class Veicolo {
 		this.disponibile = disponibile;
 	}
 
-	public Date getDataConsegna() {
-		return dataConsegna;
+	public String getPathImg() {
+		return pathImg;
 	}
 
-	public void setDataConsegna(Date dataConsegna) {
-		this.dataConsegna = dataConsegna;
+	public void setPathImg(String pathImg) {
+		this.pathImg = pathImg;
 	}
 
 }
