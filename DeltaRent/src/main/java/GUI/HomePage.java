@@ -35,7 +35,23 @@ public class HomePage extends JFrame {
         JButton btnDeltaRent = createButton("Delta Rent");
         JButton btnRentCar = createButton("Noleggia Auto");
         JButton btnViewBookings = createButton("Le Mie Prenotazioni");
-        JButton btnProfile = createButton("Profilo");
+        
+        
+        JButton btnProfile = new JButton();
+        ImageIcon userIcon = new ImageIcon(new ImageIcon("userIcon.png").getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH));
+        btnProfile.setIcon(userIcon);
+        btnProfile.setMaximumSize(new Dimension(200, 40));
+        btnProfile.setHorizontalTextPosition(SwingConstants.CENTER);
+        btnProfile.setVerticalTextPosition(SwingConstants.BOTTOM);
+        btnProfile.setHorizontalTextPosition(SwingConstants.RIGHT);
+        btnProfile.setVerticalTextPosition(SwingConstants.CENTER);
+        btnProfile.setAlignmentX(Component.CENTER_ALIGNMENT);
+        btnProfile.setBackground(new Color(245, 239, 231));
+        btnProfile.setForeground(new Color(62, 88, 121));
+        btnProfile.setFont(new Font("Arial", Font.BOLD, 16));
+        btnProfile.setFocusPainted(false);
+        btnProfile.setIconTextGap(10);
+
 
         // Aggiunta dei pulsanti
         leftColumn.add(avatarLabel);
@@ -60,7 +76,7 @@ public class HomePage extends JFrame {
 
         mainContentPanel.add(homePanel, "home");
         mainContentPanel.add(rentCarPanel, "rentCar");
-        mainContentPanel.add(CarList, "bookings");
+        //mainContentPanel.add(CarList, "bookings");
         mainContentPanel.add(profilePanel, "login");
         mainContentPanel.add(gestioneAccount, "account");
 
