@@ -355,10 +355,10 @@ public class LogIn extends JPanel {
 			}
 
 			public void updateAziendaButton() {
-				if (areAllFieldsFilledForPrivato()) {
-					btnRegistrati.setEnabled(true);
+				if (areAllFieldsFilledForAzienda()) {
+					btnRegistrati_1.setEnabled(true);
 				} else {
-					btnRegistrati.setEnabled(false);
+					btnRegistrati_1.setEnabled(false);
 				}
 			}
 		};
@@ -367,20 +367,20 @@ public class LogIn extends JPanel {
 		
 		DocumentListener privatoListener = new DocumentListener() {
             public void insertUpdate(DocumentEvent e) {
-                updateAziendaButton();
+                updatePrivatoButton();
             }
             public void removeUpdate(DocumentEvent e) {
-                updateAziendaButton();
+            	updatePrivatoButton();
             }
 			public void changedUpdate(DocumentEvent e) {
-				updateAziendaButton();
+				updatePrivatoButton();
 			}
 
-			public void updateAziendaButton() {
+			public void updatePrivatoButton() {
 				if (areAllFieldsFilledForPrivato()) {
-					btnRegistrati_1.setEnabled(true);
+					btnRegistrati.setEnabled(true);
 				} else {
-					btnRegistrati_1.setEnabled(false);
+					btnRegistrati.setEnabled(false);
 				}
 			}
 		};

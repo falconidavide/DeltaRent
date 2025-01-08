@@ -10,6 +10,7 @@ public class HomePage extends JFrame {
     protected static JPanel mainContentPanel;
     static boolean logged = false; // Stato del login
     public static Utente loggedUser; // Oggetto utente loggato
+    private JPanel gestioneAccount; // Pannello gestioneAccount
 
     public HomePage() {
         // Impostazioni della finestra principale
@@ -69,16 +70,11 @@ public class HomePage extends JFrame {
 
         JPanel homePanel = createHomePanel();
         JPanel rentCarPanel = new SearchPage(); // Replace with actual panel
-        // JPanel CarList = new SearchCarList(title, title, title, title, title, title,
-        // title, title); // Replace with actual panel
         JPanel profilePanel = new LogIn(); // Replace with actual panel
-        JPanel gestioneAccount = new GestioneAccount();
 
         mainContentPanel.add(homePanel, "home");
         mainContentPanel.add(rentCarPanel, "rentCar");
-        // mainContentPanel.add(CarList, "bookings");
         mainContentPanel.add(profilePanel, "login");
-        mainContentPanel.add(gestioneAccount, "account");
 
         // Aggiunta dei pannelli al layout principale
         mainPanel.add(leftColumn, BorderLayout.WEST);
@@ -89,15 +85,29 @@ public class HomePage extends JFrame {
         btnRentCar.addActionListener(e -> cardLayout.show(mainContentPanel, "rentCar"));
         btnViewBookings.addActionListener(e -> cardLayout.show(mainContentPanel, "bookings"));
         btnProfile.addActionListener(e -> {
+            System.out.println("btnProfile clicked"); // Debug
             if (logged) {
+                System.out.println("User is logged in"); // Debug
+                System.out.println(loggedUser);
+                System.out.println(gestioneAccount);
                 // Se l'utente è loggato, mostra il pannello di gestione account
-                cardLayout.show(mainContentPanel, "account");
+                ensureGestioneAccountPanel();
+                
             } else {
+                System.out.println("User is not logged in"); // Debug
                 // Altrimenti, mostra il pannello di login
                 cardLayout.show(mainContentPanel, "login");
             }
         });
+    }
 
+    private void ensureGestioneAccountPanel() {
+        if (loggedUser != null && gestioneAccount == null) {
+            System.out.println("Creating GestioneAccount panel"); // Debug
+            gestioneAccount = new GestioneAccount();
+            mainContentPanel.add(gestioneAccount, "account");
+            cardLayout.show(mainContentPanel, "account");
+        }
     }
 
     private JButton createButton(String text) {
