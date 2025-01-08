@@ -110,10 +110,11 @@ public class GestioneAccount extends JPanel {
         gbc.gridy = 0;
         emailPanel.add(lblEmail, gbc);
 
-        txtCurrentEmail = new JTextField();
+        txtCurrentEmail = new JTextField(HomePage.loggedUser.getEmail());
         txtCurrentEmail.setFont(new Font("Helvetica Neue", Font.PLAIN, 16));
         txtCurrentEmail.setBackground(new Color(245, 239, 231));
         txtCurrentEmail.setBorder(new RoundedBorder(10));
+        txtCurrentEmail.setEditable(false);
         gbc.gridx = 1;
         gbc.gridy = 0;
         emailPanel.add(txtCurrentEmail, gbc);
@@ -218,6 +219,7 @@ public class GestioneAccount extends JPanel {
                 if (rowsUpdated > 0) {
                     JOptionPane.showMessageDialog(this, "Email aggiornata con successo!", "Successo",
                             JOptionPane.INFORMATION_MESSAGE);
+                    HomePage.loggedUser.setEmail(newEmail); // Aggiorna l'email dell'utente loggato
                 } else {
                     JOptionPane.showMessageDialog(this, "Errore durante l'aggiornamento dell'email.", "Errore",
                             JOptionPane.ERROR_MESSAGE);

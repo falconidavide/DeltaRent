@@ -49,6 +49,7 @@ public class HomePage extends JFrame {
         btnLogout.addActionListener(e -> {
             logged = false;
             loggedUser = null;
+            removeGestioneAccountPanel(); // Rimuove il pannello gestioneAccount
             updateLogoutButton();
             cardLayout.show(mainContentPanel, "login");
         });
@@ -88,7 +89,6 @@ public class HomePage extends JFrame {
         btnRentCar.addActionListener(e -> cardLayout.show(mainContentPanel, "rentCar"));
         btnViewBookings.addActionListener(e -> cardLayout.show(mainContentPanel, "bookings"));
         btnProfile.addActionListener(e -> {
-            System.out.println("btnProfile clicked"); // Debug
             if (logged) {
                 // Se l'utente è loggato, mostra il pannello di gestione account
                 ensureGestioneAccountPanel();
@@ -101,9 +101,15 @@ public class HomePage extends JFrame {
 
     }
 
+    private void removeGestioneAccountPanel() {
+        if (gestioneAccount != null) {
+            mainContentPanel.remove(gestioneAccount);
+            gestioneAccount = null;
+        }
+    }
+
     private void ensureGestioneAccountPanel() {
         if (loggedUser != null && gestioneAccount == null) {
-            System.out.println("Creating GestioneAccount panel"); // Debug
             gestioneAccount = new GestioneAccount();
             mainContentPanel.add(gestioneAccount, "account");
         }
@@ -112,7 +118,6 @@ public class HomePage extends JFrame {
     private void updateLogoutButton() {
         btnLogout.setVisible(logged);
     }
-
 
     private JButton createUniformButton(String text) {
         JButton button = new JButton(text);
@@ -159,6 +164,4 @@ public class HomePage extends JFrame {
         homePanel.add(btnExploreFleet, BorderLayout.SOUTH);
         return homePanel;
     }
-
-   
 }
