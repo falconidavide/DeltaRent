@@ -370,10 +370,8 @@ public class LogIn extends JPanel {
 			public void updateAziendaButton() {
 				if (areAllFieldsFilledForAzienda()) {
 					btnRegistrati_1.setEnabled(true);
-					btnRegistrati.setEnabled(true);
 				} else {
 					btnRegistrati_1.setEnabled(false);
-					btnRegistrati.setEnabled(false);
 				}
 			}
 		};
@@ -390,10 +388,8 @@ public class LogIn extends JPanel {
 
 			public void updatePrivatoButton() {
 				if (areAllFieldsFilledForPrivato()) {
-					btnRegistrati_1.setEnabled(true);
 					btnRegistrati.setEnabled(true);
 				} else {
-					btnRegistrati_1.setEnabled(false);
 					btnRegistrati.setEnabled(false);
 				}
 			}
