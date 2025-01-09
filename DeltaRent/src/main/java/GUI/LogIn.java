@@ -305,6 +305,10 @@ public class LogIn extends JPanel {
 					// Registrazione riuscita, mostra un messaggio di conferma
 					JOptionPane.showMessageDialog(LogIn.this, "Registrazione completata.", "Registrazione",
 							JOptionPane.INFORMATION_MESSAGE);
+					emailFieldReg.setText("");
+					passwordFieldReg.setText("");
+					nomeAziendaFieldReg.setText("");
+					partitaIvaFieldReg.setText("");
 				} else {
 					// Registrazione fallita, mostra un messaggio di errore
 					JOptionPane.showMessageDialog(LogIn.this, "Errore durante la registrazione.",
@@ -328,6 +332,11 @@ public class LogIn extends JPanel {
 					// Registrazione riuscita, mostra un messaggio di conferma
 					JOptionPane.showMessageDialog(LogIn.this, "Registrazione completata.", "Registrazione",
 							JOptionPane.INFORMATION_MESSAGE);
+					 emailFieldRegUser.setText("");
+					 passwordFieldRegUser.setText("");
+					 nomeFieldReg.setText("");
+					 cognomeFieldReg.setText("");
+					 dataNascitaFieldReg.setText("");
 				} else {
 					// Registrazione fallita, mostra un messaggio di errore
 					JOptionPane.showMessageDialog(LogIn.this, "Errore durante la registrazione.",
