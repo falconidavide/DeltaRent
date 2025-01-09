@@ -220,7 +220,7 @@ public class SearchPage extends JPanel {
     private static ImageIcon resizeImageIcon(String path, int width, int height) {
         if (path == null || path.isEmpty()) {
             // Se il percorso è null o vuoto, usa un'immagine predefinita
-            path = "path/to/default/image.jpg";
+            path = "default_car.jpg";
         }
 
         try {
