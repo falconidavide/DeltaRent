@@ -203,7 +203,7 @@ public class HomePage extends JFrame {
         featurePanel.setBackground(new Color(220, 240, 255)); // Leggermente più blu
         featurePanel.setLayout(new BoxLayout(featurePanel, BoxLayout.Y_AXIS));
         featurePanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-  
+      
         // Ridimensiona l'immagine
         ImageIcon icon = new ImageIcon(imagePath);
         Image img = icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
@@ -215,17 +215,12 @@ public class HomePage extends JFrame {
         lblTitle.setForeground(new Color(32, 52, 85));
         lblTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        JTextArea txtDescription = new JTextArea(description);
+        // Utilizza HTML per gestire l'andata a capo e il centrato del testo
+        JLabel txtDescription = new JLabel(description);
         txtDescription.setFont(new Font("Arial", Font.PLAIN, 16));
-        txtDescription.setWrapStyleWord(true);
-        txtDescription.setLineWrap(true);
-        txtDescription.setEditable(false);
-        txtDescription.setHighlighter(null);
-        txtDescription.setFocusable(false);
-        txtDescription.setOpaque(false);
         txtDescription.setForeground(new Color(32, 52, 85));
-        txtDescription.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         txtDescription.setAlignmentX(Component.CENTER_ALIGNMENT);
+       //txtDescription.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         featurePanel.add(lblImage);
         featurePanel.add(Box.createRigidArea(new Dimension(0, 10)));
