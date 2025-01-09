@@ -282,6 +282,7 @@ public class LogIn extends JPanel {
 					HomePage.btnLogout.setVisible(true);
 					JOptionPane.showMessageDialog(LogIn.this, "Credenziali Corrette.", "LogIn",
 							JOptionPane.INFORMATION_MESSAGE);
+					SearchPage.mostraVeicoli();
 					HomePage.cardLayout.show(HomePage.mainContentPanel, "home");
 				} else {
 					// Login fallito, mostra un messaggio di errore

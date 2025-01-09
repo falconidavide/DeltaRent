@@ -133,6 +133,7 @@ public class HomePage extends JFrame {
     private void updateLogoutButton() {
         btnLogout.setVisible(logged);
         Utente.setLoggato(false);
+		SearchPage.mostraVeicoli();
     }
 
     private JButton createUniformButton(String text) {

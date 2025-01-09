@@ -19,6 +19,7 @@ public class Main {
 		}
 		*/
         
+        /*
         Timer t = new Timer();
         t.schedule(new TimerTask() {
             public void run() {
@@ -26,6 +27,6 @@ public class Main {
                 System.out.println("Utente privato: " + Utente.getIsPrivato());
             }
         }, 0, 5000);
-		
+		*/
     }
 }

@@ -17,10 +17,10 @@ import javax.imageio.ImageIO;
 public class SearchPage extends JPanel {
     static JComboBox<String> modelComboBox;
     static JComboBox<String> brandComboBox;
-    JCheckBox availableOnlyCheckBox;
-    private JPanel vehicleDisplayPanel;
-    List<Automobile> automobili = null;
-    List<Furgone> furgoni = null;
+    static JCheckBox availableOnlyCheckBox;
+    private static JPanel vehicleDisplayPanel;
+    static List<Automobile> automobili = null;
+    static List<Furgone> furgoni = null;
 
     public SearchPage() {
         // Inizializza i componenti
@@ -64,12 +64,14 @@ public class SearchPage extends JPanel {
         filterPanel.add(lblModello);
         filterPanel.add(modelComboBox);
 
-        availableOnlyCheckBox.setForeground(Color.WHITE);
+        availableOnlyCheckBox.setForeground(new Color(0, 0, 0));
         availableOnlyCheckBox.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
         filterPanel.add(availableOnlyCheckBox);
 
+        /*
         JButton btnNewButton = new JButton("Mostra Veicoli");
         filterPanel.add(btnNewButton);
+        */
 
         searchPanel.add(filterPanel, BorderLayout.CENTER);
 
@@ -88,15 +90,25 @@ public class SearchPage extends JPanel {
         add(vehicleDisplayPanel, BorderLayout.CENTER);
 
         // Aggiunta dell'azione al pulsante
-        btnNewButton.addActionListener(e -> mostraVeicoli());
+        //btnNewButton.addActionListener(e -> mostraVeicoli());
 
         // Popola la combo box delle marche
         aggiornaComboBoxMarche();
+        aggiornaComboBoxModelli(null);
+        mostraVeicoli();
 
         // Aggiunge un listener alla combo box delle marche per aggiornare la combo box dei modelli
         brandComboBox.addActionListener(e -> {
             String selectedBrand = (String) brandComboBox.getSelectedItem();
             aggiornaComboBoxModelli(selectedBrand);
+            mostraVeicoli();
+        });
+
+        modelComboBox.addActionListener(e -> {
+            mostraVeicoli();
+        });
+        availableOnlyCheckBox.addActionListener(e -> {
+            mostraVeicoli();
         });
     }
 
@@ -122,7 +134,7 @@ public class SearchPage extends JPanel {
         }
     }
 
-    private void mostraVeicoli() {
+    public static void mostraVeicoli() {
         // Rimuovi tutti i veicoli attualmente visualizzati
         vehicleDisplayPanel.removeAll();
 
@@ -153,7 +165,7 @@ public class SearchPage extends JPanel {
         vehicleDisplayPanel.repaint();
     }
 
-    private JPanel creaPannelloVeicolo(String marca, String modello, String targa, boolean disponibile, int prezzo,
+    private static JPanel creaPannelloVeicolo(String marca, String modello, String targa, boolean disponibile, int prezzoOrario, int prezzoGiornaliero,
             String pathImg) {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
@@ -181,9 +193,16 @@ public class SearchPage extends JPanel {
         lblDisponibile.setForeground(disponibile ? Color.GREEN : Color.RED);
         lblDisponibile.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        JLabel lblPrezzo = new JLabel("Prezzo: €" + prezzo);
-        lblPrezzo.setForeground(Color.WHITE);
-        lblPrezzo.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JLabel lblPrezzo = new JLabel();
+        if(prezzoOrario != -1) {
+        	lblPrezzo.setText("Prezzo all'ora: €" + prezzoOrario);
+            lblPrezzo.setForeground(Color.WHITE);
+            lblPrezzo.setAlignmentX(Component.CENTER_ALIGNMENT);
+        } else {
+        	lblPrezzo.setText("Prezzo al giorno: €" + prezzoGiornaliero);
+            lblPrezzo.setForeground(Color.WHITE);
+            lblPrezzo.setAlignmentX(Component.CENTER_ALIGNMENT);
+        }
 
         panel.add(lblImg);
         panel.add(lblMarca);
@@ -195,7 +214,7 @@ public class SearchPage extends JPanel {
         return panel;
     }
 
-    private ImageIcon resizeImageIcon(String path, int width, int height) {
+    private static ImageIcon resizeImageIcon(String path, int width, int height) {
         if (path == null || path.isEmpty()) {
             // Se il percorso è null o vuoto, usa un'immagine predefinita
             path = "path/to/default/image.jpg";
@@ -211,7 +230,7 @@ public class SearchPage extends JPanel {
         }
     }
     
-    private void mostraAuto(String marcaSelezionata, String modelloSelezionato, boolean availableOnly) {
+    private static void mostraAuto(String marcaSelezionata, String modelloSelezionato, boolean availableOnly) {
         for (Automobile auto : automobili) {
             if ((marcaSelezionata == null || marcaSelezionata.equals("Tutte le Marche")
                     || auto.getMarca().equals(marcaSelezionata))
@@ -219,11 +238,11 @@ public class SearchPage extends JPanel {
                             || auto.getModello().equals(modelloSelezionato))
                     && (!availableOnly || auto.getDisponibile())) {
                 vehicleDisplayPanel.add(creaPannelloVeicolo(auto.getMarca(), auto.getModello(), auto.getTarga(),
-                        auto.getDisponibile(), auto.getPrezzoOrario(), auto.getPathImg()));
+                        auto.getDisponibile(), auto.getPrezzoOrario(), -1, auto.getPathImg()));
             }
         }
     }
-    private void mostraFurgoni(String marcaSelezionata, String modelloSelezionato, boolean availableOnly) {
+    private static void mostraFurgoni(String marcaSelezionata, String modelloSelezionato, boolean availableOnly) {
         for (Furgone furgone : furgoni) {
             if ((marcaSelezionata == null || marcaSelezionata.equals("Tutte le Marche")
                     || furgone.getMarca().equals(marcaSelezionata))
@@ -232,7 +251,7 @@ public class SearchPage extends JPanel {
                     && (!availableOnly || furgone.getDisponibile())) {
                 vehicleDisplayPanel
                         .add(creaPannelloVeicolo(furgone.getMarca(), furgone.getModello(), furgone.getTarga(),
-                                furgone.getDisponibile(), furgone.getPrezzoGiornaliero(), furgone.getPathImg()));
+                                furgone.getDisponibile(), -1, furgone.getPrezzoGiornaliero(), furgone.getPathImg()));
             }
         }
     }
