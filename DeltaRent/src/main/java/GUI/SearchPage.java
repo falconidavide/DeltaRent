@@ -171,7 +171,7 @@ public class SearchPage extends JPanel {
         return panel;
     }
 
-    private static JPanel creaPannelloVeicolo(String marca, String modello, String targa, boolean disponibile, int prezzoOrario, int prezzoGiornaliero,
+    private static JPanel creaPannelloVeicolo(String marca, String modello, boolean disponibile, int prezzoOrario, int prezzoGiornaliero,
             String pathImg) {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
@@ -182,44 +182,41 @@ public class SearchPage extends JPanel {
         lblImg.setIcon(resizeImageIcon(pathImg, 200, 150)); // Ridimensiona l'immagine mantenendo le proporzioni
         lblImg.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        JLabel lblMarca = new JLabel("Marca: " + marca);
-        lblMarca.setForeground(Color.WHITE);
-        lblMarca.setAlignmentX(Component.CENTER_ALIGNMENT);
+        Font font = new Font("Arial", Font.BOLD, 18); // Font più grande e grassetto
+        int bottomMargin = 10; // Margine inferiore
 
-        JLabel lblModello = new JLabel("Modello: " + modello);
-        lblModello.setForeground(Color.WHITE);
-        lblModello.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        JLabel lblTarga = new JLabel("Targa: " + targa);
-        lblTarga.setForeground(Color.WHITE);
-        lblTarga.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JLabel lblMarcaModello = new JLabel(marca + " " + modello);
+        lblMarcaModello.setForeground(Color.WHITE);
+        lblMarcaModello.setAlignmentX(Component.CENTER_ALIGNMENT);
+        lblMarcaModello.setFont(font);
+        lblMarcaModello.setBorder(BorderFactory.createEmptyBorder(0, 0, bottomMargin, 0)); // Margine inferiore
 
         JLabel lblDisponibile = new JLabel();
-        lblDisponibile.setText("Disponibile: " + (disponibile ? "Sì" : "No"));
+        lblDisponibile.setText(disponibile ? "Disponibile" : "Non Disponibile");
         lblDisponibile.setForeground(disponibile ? Color.GREEN : Color.RED);
         lblDisponibile.setAlignmentX(Component.CENTER_ALIGNMENT);
+        lblDisponibile.setFont(font);
+        lblDisponibile.setBorder(BorderFactory.createEmptyBorder(0, 0, bottomMargin, 0)); // Margine inferiore
 
         JLabel lblPrezzo = new JLabel();
-        if(prezzoOrario != -1) {
-        	lblPrezzo.setText("Prezzo \u20ac/h: €" + prezzoOrario);
-            lblPrezzo.setForeground(Color.WHITE);
-            lblPrezzo.setAlignmentX(Component.CENTER_ALIGNMENT);
+        if (prezzoOrario != -1) {
+            lblPrezzo.setText("Prezzo \u20ac/h: €" + prezzoOrario);
         } else {
-        	lblPrezzo.setText("Prezzo \u20ac/day: €" + prezzoGiornaliero);
-            lblPrezzo.setForeground(Color.WHITE);
-            lblPrezzo.setAlignmentX(Component.CENTER_ALIGNMENT);
+            lblPrezzo.setText("Prezzo \u20ac/day: €" + prezzoGiornaliero);
         }
+        lblPrezzo.setForeground(Color.WHITE);
+        lblPrezzo.setAlignmentX(Component.CENTER_ALIGNMENT);
+        lblPrezzo.setFont(font);
+        lblPrezzo.setBorder(BorderFactory.createEmptyBorder(0, 0, bottomMargin, 0)); // Margine inferiore
 
         panel.add(lblImg);
-        panel.add(lblMarca);
-        panel.add(lblModello);
-        panel.add(lblTarga);
+        panel.add(lblMarcaModello);
         panel.add(lblDisponibile);
         panel.add(lblPrezzo);
 
         return panel;
     }
-
+    
     private static ImageIcon resizeImageIcon(String path, int width, int height) {
         if (path == null || path.isEmpty()) {
             // Se il percorso è null o vuoto, usa un'immagine predefinita
@@ -243,7 +240,7 @@ public class SearchPage extends JPanel {
                     && (modelloSelezionato == null || modelloSelezionato.equals("Tutti i Modelli")
                             || auto.getModello().equals(modelloSelezionato))
                     && (!availableOnly || auto.getDisponibile())) {
-                vehicleDisplayPanel.add(creaPannelloVeicolo(auto.getMarca(), auto.getModello(), auto.getTarga(),
+                vehicleDisplayPanel.add(creaPannelloVeicolo(auto.getMarca(), auto.getModello(),
                         auto.getDisponibile(), auto.getPrezzoOrario(), -1, auto.getPathImg()));
             }
         }
@@ -258,7 +255,7 @@ public class SearchPage extends JPanel {
                             || furgone.getModello().equals(modelloSelezionato))
                     && (!availableOnly || furgone.getDisponibile())) {
                 vehicleDisplayPanel
-                        .add(creaPannelloVeicolo(furgone.getMarca(), furgone.getModello(), furgone.getTarga(),
+                        .add(creaPannelloVeicolo(furgone.getMarca(), furgone.getModello(),
                                 furgone.getDisponibile(), -1, furgone.getPrezzoGiornaliero(), furgone.getPathImg()));
             }
         }
