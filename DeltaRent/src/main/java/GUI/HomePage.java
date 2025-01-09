@@ -3,6 +3,8 @@ package GUI;
 import javax.swing.*;
 import java.awt.*;
 import Utente.Utente;
+import DB.GestionePrenotazioni;
+import java.util.List;
 
 public class HomePage extends JFrame {
 
@@ -73,12 +75,16 @@ public class HomePage extends JFrame {
         mainContentPanel = new JPanel(cardLayout);
 
         JPanel homePanel = createHomePanel();
-        JPanel rentCarPanel = new SearchPage(); // Replace with actual panel
-        JPanel profilePanel = new LogIn(); // Replace with actual panel
+        JPanel rentCarPanel = new SearchPage(); // Pannello di noleggio auto
+        JPanel profilePanel = new LogIn(); // Pannello di login
 
         mainContentPanel.add(homePanel, "home");
         mainContentPanel.add(rentCarPanel, "rentCar");
         mainContentPanel.add(profilePanel, "login");
+
+        // Aggiunta del pannello delle prenotazioni
+        JPanel bookingsPanel = new JPanel();
+        mainContentPanel.add(bookingsPanel, "bookings");
 
         // Aggiunta dei pannelli al layout principale
         mainPanel.add(leftColumn, BorderLayout.WEST);
@@ -87,7 +93,16 @@ public class HomePage extends JFrame {
         // Eventi pulsanti
         btnDeltaRent.addActionListener(e -> cardLayout.show(mainContentPanel, "home"));
         btnRentCar.addActionListener(e -> cardLayout.show(mainContentPanel, "rentCar"));
-        btnViewBookings.addActionListener(e -> cardLayout.show(mainContentPanel, "bookings"));
+        btnViewBookings.addActionListener(e -> {
+            if (logged) {
+                // Se l'utente è loggato, mostra il pannello delle prenotazioni
+                mostraPrenotazioni(bookingsPanel);
+                cardLayout.show(mainContentPanel, "bookings");
+            } else {
+                // Altrimenti, mostra il pannello di login
+                cardLayout.show(mainContentPanel, "login");
+            }
+        });
         btnProfile.addActionListener(e -> {
             if (logged) {
                 // Se l'utente è loggato, mostra il pannello di gestione account
@@ -163,5 +178,27 @@ public class HomePage extends JFrame {
         homePanel.add(descriptionArea, BorderLayout.CENTER);
         homePanel.add(btnExploreFleet, BorderLayout.SOUTH);
         return homePanel;
+    }
+
+    private void mostraPrenotazioni(JPanel bookingsPanel) {
+        bookingsPanel.removeAll(); // Pulisce il pannello delle prenotazioni
+
+        // Ottiene le prenotazioni passate dell'utente loggato
+        GestionePrenotazioni gestionePrenotazioni = new GestionePrenotazioni();
+
+        // Impostazioni del layout
+        Prenotazioni prenotazioniPanel = new Prenotazioni(gestionePrenotazioni, loggedUser.getEmail());
+        bookingsPanel.setLayout(new BorderLayout());
+        bookingsPanel.add(prenotazioniPanel, BorderLayout.CENTER);
+
+        bookingsPanel.revalidate();
+        bookingsPanel.repaint();
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            HomePage frame = new HomePage();
+            frame.setVisible(true);
+        });
     }
 }
