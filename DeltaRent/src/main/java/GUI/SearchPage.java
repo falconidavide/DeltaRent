@@ -198,11 +198,11 @@ public class SearchPage extends JPanel {
 
         JLabel lblPrezzo = new JLabel();
         if(prezzoOrario != -1) {
-        	lblPrezzo.setText("Prezzo all'ora: €" + prezzoOrario);
+        	lblPrezzo.setText("Prezzo \u20ac/h: €" + prezzoOrario);
             lblPrezzo.setForeground(Color.WHITE);
             lblPrezzo.setAlignmentX(Component.CENTER_ALIGNMENT);
         } else {
-        	lblPrezzo.setText("Prezzo al giorno: €" + prezzoGiornaliero);
+        	lblPrezzo.setText("Prezzo \u20ac/day: €" + prezzoGiornaliero);
             lblPrezzo.setForeground(Color.WHITE);
             lblPrezzo.setAlignmentX(Component.CENTER_ALIGNMENT);
         }
