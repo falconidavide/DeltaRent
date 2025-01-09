@@ -77,9 +77,12 @@ public class SearchPage extends JPanel {
 
         rightColumn.add(searchPanel);
 
+        JScrollPane container = new JScrollPane();
+        container.getVerticalScrollBar().setUnitIncrement(16);
         JPanel panel_1 = new JPanel();
+        container.setViewportView(panel_1);
         panel_1.setBackground(new Color(60, 87, 121));
-        panel_1.setPreferredSize(new Dimension(956, 500));
+        //panel_1.setPreferredSize(new Dimension(956, 500));
         panel_1.setLayout(new GridLayout(0, 3, 10, 10));
 
         // Pannello di visualizzazione dei veicoli
@@ -87,7 +90,7 @@ public class SearchPage extends JPanel {
 
         // Aggiunta dei pannelli al layout principale
         add(rightColumn, BorderLayout.NORTH);
-        add(vehicleDisplayPanel, BorderLayout.CENTER);
+        add(container, BorderLayout.CENTER);
 
         // Aggiunta dell'azione al pulsante
         //btnNewButton.addActionListener(e -> mostraVeicoli());

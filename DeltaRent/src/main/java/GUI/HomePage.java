@@ -20,6 +20,7 @@ public class HomePage extends JFrame {
         setTitle("DeltaRent - Home");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(1200, 950);
+        setMinimumSize(new Dimension(900, 700));
         setLocationRelativeTo(null);
 
         // Layout principale
@@ -166,19 +167,23 @@ public class HomePage extends JFrame {
         descriptionArea.setWrapStyleWord(true);
         descriptionArea.setLineWrap(true);
         descriptionArea.setEditable(false);
+        descriptionArea.setHighlighter(null);
+        descriptionArea.setFocusable(false);
         descriptionArea.setOpaque(false);
         descriptionArea.setForeground(new Color(32, 52, 85));
         descriptionArea.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
+        /*
         JButton btnExploreFleet = new JButton("Esplora la Flotta");
         btnExploreFleet.setFont(new Font("Arial", Font.BOLD, 20));
         btnExploreFleet.setBackground(new Color(62, 88, 121));
         btnExploreFleet.setForeground(new Color(245, 239, 231));
         btnExploreFleet.setFocusPainted(false);
+        */
 
         homePanel.add(lblWelcome, BorderLayout.NORTH);
         homePanel.add(descriptionArea, BorderLayout.CENTER);
-        homePanel.add(btnExploreFleet, BorderLayout.SOUTH);
+        //homePanel.add(btnExploreFleet, BorderLayout.SOUTH);
         return homePanel;
     }
 

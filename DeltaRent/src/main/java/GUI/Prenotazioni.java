@@ -51,7 +51,6 @@ public class Prenotazioni extends JPanel {
 
         // ScrollPane per rendere scrollabile il pannello delle prenotazioni
         JScrollPane scrollPane = new JScrollPane(prenotazioniPanel);
-        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane.getViewport().setBackground(new Color(32, 52, 85)); // Imposta lo sfondo dello scrollPane
         add(scrollPane, BorderLayout.CENTER);
     }
