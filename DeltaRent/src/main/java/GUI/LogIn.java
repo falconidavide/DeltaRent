@@ -280,8 +280,6 @@ public class LogIn extends JPanel {
 					// Login riuscito, apri la pagina principale
 					HomePage.logged = true;
 					HomePage.btnLogout.setVisible(true);
-					JOptionPane.showMessageDialog(LogIn.this, "Credenziali Corrette.", "LogIn",
-							JOptionPane.INFORMATION_MESSAGE);
 					SearchPage.mostraVeicoli();
 					HomePage.cardLayout.show(HomePage.mainContentPanel, "home");
 				} else {
