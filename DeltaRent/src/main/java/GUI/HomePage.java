@@ -132,6 +132,7 @@ public class HomePage extends JFrame {
 
     private void updateLogoutButton() {
         btnLogout.setVisible(logged);
+        Utente.setLoggato(false);
     }
 
     private JButton createUniformButton(String text) {

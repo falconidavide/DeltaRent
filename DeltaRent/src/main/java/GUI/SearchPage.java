@@ -1,6 +1,7 @@
 package GUI;
 
 import DB.GestoreVeicoli;
+import Utente.Utente;
 import Veicolo.Automobile;
 import Veicolo.Furgone;
 
@@ -134,30 +135,18 @@ public class SearchPage extends JPanel {
         String marcaSelezionata = (String) brandComboBox.getSelectedItem();
         String modelloSelezionato = (String) modelComboBox.getSelectedItem();
         boolean availableOnly = availableOnlyCheckBox.isSelected();
-
-        // Filtra e aggiungi i veicoli al pannello
-        for (Automobile auto : automobili) {
-            if ((marcaSelezionata == null || marcaSelezionata.equals("Tutte le Marche")
-                    || auto.getMarca().equals(marcaSelezionata))
-                    && (modelloSelezionato == null || modelloSelezionato.equals("Tutti i Modelli")
-                            || auto.getModello().equals(modelloSelezionato))
-                    && (!availableOnly || auto.getDisponibile())) {
-                vehicleDisplayPanel.add(creaPannelloVeicolo(auto.getMarca(), auto.getModello(), auto.getTarga(),
-                        auto.getDisponibile(), auto.getPrezzoOrario(), auto.getPathImg()));
-            }
+        
+        if(Utente.isLoggato()) {
+        	if(Utente.getIsPrivato()) {
+        		mostraAuto(marcaSelezionata, modelloSelezionato, availableOnly);
+        	} else {
+        		mostraFurgoni(marcaSelezionata, modelloSelezionato, availableOnly);
+        	}
+        } else {
+    		mostraAuto(marcaSelezionata, modelloSelezionato, availableOnly);
+    		mostraFurgoni(marcaSelezionata, modelloSelezionato, availableOnly);
         }
 
-        for (Furgone furgone : furgoni) {
-            if ((marcaSelezionata == null || marcaSelezionata.equals("Tutte le Marche")
-                    || furgone.getMarca().equals(marcaSelezionata))
-                    && (modelloSelezionato == null || modelloSelezionato.equals("Tutti i Modelli")
-                            || furgone.getModello().equals(modelloSelezionato))
-                    && (!availableOnly || furgone.getDisponibile())) {
-                vehicleDisplayPanel
-                        .add(creaPannelloVeicolo(furgone.getMarca(), furgone.getModello(), furgone.getTarga(),
-                                furgone.getDisponibile(), furgone.getPrezzoGiornaliero(), furgone.getPathImg()));
-            }
-        }
 
         // Revalidate e repaint per aggiornare la visualizzazione
         vehicleDisplayPanel.revalidate();
@@ -219,6 +208,32 @@ public class SearchPage extends JPanel {
         } catch (IOException e) {
             e.printStackTrace();
             return null;
+        }
+    }
+    
+    private void mostraAuto(String marcaSelezionata, String modelloSelezionato, boolean availableOnly) {
+        for (Automobile auto : automobili) {
+            if ((marcaSelezionata == null || marcaSelezionata.equals("Tutte le Marche")
+                    || auto.getMarca().equals(marcaSelezionata))
+                    && (modelloSelezionato == null || modelloSelezionato.equals("Tutti i Modelli")
+                            || auto.getModello().equals(modelloSelezionato))
+                    && (!availableOnly || auto.getDisponibile())) {
+                vehicleDisplayPanel.add(creaPannelloVeicolo(auto.getMarca(), auto.getModello(), auto.getTarga(),
+                        auto.getDisponibile(), auto.getPrezzoOrario(), auto.getPathImg()));
+            }
+        }
+    }
+    private void mostraFurgoni(String marcaSelezionata, String modelloSelezionato, boolean availableOnly) {
+        for (Furgone furgone : furgoni) {
+            if ((marcaSelezionata == null || marcaSelezionata.equals("Tutte le Marche")
+                    || furgone.getMarca().equals(marcaSelezionata))
+                    && (modelloSelezionato == null || modelloSelezionato.equals("Tutti i Modelli")
+                            || furgone.getModello().equals(modelloSelezionato))
+                    && (!availableOnly || furgone.getDisponibile())) {
+                vehicleDisplayPanel
+                        .add(creaPannelloVeicolo(furgone.getMarca(), furgone.getModello(), furgone.getTarga(),
+                                furgone.getDisponibile(), furgone.getPrezzoGiornaliero(), furgone.getPathImg()));
+            }
         }
     }
 }
