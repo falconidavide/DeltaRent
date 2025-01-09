@@ -173,7 +173,6 @@ public class HomePage extends JFrame {
         JPanel featuresPanel = new JPanel();
         featuresPanel.setBackground(new Color(220, 240, 255)); // Leggermente più blu
         featuresPanel.setLayout(new GridLayout(1, 3, 20, 20)); // Modificato per rendere le sezioni di dimensioni uguali
-
         addFeature(featuresPanel, "Noleggio Auto e Furgoni", "rent_car_icon.png",
                 "Noleggia veicoli in modo rapido e semplice.");
         addFeature(featuresPanel, "Le Mie Prenotazioni", "bookings_icon.png",
@@ -186,14 +185,15 @@ public class HomePage extends JFrame {
 
         // Sezione con pulsante per esplorare la flotta
         JButton btnExploreFleet = createUniformButton("Esplora la nostra flotta");
-        btnExploreFleet.setPreferredSize(new Dimension(300, 60)); // Ingrandito
-        btnExploreFleet.setMaximumSize(new Dimension(300, 60)); // Ingrandito
-        btnExploreFleet.setMinimumSize(new Dimension(300, 60)); // Ingrandito
+        btnExploreFleet.setPreferredSize(new Dimension(500, 100)); // Ingrandito
+        btnExploreFleet.setMaximumSize(new Dimension(500, 100)); // Ingrandito
+        btnExploreFleet.setMinimumSize(new Dimension(500, 100)); // Ingrandito
         btnExploreFleet.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnExploreFleet.addActionListener(e -> cardLayout.show(mainContentPanel, "rentCar"));
+        btnExploreFleet.setFont(new Font("Arial",Font.BOLD, 25));
 
         homePanel.add(btnExploreFleet);
-        homePanel.add(Box.createRigidArea(new Dimension(0, 20)));
+        homePanel.add(Box.createRigidArea(new Dimension(0, 175)));
 
         return homePanel;
     }
@@ -203,7 +203,7 @@ public class HomePage extends JFrame {
         featurePanel.setBackground(new Color(220, 240, 255)); // Leggermente più blu
         featurePanel.setLayout(new BoxLayout(featurePanel, BoxLayout.Y_AXIS));
         featurePanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-
+  
         // Ridimensiona l'immagine
         ImageIcon icon = new ImageIcon(imagePath);
         Image img = icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
