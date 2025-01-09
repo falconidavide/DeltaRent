@@ -36,7 +36,7 @@ public class HomePage extends JFrame {
         JLabel avatarLabel = new JLabel(new ImageIcon("path/to/avatar/image")); // Sostituisci con il percorso immagine
         avatarLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        JButton btnDeltaRent = createUniformButton("Delta Rent");
+        JButton btnDeltaRent = createUniformButton("DeltaRent");
         JButton btnRentCar = createUniformButton("Noleggia Auto");
         JButton btnViewBookings = createUniformButton("Le Mie Prenotazioni");
 
