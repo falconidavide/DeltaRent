@@ -10,22 +10,15 @@ public class GestionePrenotazioni {
     public List<String> getPrenotazioniPassate(String emailUtente) {
         List<String> prenotazioni = new ArrayList<>();
         String query = "SELECT * FROM Prenotazione WHERE emailUtente = ?";
-        
-        System.out.println("DENTRO GET PRENOTAZIONI PASSATE");
 
         try {
-        	System.out.println("dentro try");
         	Connection conn = DatabaseConnection.getConnection();
             PreparedStatement stmt = conn.prepareStatement(query);
-            
-            System.out.println("pre query");
 
             stmt.setString(1, emailUtente);
             ResultSet rs = stmt.executeQuery();
 
-            System.out.println("post query");
             while (rs.next()) {
-            	System.out.println("while");
                 int id = rs.getInt("ID");
                 String targa = rs.getString("targa");
                 String dataPrenotazione = rs.getString("dataPrenotazione");
@@ -34,7 +27,6 @@ public class GestionePrenotazioni {
 
                 String prenotazione = "ID: " + id + ", Targa: " + targa + ", Data Prenotazione: " + dataPrenotazione
                         + ", Data Inizio: " + dataInizio + ", Data Fine: " + dataFine;
-                System.out.println("ciao"+prenotazione);
                 prenotazioni.add(prenotazione);
             }
 

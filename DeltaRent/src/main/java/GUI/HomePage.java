@@ -114,7 +114,6 @@ public class HomePage extends JFrame {
                 cardLayout.show(mainContentPanel, "login");
             }
         });
-
     }
 
     private void removeGestioneAccountPanel() {
@@ -134,7 +133,7 @@ public class HomePage extends JFrame {
     private void updateLogoutButton() {
         btnLogout.setVisible(logged);
         Utente.setLoggato(false);
-		SearchPage.mostraVeicoli();
+        SearchPage.mostraVeicoli();
     }
 
     private JButton createUniformButton(String text) {
@@ -152,39 +151,89 @@ public class HomePage extends JFrame {
 
     private JPanel createHomePanel() {
         JPanel homePanel = new JPanel();
-        homePanel.setBackground(new Color(245, 239, 231));
-        homePanel.setLayout(new BorderLayout());
+        homePanel.setBackground(new Color(220, 240, 255)); // Leggermente più blu
+        homePanel.setLayout(new BoxLayout(homePanel, BoxLayout.Y_AXIS));
+
+        // Banner con immagine e messaggio di benvenuto
+        JLabel bannerLabel = new JLabel(new ImageIcon("../Documenti/Logo/Logo DeltaRent small.png")); // Sostituisci con l'immagine del banner
+        bannerLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         JLabel lblWelcome = new JLabel("Benvenuto su DeltaRent!");
         lblWelcome.setFont(new Font("Arial", Font.BOLD, 36));
         lblWelcome.setHorizontalAlignment(SwingConstants.CENTER);
         lblWelcome.setForeground(new Color(32, 52, 85));
+        lblWelcome.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        JTextArea descriptionArea = new JTextArea();
-        descriptionArea.setText(
-                "Con DeltaRent puoi noleggiare auto in modo facile e veloce. Esplora la nostra flotta e prenota subito il tuo prossimo viaggio!");
-        descriptionArea.setFont(new Font("Arial", Font.PLAIN, 18));
-        descriptionArea.setWrapStyleWord(true);
-        descriptionArea.setLineWrap(true);
-        descriptionArea.setEditable(false);
-        descriptionArea.setHighlighter(null);
-        descriptionArea.setFocusable(false);
-        descriptionArea.setOpaque(false);
-        descriptionArea.setForeground(new Color(32, 52, 85));
-        descriptionArea.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        homePanel.add(bannerLabel);
+        homePanel.add(Box.createRigidArea(new Dimension(0, 20)));
+        homePanel.add(lblWelcome);
+        homePanel.add(Box.createRigidArea(new Dimension(0, 20)));
 
-        /*
-        JButton btnExploreFleet = new JButton("Esplora la Flotta");
-        btnExploreFleet.setFont(new Font("Arial", Font.BOLD, 20));
-        btnExploreFleet.setBackground(new Color(62, 88, 121));
-        btnExploreFleet.setForeground(new Color(245, 239, 231));
-        btnExploreFleet.setFocusPainted(false);
-        */
+        // Sezione con icone e descrizioni
+        JPanel featuresPanel = new JPanel();
+        featuresPanel.setBackground(new Color(220, 240, 255)); // Leggermente più blu
+        featuresPanel.setLayout(new GridLayout(1, 3, 20, 20)); // Modificato per rendere le sezioni di dimensioni uguali
 
-        homePanel.add(lblWelcome, BorderLayout.NORTH);
-        homePanel.add(descriptionArea, BorderLayout.CENTER);
-        //homePanel.add(btnExploreFleet, BorderLayout.SOUTH);
+        addFeature(featuresPanel, "Noleggio Auto e Furgoni", "rent_car_icon.png",
+                "Noleggia veicoli in modo rapido e semplice.");
+        addFeature(featuresPanel, "Le Mie Prenotazioni", "bookings_icon.png",
+                "Visualizza tutte le tue prenotazioni.");
+        addFeature(featuresPanel, "Gestione Account", "account.png",
+                "Gestisci il tuo account e le tue informazioni.");
+
+        homePanel.add(featuresPanel);
+        homePanel.add(Box.createRigidArea(new Dimension(0, 20)));
+
+        // Sezione con pulsante per esplorare la flotta
+        JButton btnExploreFleet = createUniformButton("Esplora la nostra flotta");
+        btnExploreFleet.setPreferredSize(new Dimension(300, 60)); // Ingrandito
+        btnExploreFleet.setMaximumSize(new Dimension(300, 60)); // Ingrandito
+        btnExploreFleet.setMinimumSize(new Dimension(300, 60)); // Ingrandito
+        btnExploreFleet.setAlignmentX(Component.CENTER_ALIGNMENT);
+        btnExploreFleet.addActionListener(e -> cardLayout.show(mainContentPanel, "rentCar"));
+
+        homePanel.add(btnExploreFleet);
+        homePanel.add(Box.createRigidArea(new Dimension(0, 20)));
+
         return homePanel;
+    }
+
+    private void addFeature(JPanel panel, String title, String imagePath, String description) {
+        JPanel featurePanel = new JPanel();
+        featurePanel.setBackground(new Color(220, 240, 255)); // Leggermente più blu
+        featurePanel.setLayout(new BoxLayout(featurePanel, BoxLayout.Y_AXIS));
+        featurePanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        // Ridimensiona l'immagine
+        ImageIcon icon = new ImageIcon(imagePath);
+        Image img = icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+        JLabel lblImage = new JLabel(new ImageIcon(img));
+        lblImage.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        JLabel lblTitle = new JLabel(title);
+        lblTitle.setFont(new Font("Arial", Font.BOLD, 18));
+        lblTitle.setForeground(new Color(32, 52, 85));
+        lblTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        JTextArea txtDescription = new JTextArea(description);
+        txtDescription.setFont(new Font("Arial", Font.PLAIN, 16));
+        txtDescription.setWrapStyleWord(true);
+        txtDescription.setLineWrap(true);
+        txtDescription.setEditable(false);
+        txtDescription.setHighlighter(null);
+        txtDescription.setFocusable(false);
+        txtDescription.setOpaque(false);
+        txtDescription.setForeground(new Color(32, 52, 85));
+        txtDescription.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        txtDescription.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        featurePanel.add(lblImage);
+        featurePanel.add(Box.createRigidArea(new Dimension(0, 10)));
+        featurePanel.add(lblTitle);
+        featurePanel.add(Box.createRigidArea(new Dimension(0, 10)));
+        featurePanel.add(txtDescription);
+
+        panel.add(featurePanel);
     }
 
     private void mostraPrenotazioni(JPanel bookingsPanel) {
@@ -200,12 +249,5 @@ public class HomePage extends JFrame {
 
         bookingsPanel.revalidate();
         bookingsPanel.repaint();
-    }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            HomePage frame = new HomePage();
-            frame.setVisible(true);
-        });
     }
 }

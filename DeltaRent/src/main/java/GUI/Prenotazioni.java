@@ -34,7 +34,6 @@ public class Prenotazioni extends JPanel {
         prenotazioniPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
         if (prenotazioniPassate.isEmpty()) {
-            System.out.println("pRENOTAZIONI PASSATE vuote cazzo");
             JLabel noPrenotazioniLabel = new JLabel("Nessuna prenotazione passata.", SwingConstants.CENTER);
             noPrenotazioniLabel.setForeground(Color.WHITE);
             noPrenotazioniLabel.setFont(new Font("Arial", Font.PLAIN, 20));
