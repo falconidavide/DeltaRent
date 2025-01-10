@@ -44,7 +44,7 @@ public class HomePage extends JFrame {
 
         JButton btnProfile = createUniformButton("");
         ImageIcon userIcon = new ImageIcon(
-                new ImageIcon("userIcon.png").getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH));
+                new ImageIcon("img/userIcon.png").getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH));
         btnProfile.setIcon(userIcon);
 
         // Pulsante di logout
@@ -207,7 +207,7 @@ public class HomePage extends JFrame {
         featurePanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
       
         // Ridimensiona l'immagine
-        ImageIcon icon = new ImageIcon(imagePath);
+        ImageIcon icon = new ImageIcon("img/"+imagePath);
         Image img = icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
         JLabel lblImage = new JLabel(new ImageIcon(img));
         lblImage.setAlignmentX(Component.CENTER_ALIGNMENT);

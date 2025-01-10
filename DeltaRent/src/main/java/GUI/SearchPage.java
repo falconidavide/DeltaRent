@@ -24,99 +24,98 @@ public class SearchPage extends JPanel {
     static List<Furgone> furgoni = null;
     private static JComboBox<String> sortComboBox;
 
+    public SearchPage() {
+        // Inizializza i componenti
+        modelComboBox = new JComboBox<>();
+        brandComboBox = new JComboBox<>();
+        availableOnlyCheckBox = new JCheckBox("Mostra solo veicoli disponibili");
 
-    	public SearchPage() {
-    	    // Inizializza i componenti
-    	    modelComboBox = new JComboBox<>();
-    	    brandComboBox = new JComboBox<>();
-    	    availableOnlyCheckBox = new JCheckBox("Mostra solo veicoli disponibili");
-    	    
-    	    // Inizializza il combo box per l'ordinamento
-    	    sortComboBox = new JComboBox<>(new String[]{"Ordina per", "Prezzo Crescente", "Prezzo Decrescente", "Alfabetico Crescente", "Alfabetico Decrescente"});
+        // Inizializza il combo box per l'ordinamento
+        sortComboBox = new JComboBox<>(new String[]{"Ordina per", "Prezzo Crescente", "Prezzo Decrescente", "Alfabetico Crescente", "Alfabetico Decrescente"});
 
-    	    // Layout principale
-    	    setLayout(new BorderLayout());
-    	    setBackground(Color.DARK_GRAY);
+        // Layout principale
+        setLayout(new BorderLayout());
+        setBackground(Color.DARK_GRAY);
 
-    	    // Colonna destra
-    	    JPanel rightColumn = new JPanel();
-    	    rightColumn.setBackground(new Color(32, 52, 85));
-    	    rightColumn.setLayout(new BoxLayout(rightColumn, BoxLayout.Y_AXIS));
+        // Colonna destra
+        JPanel rightColumn = new JPanel();
+        rightColumn.setBackground(new Color(32, 52, 85));
+        rightColumn.setLayout(new BoxLayout(rightColumn, BoxLayout.Y_AXIS));
 
-    	    // Pannello di ricerca
-    	    JPanel searchPanel = new JPanel(new BorderLayout());
-    	    searchPanel.setBackground(new Color(32, 52, 85));
-    	    searchPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        // Pannello di ricerca
+        JPanel searchPanel = new JPanel(new BorderLayout());
+        searchPanel.setBackground(new Color(32, 52, 85));
+        searchPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
-    	    JLabel lblSubtitle = new JLabel("Scegli la tua prossima auto da noleggiare", SwingConstants.CENTER);
-    	    lblSubtitle.setForeground(new Color(216, 195, 182));
-    	    lblSubtitle.setFont(new Font("Arial", Font.PLAIN, 30));
-    	    lblSubtitle.setBorder(BorderFactory.createEmptyBorder(0, 0, 20, 0));  // Aggiungi margine inferiore per distanziamento
-    	    searchPanel.add(lblSubtitle, BorderLayout.NORTH);
+        JLabel lblSubtitle = new JLabel("Scegli la tua prossima auto da noleggiare", SwingConstants.CENTER);
+        lblSubtitle.setForeground(new Color(216, 195, 182));
+        lblSubtitle.setFont(new Font("Arial", Font.PLAIN, 30));
+        lblSubtitle.setBorder(BorderFactory.createEmptyBorder(0, 0, 20, 0));  // Aggiungi margine inferiore per distanziamento
+        searchPanel.add(lblSubtitle, BorderLayout.NORTH);
 
-    	    JPanel filterPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 10));
-    	    filterPanel.setBackground(new Color(62, 88, 121));
-    	    filterPanel.setBorder(BorderFactory.createLineBorder(new Color(216, 195, 182), 3));
+        JPanel filterPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 10));
+        filterPanel.setBackground(new Color(62, 88, 121));
+        filterPanel.setBorder(BorderFactory.createLineBorder(new Color(216, 195, 182), 3));
 
-    	    JLabel lblMarca = new JLabel("Marca");
-    	    lblMarca.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
-    	    lblMarca.setForeground(Color.WHITE);
-    	    filterPanel.add(lblMarca);
-    	    filterPanel.add(brandComboBox);
+        JLabel lblMarca = new JLabel("Marca");
+        lblMarca.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
+        lblMarca.setForeground(Color.WHITE);
+        filterPanel.add(lblMarca);
+        filterPanel.add(brandComboBox);
 
-    	    JLabel lblModello = new JLabel("Modello");
-    	    lblModello.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
-    	    lblModello.setForeground(Color.WHITE);
-    	    filterPanel.add(lblModello);
-    	    filterPanel.add(modelComboBox);
+        JLabel lblModello = new JLabel("Modello");
+        lblModello.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
+        lblModello.setForeground(Color.WHITE);
+        filterPanel.add(lblModello);
+        filterPanel.add(modelComboBox);
 
-    	    availableOnlyCheckBox.setForeground(new Color(0, 0, 0));
-    	    availableOnlyCheckBox.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
-    	    filterPanel.add(availableOnlyCheckBox);
-    	    
-    	    // Aggiungi il combo box per l'ordinamento
-    	    filterPanel.add(sortComboBox);
+        availableOnlyCheckBox.setForeground(new Color(0, 0, 0));
+        availableOnlyCheckBox.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
+        filterPanel.add(availableOnlyCheckBox);
 
-    	    searchPanel.add(filterPanel, BorderLayout.CENTER);
+        // Aggiungi il combo box per l'ordinamento
+        filterPanel.add(sortComboBox);
 
-    	    rightColumn.add(searchPanel);
+        searchPanel.add(filterPanel, BorderLayout.CENTER);
 
-    	    JScrollPane container = new JScrollPane();
-    	    container.getVerticalScrollBar().setUnitIncrement(16);
-    	    JPanel panel_1 = new JPanel();
-    	    container.setViewportView(panel_1);
-    	    panel_1.setBackground(new Color(60, 87, 121));
-    	    panel_1.setLayout(new GridLayout(0, 3, 10, 10)); // Imposta un layout con 3 colonne
+        rightColumn.add(searchPanel);
 
-    	    // Pannello di visualizzazione dei veicoli
-    	    vehicleDisplayPanel = panel_1;
+        JScrollPane container = new JScrollPane();
+        container.getVerticalScrollBar().setUnitIncrement(16);
+        JPanel panel_1 = new JPanel();
+        container.setViewportView(panel_1);
+        panel_1.setBackground(new Color(60, 87, 121));
+        panel_1.setLayout(new GridLayout(0, 3, 10, 10)); // Imposta un layout con 3 colonne
 
-    	    // Aggiunta dei pannelli al layout principale
-    	    add(rightColumn, BorderLayout.NORTH);
-    	    add(container, BorderLayout.CENTER);
+        // Pannello di visualizzazione dei veicoli
+        vehicleDisplayPanel = panel_1;
 
-    	    aggiornaComboBoxMarche();
-    	    aggiornaComboBoxModelli(null);
-    	    mostraVeicoli();
+        // Aggiunta dei pannelli al layout principale
+        add(rightColumn, BorderLayout.NORTH);
+        add(container, BorderLayout.CENTER);
 
-    	    // Aggiunge un listener alla combo box delle marche per aggiornare la combo box dei modelli
-    	    brandComboBox.addActionListener(e -> {
-    	        String selectedBrand = (String) brandComboBox.getSelectedItem();
-    	        aggiornaComboBoxModelli(selectedBrand);
-    	        mostraVeicoli();
-    	    });
+        aggiornaComboBoxMarche();
+        aggiornaComboBoxModelli(null);
+        mostraVeicoli();
 
-    	    modelComboBox.addActionListener(e -> {
-    	        mostraVeicoli();
-    	    });
+        // Aggiunge un listener alla combo box delle marche per aggiornare la combo box dei modelli
+        brandComboBox.addActionListener(e -> {
+            String selectedBrand = (String) brandComboBox.getSelectedItem();
+            aggiornaComboBoxModelli(selectedBrand);
+            mostraVeicoli();
+        });
 
-    	    availableOnlyCheckBox.addActionListener(e -> {
-    	        mostraVeicoli();
-    	    });
+        modelComboBox.addActionListener(e -> {
+            mostraVeicoli();
+        });
 
-    	    // Aggiungi un listener per l'ordinamento
-    	    sortComboBox.addActionListener(e -> mostraVeicoli());
-    	}
+        availableOnlyCheckBox.addActionListener(e -> {
+            mostraVeicoli();
+        });
+
+        // Aggiungi un listener per l'ordinamento
+        sortComboBox.addActionListener(e -> mostraVeicoli());
+    }
 
     private void aggiornaComboBoxMarche() {
         List<String> marche = GestoreVeicoli.getMarcheVeicoli();
@@ -166,11 +165,11 @@ public class SearchPage extends JPanel {
                     automobili.sort(Comparator.comparingInt(Automobile::getPrezzoOrario).reversed());
                     furgoni.sort(Comparator.comparingInt(Furgone::getPrezzoGiornaliero).reversed());
                     break;
-                case "Alfabetico (A-Z)":
+                case "Alfabetico Crescente":
                     automobili.sort(Comparator.comparing(Automobile::getMarca).thenComparing(Automobile::getModello));
                     furgoni.sort(Comparator.comparing(Furgone::getMarca).thenComparing(Furgone::getModello));
                     break;
-                case "Alfabetico (Z-A)":
+                case "Alfabetico Decrescente":
                     automobili.sort(Comparator.comparing(Automobile::getMarca).thenComparing(Automobile::getModello).reversed());
                     furgoni.sort(Comparator.comparing(Furgone::getMarca).thenComparing(Furgone::getModello).reversed());
                     break;
@@ -199,6 +198,7 @@ public class SearchPage extends JPanel {
         vehicleDisplayPanel.revalidate();
         vehicleDisplayPanel.repaint();
     }
+
     private static JPanel creaPannelloSegnaposto() { //crea pannello vuoto
         JPanel panel = new JPanel();
         panel.setBackground(new Color(60, 87, 121));
@@ -251,11 +251,14 @@ public class SearchPage extends JPanel {
 
         return panel;
     }
-    
+
     private static ImageIcon resizeImageIcon(String path, int width, int height) {
         if (path == null || path.isEmpty()) {
             // Se il percorso è null o vuoto, usa un'immagine predefinita
-            path = "default_car.jpg";
+            path = "img/default_car.jpg";
+        } else {
+            // Aggiungi il prefisso "img/" al percorso dell'immagine
+            path = "img/" + path;
         }
 
         try {
@@ -267,7 +270,7 @@ public class SearchPage extends JPanel {
             return null;
         }
     }
-    
+
     private static void mostraAuto(String marcaSelezionata, String modelloSelezionato, boolean availableOnly) {
         for (Automobile auto : automobili) {
             if ((marcaSelezionata == null || marcaSelezionata.equals("Tutte le Marche")
@@ -279,9 +282,8 @@ public class SearchPage extends JPanel {
                         auto.getDisponibile(), auto.getPrezzoOrario(), -1, auto.getPathImg()));
             }
         }
-        
-        
     }
+
     private static void mostraFurgoni(String marcaSelezionata, String modelloSelezionato, boolean availableOnly) {
         for (Furgone furgone : furgoni) {
             if ((marcaSelezionata == null || marcaSelezionata.equals("Tutte le Marche")
