@@ -166,11 +166,11 @@ public class SearchPage extends JPanel {
                     automobili.sort(Comparator.comparingInt(Automobile::getPrezzoOrario).reversed());
                     furgoni.sort(Comparator.comparingInt(Furgone::getPrezzoGiornaliero).reversed());
                     break;
-                case "Alfabetico Crescente":
+                case "Alfabetico (A-Z)":
                     automobili.sort(Comparator.comparing(Automobile::getMarca).thenComparing(Automobile::getModello));
                     furgoni.sort(Comparator.comparing(Furgone::getMarca).thenComparing(Furgone::getModello));
                     break;
-                case "Alfabetico Decrescente":
+                case "Alfabetico (Z-A)":
                     automobili.sort(Comparator.comparing(Automobile::getMarca).thenComparing(Automobile::getModello).reversed());
                     furgoni.sort(Comparator.comparing(Furgone::getMarca).thenComparing(Furgone::getModello).reversed());
                     break;
