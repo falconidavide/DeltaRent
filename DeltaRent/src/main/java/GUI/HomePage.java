@@ -14,6 +14,7 @@ public class HomePage extends JFrame {
     public static Utente loggedUser; // Oggetto utente loggato
     private JPanel gestioneAccount; // Pannello gestioneAccount
     protected static JButton btnLogout; // Pulsante di logout
+    private static JLabel lblWelcome = new JLabel("Benvenuto su DeltaRent!");
 
     public HomePage() {
         // Impostazioni della finestra principale
@@ -54,6 +55,7 @@ public class HomePage extends JFrame {
             loggedUser = null;
             removeGestioneAccountPanel(); // Rimuove il pannello gestioneAccount
             updateLogoutButton();
+            aggiornaMessaggioBenvenuto();
             cardLayout.show(mainContentPanel, "login");
         });
 
@@ -158,7 +160,7 @@ public class HomePage extends JFrame {
         JLabel bannerLabel = new JLabel(new ImageIcon("../Documenti/Logo/Logo DeltaRent small.png")); // Sostituisci con l'immagine del banner
         bannerLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        JLabel lblWelcome = new JLabel("Benvenuto su DeltaRent!");
+        lblWelcome = new JLabel("Benvenuto su DeltaRent!");
         lblWelcome.setFont(new Font("Arial", Font.BOLD, 36));
         lblWelcome.setHorizontalAlignment(SwingConstants.CENTER);
         lblWelcome.setForeground(new Color(32, 52, 85));
@@ -244,5 +246,13 @@ public class HomePage extends JFrame {
 
         bookingsPanel.revalidate();
         bookingsPanel.repaint();
+    }
+    
+    public static void aggiornaMessaggioBenvenuto() {
+    	if(logged) {
+        	lblWelcome.setText("Benvenuto " + Utente.getDisplayName() + " su DeltaRent!");
+    	} else {
+        	lblWelcome.setText("Benvenuto su DeltaRent!");
+    	}
     }
 }

@@ -281,6 +281,7 @@ public class LogIn extends JPanel {
 					HomePage.logged = true;
 					HomePage.btnLogout.setVisible(true);
 					SearchPage.mostraVeicoli();
+					HomePage.aggiornaMessaggioBenvenuto();
 					HomePage.cardLayout.show(HomePage.mainContentPanel, "home");
 				} else {
 					// Login fallito, mostra un messaggio di errore

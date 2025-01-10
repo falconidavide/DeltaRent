@@ -18,6 +18,7 @@ public class Utente {
 	private String partitaIVA;
 	private static boolean isPrivato;
 	private static boolean isLoggato = false;
+	private static String displayName = "";
 
 	public Utente(String email, String password, String nome, String cognome, String dataDiNascita, String nomeAzienda,
 			String partitaIVA, int isPrivato) {
@@ -30,8 +31,10 @@ public class Utente {
 		this.partitaIVA = partitaIVA;
 		if (isPrivato == 1) {
 			this.setIsPrivato(true);
+			displayName = this.nome;
 		} else {
 			this.setIsPrivato(false);
+			displayName = this.nomeAzienda;
 		}
 		isLoggato = true;
 	}
@@ -123,5 +126,9 @@ public class Utente {
 	}
 	public static void setLoggato(boolean l) {
 		isLoggato = l;
+	}
+
+	public static String getDisplayName() {
+		return displayName;
 	}
 }
