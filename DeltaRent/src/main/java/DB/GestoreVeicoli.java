@@ -19,7 +19,7 @@ public class GestoreVeicoli {
 
 	public static List<Automobile> aggiornaListaAutomobili() {
 		try {
-			String query = "SELECT targa, marca, modello, disponibile, prezzoOrario, pathImg FROM Veicolo WHERE isFurgone=0";
+			String query = "SELECT targa, marca, modello, disponibile, prezzoOrario, pathImg, alimentazione FROM Veicolo WHERE isFurgone=0";
 			try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(query)) {
 				while (rs.next()) {
 					String targa = rs.getString("targa");
@@ -28,7 +28,8 @@ public class GestoreVeicoli {
 					boolean disponibile = rs.getBoolean("disponibile");
 					int prezzoOrario = rs.getInt("prezzoOrario");
 					String pathImg = rs.getString("pathImg");
-					Automobile auto = new Automobile(targa, marca, modello, disponibile, prezzoOrario, pathImg);
+					String alimentazione = rs.getString("alimentazione");
+					Automobile auto = new Automobile(targa, marca, modello, disponibile, prezzoOrario, pathImg, alimentazione);
 					automobili.add(auto);
 				}
 			}
@@ -46,7 +47,7 @@ public class GestoreVeicoli {
 
 	public static List<Furgone> aggiornaListaFurgoni() {
 		try {
-			String query = "SELECT targa, marca, modello, disponibile, prezzoGiornaliero, pathImg FROM Veicolo WHERE isFurgone=1";
+			String query = "SELECT targa, marca, modello, disponibile, prezzoGiornaliero, pathImg, alimentazione FROM Veicolo WHERE isFurgone=1";
 			try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(query)) {
 				while (rs.next()) {
 					String targa = rs.getString("targa");
@@ -55,7 +56,8 @@ public class GestoreVeicoli {
 					boolean disponibile = rs.getBoolean("disponibile");
 					int prezzoGiornaliero = rs.getInt("prezzoGiornaliero");
 					String pathImg = rs.getString("pathImg");
-					Furgone furgone = new Furgone(targa, marca, modello, disponibile, prezzoGiornaliero, pathImg);
+					String alimentazione = rs.getString("alimentazione");
+					Furgone furgone = new Furgone(targa, marca, modello, disponibile, prezzoGiornaliero, pathImg, alimentazione);
 					furgoni.add(furgone);
 				}
 			}
