@@ -32,7 +32,7 @@ public class SearchPage extends JPanel {
     	    availableOnlyCheckBox = new JCheckBox("Mostra solo veicoli disponibili");
     	    
     	    // Inizializza il combo box per l'ordinamento
-    	    sortComboBox = new JComboBox<>(new String[]{"Ordina per", "Prezzo Crescente", "Prezzo Decrescente", "Alfabetico Crescente", "Alfabetico Decrescente", "Disponibilità"});
+    	    sortComboBox = new JComboBox<>(new String[]{"Ordina per", "Prezzo Crescente", "Prezzo Decrescente", "Alfabetico Crescente", "Alfabetico Decrescente"});
 
     	    // Layout principale
     	    setLayout(new BorderLayout());
@@ -173,10 +173,6 @@ public class SearchPage extends JPanel {
                 case "Alfabetico (Z-A)":
                     automobili.sort(Comparator.comparing(Automobile::getMarca).thenComparing(Automobile::getModello).reversed());
                     furgoni.sort(Comparator.comparing(Furgone::getMarca).thenComparing(Furgone::getModello).reversed());
-                    break;
-                case "Disponibilità":
-                    automobili.sort(Comparator.comparing(Automobile::getDisponibile).reversed());
-                    furgoni.sort(Comparator.comparing(Furgone::getDisponibile).reversed());
                     break;
             }
         }
