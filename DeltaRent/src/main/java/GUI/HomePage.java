@@ -23,7 +23,9 @@ public class HomePage extends JFrame {
         setSize(1200, 950);
         setMinimumSize(new Dimension(900, 700));
         setLocationRelativeTo(null);
-
+        ImageIcon appIcon = new ImageIcon("img/appIcon.png"); // Sostituisci con il percorso corretto
+        setIconImage(appIcon.getImage());
+        
         // Layout principale
         JPanel mainPanel = new JPanel(new BorderLayout());
         mainPanel.setBackground(Color.DARK_GRAY);
