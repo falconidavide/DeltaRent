@@ -30,7 +30,8 @@ public class SearchPage extends JPanel {
 		// Inizializza i componenti
 		modelComboBox = new JComboBox<>();
 		brandComboBox = new JComboBox<>();
-		availableOnlyCheckBox = new JCheckBox("Mostra solo veicoli disponibili");
+		availableOnlyCheckBox = new JCheckBox("Solo veicoli disponibili");
+		availableOnlyCheckBox.setSelected(true);
 
 		// Inizializza il combo box per l'ordinamento
 		sortComboBox = new JComboBox<>(new String[] { "Ordina per", "Prezzo Crescente", "Prezzo Decrescente",
