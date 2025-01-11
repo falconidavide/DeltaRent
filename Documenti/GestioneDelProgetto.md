@@ -2,7 +2,7 @@
 
 # Indice
 - [Indice](#indice)
-- [1. Gestione del progetto](#1-gestione-del-processo)
+- [1. Gestione del progetto](#1-gestione-del-progetto)
 - [2. Requisiti](#2-requisiti)
 - [3. Design](#3-design)
 - [4. Testing](#4-testing)
