@@ -137,6 +137,7 @@ public class DettagliVeicoloPage extends JPanel {
 
         comboOraInizio = createHourComboBox();
         comboOraFine = createHourComboBox();
+        comboOraFine.setSelectedIndex(0);
 
         datePanel.add(new JLabel("Data Inizio:"));
         datePanel.add(datePickerInizio);
@@ -147,11 +148,11 @@ public class DettagliVeicoloPage extends JPanel {
         datePanel.add(comboOraFine);
 
         // Listener per aggiornare il prezzo totale in diretta
-        ActionListener updatePriceListener = e -> updateTotalPrice(prezzo, isAutomobile);
+        ActionListener updatePriceListener = e -> calcolaPrezzo(prezzo, isAutomobile);
         ChangeListener startDateListener = e -> {
             if (isSettingDate) return;
             isSettingDate = true;
-            updateTotalPrice(prezzo, isAutomobile);
+            calcolaPrezzo(prezzo, isAutomobile);
             // Assicurati che la data di fine non sia prima della data di inizio
             Date startDate = (Date) datePickerInizio.getModel().getValue();
             Date endDate = (Date) datePickerFine.getModel().getValue();
@@ -164,7 +165,7 @@ public class DettagliVeicoloPage extends JPanel {
         datePickerFine.getModel().addChangeListener(e -> {
             if (isSettingDate) return;
             isSettingDate = true;
-            updateTotalPrice(prezzo, isAutomobile);
+            calcolaPrezzo(prezzo, isAutomobile);
             isSettingDate = false;
         });
         comboOraInizio.addActionListener(updatePriceListener);
@@ -251,7 +252,10 @@ public class DettagliVeicoloPage extends JPanel {
 
             if (fine.before(inizio)) {
                 lblPrezzoTotale.setText("Errore: Data di fine non valida");
+                btnNoleggia.setEnabled(false);
                 return;
+            } else {
+                btnNoleggia.setEnabled(true);
             }
 
             long durata = fine.getTime() - inizio.getTime();
@@ -261,10 +265,6 @@ public class DettagliVeicoloPage extends JPanel {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Errore nel calcolo del prezzo.");
         }
-    }
-
-    private void updateTotalPrice(double prezzo, boolean isAutomobile) {
-        calcolaPrezzo(prezzo, isAutomobile);
     }
 
     private ImageIcon resizeImageIcon(String path, int width, int height) {
