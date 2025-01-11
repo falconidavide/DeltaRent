@@ -67,16 +67,23 @@ public class SearchPage extends JPanel {
 		lblMarca.setForeground(Color.WHITE);
 		filterPanel.add(lblMarca);
 		filterPanel.add(brandComboBox);
+		
+		filterPanel.add(Box.createHorizontalStrut(15));
 
 		JLabel lblModello = new JLabel("Modello");
 		lblModello.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
 		lblModello.setForeground(Color.WHITE);
 		filterPanel.add(lblModello);
 		filterPanel.add(modelComboBox);
+		
+		filterPanel.add(Box.createHorizontalStrut(15));
 
 		availableOnlyCheckBox.setForeground(new Color(0, 0, 0));
 		availableOnlyCheckBox.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
 		filterPanel.add(availableOnlyCheckBox);
+		
+		filterPanel.add(Box.createHorizontalStrut(15));
+		
 
 		// Aggiungi il combo box per l'ordinamento
 		filterPanel.add(sortComboBox);
