@@ -2,14 +2,14 @@
 
 # Indice
 - [Indice](#indice)
-- [1. Gestione del progetto](#gestione-del-progetto)
-- [2. Requisiti](#requisiti)
-- [3. Design](#design)
-- [4. Testing](#testing)
-- [5. Manutenzione](#manutenzione)
+- [1. Gestione del progetto](#1-gestione-del-processo)
+- [2. Requisiti](#2-requisiti)
+- [3. Design](#3-design)
+- [4. Testing](#4-testing)
+- [5. Manutenzione](#5-manutenzione)
 
 &nbsp;
-## 1. Gestione del processo
+## 1. Gestione del progetto
 - Tipo di processo seguito
 - Differenze rispetto a quanto previsto nel project plan
 - Strumenti usati (anche issue, github, magari scrivere una statistica come numero di commit)
