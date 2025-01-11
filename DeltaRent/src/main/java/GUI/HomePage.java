@@ -39,8 +39,8 @@ public class HomePage extends JFrame {
         avatarLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         JButton btnDeltaRent = createUniformButton("DeltaRent");
-        JButton btnRentCar = createUniformButton("Noleggia Auto");
-        JButton btnViewBookings = createUniformButton("Le Mie Prenotazioni");
+        JButton btnRentCar = createUniformButton("Noleggia");
+        JButton btnViewBookings = createUniformButton("Prenotazioni");
 
         JButton btnProfile = createUniformButton("");
         ImageIcon userIcon = new ImageIcon(
