@@ -6,6 +6,8 @@ import Veicolo.Furgone;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -130,8 +132,12 @@ public class DettagliVeicoloPage extends JPanel {
     private JPanel createDatePanel(double prezzo, boolean isAutomobile) {
         JPanel datePanel = new JPanel(new GridLayout(2, 3, 10, 10));
         datePanel.setBackground(new Color(60, 87, 121));
-        datePanel.setBorder(BorderFactory.createTitledBorder("Prenotazione"));
-
+        //datePanel.setBorder(BorderFactory.createTitledBorder(null, "Prenotazione", TitledBorder.LEFT, TitledBorder.CENTER, null, Color.white));
+        datePanel.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createTitledBorder(null, " Prenotazione ", TitledBorder.LEFT, TitledBorder.CENTER, null, Color.white),
+            BorderFactory.createEmptyBorder(5, 20, 10, 20) // Padding di 15 px su tutti i lati
+        ));
+        
         datePickerInizio = createDatePicker();
         datePickerFine = createDatePicker();
 
@@ -139,11 +145,15 @@ public class DettagliVeicoloPage extends JPanel {
         comboOraFine = createHourComboBox();
         comboOraFine.setSelectedIndex(0);
 
-        datePanel.add(new JLabel("Data Inizio:"));
+        JLabel dataInizioLbl = new JLabel("Data Inizio:");
+        dataInizioLbl.setForeground(Color.white);
+        datePanel.add(dataInizioLbl);
         datePanel.add(datePickerInizio);
         datePanel.add(comboOraInizio);
 
-        datePanel.add(new JLabel("Data Fine:"));
+        JLabel dataFineLbl = new JLabel("Data Fine:");
+        dataFineLbl.setForeground(Color.white);
+        datePanel.add(dataFineLbl);
         datePanel.add(datePickerFine);
         datePanel.add(comboOraFine);
 
@@ -183,6 +193,7 @@ public class DettagliVeicoloPage extends JPanel {
         lblPrezzoTotale.setForeground(Color.WHITE);
         lblPrezzoTotale.setFont(new Font("Arial", Font.BOLD, 18)); // Mantieni lo stesso font
         lblPrezzoTotale.setAlignmentX(Component.CENTER_ALIGNMENT);
+        lblPrezzoTotale.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0)); // Aggiungi un margine sotto
         bottomPanel.add(lblPrezzoTotale);
 
         btnNoleggia = new JButton("Noleggia");
