@@ -37,7 +37,7 @@ public class Prenotazioni extends JPanel {
 
         // Pannello delle prenotazioni
         JPanel prenotazioniPanel = new JPanel();
-        prenotazioniPanel.setLayout(new GridLayout(3, 3, 10, 10)); // Layout con 3 righe e 3 colonne
+        prenotazioniPanel.setLayout(new GridLayout(0, 3, 10, 10)); // Layout con 3 righe e 3 colonne
         prenotazioniPanel.setBackground(new Color(32, 52, 85));
         prenotazioniPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
