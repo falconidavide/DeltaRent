@@ -2,7 +2,7 @@
 
 # Indice
 - [Indice](#indice)
-- [1. Gestione del progetto](#1-gestione-del-processo)
+- [1. Gestione del progetto](#1-gestione-del-progetto)
 - [2. Design](#2-design)
 - [3. Testing](#3-testing)
 - [4. Manutenzione](#4-manutenzione)
@@ -61,5 +61,7 @@ L'architettura del progetto DeltaRent è stata concepita seguendo un approccio m
 
 &nbsp;
 ## 4. Manutenzione
-- Eventuali refactoring
 
+Nel corso della fase di manutenzione del progetto, sono stati eseguiti diversi interventi di refactoring, mirati a migliorare la qualità del codice e la comprensibilità complessiva del sistema. In particolare, in diverse occasioni sono state rinominate le variabili, in modo da riflettere in modo più chiaro il loro scopo ed il loro utilizzo all'interno del codice. Anche i metodi hanno subito un processo di rinominazione per fornire una descrizione più significativa delle funzionalità.
+
+Questi cambiamenti sono stati adottati per ridurre le ambiguità, migliorare la leggibilità del codice e facilitare la comprensione e l'estensibilità del progetto da parte di membri del team che non hanno necessariamente lavorato su certe parti del codice, oppure in futuri nuovi membri del team. L'intervento si allinea ai principi di programmazine pulita, contribuendo ad un sistema più manutenibile e robusto.
