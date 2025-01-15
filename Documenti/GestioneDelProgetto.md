@@ -30,9 +30,9 @@ Rispetto al Project Plan iniziale, il progetto si è sviluppato conformemente al
 
 Durante lo sviluppo del progetto, sono stati utilizzati i seguenti strumenti per garantire un’organizzazione efficace e un monitoraggio costante:
 
-- **GitHub:** per la gestione del codice sorgente, il controllo delle versioni e la collaborazione tra i membri del team
-- **Discord:** la Piattaforma di chat Discord è stata utilizzata per mantenere l'intero team sempre aggiornato sull'andamento dello sviluppo
-- **WhatsApp:** l'applicazione di messaggistica istantanea WhatsApp è stata utilizzata in modo tale da tenere al corrente di ogni novità riguardante il progetto tutto il team
+- **GitHub:** per la gestione del codice sorgente, il controllo delle versioni e la collaborazione tra i membri del team.
+- **Discord:** la Piattaforma di chat Discord è stata utilizzata per mantenere l'intero team sempre aggiornato sull'andamento dello sviluppo.
+- **WhatsApp:** l'applicazione di messaggistica istantanea WhatsApp è stata utilizzata in modo tale da tenere al corrente di ogni novità riguardante il progetto tutto il team.
 
 ### Gestione delle persone
 
@@ -40,7 +40,20 @@ La struttura organizzativa si basa su una struttura flat, in cui i membri hanno 
 
 &nbsp;
 ## 2. Design
-- Architettura e design del progetto
+
+L'architettura del progetto DeltaRent è stata concepita seguendo un approccio modulare per garantire la manutenibilità e la scalabilità del sistema. Il design è suddiviso nei seguenti componenti principali:
+
+1. **Front-end**
+    - Il front-end è progettato per essere user-friendly, con un layout responsive e compatibile con diversi dispositivi.
+    - Viene utilizzato il framework Java Swing, la libreria ufficiale per la realizzazione di interfacce grafiche in Java.
+    - Vengono utilizzate icone facilmente riconoscibili, per facilitare la navigazione.
+    - Le pagine principali includono un panello di login/registrazione per utenti privati ed aziendali, una dashboard personale con lo storico dei noleggi, una pagina con i dettagli del profilo ed un sistema di ricerca avanzata per selezionare veicoli in base a filtri, come tipo e disponibilità.
+2. **Back-end**
+    - Il back-end è sviluppato in Java, che gestisce la logica di registrazione, autenticazione, gestione dei noleggi e calcolo dei costi.
+    - Per la gestione dei dati, viene utilizzato un database relazioname MySQL, per archiviare informazioni sugli utenti, veicoli e sulle prenotazioni.
+    - La struttua del database è progettata per ottimizzare le query, e per garantire l'integrità e la sicurezza dei dati.
+3. **Diagrammi UML**
+    - Sono stati realizzati i seguenti diagrammi per rappresentare visivamente la struttura ed il funzionamento del sistema, in modo da migliorare la manutenibilità del sistema: use case diagram, class diagram, state machine diagram, sequence diagram, communication diagram/timing diagram, activity diagram e component diagram
 
 &nbsp;
 ## 3. Testing
