@@ -1,15 +1,21 @@
 package GUI;
 
-import org.jdatepicker.impl.*;
+import Prenotazione.Prenotazione;
+import Utente.Utente;
 import Veicolo.Automobile;
 import Veicolo.Furgone;
+import Veicolo.Veicolo;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.border.CompoundBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeListener;
+import org.jdatepicker.impl.*;
+
+import DB.Prenota;
+
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -30,13 +36,19 @@ public class DettagliVeicoloPage extends JPanel {
     private JDatePickerImpl datePickerInizio, datePickerFine;
     private JComboBox<String> comboOraInizio, comboOraFine;
     private boolean isSettingDate = false;
+    private Veicolo veicolo;
+    private Utente utente; // Supponiamo che l'utente sia già disponibile
 
-    public DettagliVeicoloPage(Automobile auto) {
+    public DettagliVeicoloPage(Automobile auto, Utente utente) {
+        this.veicolo = auto;
+        this.utente = utente;
         setupPanel();
         populatePanel(auto, true);
     }
 
-    public DettagliVeicoloPage(Furgone furgone) {
+    public DettagliVeicoloPage(Furgone furgone, Utente utente) {
+        this.veicolo = furgone;
+        this.utente = utente;
         setupPanel();
         populatePanel(furgone, false);
     }
@@ -53,26 +65,31 @@ public class DettagliVeicoloPage extends JPanel {
         gbc.insets = new Insets(10, 10, 10, 10);
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
-        // Sezione superiore (immagine e info)
         JPanel infoPanel = createInfoPanel(veicolo, isAutomobile);
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridwidth = 3;
         add(infoPanel, gbc);
 
-        // Sezione selezione date e ore
         JPanel datePanel = createDatePanel(prezzo, isAutomobile);
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.gridwidth = 3;
         add(datePanel, gbc);
 
-        // Sezione inferiore (prezzo e pulsante)
         JPanel bottomPanel = createBottomPanel(prezzo, isAutomobile);
         gbc.gridx = 0;
         gbc.gridy = 2;
         gbc.gridwidth = 3;
         add(bottomPanel, gbc);
+
+        // Aggiungi il listener al pulsante "Noleggia"
+        btnNoleggia.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                creaPrenotazione();
+            }
+        });
     }
 
     private JPanel createInfoPanel(Object veicolo, boolean isAutomobile) {
@@ -132,7 +149,6 @@ public class DettagliVeicoloPage extends JPanel {
     private JPanel createDatePanel(double prezzo, boolean isAutomobile) {
         JPanel datePanel = new JPanel(new GridLayout(2, 3, 10, 10));
         datePanel.setBackground(new Color(60, 87, 121));
-        //datePanel.setBorder(BorderFactory.createTitledBorder(null, "Prenotazione", TitledBorder.LEFT, TitledBorder.CENTER, null, Color.white));
         datePanel.setBorder(BorderFactory.createCompoundBorder(
             BorderFactory.createTitledBorder(null, " Prenotazione ", TitledBorder.LEFT, TitledBorder.CENTER, null, Color.white),
             BorderFactory.createEmptyBorder(5, 20, 10, 20) // Padding di 15 px su tutti i lati
@@ -292,6 +308,40 @@ public class DettagliVeicoloPage extends JPanel {
         } catch (IOException e) {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    private void creaPrenotazione() {
+        if (!utente.isLoggato()) {
+            JOptionPane.showMessageDialog(this, "Devi essere loggato per poter noleggiare un veicolo.");
+            return;
+        }
+
+        try {
+            Date dataInizio = (Date) datePickerInizio.getModel().getValue();
+            Date dataFine = (Date) datePickerFine.getModel().getValue();
+
+            String oraInizio = (String) comboOraInizio.getSelectedItem();
+            String oraFine = (String) comboOraFine.getSelectedItem();
+
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+            Date inizio = sdf.parse(new SimpleDateFormat("dd-MM-yyyy").format(dataInizio) + " " + oraInizio);
+            Date fine = sdf.parse(new SimpleDateFormat("dd-MM-yyyy").format(dataFine) + " " + oraFine);
+
+            if (fine.before(inizio)) {
+                JOptionPane.showMessageDialog(this, "Errore: Data di fine non valida");
+                return;
+            }
+
+            Prenotazione prenotazione = new Prenotazione(inizio, fine, utente, veicolo);
+
+            Prenota prenota = new Prenota();
+            prenota.aggiungiPrenotazione(prenotazione);
+
+            JOptionPane.showMessageDialog(this, "Prenotazione effettuata con successo!");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Errore nella creazione della prenotazione.");
         }
     }
 }

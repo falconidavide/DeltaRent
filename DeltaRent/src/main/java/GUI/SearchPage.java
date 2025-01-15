@@ -273,7 +273,7 @@ public class SearchPage extends JPanel {
 		panel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				HomePage.mainContentPanel.add(new DettagliVeicoloPage(auto), "dettagliVeicolo");
+				HomePage.mainContentPanel.add(new DettagliVeicoloPage(auto, HomePage.loggedUser), "dettagliVeicolo");
 				HomePage.cardLayout.show(HomePage.mainContentPanel, "dettagliVeicolo");
 			}
 		});
@@ -288,7 +288,7 @@ public class SearchPage extends JPanel {
 		panel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				HomePage.mainContentPanel.add(new DettagliVeicoloPage(furgone), "dettagliVeicolo");
+				HomePage.mainContentPanel.add(new DettagliVeicoloPage(furgone, HomePage.loggedUser), "dettagliVeicolo");
 				HomePage.cardLayout.show(HomePage.mainContentPanel, "dettagliVeicolo");
 			}
 		});

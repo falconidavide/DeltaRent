@@ -1,5 +1,6 @@
 package Prenotazione;
 
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -8,25 +9,34 @@ import Utente.Utente;
 
 public class Prenotazione {
     
-    private Date inizioPrenotazione;
-    private Date finePrenotazione;
+	private int ID;
+    private String inizioPrenotazione;
+    private String finePrenotazione;
     private Utente utente;
     private Veicolo veicolo;
+    private String dataPrenotazione;
     
-    public Prenotazione(Date inizio, Date fine, Utente utente, Veicolo veicolo) {
+    public Prenotazione(int ID, String inizio, String fine, Utente utente, Veicolo veicolo, String dataPrenotazione) {
         this.inizioPrenotazione = inizio;
         this.finePrenotazione = fine;
         this.utente = utente;
         this.veicolo = veicolo;
+        this.ID=ID;
+        this.dataPrenotazione=dataPrenotazione;
     }
     
-    // Metodo per ottenere la data di inizio prenotazione
-    public Date getInizioPrenotazione() {
+    public Prenotazione(int id, String targa, String email, String dataPrenotazione, String inizioPrenotazione2,
+			String finePrenotazione2) {
+		// TODO Auto-generated constructor stub
+	}
+
+	// Metodo per ottenere la data di inizio prenotazione
+    public String getInizioPrenotazione() {
         return inizioPrenotazione;
     }
     
     // Metodo per ottenere la data di fine prenotazione
-    public Date getFinePrenotazione() {
+    public String getFinePrenotazione() {
         return finePrenotazione;
     }
     
@@ -40,17 +50,6 @@ public class Prenotazione {
         return veicolo;
     }
     
-    // Metodo per calcolare la durata della prenotazione in giorni
-    public long getDurataPrenotazione() {
-        long diffInMillies = Math.abs(finePrenotazione.getTime() - inizioPrenotazione.getTime());
-        return TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
-    }
-    
-    // Metodo per verificare se il veicolo è disponibile per un determinato periodo
-    public boolean isVeicoloDisponibile(Date inizio, Date fine) {
-        // Verifica se le date di prenotazione si sovrappongono
-        return !(inizio.before(finePrenotazione) && fine.after(inizioPrenotazione));
-    }
     
     // Metodo per visualizzare i dettagli della prenotazione
     public String dettagliPrenotazione() {
@@ -58,7 +57,22 @@ public class Prenotazione {
                "Utente: " + utente.getNome() + "\n" +
                "Veicolo: " + veicolo.getModello() + "\n" +
                "Inizio: " + inizioPrenotazione + "\n" + 
-               "Fine: " + finePrenotazione + "\n" + 
-               "Durata: " + getDurataPrenotazione() + " giorni";
+               "Fine: " + finePrenotazione;
     }
+
+	public int getID() {
+		return ID;
+	}
+
+	public void setID(int iD) {
+		ID = iD;
+	}
+
+	public String getDataPrenotazione() {
+		return dataPrenotazione;
+	}
+
+	public void setDataPrenotazione(String dataPrenotazione) {
+		this.dataPrenotazione = dataPrenotazione;
+	}
 }
