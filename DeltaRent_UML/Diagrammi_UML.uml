@@ -16,64 +16,86 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_7nyoELfnEe-d56vvJoR4og" name="DeltaRent">
       <packagedElement xmi:type="uml:Class" xmi:id="_NqlMULZtEe-iFImpIBBa2w" name="Veicolo">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_b7DBQLZtEe-iFImpIBBa2w" name="marca">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_2Wb8YNM0Ee-Lf90WAPPk0g" name="targa" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_husa4LZtEe-iFImpIBBa2w" name="modello">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_b7DBQLZtEe-iFImpIBBa2w" name="marca" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_d3pl8LZvEe-iFImpIBBa2w" name="disponibile">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_husa4LZtEe-iFImpIBBa2w" name="modello" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_d3pl8LZvEe-iFImpIBBa2w" name="disponibile" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_OZ1rANM1Ee-Lf90WAPPk0g" name="pathImg" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_TYjnwNM1Ee-Lf90WAPPk0g" name="alimentazione" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_Or4RQLZtEe-iFImpIBBa2w" name="Automobile">
         <generalization xmi:type="uml:Generalization" xmi:id="_UGAXoLZtEe-iFImpIBBa2w" general="_NqlMULZtEe-iFImpIBBa2w"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_b4tCcLZuEe-iFImpIBBa2w" name="prezzoOrario">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_b4tCcLZuEe-iFImpIBBa2w" name="prezzoOrario" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
         </ownedAttribute>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_WHAwoLZuEe-iFImpIBBa2w" name="Prenotazione">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_ADpxsLZvEe-iFImpIBBa2w" name="inizioPrenotazione">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_ADpxsLZvEe-iFImpIBBa2w" name="inizioPrenotazione" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_E3q6ULZvEe-iFImpIBBa2w" name="finePrenotazione">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_E3q6ULZvEe-iFImpIBBa2w" name="finePrenotazione" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_JNpcELZvEe-iFImpIBBa2w" name="Utente" type="_eePzQLZsEe-iFImpIBBa2w"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_MGIsILZvEe-iFImpIBBa2w" name="Veicolo" type="_NqlMULZtEe-iFImpIBBa2w"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_JNpcELZvEe-iFImpIBBa2w" name="utente" visibility="private" type="_eePzQLZsEe-iFImpIBBa2w"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_MGIsILZvEe-iFImpIBBa2w" name="veicolo" visibility="private" type="_NqlMULZtEe-iFImpIBBa2w"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_c7pHkNM1Ee-Lf90WAPPk0g" name="ID" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_n2KUYNM1Ee-Lf90WAPPk0g" name="dataPrenotazione" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
+        </ownedAttribute>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_7kdUcLZsEe-iFImpIBBa2w" name="Azienda">
         <generalization xmi:type="uml:Generalization" xmi:id="_KhHhALZtEe-iFImpIBBa2w" general="_eePzQLZsEe-iFImpIBBa2w"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_-gbWULZsEe-iFImpIBBa2w" name="nomeAzienda">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_-gbWULZsEe-iFImpIBBa2w" name="nomeAzienda" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_B3UZoLZtEe-iFImpIBBa2w" name="partitaIVA">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_B3UZoLZtEe-iFImpIBBa2w" name="partitaIVA" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_eePzQLZsEe-iFImpIBBa2w" name="Utente">
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_h9KxMLZsEe-iFImpIBBa2w" name="email">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_h9KxMLZsEe-iFImpIBBa2w" name="email" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_prqG4LZsEe-iFImpIBBa2w" name="password">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_prqG4LZsEe-iFImpIBBa2w" name="password" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_EpF_INM0Ee-Lf90WAPPk0g" name="isLoggato" visibility="private" isStatic="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_OPTrcNM0Ee-Lf90WAPPk0g" name="displayName" visibility="private" isStatic="true" isDerived="true">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_Vbe-QNM0Ee-Lf90WAPPk0g" name="getUserByEmailAndPassword"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_tU7ToLZsEe-iFImpIBBa2w" name="Privato">
         <generalization xmi:type="uml:Generalization" xmi:id="_JuwP8LZtEe-iFImpIBBa2w" general="_eePzQLZsEe-iFImpIBBa2w"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_wDXP0LZsEe-iFImpIBBa2w" name="nome">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_wDXP0LZsEe-iFImpIBBa2w" name="nome" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_zDPhULZsEe-iFImpIBBa2w" name="cognome">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_zDPhULZsEe-iFImpIBBa2w" name="cognome" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_3k0PELZsEe-iFImpIBBa2w" name="dataDiNascita">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_3k0PELZsEe-iFImpIBBa2w" name="dataDiNascita" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
         </ownedAttribute>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_P7CzELZtEe-iFImpIBBa2w" name="Furgone">
         <generalization xmi:type="uml:Generalization" xmi:id="_VMA9cLZtEe-iFImpIBBa2w" general="_NqlMULZtEe-iFImpIBBa2w"/>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_hPfg8LZuEe-iFImpIBBa2w" name="prezzoGiornaliero">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_hPfg8LZuEe-iFImpIBBa2w" name="prezzoGiornaliero" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
         </ownedAttribute>
       </packagedElement>
