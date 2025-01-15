@@ -96,29 +96,22 @@ public class Prenotazioni extends JPanel {
         marcaModelloLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
         detailsPanel.add(marcaModelloLabel);
 
-        SimpleDateFormat inputDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        SimpleDateFormat outputDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+        String dataInizio = prenotazione.getInizioPrenotazione();
+		String dataFine = prenotazione.getFinePrenotazione();
 
-        try {
-            Date dataInizio = inputDateFormat.parse(prenotazione.getInizioPrenotazione());
-            Date dataFine = inputDateFormat.parse(prenotazione.getFinePrenotazione());
+		JLabel dataInizioLabel = new JLabel("Inizio: " + dataInizio);
+		dataInizioLabel.setForeground(Color.LIGHT_GRAY);
+		dataInizioLabel.setFont(new Font("Arial", Font.PLAIN, 16));
+		dataInizioLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		dataInizioLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
+		detailsPanel.add(dataInizioLabel);
 
-            JLabel dataInizioLabel = new JLabel("Inizio: " + outputDateFormat.format(dataInizio));
-            dataInizioLabel.setForeground(Color.LIGHT_GRAY);
-            dataInizioLabel.setFont(new Font("Arial", Font.PLAIN, 16));
-            dataInizioLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-            dataInizioLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
-            detailsPanel.add(dataInizioLabel);
-
-            JLabel dataFineLabel = new JLabel("Fine: " + outputDateFormat.format(dataFine));
-            dataFineLabel.setForeground(Color.LIGHT_GRAY);
-            dataFineLabel.setFont(new Font("Arial", Font.PLAIN, 16));
-            dataFineLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-            dataFineLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
-            detailsPanel.add(dataFineLabel);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+		JLabel dataFineLabel = new JLabel("Fine: " + dataFine);
+		dataFineLabel.setForeground(Color.LIGHT_GRAY);
+		dataFineLabel.setFont(new Font("Arial", Font.PLAIN, 16));
+		dataFineLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		dataFineLabel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
+		detailsPanel.add(dataFineLabel);
 
         panel.add(detailsPanel, BorderLayout.CENTER);
 

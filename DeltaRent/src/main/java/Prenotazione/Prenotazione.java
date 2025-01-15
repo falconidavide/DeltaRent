@@ -24,10 +24,12 @@ public class Prenotazione {
         this.ID=ID;
         this.dataPrenotazione=dataPrenotazione;
     }
-    
-    public Prenotazione(int id, String targa, String email, String dataPrenotazione, String inizioPrenotazione2,
-			String finePrenotazione2) {
-		// TODO Auto-generated constructor stub
+
+	public Prenotazione(String inizio, String fine, Utente utente, Veicolo veicolo) {
+		this.inizioPrenotazione=inizio;
+		this.finePrenotazione=fine;
+		this.utente=utente;
+		this.veicolo=veicolo;
 	}
 
 	// Metodo per ottenere la data di inizio prenotazione

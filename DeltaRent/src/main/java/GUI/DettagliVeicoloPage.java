@@ -318,30 +318,62 @@ public class DettagliVeicoloPage extends JPanel {
         }
 
         try {
-            Date dataInizio = (Date) datePickerInizio.getModel().getValue();
-            Date dataFine = (Date) datePickerFine.getModel().getValue();
+        	// Ottieni il valore dal date picker
+        	 Date dataInizioDate = (Date) datePickerInizio.getModel().getValue();
+        	 
+        	 String dataInizio=null;
+        	 String dataFine=null;
 
-            String oraInizio = (String) comboOraInizio.getSelectedItem();
-            String oraFine = (String) comboOraFine.getSelectedItem();
+        	 // Verifica che il valore non sia null
+        	 if (dataInizioDate != null) {
+        	     // Converte il valore in una stringa formattata
+        	     SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        	     dataInizio = sdf.format(dataInizioDate);
+        	 } else {
+        	     System.out.println("Nessuna data selezionata nel date picker.");
+        	 }
+        	 
+        	 Date dataFineDate = (Date) datePickerFine.getModel().getValue();
 
-            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
-            Date inizio = sdf.parse(new SimpleDateFormat("dd-MM-yyyy").format(dataInizio) + " " + oraInizio);
-            Date fine = sdf.parse(new SimpleDateFormat("dd-MM-yyyy").format(dataFine) + " " + oraFine);
+        	 // Verifica che il valore non sia null
+        	 if (dataFineDate != null) {
+        	     // Converte il valore in una stringa formattata
+        	     SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        	     dataFine = sdf.format(dataFineDate);
+        	 } else {
+        	     System.out.println("Nessuna data selezionata nel date picker.");
+        	 }
 
-            if (fine.before(inizio)) {
+        	String oraInizio = (String) comboOraInizio.getSelectedItem();
+        	String oraFine = (String) comboOraFine.getSelectedItem();
+
+        	// Combina data e ora in formato stringa
+        	String inizio = dataInizio + " " + oraInizio;
+        	String fine = dataFine + " " + oraFine;
+
+        	// Validazione (opzionale): Verifica se il formato è corretto
+        	SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+        	sdf.setLenient(false); // Per rendere più rigoroso il parsing
+        	
+        	Date dataInizioD = sdf.parse(inizio);
+            Date dataFineD = sdf.parse(fine);
+            
+            System.out.println(inizio +fine);
+
+
+            if (dataInizioD.before(dataInizioD)) {
                 JOptionPane.showMessageDialog(this, "Errore: Data di fine non valida");
                 return;
             }
 
             Prenotazione prenotazione = new Prenotazione(inizio, fine, utente, veicolo);
-
             Prenota prenota = new Prenota();
             prenota.aggiungiPrenotazione(prenotazione);
 
             JOptionPane.showMessageDialog(this, "Prenotazione effettuata con successo!");
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Errore nella creazione della prenotazione.");
+            JOptionPane.showMessageDialog(this, e.getMessage()+"Errore nella creazione della prenotazione.");
         }
     }
 }

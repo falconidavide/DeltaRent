@@ -11,7 +11,7 @@ import Prenotazione.Prenotazione;
 
 public class Prenota {
 	
-	 private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	 private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd-MM-yyyy HH:mm");
 
 
 	public void aggiungiPrenotazione(Prenotazione prenotazione) throws SQLException {
@@ -20,11 +20,11 @@ public class Prenota {
 		try {
 			Connection conn = DatabaseConnection.getConnection();
 			PreparedStatement stmt = conn.prepareStatement(query);
-			
-			String inizioStr = DATE_FORMAT.format(prenotazione.getInizioPrenotazione());
-            String fineStr = DATE_FORMAT.format(prenotazione.getFinePrenotazione());
-            String now= DATE_FORMAT.format(System.currentTimeMillis());
 
+			
+			String inizioStr =prenotazione.getInizioPrenotazione();
+            String fineStr =prenotazione.getFinePrenotazione();
+            String now= DATE_FORMAT.format(System.currentTimeMillis());
 
 			stmt.setString(1, inizioStr);
 			stmt.setString(2, fineStr);
