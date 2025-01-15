@@ -357,9 +357,7 @@ public class DettagliVeicoloPage extends JPanel {
         	
         	Date dataInizioD = sdf.parse(inizio);
             Date dataFineD = sdf.parse(fine);
-            
-            System.out.println(inizio +fine);
-
+           
 
             if (dataInizioD.before(dataInizioD)) {
                 JOptionPane.showMessageDialog(this, "Errore: Data di fine non valida");
