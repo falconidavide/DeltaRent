@@ -50,7 +50,7 @@ L'architettura del progetto DeltaRent è stata concepita seguendo un approccio m
     - Le pagine principali includono un panello di login/registrazione per utenti privati ed aziendali, una dashboard personale con lo storico dei noleggi, una pagina con i dettagli del profilo ed un sistema di ricerca avanzata per selezionare veicoli in base a filtri, come tipo e disponibilità.
 2. **Back-end**
     - Il back-end è sviluppato in Java, che gestisce la logica di registrazione, autenticazione, gestione dei noleggi e calcolo dei costi.
-    - Per la gestione dei dati, viene utilizzato un database relazioname MySQL, per archiviare informazioni sugli utenti, veicoli e sulle prenotazioni.
+    - Per la gestione dei dati, viene utilizzato un database relazioname SQLite, per archiviare informazioni sugli utenti, veicoli e sulle prenotazioni.
     - La struttua del database è progettata per ottimizzare le query, e per garantire l'integrità e la sicurezza dei dati.
 3. **Diagrammi UML**
     - Sono stati realizzati i seguenti diagrammi per rappresentare visivamente la struttura ed il funzionamento del sistema, in modo da migliorare la manutenibilità del sistema: use case diagram, class diagram, state machine diagram, sequence diagram, communication diagram/timing diagram, activity diagram e component diagram
