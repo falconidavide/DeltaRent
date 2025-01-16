@@ -29,7 +29,7 @@ public class Registration {
 				return rowsAffected > 0;
 			}
 		} catch (SQLException e) {
-			System.err.println("Errore durante la registrazione dell'utente: " + e.getMessage());
+			//System.err.println("Errore durante la registrazione dell'utente: " + e.getMessage());
 			return false;
 		}
 	}

@@ -215,26 +215,34 @@ public class LogIn extends JPanel {
 		lblCognome.setBounds(99, 61, 66, 18);
 		panel.add(lblCognome);
 
-		JLabel lblDataDiNascita = new JLabel("Data di Nascita");
+		JLabel lblDataDiNascita = new JLabel("Data di Nascita (GG/MM/AAAA)");
 		lblDataDiNascita.setForeground(new Color(216, 195, 182));
 		lblDataDiNascita.setFont(new Font("Arial", Font.PLAIN, 15));
 		lblDataDiNascita.setAlignmentX(0.5f);
 		lblDataDiNascita.setBounds(99, 119, 116, 18);
 		panel.add(lblDataDiNascita);
 
-		JLabel lblEmail_1 = new JLabel("E-mail");
-		lblEmail_1.setForeground(new Color(216, 195, 182));
-		lblEmail_1.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblEmail_1.setAlignmentX(0.5f);
-		lblEmail_1.setBounds(99, 180, 116, 18);
-		panel.add(lblEmail_1);
+		JLabel lblEmailRegUser = new JLabel("E-mail");
+		lblEmailRegUser.setForeground(new Color(216, 195, 182));
+		lblEmailRegUser.setFont(new Font("Arial", Font.PLAIN, 15));
+		lblEmailRegUser.setAlignmentX(0.5f);
+		lblEmailRegUser.setBounds(99, 180, 116, 18);
+		panel.add(lblEmailRegUser);
 
-		JLabel lblEmail_1_1 = new JLabel("Password");
-		lblEmail_1_1.setForeground(new Color(216, 195, 182));
-		lblEmail_1_1.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblEmail_1_1.setAlignmentX(0.5f);
-		lblEmail_1_1.setBounds(99, 241, 116, 18);
-		panel.add(lblEmail_1_1);
+		JLabel lblPasswordRegUser = new JLabel("Password");
+		lblPasswordRegUser.setForeground(new Color(216, 195, 182));
+		lblPasswordRegUser.setFont(new Font("Arial", Font.PLAIN, 15));
+		lblPasswordRegUser.setAlignmentX(0.5f);
+		lblPasswordRegUser.setBounds(99, 241, 116, 18);
+		panel.add(lblPasswordRegUser);
+		
+
+		JLabel lblPasswordRequirementsRegUser = new JLabel("(almeno 8 caratteri, almeno 1 maiuscolo ed 1 minuscolo, almeno un numero, almeno un carattere speciale)");
+		lblPasswordRequirementsRegUser.setForeground(new Color(216, 195, 182));
+		lblPasswordRequirementsRegUser.setFont(new Font("Arial", Font.PLAIN, 15));
+		lblPasswordRequirementsRegUser.setAlignmentX(0.5f);
+		lblPasswordRequirementsRegUser.setBounds(99, 259, 300, 18);
+		panel.add(lblPasswordRequirementsRegUser);
 
 		cognomeFieldReg = new JTextField();
 		cognomeFieldReg.setMaximumSize(new Dimension(300, 30));
@@ -265,7 +273,7 @@ public class LogIn extends JPanel {
 		passwordFieldRegUser.setBorder(null);
 		passwordFieldRegUser.setBackground(new Color(245, 239, 231));
 		passwordFieldRegUser.setAlignmentX(0.5f);
-		passwordFieldRegUser.setBounds(99, 259, 300, 31);
+		passwordFieldRegUser.setBounds(99, 277, 300, 31);
 		panel.add(passwordFieldRegUser);
 
 		btnLogin.addActionListener(new ActionListener() {
@@ -408,18 +416,30 @@ public class LogIn extends JPanel {
 
 	// Metodo per verificare se tutti i campi sono riempiti
 	private boolean areAllFieldsFilledForAzienda() {
-		return !nomeAziendaFieldReg.getText().trim().isEmpty() && !partitaIvaFieldReg.getText().trim().isEmpty()
-				&& isValidEmail(emailFieldReg.getText().trim()) && !passwordFieldReg.getText().trim().isEmpty();
+		return !nomeAziendaFieldReg.getText().trim().isEmpty() && isValidPIVA(partitaIvaFieldReg.getText().trim())
+				&& isValidEmail(emailFieldReg.getText().trim()) && isValidPassword(passwordFieldReg.getText().trim());
 	}
 
 	private boolean areAllFieldsFilledForPrivato() {
 		return !nomeFieldReg.getText().trim().isEmpty() && !cognomeFieldReg.getText().trim().isEmpty()
-				&& !dataNascitaFieldReg.getText().trim().isEmpty() && isValidEmail(emailFieldRegUser.getText().trim())
-				&& !passwordFieldRegUser.getText().trim().isEmpty();
+				&& isValidDate(dataNascitaFieldReg.getText().trim()) && isValidEmail(emailFieldRegUser.getText().trim())
+				&& isValidPassword(passwordFieldRegUser.getText().trim());
 	}
 
 	// Metodo per validare l'email
-	private boolean isValidEmail(String email) {
+	public static boolean isValidEmail(String email) {
 		return email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
+	}
+	
+	public static boolean isValidPassword(String password) {
+		return password.matches("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$");
+	}
+	
+	public static boolean isValidPIVA(String PIVA) {
+		return PIVA.matches("^[0-9]{11}$");
+	}
+	
+	public static boolean isValidDate(String date) {
+		return date.matches("(0[1-9]|[12][0-9]|3[01])[\\/](0[1-9]|1[012])[\\/](19|20)\\d\\d");
 	}
 }
