@@ -284,7 +284,6 @@ public class DettagliVeicoloPage extends JPanel {
             Date fine = sdf.parse(new SimpleDateFormat("dd-MM-yyyy").format(dataFine) + " " + oraFine);
             
             disponibile=Disponibilita.verificaDisponibilita(veicolo, inizio, fine);
-            System.out.println(disponibile);
             
             lblDisponibile.setText(disponibile ? "Disponibile" : "Non Disponibile");
             lblDisponibile.setForeground(disponibile ? Color.GREEN : Color.RED);
