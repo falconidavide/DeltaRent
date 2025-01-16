@@ -2,6 +2,7 @@ package GUI;
 
 import Prenotazione.Prenotazione;
 import Utente.Utente;
+import Util.Disponibilita;
 import Veicolo.Automobile;
 import Veicolo.Furgone;
 import Veicolo.Veicolo;
@@ -28,7 +29,7 @@ import java.util.Properties;
 public class DettagliVeicoloPage extends JPanel {
     private JLabel lblMarcaModello;
     private JLabel lblAlimentazione;
-    private JLabel lblDisponibile;
+    private JLabel lblDisponibile= new JLabel();
     private JLabel lblPrezzo;
     private JLabel lblImg;
     private JLabel lblPrezzoTotale;
@@ -38,6 +39,7 @@ public class DettagliVeicoloPage extends JPanel {
     private boolean isSettingDate = false;
     private Veicolo veicolo;
     private Utente utente; // Supponiamo che l'utente sia già disponibile
+	private boolean disponibile;
 
     public DettagliVeicoloPage(Automobile auto, Utente utente) {
         this.veicolo = auto;
@@ -97,7 +99,6 @@ public class DettagliVeicoloPage extends JPanel {
         String marca = isAutomobile ? ((Automobile) veicolo).getMarca() : ((Furgone) veicolo).getMarca();
         String modello = isAutomobile ? ((Automobile) veicolo).getModello() : ((Furgone) veicolo).getModello();
         String alimentazione = isAutomobile ? ((Automobile) veicolo).getAlimentazione() : ((Furgone) veicolo).getAlimentazione();
-        boolean disponibile = isAutomobile ? ((Automobile) veicolo).getDisponibile() : ((Furgone) veicolo).getDisponibile();
         double prezzo = isAutomobile ? ((Automobile) veicolo).getPrezzoOrario() : ((Furgone) veicolo).getPrezzoGiornaliero();
 
         JPanel infoPanel = new JPanel(new GridBagLayout());
@@ -130,12 +131,6 @@ public class DettagliVeicoloPage extends JPanel {
         gbc.gridy = 1;
         infoPanel.add(lblAlimentazione, gbc);
 
-        lblDisponibile = new JLabel(disponibile ? "Disponibile" : "Non Disponibile");
-        lblDisponibile.setForeground(disponibile ? Color.GREEN : Color.RED);
-        lblDisponibile.setFont(font);
-        gbc.gridy = 2;
-        infoPanel.add(lblDisponibile, gbc);
-
         lblPrezzo = new JLabel(isAutomobile ? "Prezzo €/h: €" + prezzo : "Prezzo €/day: €" + prezzo);
         lblPrezzo.setForeground(Color.WHITE);
         lblPrezzo.setFont(font);
@@ -153,7 +148,7 @@ public class DettagliVeicoloPage extends JPanel {
             BorderFactory.createTitledBorder(null, " Prenotazione ", TitledBorder.LEFT, TitledBorder.CENTER, null, Color.white),
             BorderFactory.createEmptyBorder(5, 20, 10, 20) // Padding di 15 px su tutti i lati
         ));
-        
+
         datePickerInizio = createDatePicker();
         datePickerFine = createDatePicker();
 
@@ -201,21 +196,32 @@ public class DettagliVeicoloPage extends JPanel {
     }
 
     private JPanel createBottomPanel(double prezzo, boolean isAutomobile) {
-        JPanel bottomPanel = new JPanel();
-        bottomPanel.setLayout(new BoxLayout(bottomPanel, BoxLayout.Y_AXIS));
+        JPanel bottomPanel = new JPanel(new GridBagLayout()); // Usa GridBagLayout
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(10, 10, 10, 10);
+        gbc.fill = GridBagConstraints.HORIZONTAL;
         bottomPanel.setBackground(new Color(60, 87, 121));
 
+        // Aggiungi lblDisponibile centrato
+        lblDisponibile.setFont(new Font("Arial", Font.BOLD, 22));
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.gridwidth = GridBagConstraints.REMAINDER;
+        gbc.anchor = GridBagConstraints.CENTER;
+        bottomPanel.add(lblDisponibile, gbc);
+
+        // Aggiungi lblPrezzoTotale centrato
         lblPrezzoTotale = new JLabel("Prezzo totale: €0");
         lblPrezzoTotale.setForeground(Color.WHITE);
         lblPrezzoTotale.setFont(new Font("Arial", Font.BOLD, 18)); // Mantieni lo stesso font
-        lblPrezzoTotale.setAlignmentX(Component.CENTER_ALIGNMENT);
-        lblPrezzoTotale.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0)); // Aggiungi un margine sotto
-        bottomPanel.add(lblPrezzoTotale);
+        gbc.gridy = 1;
+        bottomPanel.add(lblPrezzoTotale, gbc);
 
+        // Aggiungi btnNoleggia centrato
         btnNoleggia = new JButton("Noleggia");
         btnNoleggia.setFont(new Font("Arial", Font.BOLD, 18)); // Aumenta la dimensione del font per il bottone
-        btnNoleggia.setAlignmentX(Component.CENTER_ALIGNMENT);
-        bottomPanel.add(btnNoleggia);
+        gbc.gridy = 2;
+        bottomPanel.add(btnNoleggia, gbc);
 
         return bottomPanel;
     }
@@ -276,19 +282,33 @@ public class DettagliVeicoloPage extends JPanel {
             SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
             Date inizio = sdf.parse(new SimpleDateFormat("dd-MM-yyyy").format(dataInizio) + " " + oraInizio);
             Date fine = sdf.parse(new SimpleDateFormat("dd-MM-yyyy").format(dataFine) + " " + oraFine);
+            
+            disponibile=Disponibilita.verificaDisponibilita(veicolo, inizio, fine);
+            System.out.println(disponibile);
+            
+            lblDisponibile.setText(disponibile ? "Disponibile" : "Non Disponibile");
+            lblDisponibile.setForeground(disponibile ? Color.GREEN : Color.RED);
+            lblDisponibile.setFont(new Font("Arial", Font.BOLD, 22));
+            
 
-            if (fine.before(inizio)) {
-                lblPrezzoTotale.setText("Errore: Data di fine non valida");
-                btnNoleggia.setEnabled(false);
-                return;
-            } else {
-                btnNoleggia.setEnabled(true);
-            }
-
-            long durata = fine.getTime() - inizio.getTime();
-            double prezzoTotale = isAutomobile ? (durata / (1000 * 60 * 60.0)) * prezzo : (durata / (1000 * 60 * 60 * 24.0)) * prezzo;
-
-            lblPrezzoTotale.setText(String.format("Prezzo totale: €%.2f", prezzoTotale));
+	            if (fine.before(inizio)) {
+	                lblPrezzoTotale.setText("Errore: Data di fine non valida");
+	                btnNoleggia.setEnabled(false);
+	                return;
+	            } else {
+	            	if(disponibile)
+	                btnNoleggia.setEnabled(true);
+	            }
+	          
+	
+	            long durata = fine.getTime() - inizio.getTime();
+	            double prezzoTotale = isAutomobile ? (durata / (1000 * 60 * 60.0)) * prezzo : (durata / (1000 * 60 * 60 * 24.0)) * prezzo;
+	
+	            lblPrezzoTotale.setText(String.format("Prezzo totale: €%.2f", prezzoTotale));
+            
+            	
+            	return;
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Errore nel calcolo del prezzo.");
         }
@@ -359,7 +379,7 @@ public class DettagliVeicoloPage extends JPanel {
             Date dataFineD = sdf.parse(fine);
            
 
-            if (dataInizioD.before(dataInizioD)) {
+            if (dataInizioD.before(dataFineD)) {
                 JOptionPane.showMessageDialog(this, "Errore: Data di fine non valida");
                 return;
             }
