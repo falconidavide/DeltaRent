@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.util.List;
 
 public class Prenotazioni extends JPanel {
+	private static final long serialVersionUID = 1L;
+
 	public Prenotazioni(GestionePrenotazioni gestionePrenotazioni, String emailUtente) {
 		List<Prenotazione> prenotazioniPassate = gestionePrenotazioni.getPrenotazioniPassate(emailUtente);
 		initializeUI(prenotazioniPassate);

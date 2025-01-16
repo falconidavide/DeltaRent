@@ -6,7 +6,7 @@ import Utente.Utente;
 import DB.GestionePrenotazioni;
 
 public class HomePage extends JFrame {
-
+	private static final long serialVersionUID = 1L;
 	protected static CardLayout cardLayout;
 	protected static JPanel mainContentPanel;
 	static boolean logged = false; // Stato del login

@@ -9,7 +9,7 @@ import Utente.Utente;
 import java.sql.*;
 
 public class GestioneAccount extends JPanel {
-
+	private static final long serialVersionUID = 1L;
 	private JTextField txtNewEmail, txtCurrentEmail;
 	private JPasswordField txtOldPassword, txtNewPassword;
 	private JButton btnUpdateEmail, btnChangePassword;
@@ -279,6 +279,7 @@ public class GestioneAccount extends JPanel {
 
 	// Classe per bordi arrotondati
 	private static class RoundedBorder extends LineBorder {
+		private static final long serialVersionUID = 1L;
 		private int radius;
 
 		public RoundedBorder(int radius) {

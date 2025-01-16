@@ -13,7 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class LogIn extends JPanel {
-
+	private static final long serialVersionUID = 1L;
 	private JTextField nomeFieldReg;
 	private JTextField nomeAziendaFieldReg;
 	private JTextField emailFieldReg;

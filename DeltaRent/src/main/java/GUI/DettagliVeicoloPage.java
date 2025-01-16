@@ -27,6 +27,7 @@ import java.util.Date;
 import java.util.Properties;
 
 public class DettagliVeicoloPage extends JPanel {
+	private static final long serialVersionUID = 1L;
 	private JLabel lblMarcaModello;
     private JLabel lblAlimentazione;
     private JLabel lblDisponibile= new JLabel();
