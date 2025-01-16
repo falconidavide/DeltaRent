@@ -1,7 +1,6 @@
 package DB;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -98,11 +97,11 @@ public class GestoreVeicoli {
 	}
 
 	public static List<String> getModelliByMarca(String marca) {
-		
+
 		List<String> modelli = new ArrayList<>();
 
 		try {
-			String query = "SELECT DISTINCT modello FROM Veicolo WHERE marca='"+marca+"'";
+			String query = "SELECT DISTINCT modello FROM Veicolo WHERE marca='" + marca + "'";
 			try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(query)) {
 				while (rs.next()) {
 					String modello = rs.getString("modello");

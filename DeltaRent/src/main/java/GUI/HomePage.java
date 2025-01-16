@@ -4,257 +4,253 @@ import javax.swing.*;
 import java.awt.*;
 import Utente.Utente;
 import DB.GestionePrenotazioni;
-import java.util.List;
 
 public class HomePage extends JFrame {
 
-    protected static CardLayout cardLayout;
-    protected static JPanel mainContentPanel;
-    static boolean logged = false; // Stato del login
-    public static Utente loggedUser; // Oggetto utente loggato
-    private JPanel gestioneAccount; // Pannello gestioneAccount
-    protected static JButton btnLogout; // Pulsante di logout
-    private static JLabel lblWelcome = new JLabel("Benvenuto su DeltaRent!");
+	protected static CardLayout cardLayout;
+	protected static JPanel mainContentPanel;
+	static boolean logged = false; // Stato del login
+	public static Utente loggedUser; // Oggetto utente loggato
+	private JPanel gestioneAccount; // Pannello gestioneAccount
+	protected static JButton btnLogout; // Pulsante di logout
+	private static JLabel lblWelcome = new JLabel("Benvenuto su DeltaRent!");
 
-    public HomePage() {
-        // Impostazioni della finestra principale
-        setTitle("DeltaRent - Home");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(1200, 950);
-        setMinimumSize(new Dimension(900, 700));
-        setLocationRelativeTo(null);
-        ImageIcon appIcon = new ImageIcon("img/appIcon.png"); // Sostituisci con il percorso corretto
-        setIconImage(appIcon.getImage());
-        
-        // Layout principale
-        JPanel mainPanel = new JPanel(new BorderLayout());
-        mainPanel.setBackground(Color.DARK_GRAY);
-        getContentPane().add(mainPanel);
+	public HomePage() {
+		// Impostazioni della finestra principale
+		setTitle("DeltaRent - Home");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setSize(1200, 950);
+		setMinimumSize(new Dimension(900, 700));
+		setLocationRelativeTo(null);
+		ImageIcon appIcon = new ImageIcon("img/appIcon.png"); // Sostituisci con il percorso corretto
+		setIconImage(appIcon.getImage());
 
-        // Colonna sinistra
-        JPanel leftColumn = new JPanel();
-        leftColumn.setBackground(new Color(62, 88, 121));
-        leftColumn.setLayout(new BoxLayout(leftColumn, BoxLayout.Y_AXIS));
-        leftColumn.setBorder(BorderFactory.createLineBorder(new Color(216, 195, 182), 3));
+		// Layout principale
+		JPanel mainPanel = new JPanel(new BorderLayout());
+		mainPanel.setBackground(Color.DARK_GRAY);
+		getContentPane().add(mainPanel);
 
-        JLabel avatarLabel = new JLabel(new ImageIcon("path/to/avatar/image")); // Sostituisci con il percorso immagine
-        avatarLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		// Colonna sinistra
+		JPanel leftColumn = new JPanel();
+		leftColumn.setBackground(new Color(62, 88, 121));
+		leftColumn.setLayout(new BoxLayout(leftColumn, BoxLayout.Y_AXIS));
+		leftColumn.setBorder(BorderFactory.createLineBorder(new Color(216, 195, 182), 3));
 
-        JButton btnDeltaRent = createUniformButton("DeltaRent");
-        JButton btnRentCar = createUniformButton("Noleggia");
-        JButton btnViewBookings = createUniformButton("Prenotazioni");
+		JLabel avatarLabel = new JLabel(new ImageIcon("path/to/avatar/image")); // Sostituisci con il percorso immagine
+		avatarLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        JButton btnProfile = createUniformButton("");
-        ImageIcon userIcon = new ImageIcon(
-                new ImageIcon("img/userIcon.png").getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH));
-        btnProfile.setIcon(userIcon);
+		JButton btnDeltaRent = createUniformButton("DeltaRent");
+		JButton btnRentCar = createUniformButton("Noleggia");
+		JButton btnViewBookings = createUniformButton("Prenotazioni");
 
-        // Pulsante di logout
-        btnLogout = createUniformButton("Logout");
-        btnLogout.setVisible(logged); // Mostra il pulsante solo se l'utente è loggato
-        btnLogout.addActionListener(e -> {
-            logged = false;
-            loggedUser = null;
-            removeGestioneAccountPanel(); // Rimuove il pannello gestioneAccount
-            updateLogoutButton();
-            aggiornaMessaggioBenvenuto();
-            cardLayout.show(mainContentPanel, "login");
-        });
+		JButton btnProfile = createUniformButton("");
+		ImageIcon userIcon = new ImageIcon(
+				new ImageIcon("img/userIcon.png").getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH));
+		btnProfile.setIcon(userIcon);
 
-        // Aggiunta dei pulsanti
-        leftColumn.add(avatarLabel);
-        leftColumn.add(Box.createRigidArea(new Dimension(0, 20)));
-        leftColumn.add(btnDeltaRent);
-        leftColumn.add(Box.createRigidArea(new Dimension(0, 20))); // Spaziatura
-        leftColumn.add(btnRentCar);
-        leftColumn.add(Box.createRigidArea(new Dimension(0, 20)));
-        leftColumn.add(btnViewBookings);
-        leftColumn.add(Box.createRigidArea(new Dimension(0, 20)));
-        leftColumn.add(btnProfile);
-        leftColumn.add(Box.createVerticalGlue()); // Aggiunge spazio flessibile per spingere il logout in fondo
-        leftColumn.add(Box.createRigidArea(new Dimension(0, 20)));
-        leftColumn.add(btnLogout);
+		// Pulsante di logout
+		btnLogout = createUniformButton("Logout");
+		btnLogout.setVisible(logged); // Mostra il pulsante solo se l'utente è loggato
+		btnLogout.addActionListener(e -> {
+			logged = false;
+			loggedUser = null;
+			removeGestioneAccountPanel(); // Rimuove il pannello gestioneAccount
+			updateLogoutButton();
+			aggiornaMessaggioBenvenuto();
+			cardLayout.show(mainContentPanel, "login");
+		});
 
-        // Contenuto principale con CardLayout
-        cardLayout = new CardLayout();
-        mainContentPanel = new JPanel(cardLayout);
+		// Aggiunta dei pulsanti
+		leftColumn.add(avatarLabel);
+		leftColumn.add(Box.createRigidArea(new Dimension(0, 20)));
+		leftColumn.add(btnDeltaRent);
+		leftColumn.add(Box.createRigidArea(new Dimension(0, 20))); // Spaziatura
+		leftColumn.add(btnRentCar);
+		leftColumn.add(Box.createRigidArea(new Dimension(0, 20)));
+		leftColumn.add(btnViewBookings);
+		leftColumn.add(Box.createRigidArea(new Dimension(0, 20)));
+		leftColumn.add(btnProfile);
+		leftColumn.add(Box.createVerticalGlue()); // Aggiunge spazio flessibile per spingere il logout in fondo
+		leftColumn.add(Box.createRigidArea(new Dimension(0, 20)));
+		leftColumn.add(btnLogout);
 
-        JPanel homePanel = createHomePanel();
-        JPanel rentCarPanel = new SearchPage(); // Pannello di noleggio auto
-        JPanel profilePanel = new LogIn(); // Pannello di login
+		// Contenuto principale con CardLayout
+		cardLayout = new CardLayout();
+		mainContentPanel = new JPanel(cardLayout);
 
-        mainContentPanel.add(homePanel, "home");
-        mainContentPanel.add(rentCarPanel, "rentCar");
-        mainContentPanel.add(profilePanel, "login");
+		JPanel homePanel = createHomePanel();
+		JPanel rentCarPanel = new SearchPage(); // Pannello di noleggio auto
+		JPanel profilePanel = new LogIn(); // Pannello di login
 
-        // Aggiunta del pannello delle prenotazioni
-        JPanel bookingsPanel = new JPanel();
-        mainContentPanel.add(bookingsPanel, "bookings");
+		mainContentPanel.add(homePanel, "home");
+		mainContentPanel.add(rentCarPanel, "rentCar");
+		mainContentPanel.add(profilePanel, "login");
 
-        // Aggiunta dei pannelli al layout principale
-        mainPanel.add(leftColumn, BorderLayout.WEST);
-        mainPanel.add(mainContentPanel, BorderLayout.CENTER);
+		// Aggiunta del pannello delle prenotazioni
+		JPanel bookingsPanel = new JPanel();
+		mainContentPanel.add(bookingsPanel, "bookings");
 
-        // Eventi pulsanti
-        btnDeltaRent.addActionListener(e -> cardLayout.show(mainContentPanel, "home"));
-        btnRentCar.addActionListener(e -> cardLayout.show(mainContentPanel, "rentCar"));
-        btnViewBookings.addActionListener(e -> {
-            if (logged) {
-                // Se l'utente è loggato, mostra il pannello delle prenotazioni
-                mostraPrenotazioni(bookingsPanel);
-                cardLayout.show(mainContentPanel, "bookings");
-            } else {
-                // Altrimenti, mostra il pannello di login
-                cardLayout.show(mainContentPanel, "login");
-            }
-        });
-        btnProfile.addActionListener(e -> {
-            if (logged) {
-                // Se l'utente è loggato, mostra il pannello di gestione account
-                ensureGestioneAccountPanel();
-                cardLayout.show(mainContentPanel, "account");
-            } else {
-                // Altrimenti, mostra il pannello di login
-                cardLayout.show(mainContentPanel, "login");
-            }
-        });
-    }
+		// Aggiunta dei pannelli al layout principale
+		mainPanel.add(leftColumn, BorderLayout.WEST);
+		mainPanel.add(mainContentPanel, BorderLayout.CENTER);
 
-    private void removeGestioneAccountPanel() {
-        if (gestioneAccount != null) {
-            mainContentPanel.remove(gestioneAccount);
-            gestioneAccount = null;
-        }
-    }
+		// Eventi pulsanti
+		btnDeltaRent.addActionListener(e -> cardLayout.show(mainContentPanel, "home"));
+		btnRentCar.addActionListener(e -> cardLayout.show(mainContentPanel, "rentCar"));
+		btnViewBookings.addActionListener(e -> {
+			if (logged) {
+				// Se l'utente è loggato, mostra il pannello delle prenotazioni
+				mostraPrenotazioni(bookingsPanel);
+				cardLayout.show(mainContentPanel, "bookings");
+			} else {
+				// Altrimenti, mostra il pannello di login
+				cardLayout.show(mainContentPanel, "login");
+			}
+		});
+		btnProfile.addActionListener(e -> {
+			if (logged) {
+				// Se l'utente è loggato, mostra il pannello di gestione account
+				ensureGestioneAccountPanel();
+				cardLayout.show(mainContentPanel, "account");
+			} else {
+				// Altrimenti, mostra il pannello di login
+				cardLayout.show(mainContentPanel, "login");
+			}
+		});
+	}
 
-    private void ensureGestioneAccountPanel() {
-        if (loggedUser != null && gestioneAccount == null) {
-            gestioneAccount = new GestioneAccount();
-            mainContentPanel.add(gestioneAccount, "account");
-        }
-    }
+	private void removeGestioneAccountPanel() {
+		if (gestioneAccount != null) {
+			mainContentPanel.remove(gestioneAccount);
+			gestioneAccount = null;
+		}
+	}
 
-    private void updateLogoutButton() {
-        btnLogout.setVisible(logged);
-        Utente.setLoggato(false);
-        SearchPage.mostraVeicoli();
-    }
+	private void ensureGestioneAccountPanel() {
+		if (loggedUser != null && gestioneAccount == null) {
+			gestioneAccount = new GestioneAccount();
+			mainContentPanel.add(gestioneAccount, "account");
+		}
+	}
 
-    private JButton createUniformButton(String text) {
-        JButton button = new JButton(text);
-        button.setPreferredSize(new Dimension(200, 40));
-        button.setMaximumSize(new Dimension(200, 40));
-        button.setMinimumSize(new Dimension(200, 40));
-        button.setAlignmentX(Component.CENTER_ALIGNMENT);
-        button.setBackground(new Color(245, 239, 231));
-        button.setForeground(new Color(62, 88, 121));
-        button.setFont(new Font("Arial", Font.BOLD, 16));
-        button.setFocusPainted(false);
-        return button;
-    }
+	private void updateLogoutButton() {
+		btnLogout.setVisible(logged);
+		Utente.setLoggato(false);
+		SearchPage.mostraVeicoli();
+	}
 
-    private JPanel createHomePanel() {
-        JPanel homePanel = new JPanel();
-        homePanel.setBackground(new Color(220, 240, 255)); // Leggermente più blu
-        homePanel.setLayout(new BoxLayout(homePanel, BoxLayout.Y_AXIS));
+	private JButton createUniformButton(String text) {
+		JButton button = new JButton(text);
+		button.setPreferredSize(new Dimension(200, 40));
+		button.setMaximumSize(new Dimension(200, 40));
+		button.setMinimumSize(new Dimension(200, 40));
+		button.setAlignmentX(Component.CENTER_ALIGNMENT);
+		button.setBackground(new Color(245, 239, 231));
+		button.setForeground(new Color(62, 88, 121));
+		button.setFont(new Font("Arial", Font.BOLD, 16));
+		button.setFocusPainted(false);
+		return button;
+	}
 
-        // Banner con immagine e messaggio di benvenuto
-        JLabel bannerLabel = new JLabel(new ImageIcon("../Documenti/Logo/Logo DeltaRent small.png")); // Sostituisci con l'immagine del banner
-        bannerLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+	private JPanel createHomePanel() {
+		JPanel homePanel = new JPanel();
+		homePanel.setBackground(new Color(220, 240, 255)); // Leggermente più blu
+		homePanel.setLayout(new BoxLayout(homePanel, BoxLayout.Y_AXIS));
 
-        lblWelcome = new JLabel("Benvenuto su DeltaRent!");
-        lblWelcome.setFont(new Font("Arial", Font.BOLD, 36));
-        lblWelcome.setHorizontalAlignment(SwingConstants.CENTER);
-        lblWelcome.setForeground(new Color(32, 52, 85));
-        lblWelcome.setAlignmentX(Component.CENTER_ALIGNMENT);
+		// Banner con immagine e messaggio di benvenuto
+		JLabel bannerLabel = new JLabel(new ImageIcon("../Documenti/Logo/Logo DeltaRent small.png"));
+		bannerLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        homePanel.add(bannerLabel);
-        homePanel.add(Box.createRigidArea(new Dimension(0, 20)));
-        homePanel.add(lblWelcome);
-        homePanel.add(Box.createRigidArea(new Dimension(0, 20)));
+		lblWelcome = new JLabel("Benvenuto su DeltaRent!");
+		lblWelcome.setFont(new Font("Arial", Font.BOLD, 36));
+		lblWelcome.setHorizontalAlignment(SwingConstants.CENTER);
+		lblWelcome.setForeground(new Color(32, 52, 85));
+		lblWelcome.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        // Sezione con icone e descrizioni
-        JPanel featuresPanel = new JPanel();
-        featuresPanel.setBackground(new Color(220, 240, 255)); // Leggermente più blu
-        featuresPanel.setLayout(new GridLayout(1, 3, 20, 20)); // Modificato per rendere le sezioni di dimensioni uguali
-        addFeature(featuresPanel, "Noleggio Auto e Furgoni", "rent_car_icon.png",
-                "Noleggia veicoli in modo rapido e semplice.");
-        addFeature(featuresPanel, "Le Mie Prenotazioni", "bookings_icon.png",
-                "Visualizza tutte le tue prenotazioni.");
-        addFeature(featuresPanel, "Gestione Account", "account.png",
-                "Gestisci il tuo account e le tue informazioni.");
+		homePanel.add(bannerLabel);
+		homePanel.add(Box.createRigidArea(new Dimension(0, 20)));
+		homePanel.add(lblWelcome);
+		homePanel.add(Box.createRigidArea(new Dimension(0, 20)));
 
-        homePanel.add(featuresPanel);
-        homePanel.add(Box.createRigidArea(new Dimension(0, 20)));
+		// Sezione con icone e descrizioni
+		JPanel featuresPanel = new JPanel();
+		featuresPanel.setBackground(new Color(220, 240, 255)); // Leggermente più blu
+		featuresPanel.setLayout(new GridLayout(1, 3, 20, 20)); // Modificato per rendere le sezioni di dimensioni uguali
+		addFeature(featuresPanel, "Noleggio Auto e Furgoni", "rent_car_icon.png", "Noleggia veicoli in modo rapido e semplice.");
+		addFeature(featuresPanel, "Le Mie Prenotazioni", "bookings_icon.png", "Visualizza tutte le tue prenotazioni.");
+		addFeature(featuresPanel, "Gestione Account", "account.png", "Gestisci il tuo account e le tue informazioni.");
 
-        // Sezione con pulsante per esplorare la flotta
-        JButton btnExploreFleet = createUniformButton("Esplora la nostra flotta");
-        btnExploreFleet.setPreferredSize(new Dimension(500, 100)); // Ingrandito
-        btnExploreFleet.setMaximumSize(new Dimension(500, 100)); // Ingrandito
-        btnExploreFleet.setMinimumSize(new Dimension(500, 100)); // Ingrandito
-        btnExploreFleet.setAlignmentX(Component.CENTER_ALIGNMENT);
-        btnExploreFleet.addActionListener(e -> cardLayout.show(mainContentPanel, "rentCar"));
-        btnExploreFleet.setFont(new Font("Arial",Font.BOLD, 25));
+		homePanel.add(featuresPanel);
+		homePanel.add(Box.createRigidArea(new Dimension(0, 20)));
 
-        homePanel.add(btnExploreFleet);
-        homePanel.add(Box.createRigidArea(new Dimension(0, 175)));
+		// Sezione con pulsante per esplorare la flotta
+		JButton btnExploreFleet = createUniformButton("Esplora la nostra flotta");
+		btnExploreFleet.setPreferredSize(new Dimension(500, 100)); // Ingrandito
+		btnExploreFleet.setMaximumSize(new Dimension(500, 100)); // Ingrandito
+		btnExploreFleet.setMinimumSize(new Dimension(500, 100)); // Ingrandito
+		btnExploreFleet.setAlignmentX(Component.CENTER_ALIGNMENT);
+		btnExploreFleet.addActionListener(e -> cardLayout.show(mainContentPanel, "rentCar"));
+		btnExploreFleet.setFont(new Font("Arial", Font.BOLD, 25));
 
-        return homePanel;
-    }
+		homePanel.add(btnExploreFleet);
+		homePanel.add(Box.createRigidArea(new Dimension(0, 175)));
 
-    private void addFeature(JPanel panel, String title, String imagePath, String description) {
-        JPanel featurePanel = new JPanel();
-        featurePanel.setBackground(new Color(220, 240, 255)); // Leggermente più blu
-        featurePanel.setLayout(new BoxLayout(featurePanel, BoxLayout.Y_AXIS));
-        featurePanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-      
-        // Ridimensiona l'immagine
-        ImageIcon icon = new ImageIcon("img/"+imagePath);
-        Image img = icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-        JLabel lblImage = new JLabel(new ImageIcon(img));
-        lblImage.setAlignmentX(Component.CENTER_ALIGNMENT);
+		return homePanel;
+	}
 
-        JLabel lblTitle = new JLabel(title);
-        lblTitle.setFont(new Font("Arial", Font.BOLD, 18));
-        lblTitle.setForeground(new Color(32, 52, 85));
-        lblTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
+	private void addFeature(JPanel panel, String title, String imagePath, String description) {
+		JPanel featurePanel = new JPanel();
+		featurePanel.setBackground(new Color(220, 240, 255)); // Leggermente più blu
+		featurePanel.setLayout(new BoxLayout(featurePanel, BoxLayout.Y_AXIS));
+		featurePanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        // Utilizza HTML per gestire l'andata a capo e il centrato del testo
-        JLabel txtDescription = new JLabel(description);
-        txtDescription.setFont(new Font("Arial", Font.PLAIN, 16));
-        txtDescription.setForeground(new Color(32, 52, 85));
-        txtDescription.setAlignmentX(Component.CENTER_ALIGNMENT);
-       //txtDescription.setAlignmentX(Component.CENTER_ALIGNMENT);
+		// Ridimensiona l'immagine
+		ImageIcon icon = new ImageIcon("img/" + imagePath);
+		Image img = icon.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+		JLabel lblImage = new JLabel(new ImageIcon(img));
+		lblImage.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        featurePanel.add(lblImage);
-        featurePanel.add(Box.createRigidArea(new Dimension(0, 10)));
-        featurePanel.add(lblTitle);
-        featurePanel.add(Box.createRigidArea(new Dimension(0, 10)));
-        featurePanel.add(txtDescription);
+		JLabel lblTitle = new JLabel(title);
+		lblTitle.setFont(new Font("Arial", Font.BOLD, 18));
+		lblTitle.setForeground(new Color(32, 52, 85));
+		lblTitle.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        panel.add(featurePanel);
-    }
+		// Utilizza HTML per gestire l'andata a capo e il centrato del testo
+		JLabel txtDescription = new JLabel(description);
+		txtDescription.setFont(new Font("Arial", Font.PLAIN, 16));
+		txtDescription.setForeground(new Color(32, 52, 85));
+		txtDescription.setAlignmentX(Component.CENTER_ALIGNMENT);
+		// txtDescription.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-    private void mostraPrenotazioni(JPanel bookingsPanel) {
-        bookingsPanel.removeAll(); // Pulisce il pannello delle prenotazioni
+		featurePanel.add(lblImage);
+		featurePanel.add(Box.createRigidArea(new Dimension(0, 10)));
+		featurePanel.add(lblTitle);
+		featurePanel.add(Box.createRigidArea(new Dimension(0, 10)));
+		featurePanel.add(txtDescription);
 
-        // Ottiene le prenotazioni passate dell'utente loggato
-        GestionePrenotazioni gestionePrenotazioni = new GestionePrenotazioni();
+		panel.add(featurePanel);
+	}
 
-        // Impostazioni del layout
-        Prenotazioni prenotazioniPanel = new Prenotazioni(gestionePrenotazioni, loggedUser.getEmail());
-        bookingsPanel.setLayout(new BorderLayout());
-        bookingsPanel.add(prenotazioniPanel, BorderLayout.CENTER);
+	private void mostraPrenotazioni(JPanel bookingsPanel) {
+		bookingsPanel.removeAll(); // Pulisce il pannello delle prenotazioni
 
-        bookingsPanel.revalidate();
-        bookingsPanel.repaint();
-    }
-    
-    public static void aggiornaMessaggioBenvenuto() {
-    	if(logged) {
-        	lblWelcome.setText("Benvenuto " + Utente.getDisplayName() + " su DeltaRent!");
-    	} else {
-        	lblWelcome.setText("Benvenuto su DeltaRent!");
-    	}
-    }
+		// Ottiene le prenotazioni passate dell'utente loggato
+		GestionePrenotazioni gestionePrenotazioni = new GestionePrenotazioni();
+
+		// Impostazioni del layout
+		Prenotazioni prenotazioniPanel = new Prenotazioni(gestionePrenotazioni, loggedUser.getEmail());
+		bookingsPanel.setLayout(new BorderLayout());
+		bookingsPanel.add(prenotazioniPanel, BorderLayout.CENTER);
+
+		bookingsPanel.revalidate();
+		bookingsPanel.repaint();
+	}
+
+	public static void aggiornaMessaggioBenvenuto() {
+		if (logged) {
+			lblWelcome.setText("Benvenuto " + Utente.getDisplayName() + " su DeltaRent!");
+		} else {
+			lblWelcome.setText("Benvenuto su DeltaRent!");
+		}
+	}
 }

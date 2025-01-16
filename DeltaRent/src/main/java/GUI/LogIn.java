@@ -12,7 +12,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-@SuppressWarnings("serial")
 public class LogIn extends JPanel {
 
 	private JTextField nomeFieldReg;
@@ -275,6 +274,10 @@ public class LogIn extends JPanel {
 				String password = new String(passwordField.getPassword());
 				Utente user = Utente.getUserByEmailAndPassword(email, password);
 				if (user != null) {
+					// Pulisci form di login
+					emailField.setText("");
+					passwordField.setText("");
+
 					// Salva l'utente loggato come singleton
 					HomePage.loggedUser = user;
 					// Login riuscito, apri la pagina principale
@@ -285,8 +288,7 @@ public class LogIn extends JPanel {
 					HomePage.cardLayout.show(HomePage.mainContentPanel, "home");
 				} else {
 					// Login fallito, mostra un messaggio di errore
-					JOptionPane.showMessageDialog(LogIn.this, "Credenziali errate.", "Errore di accesso",
-							JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(LogIn.this, "Credenziali errate.", "Errore di accesso", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
@@ -302,16 +304,14 @@ public class LogIn extends JPanel {
 
 				if (Registration.registerUser(email, password, null, null, null, nomeAzienda, partitaIva)) {
 					// Registrazione riuscita, mostra un messaggio di conferma
-					JOptionPane.showMessageDialog(LogIn.this, "Registrazione completata.", "Registrazione",
-							JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(LogIn.this, "Registrazione completata.", "Registrazione", JOptionPane.INFORMATION_MESSAGE);
 					emailFieldReg.setText("");
 					passwordFieldReg.setText("");
 					nomeAziendaFieldReg.setText("");
 					partitaIvaFieldReg.setText("");
 				} else {
 					// Registrazione fallita, mostra un messaggio di errore
-					JOptionPane.showMessageDialog(LogIn.this, "Errore durante la registrazione.",
-							"Errore di registrazione", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(LogIn.this, "Errore durante la registrazione.", "Errore di registrazione", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		};
@@ -329,17 +329,15 @@ public class LogIn extends JPanel {
 
 				if (Registration.registerUser(email, password, nome, cognome, dataNascita, null, null)) {
 					// Registrazione riuscita, mostra un messaggio di conferma
-					JOptionPane.showMessageDialog(LogIn.this, "Registrazione completata.", "Registrazione",
-							JOptionPane.INFORMATION_MESSAGE);
-					 emailFieldRegUser.setText("");
-					 passwordFieldRegUser.setText("");
-					 nomeFieldReg.setText("");
-					 cognomeFieldReg.setText("");
-					 dataNascitaFieldReg.setText("");
+					JOptionPane.showMessageDialog(LogIn.this, "Registrazione completata.", "Registrazione", JOptionPane.INFORMATION_MESSAGE);
+					emailFieldRegUser.setText("");
+					passwordFieldRegUser.setText("");
+					nomeFieldReg.setText("");
+					cognomeFieldReg.setText("");
+					dataNascitaFieldReg.setText("");
 				} else {
 					// Registrazione fallita, mostra un messaggio di errore
-					JOptionPane.showMessageDialog(LogIn.this, "Errore durante la registrazione.",
-							"Errore di registrazione", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(LogIn.this, "Errore durante la registrazione.", "Errore di registrazione", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		};

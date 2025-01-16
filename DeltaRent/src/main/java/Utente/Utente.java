@@ -1,11 +1,7 @@
 package Utente;
 
 import java.sql.*;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
 import DB.DatabaseConnection;
-import GUI.HomePage;
 
 public class Utente {
 
@@ -20,8 +16,7 @@ public class Utente {
 	private static boolean isLoggato = false;
 	private static String displayName = "";
 
-	public Utente(String email, String password, String nome, String cognome, String dataDiNascita, String nomeAzienda,
-			String partitaIVA, int isPrivato) {
+	public Utente(String email, String password, String nome, String cognome, String dataDiNascita, String nomeAzienda, String partitaIVA, int isPrivato) {
 		this.email = email;
 		this.password = password;
 		this.nome = nome;
@@ -124,6 +119,7 @@ public class Utente {
 	public static boolean isLoggato() {
 		return isLoggato;
 	}
+
 	public static void setLoggato(boolean l) {
 		isLoggato = l;
 	}

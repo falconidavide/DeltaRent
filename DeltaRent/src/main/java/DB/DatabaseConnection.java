@@ -27,6 +27,6 @@ public class DatabaseConnection {
             }
         } catch (SQLException e) {
             System.err.println("Errore durante la chiusura della connessione: " + e.getMessage());
-        }
-    }
+		}
+	}
 }

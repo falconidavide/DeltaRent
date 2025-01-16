@@ -34,8 +34,7 @@ public class SearchPage extends JPanel {
 		availableOnlyCheckBox.setSelected(true);
 
 		// Inizializza il combo box per l'ordinamento
-		sortComboBox = new JComboBox<>(new String[] { "Ordina per", "Prezzo Crescente", "Prezzo Decrescente",
-				"Alfabetico Crescente", "Alfabetico Decrescente" });
+		sortComboBox = new JComboBox<>(new String[] { "Ordina per", "Prezzo Crescente", "Prezzo Decrescente", "Alfabetico Crescente", "Alfabetico Decrescente" });
 
 		// Layout principale
 		setLayout(new BorderLayout());
@@ -54,8 +53,7 @@ public class SearchPage extends JPanel {
 		JLabel lblSubtitle = new JLabel("Scegli la tua prossima auto da noleggiare", SwingConstants.CENTER);
 		lblSubtitle.setForeground(new Color(216, 195, 182));
 		lblSubtitle.setFont(new Font("Arial", Font.PLAIN, 30));
-		lblSubtitle.setBorder(BorderFactory.createEmptyBorder(0, 0, 20, 0)); // Aggiungi margine inferiore per
-																				// distanziamento
+		lblSubtitle.setBorder(BorderFactory.createEmptyBorder(0, 0, 20, 0)); // Aggiungi margine inferiore per distanziamento
 		searchPanel.add(lblSubtitle, BorderLayout.NORTH);
 
 		JPanel filterPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 10));
@@ -67,7 +65,7 @@ public class SearchPage extends JPanel {
 		lblMarca.setForeground(Color.WHITE);
 		filterPanel.add(lblMarca);
 		filterPanel.add(brandComboBox);
-		
+
 		filterPanel.add(Box.createHorizontalStrut(15));
 
 		JLabel lblModello = new JLabel("Modello");
@@ -75,15 +73,14 @@ public class SearchPage extends JPanel {
 		lblModello.setForeground(Color.WHITE);
 		filterPanel.add(lblModello);
 		filterPanel.add(modelComboBox);
-		
+
 		filterPanel.add(Box.createHorizontalStrut(15));
 
 		availableOnlyCheckBox.setForeground(new Color(0, 0, 0));
 		availableOnlyCheckBox.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
 		filterPanel.add(availableOnlyCheckBox);
-		
+
 		filterPanel.add(Box.createHorizontalStrut(15));
-		
 
 		// Aggiungi il combo box per l'ordinamento
 		filterPanel.add(sortComboBox);
@@ -220,8 +217,7 @@ public class SearchPage extends JPanel {
 		return panel;
 	}
 
-	private static JPanel creaPannelloVeicolo(String marca, String modello, boolean disponibile, int prezzoOrario,
-			int prezzoGiornaliero, String pathImg) {
+	private static JPanel creaPannelloVeicolo(String marca, String modello, boolean disponibile, int prezzoOrario, int prezzoGiornaliero, String pathImg) {
 		JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 		panel.setBackground(new Color(60, 87, 121));
@@ -267,8 +263,7 @@ public class SearchPage extends JPanel {
 	}
 
 	private static JPanel creaPannelloVeicolo(Automobile auto) {
-		JPanel panel = creaPannelloVeicolo(auto.getMarca(), auto.getModello(), auto.getDisponibile(),
-				auto.getPrezzoOrario(), -1, auto.getPathImg());
+		JPanel panel = creaPannelloVeicolo(auto.getMarca(), auto.getModello(), auto.getDisponibile(), auto.getPrezzoOrario(), -1, auto.getPathImg());
 
 		panel.addMouseListener(new MouseAdapter() {
 			@Override
@@ -282,8 +277,7 @@ public class SearchPage extends JPanel {
 	}
 
 	private static JPanel creaPannelloVeicolo(Furgone furgone) {
-		JPanel panel = creaPannelloVeicolo(furgone.getMarca(), furgone.getModello(), furgone.getDisponibile(), -1,
-				furgone.getPrezzoGiornaliero(), furgone.getPathImg());
+		JPanel panel = creaPannelloVeicolo(furgone.getMarca(), furgone.getModello(), furgone.getDisponibile(), -1, furgone.getPrezzoGiornaliero(), furgone.getPathImg());
 
 		panel.addMouseListener(new MouseAdapter() {
 			@Override

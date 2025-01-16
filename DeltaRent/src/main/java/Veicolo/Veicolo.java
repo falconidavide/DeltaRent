@@ -1,7 +1,5 @@
 package Veicolo;
 
-import java.sql.Date;
-
 public class Veicolo {
 
 	private String targa;
@@ -16,8 +14,8 @@ public class Veicolo {
 		this.marca = marca;
 		this.modello = modello;
 		this.disponibile = disponibile;
-		this.pathImg=pathImg;
-		this.alimentazione=alimentazione;
+		this.pathImg = pathImg;
+		this.alimentazione = alimentazione;
 	}
 
 	public String getTarga() {

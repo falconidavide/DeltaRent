@@ -27,7 +27,7 @@ import java.util.Date;
 import java.util.Properties;
 
 public class DettagliVeicoloPage extends JPanel {
-    private JLabel lblMarcaModello;
+	private JLabel lblMarcaModello;
     private JLabel lblAlimentazione;
     private JLabel lblDisponibile= new JLabel();
     private JLabel lblPrezzo;
@@ -304,7 +304,6 @@ public class DettagliVeicoloPage extends JPanel {
 	            double prezzoTotale = isAutomobile ? (durata / (1000 * 60 * 60.0)) * prezzo : (durata / (1000 * 60 * 60 * 24.0)) * prezzo;
 	
 	            lblPrezzoTotale.setText(String.format("Prezzo totale: €%.2f", prezzoTotale));
-            
             	
             	return;
             
@@ -331,7 +330,7 @@ public class DettagliVeicoloPage extends JPanel {
     }
 
     private void creaPrenotazione() {
-        if (!utente.isLoggato()) {
+        if (!Utente.isLoggato()) {
             JOptionPane.showMessageDialog(this, "Devi essere loggato per poter noleggiare un veicolo.");
             return;
         }
@@ -390,6 +389,6 @@ public class DettagliVeicoloPage extends JPanel {
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage()+"Errore nella creazione della prenotazione.");
-        }
-    }
+		}
+	}
 }
