@@ -1,29 +1,21 @@
-package GUI;
+package gui;
 
 import javax.swing.JPanel;
-
-import DB.GestoreVeicoli;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Font;
+import javax.swing.SwingConstants;
 
-public class PannelloAuto extends JPanel {
+public class PannelloFurgone extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	String modello;
-	Boolean disponibile;
-	String potenza;
-	String alimentazione;
-	String prezzo;
 
 	/**
 	 * Create the panel.
 	 */
-	public PannelloAuto() {
-
-		GestoreVeicoli.aggiornaListaAutomobili();
+	public PannelloFurgone() {
 
 		setBackground(new Color(220, 221, 222));
 		setSize(500, 300);
@@ -31,7 +23,7 @@ public class PannelloAuto extends JPanel {
 
 		JLabel Modello = new JLabel("Modello");// dati dall'arraylist
 		Modello.setFont(new Font("Lucida Grande", Font.PLAIN, 25));
-		Modello.setBounds(6, 6, 488, 58);
+		Modello.setBounds(6, 6, 421, 58);
 		add(Modello);
 
 		JLabel Anno = new JLabel("Anno");// dati dall'arraylist
@@ -64,6 +56,11 @@ public class PannelloAuto extends JPanel {
 		Image scaledImage = originalIcon.getImage().getScaledInstance(279, 218, Image.SCALE_SMOOTH);
 		ImageIcon scaledIcon = new ImageIcon(scaledImage);
 		immagineAuto.setIcon(scaledIcon);
+
+		JLabel aziendale = new JLabel("AZIENDALE");
+		aziendale.setHorizontalAlignment(SwingConstants.RIGHT);
+		aziendale.setBounds(390, 6, 104, 16);
+		add(aziendale);
 
 	}
 }

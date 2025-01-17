@@ -1,4 +1,4 @@
-package Veicolo;
+package veicolo;
 
 public class Automobile extends Veicolo {
 

@@ -1,12 +1,12 @@
-package GUI;
+package gui;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
-import DB.Registration;
-import Utente.Utente;
+import db.Registration;
+import utente.Utente;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;

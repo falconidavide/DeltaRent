@@ -1,9 +1,12 @@
-package GUI;
+package gui;
 
 import javax.swing.*;
+
+import db.GestionePrenotazioni;
+
 import java.awt.*;
-import Utente.Utente;
-import DB.GestionePrenotazioni;
+
+import utente.Utente;
 
 public class HomePage extends JFrame {
 	private static final long serialVersionUID = 1L;

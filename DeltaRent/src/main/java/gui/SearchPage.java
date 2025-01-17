@@ -1,11 +1,13 @@
-package GUI;
+package gui;
 
-import DB.GestoreVeicoli;
-import Utente.Utente;
-import Veicolo.Automobile;
-import Veicolo.Furgone;
+import utente.Utente;
+import veicolo.Automobile;
+import veicolo.Furgone;
 
 import javax.swing.*;
+
+import db.GestoreVeicoli;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;

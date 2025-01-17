@@ -1,12 +1,12 @@
-package DB;
+package db;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import GUI.HomePage;
-import Prenotazione.Prenotazione;
-import Veicolo.Automobile;
+import gui.HomePage;
+import prenotazione.Prenotazione;
+import veicolo.Automobile;
 
 public class GestionePrenotazioni {
 

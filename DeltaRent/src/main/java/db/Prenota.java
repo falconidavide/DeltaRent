@@ -1,11 +1,12 @@
-package DB;
+package db;
 
 import java.text.SimpleDateFormat;
+
+import prenotazione.Prenotazione;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
-import Prenotazione.Prenotazione;
 
 public class Prenota {
 

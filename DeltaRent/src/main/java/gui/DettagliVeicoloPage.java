@@ -1,19 +1,18 @@
-package GUI;
+package gui;
 
-import Prenotazione.Prenotazione;
-import Utente.Utente;
-import Util.Disponibilita;
-import Veicolo.Automobile;
-import Veicolo.Furgone;
-import Veicolo.Veicolo;
+import db.Prenota;
+import prenotazione.Prenotazione;
+import utente.Utente;
+import util.Disponibilita;
+import veicolo.Automobile;
+import veicolo.Furgone;
+import veicolo.Veicolo;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeListener;
 import org.jdatepicker.impl.*;
-
-import DB.Prenota;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;

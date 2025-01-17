@@ -1,4 +1,4 @@
-package DB;
+package db;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -7,8 +7,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import Veicolo.Automobile;
-import Veicolo.Furgone;
+import veicolo.Automobile;
+import veicolo.Furgone;
 
 public class GestoreVeicoli {
 

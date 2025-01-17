@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import DB.Registration;
-import GUI.LogIn;
+import db.Registration;
+import gui.LogIn;
 
 /**
  * Unit test for simple App.

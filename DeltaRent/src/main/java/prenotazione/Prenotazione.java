@@ -1,7 +1,7 @@
-package Prenotazione;
+package prenotazione;
 
-import Veicolo.Veicolo;
-import Utente.Utente;
+import utente.Utente;
+import veicolo.Veicolo;
 
 public class Prenotazione {
 

@@ -1,7 +1,8 @@
-package Utente;
+package utente;
 
 import java.sql.*;
-import DB.DatabaseConnection;
+
+import db.DatabaseConnection;
 
 public class Utente {
 

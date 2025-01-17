@@ -1,10 +1,11 @@
-package GUI;
+package gui;
 
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
-import DB.DatabaseConnection;
-import Utente.Utente;
+
+import db.DatabaseConnection;
+import utente.Utente;
 
 import java.sql.*;
 

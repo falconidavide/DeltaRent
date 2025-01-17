@@ -1,7 +1,7 @@
-package GUI;
+package gui;
 
-import DB.GestionePrenotazioni;
-import Prenotazione.Prenotazione;
+import db.GestionePrenotazioni;
+import prenotazione.Prenotazione;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
