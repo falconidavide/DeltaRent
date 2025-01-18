@@ -3,7 +3,7 @@
 
 **1.1 Obiettivo:** l'obiettivo del progetto DeltaRent è sviluppare una piattaforma intuitiva per il noleggio di automobili, accessibile sia a privati che ad aziende, che consenta di gestire account, prenotazioni, e pagamenti in modo efficiente.
 
-**1.2 Scopo:** lo scopo del progetto è fornire un sistema completo e affidabile che permetta di offrire un servizio moderno, scalabile e semplice da utilizzare, migliorando la gestione interna e l'esperienza utente.
+**1.2 Scopo:** lo scopo del progetto è fornire un sistema moderno, scalabile e intuitivo per il noleggio di veicoli, migliorando la gestione interna e l'esperienza utente, attraverso l'integrazione di funzionalità avanzate come la gestione dello storico dei noleggi e un sistema di ricerca basato su filtri.
 
 **1.3 Definizioni, acronimi e abbreviazioni:**
 
@@ -19,8 +19,10 @@
 **1.4 Riferimenti:**
 
 - PP del progetto DeltaRent
+- Documentazione UML
 - Linee guida Java Oracle
 - Standard ISO/IEC 9126
+- Modello di sviluppo RAD
 
 **1.5 Panoramica:** il documento descrive i requisiti del sistema DeltaRent, le sue funzionalità principali, le caratteristiche degli utenti, i vincoli progettuali e le dipendenze, fornendo dettagli per la progettazione e implementazione.
 
@@ -28,7 +30,7 @@
 
 **2.1 Prospettiva del prodotto:** il prodotto finale sarà un'interfaccia applicativa in grado di permettere agli utenti di gestire il proprio profilo, di visualizzare le automobili disponibili al noleggio. La piattaforma offre una sezione personale per l'utente che mostra i veicoli preferiti e i veicoli attualmente noleggiati dall'utente stesso. L'interfaccia offre inoltre all'utente una sezione per permettere di cercare un veicolo attraverso dei filtri, come il colore o il tipo di carrozzeria. Gli utenti, che possono essere privati o azienda, potranno accedere oppure, se non hanno già creato un account, registrarsi fornendo le informazioni necessarie in base al tipo di utenza. 
 
-**2.2 Funzioni del prodotto:** Le principali funzioni del prodotto saranno inerenti al noleggio auto, l'utente potrà programmare l'inizio di un noleggio piuttosto che terminarne un'altro, potrà selezionare dei veicoli da aggiungere alla lista dei veicoli preferiti, l'utente potrà inoltre visualizzare una prospettiva della rata mensile che pagherà in base ai servizi complementari del noleggio e aggiungendo il periodo del noleggio (in giorni) potrà visualizzare il prezzo finale per il noleggio. 
+**2.2 Funzioni del prodotto:** Le principali funzioni del prodotto saranno inerenti al noleggio auto, l'utente potrà programmare l'inizio di un noleggio piuttosto che terminarne un'altro, potrà selezionare dei veicoli da aggiungere alla lista dei veicoli preferiti, l'utente potrà inoltre visualizzare una prospettiva della rata mensile che pagherà in base ai servizi complementari del noleggio e aggiungendo il periodo del noleggio potrà visualizzare il prezzo finale per il noleggio. Viene controllata la sicurezza della password durante la fase di registrazione.
 
 **2.3 Caratteristiche dell'utente:** L'utente sarà una persona fisica che opererà sulla poattaforma per proprio conto o per conto dell'azienda per cui lavora, nel caso di privato le informazioni rischieste saranno il proprio nome, cognome, indirizzo email e la data di nascita, nel caso di un'azienda privata l'operatore dovrà inserire la pec registrata dell'azienda, la partita iva e il nome dell'azienda.
 
@@ -43,7 +45,7 @@ All'inizio del noleggio, se l'auto è assegnata ad un utente privato verrà regi
 
 <div style="margin-left: 32px;">
 
-**3.1.1 Interfacce utente:** il programma è stato testato per supportare diverse risoluzioni differenti. Sono state implementate diverse schermate per effettuare le diverse funzioni del programma, e sono tutte state studiate in modo da essere intuitive per gli utenti.
+**3.1.1 Interfacce utente:** il programma è stato testato per supportare diverse risoluzioni differenti. Sono state implementate diverse schermate per effettuare le diverse funzioni del programma, e sono tutte state studiate in modo da essere intuitive per gli utenti. Le schermate sono progettate seguendo i principi di usabilità definiti dalle normative ISO/IEC 9126 per garantire un'esperienza utente ottimale.
 
 **3.1.2 Interfacce hardware:** il programma è orientato all'utilizzo sullo schermo di un computer.
 
@@ -57,7 +59,7 @@ All'inizio del noleggio, se l'auto è assegnata ad un utente privato verrà regi
 
 <div style="margin-left: 32px;">
 
-**3.2.1 Classe utente 1:** 
+**3.2.1 Classe DataBase:** 
 
 <div style="margin-left: 32px;">
 
