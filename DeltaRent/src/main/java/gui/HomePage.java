@@ -37,7 +37,7 @@ public class HomePage extends JFrame {
 		JPanel leftColumn = new JPanel();
 		leftColumn.setBackground(new Color(62, 88, 121));
 		leftColumn.setLayout(new BoxLayout(leftColumn, BoxLayout.Y_AXIS));
-		leftColumn.setBorder(BorderFactory.createLineBorder(new Color(216, 195, 182), 3));
+		leftColumn.setBorder(BorderFactory.createLineBorder(new Color(216, 195, 182), 3, true));
 
 		JLabel avatarLabel = new JLabel(new ImageIcon("path/to/avatar/image")); // Sostituisci con il percorso immagine
 		avatarLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -65,7 +65,7 @@ public class HomePage extends JFrame {
 
 		// Aggiunta dei pulsanti
 		leftColumn.add(avatarLabel);
-		leftColumn.add(Box.createRigidArea(new Dimension(0, 20)));
+		leftColumn.add(Box.createRigidArea(new Dimension(0, 40)));
 		leftColumn.add(btnDeltaRent);
 		leftColumn.add(Box.createRigidArea(new Dimension(0, 20))); // Spaziatura
 		leftColumn.add(btnRentCar);
