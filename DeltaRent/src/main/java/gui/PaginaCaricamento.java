@@ -12,7 +12,7 @@ public class PaginaCaricamento extends JFrame {
     public PaginaCaricamento() {
 
         setTitle("DeltaRent - Home");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setSize(1200, 950);
         setMinimumSize(new Dimension(900, 700));
         setLocationRelativeTo(null);
@@ -33,7 +33,7 @@ public class PaginaCaricamento extends JFrame {
 
         // Barra di caricamento
         JProgressBar progressBar = new JProgressBar(0, 100);
-        progressBar.setEnabled(false);
+        progressBar.setEnabled(true);
         progressBar.setForeground(new Color(20, 68, 136));
         progressBar.setPreferredSize(new Dimension(150, 20));
         progressBar.setBorderPainted(false);
@@ -55,7 +55,7 @@ public class PaginaCaricamento extends JFrame {
             public void run() {
                 if (progress <= 100) {
                     progressBar.setValue(progress);
-                    progress += 3; // Incremento progressivo
+                    progress += 4; // Incremento progressivo
                 } else {
                     timer.cancel();
                 }

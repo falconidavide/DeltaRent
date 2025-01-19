@@ -8,7 +8,6 @@ import veicolo.Automobile;
 import veicolo.Furgone;
 import veicolo.Veicolo;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeListener;
@@ -17,9 +16,6 @@ import org.jdatepicker.impl.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -48,6 +44,9 @@ public class DettagliVeicoloPage extends JPanel {
         populatePanel(auto, true);
     }
 
+    /**
+     * @wbp.parser.constructor
+     */
     public DettagliVeicoloPage(Furgone furgone, Utente utente) {
         this.veicolo = furgone;
         this.utente = utente;
@@ -107,7 +106,7 @@ public class DettagliVeicoloPage extends JPanel {
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
         lblImg = new JLabel();
-        lblImg.setIcon(resizeImageIcon(imgPath, 300, 225)); // Ingrandisci l'immagine
+        lblImg.setIcon(SearchPage.resizeImageIcon(imgPath, 300, 225)); // Ingrandisci l'immagine
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridheight = 4;
@@ -231,7 +230,7 @@ public class DettagliVeicoloPage extends JPanel {
         properties.put("text.today", "Oggi");
         properties.put("text.month", "Mese");
         properties.put("text.year", "Anno");
-
+        
         UtilDateModel model = new UtilDateModel();
         model.setValue(new Date()); // Imposta la data corrente
         model.setSelected(true);
@@ -312,22 +311,6 @@ public class DettagliVeicoloPage extends JPanel {
         }
     }
 
-    private ImageIcon resizeImageIcon(String path, int width, int height) {
-        if (path == null || path.isEmpty()) {
-            path = "img/default_car.jpg"; // Immagine predefinita
-        } else {
-            path = "img/" + path;
-        }
-
-        try {
-            BufferedImage img = ImageIO.read(new File(path));
-            Image resizedImage = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
-            return new ImageIcon(resizedImage);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
 
     private void creaPrenotazione() {
         if (!Utente.isLoggato()) {

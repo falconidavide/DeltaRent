@@ -280,24 +280,22 @@ public class SearchPage extends JPanel {
 		return panel;
 	}
 
-	private static ImageIcon resizeImageIcon(String path, int width, int height) {
-		if (path == null || path.isEmpty()) {
-			// Se il percorso è null o vuoto, usa un'immagine predefinita
-			path = "img/default_car.jpg";
-		} else {
-			// Aggiungi il prefisso "img/" al percorso dell'immagine
-			path = "img/" + path;
-		}
+	   public static ImageIcon resizeImageIcon(String path, int width, int height) {
+	        if (path == null || path.isEmpty()) {
+	            path = "img/default_car.jpg"; // Immagine predefinita
+	        } else {
+	            path = "img/" + path;
+	        }
 
-		try {
-			BufferedImage img = ImageIO.read(new File(path));
-			Image resizedImage = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
-			return new ImageIcon(resizedImage);
-		} catch (IOException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
+	        try {
+	            BufferedImage img = ImageIO.read(new File(path));
+	            Image resizedImage = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+	            return new ImageIcon(resizedImage);
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	            return null;
+	        }
+	    }
 
 	private static void mostraAuto(String marcaSelezionata, String modelloSelezionato) {
 		for (Automobile auto : automobili) {
