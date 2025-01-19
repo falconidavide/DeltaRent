@@ -37,7 +37,7 @@
 **2.4 Vincoli:** Ogni utente privato può noleggiare attraverso il proprio account solamente automobili, e al massimo di 1 veicolo alla volta, mentre gli utenti registrati come aziendali potranno noleggiare solamente i furgoni.
 All'inizio del noleggio, se l'auto è assegnata ad un utente privato verrà registrato l'orario di inizio del noleggio e il veicolo verrà contrassegnato come occupato, l'importo da pagare varia in base al numero di ore di noleggio che è scelto dall'utente in fase di prenotazione. Il costo del noleggio varia in base ai veicoli.
 
-**2.5 Presupposti e dipendenze:** 
+**2.5 Presupposti e dipendenze:** La piattaforma sarà utilizzata principalmente su dispositivi desktop con un sistema operativo moderno. Gli utenti aziendali devono disporre delle informazioni necessarie per la registrazione (PEC, Partita IVA, nome azienda). Il programma verrà integrato con un sistema di pagamento online per gestire le transazioni relative ai noleggi. Ogni membro del team deve avere a disposizione un dispositivo sul quale sviluppare il progetto, e sul quale ci sarà installato Discord e WhatsApp per la comunicazione. La piattaforma non sarà inizialmente ottimizzata per i dispositivi mobili. I test saranno condotti principalmente su sistemi operativi Windows e macOS.
 
 ## 3. Requisiti specifici
 
