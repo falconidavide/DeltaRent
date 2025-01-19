@@ -30,8 +30,6 @@ public class GestoreVeicoli {
 		                String pathImg = rs.getString("pathImg");
 		                String alimentazione = rs.getString("alimentazione");
 		                String descrizione = rs.getString("descrizione");
-
-		                // Leggi e processa il campo pathImgs
 		                String pathImgsString = rs.getString("pathImgs");
 		                String[] pathImgs = pathImgsString != null ? pathImgsString.split("\\n") : new String[0];
 
@@ -49,7 +47,7 @@ public class GestoreVeicoli {
 
 	public static List<Furgone> aggiornaListaFurgoni() {
 		try {
-			String query = "SELECT targa, marca, modello, disponibile, prezzoGiornaliero, pathImg, alimentazione FROM Veicolo WHERE isFurgone=1";
+			String query = "SELECT targa, marca, modello, disponibile, prezzoGiornaliero, pathImg, alimentazione, pathImgs, descrizione FROM Veicolo WHERE isFurgone=1";
 			try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(query)) {
 				while (rs.next()) {
 					String targa = rs.getString("targa");
@@ -60,7 +58,6 @@ public class GestoreVeicoli {
 					String pathImg = rs.getString("pathImg");
 					String alimentazione = rs.getString("alimentazione");
 					String descrizione = rs.getString("descrizione");
-					 // Leggi e processa il campo pathImgs
 	                String pathImgsString = rs.getString("pathImgs");
 	                String[] pathImgs = pathImgsString != null ? pathImgsString.split("\\n") : new String[0];
 
@@ -71,12 +68,6 @@ public class GestoreVeicoli {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		/*
-		 * for (Furgone veicolo : furgoni) { System.out.println("Targa: " +
-		 * veicolo.getTarga() + ", Marca: " + veicolo.getMarca() + ", Modello: " +
-		 * veicolo.getModello() + ", Disponibile: " + veicolo.getDisponibile() +
-		 * ", Prezzo giornaliero: " + veicolo.getPrezzoGiornaliero()); }
-		 */
 		return furgoni;
 	}
 

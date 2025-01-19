@@ -226,7 +226,6 @@ public class SearchPage extends JPanel {
 	private static JPanel creaPannelloSegnaposto() { // crea pannello vuoto
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(28, 51, 84));
-		panel.setBorder(BorderFactory.createLineBorder(Color.WHITE, 0));
 		return panel;
 	}
 
@@ -270,6 +269,7 @@ public class SearchPage extends JPanel {
 	    // Creazione delle etichette Alimentazione
 	    JLabel Alimentazione = new JLabel();
 	    JLabel Alimentazione2 = new JLabel();
+	    
 	    switch (alimentazione) {
 	        case "Benzina":
 	            Alimentazione.setIcon(resizeImageIcon("benzina.png", 35, 35));
@@ -293,7 +293,7 @@ public class SearchPage extends JPanel {
 	            break;
 	    }
 
-	    // Posizionamento delle etichette Alimentazione e Alimentazione2
+
 	    JPanel alimentazionePanel = new JPanel();
 	    alimentazionePanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 0)); // Distanza di 5 pixel
 	    alimentazionePanel.setBackground(panel.getBackground());
