@@ -47,9 +47,9 @@ All'inizio del noleggio, se l'auto è assegnata ad un utente privato verrà regi
 
 **3.1.1 Interfacce utente:** il programma è stato testato per supportare diverse risoluzioni differenti. Sono state implementate diverse schermate per effettuare le diverse funzioni del programma, e sono tutte state studiate in modo da essere intuitive per gli utenti. Le schermate sono progettate seguendo i principi di usabilità definiti dalle normative ISO/IEC 9126 per garantire un'esperienza utente ottimale.
 
-**3.1.2 Interfacce hardware:** il programma è orientato all'utilizzo sullo schermo di un computer.
+**3.1.2 Interfacce hardware:** il programma è progettato per essere utilizzato principalmente su schermi desktop, supportando le risoluzioni più comuni per questi dispositivi.
 
-**3.1.3 Interfacce software:** il sistema si integra con un sistema di database.
+**3.1.3 Interfacce software:** il sistema si integra con un database SQlite per la gestione delle informazioni relative agli utenti, ai veicoli e ai noleggi. Le transazioni online saranno gestite tramite un'integrazione con un sistema di pagamento sicuro.
 
 **3.1.4 Interfacce di comunicazione:** non applicabile in questo caso.
 
@@ -59,33 +59,47 @@ All'inizio del noleggio, se l'auto è assegnata ad un utente privato verrà regi
 
 <div style="margin-left: 32px;">
 
-**3.2.1 Classe DataBase:** 
+**3.2.1 Classe DataBase:**
 
 <div style="margin-left: 32px;">
 
-**3.2.1.1 Requisito funzionale 1.1:** 
+**3.2.1.1 Gestione utenti:** gli utenti si devono poter registrare solamente in seguito alla validazione delle informazioni richieste. La password verrà controllata, in modo da rispettare dei requisiti di sicurezza.
 
-**3.2.1.2 Requisito funzionale 1.2:** 
-
-...
+**3.2.1.2 Gestione veicoli:** i veicoli non possono essere prenotati da altri utenti negli orari in cui sono già stati prenotati da altri utenti.
 
 </div>
 
-**3.2.2 Classe utente 2:**
-
+**3.2.2 Classe utente:**
 
 <div style="margin-left: 32px;">
 
-**3.2.2.1 ...:** 
+**3.2.2.1 Gestione account:** creazione e modifica del profilo personale, visualizzazione dello storico noleggi
+
+**3.2.2.2 Interazione con il sistema:** selezione dei veicoli e gestione di una lista dedicata; calcolo del costo finale del noleggio in base al veicolo e al periodo di prenotazione selezionato.
+
+</div>
+
+**3.2.3 Classe noleggio:**
+
+<div style="margin-left: 32px;">
+
+**3.2.3.1 Prenotazione:** creazione e gestione di una prenotazione in base ad una specifica data ed orario.
+
+**3.2.3.2 Chiusura noleggio:** il veicolo prenotato è disponibile nuovamente per il noleggio in automatico, in base all'orario di termine della prenotazione indicato.
 
 </div>
 
 </div>
 
-**3.3 Requisiti di prestazione:**
+**3.3 Requisiti di prestazione:** il sistema deve garantire tempi di risposta brevi per tutte le operazioni, inclusa la ricerca di veicoli e la prenotazione. Il database deve supoprtare un carico di diversi utenti simultanei. Il sistema deve essere in grado di gestire un alto numero di veicoli.
 
-**3.4 Vincoli di progettazione:**
+**3.4 Vincoli di progettazione:** il sistema deve essere sviluppato in linguaggio di programmazinoe Java, e deve utilizzare il framework Swing per la gestione dell'interfaccia grafica. Il DataBase relazionale deve essere implementato utilizzando SQlite. Il sistema deve seguire le linee guida di codifica di Oracle per garantire coerenza e leggibilità del codice.
 
 **3.5 Attributi del sistema software:**
 
-**3.6 Altri requisiti:**
+- **Affidabilità:** il sistema deve essere progettato per prevenire crash o malfunzionamenti.
+- **Usabilità** l'interfaccia deve essere semplice, intuitiva e conforme agli standard di usabilità ISO/IEC 9126.
+- **Manutenibilità:** il codice deve essere documentato e strutturato per facilitare futuri aggiornamenti o modifiche.
+- **Sicurezza:** tutte i dati sono gestiti in modo da mantenerne la segretezza, per evitare che utenti non autorizzati possano visualizzare le informazioni di altri utenti.
+
+**3.6 Altri requisiti:** il software deve essere compatibile con vesrioni recenti di sistemi operativi Windows e macOS. Il sistema deve essere progettato per supportare future espansioni, come l'aggiunta di nuove caratteristiche dei veicoli o altre funzionalità.
