@@ -49,7 +49,12 @@ public class GestionePrenotazioni {
 					int prezzoOrario = rs2.getInt("prezzoOrario");
 					String pathImg = rs2.getString("pathImg");
 					String alimentazione = rs2.getString("alimentazione");
-					auto = new Automobile(targa2, marca, modello, disponibile, prezzoOrario, pathImg, alimentazione);
+				    String descrizione = rs.getString("descrizione");
+
+		                // Leggi e processa il campo pathImgs
+		            String pathImgsString = rs.getString("pathImgs");
+		            String[] pathImgs = pathImgsString != null ? pathImgsString.split("\\n") : new String[0];
+					auto = new Automobile(targa2, marca, modello, disponibile, prezzoOrario, pathImg, alimentazione,pathImgs,descrizione);
 
 				}
 				Prenotazione prenotazione = new Prenotazione(id, inizioPrenotazione, finePrenotazione, HomePage.loggedUser, auto, dataPrenotazione);

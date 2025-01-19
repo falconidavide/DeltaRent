@@ -30,7 +30,6 @@ public class DettagliVeicoloPage extends JPanel {
 	private JLabel lblAlimentazione;
     private JLabel lblDisponibile= new JLabel();
     private JLabel lblPrezzo;
-    private JLabel lblImg;
     private JLabel lblPrezzoTotale;
     private JButton btnNoleggia;
     private JDatePickerImpl datePickerInizio, datePickerFine;
@@ -97,7 +96,7 @@ public class DettagliVeicoloPage extends JPanel {
     }
 
     private JPanel createInfoPanel(Object veicolo, boolean isAutomobile) {
-        String imgPath = isAutomobile ? ((Automobile) veicolo).getPathImg() : ((Furgone) veicolo).getPathImg();
+        String[] imgPaths = isAutomobile ? ((Automobile) veicolo).getPathImgs() : ((Furgone) veicolo).getPathImgs();
         String marca = isAutomobile ? ((Automobile) veicolo).getMarca() : ((Furgone) veicolo).getMarca();
         String modello = isAutomobile ? ((Automobile) veicolo).getModello() : ((Furgone) veicolo).getModello();
         String alimentazione = isAutomobile ? ((Automobile) veicolo).getAlimentazione() : ((Furgone) veicolo).getAlimentazione();
@@ -108,15 +107,45 @@ public class DettagliVeicoloPage extends JPanel {
         gbc.insets = new Insets(10, 10, 10, 10);
         gbc.fill = GridBagConstraints.HORIZONTAL;
         infoPanel.setBorder(new LineBorder(new Color(216, 195, 182), 3, true));
-        lblImg = new JLabel();
-        lblImg.setIcon(SearchPage.resizeImageIcon(imgPath, 300, 225)); // Ingrandisci l'immagine
+        infoPanel.setSize(700, 500);
+
+        // CardLayout per scorrere le immagini
+        JPanel imagePanel = new JPanel(new CardLayout());
+        imagePanel.setBackground(new Color(60, 87, 121));
+        for (String imgPath : imgPaths) {
+            JLabel imgLabel = new JLabel();
+            imgLabel.setIcon(SearchPage.resizeImageIcon(imgPath, 340, 225));
+            imagePanel.add(imgLabel);
+        }
+
+        // Pulsanti per navigare tra le immagini
+        JButton btnPrev = new JButton("Indietro");
+        JButton btnNext = new JButton("Avanti");
+        
+        btnPrev.addActionListener(e -> {
+            CardLayout cl = (CardLayout) imagePanel.getLayout();
+            cl.previous(imagePanel);
+        });
+
+        btnNext.addActionListener(e -> {
+            CardLayout cl = (CardLayout) imagePanel.getLayout();
+            cl.next(imagePanel);
+        });
+
+        // Aggiungi il pannello immagine e i pulsanti
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridheight = 4;
-        gbc.insets = new Insets(10, 10, 10, 10); // Spazio solo per l'immagine
-        infoPanel.add(lblImg, gbc);
+        infoPanel.add(imagePanel, gbc);
 
-        Font font = new Font("Arial", Font.BOLD, 22); // Ingrandisci il font
+        JPanel navigationPanel = new JPanel();
+        navigationPanel.add(btnPrev);
+        navigationPanel.add(btnNext);
+        gbc.gridy = 4;
+        infoPanel.add(navigationPanel, gbc);
+
+        // Altri dettagli del veicolo
+        Font font = new Font("Arial", Font.BOLD, 22);
 
         lblMarcaModello = new JLabel(marca + " " + modello);
         lblMarcaModello.setForeground(Color.WHITE);
@@ -124,8 +153,6 @@ public class DettagliVeicoloPage extends JPanel {
         gbc.gridx = 1;
         gbc.gridy = 0;
         gbc.gridheight = 1;
-        gbc.insets = new Insets(5, 5, 5, 5); // Spazio ridotto tra gli altri componenti
-        
         infoPanel.add(lblMarcaModello, gbc);
 
         lblAlimentazione = new JLabel(alimentazione);
@@ -133,41 +160,41 @@ public class DettagliVeicoloPage extends JPanel {
         lblAlimentazione.setFont(font);
         gbc.gridy = 1;
         infoPanel.add(lblAlimentazione, gbc);
-        
+
         lblImmagineAlimentazione = new JLabel();
         lblImmagineAlimentazione2 = new JLabel();
-	    switch (alimentazione) {
-        case "Benzina":
-        	lblImmagineAlimentazione.setIcon(SearchPage.resizeImageIcon("benzina.png", 35, 35));
-        	lblImmagineAlimentazione2.setIcon(null);
-            break;
-        case "Diesel":
-        	lblImmagineAlimentazione.setIcon(SearchPage.resizeImageIcon("diesel.png", 35, 35));
-        	lblImmagineAlimentazione2.setIcon(null);
-            break;
-        case "Elettrica":
-        	lblImmagineAlimentazione.setIcon(SearchPage.resizeImageIcon("elettrica.png", 35, 35));
-        	lblImmagineAlimentazione2.setIcon(null);
-            break;
-        case "Ibrida":
-        	lblImmagineAlimentazione.setIcon(SearchPage.resizeImageIcon("elettrica.png", 35, 35));
-        	lblImmagineAlimentazione2.setIcon(SearchPage.resizeImageIcon("benzina.png", 35, 35));
-            break;
-        case "gpl":
-        	lblImmagineAlimentazione.setIcon(SearchPage.resizeImageIcon("gpl.png", 35, 35));
-        	lblImmagineAlimentazione2.setIcon(null);
-            break;
-    }
-	    JPanel alimentazionePanel = new JPanel();
-	    alimentazionePanel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 0)); // Distanza di 5 pixel
-	    alimentazionePanel.setBackground(new Color(60, 87, 121));
-	    alimentazionePanel.add(lblImmagineAlimentazione);
-	    if (lblImmagineAlimentazione2.getIcon() != null) {
-	        alimentazionePanel.add(lblImmagineAlimentazione2);
-	    }
-	    gbc.gridy = 2;
-	    infoPanel.add(alimentazionePanel, gbc);
-        
+        switch (alimentazione) {
+            case "Benzina":
+                lblImmagineAlimentazione.setIcon(SearchPage.resizeImageIcon("benzina.png", 35, 35));
+                lblImmagineAlimentazione2.setIcon(null);
+                break;
+            case "Diesel":
+                lblImmagineAlimentazione.setIcon(SearchPage.resizeImageIcon("diesel.png", 35, 35));
+                lblImmagineAlimentazione2.setIcon(null);
+                break;
+            case "Elettrica":
+                lblImmagineAlimentazione.setIcon(SearchPage.resizeImageIcon("elettrica.png", 35, 35));
+                lblImmagineAlimentazione2.setIcon(null);
+                break;
+            case "Ibrida":
+                lblImmagineAlimentazione.setIcon(SearchPage.resizeImageIcon("elettrica.png", 35, 35));
+                lblImmagineAlimentazione2.setIcon(SearchPage.resizeImageIcon("benzina.png", 35, 35));
+                break;
+            case "gpl":
+                lblImmagineAlimentazione.setIcon(SearchPage.resizeImageIcon("gpl.png", 35, 35));
+                lblImmagineAlimentazione2.setIcon(null);
+                break;
+        }
+        JPanel alimentazionePanel = new JPanel();
+        alimentazionePanel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 0));
+        alimentazionePanel.setBackground(new Color(60, 87, 121));
+        alimentazionePanel.add(lblImmagineAlimentazione);
+        if (lblImmagineAlimentazione2.getIcon() != null) {
+            alimentazionePanel.add(lblImmagineAlimentazione2);
+        }
+        gbc.gridy = 2;
+        infoPanel.add(alimentazionePanel, gbc);
+
         lblPrezzo = new JLabel(isAutomobile ? "Prezzo €/h: €" + prezzo : "Prezzo €/day: €" + prezzo);
         lblPrezzo.setForeground(Color.WHITE);
         lblPrezzo.setFont(font);
@@ -177,6 +204,7 @@ public class DettagliVeicoloPage extends JPanel {
         infoPanel.setBackground(new Color(60, 87, 121));
         return infoPanel;
     }
+
 
     private JPanel createDatePanel(double prezzo, boolean isAutomobile) {
         JPanel datePanel = new JPanel(new GridLayout(2, 3, 10, 10));
