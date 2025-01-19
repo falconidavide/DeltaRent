@@ -156,13 +156,15 @@ public class DettagliVeicoloPage extends JPanel {
         comboOraFine = createHourComboBox();
         comboOraFine.setSelectedIndex(0);
 
-        JLabel dataInizioLbl = new JLabel("Data Inizio:");
+        JLabel dataInizioLbl = new JLabel("DATA INIZIO:");
+        dataInizioLbl.setFont(new Font("Arial", Font.BOLD, 18));
         dataInizioLbl.setForeground(Color.white);
         datePanel.add(dataInizioLbl);
         datePanel.add(datePickerInizio);
         datePanel.add(comboOraInizio);
 
-        JLabel dataFineLbl = new JLabel("Data Fine:");
+        JLabel dataFineLbl = new JLabel("DATA FINE:");
+        dataFineLbl.setFont(new Font("Arial", Font.BOLD, 18));
         dataFineLbl.setForeground(Color.white);
         datePanel.add(dataFineLbl);
         datePanel.add(datePickerFine);
@@ -304,7 +306,7 @@ public class DettagliVeicoloPage extends JPanel {
 	            double prezzoTotale = isAutomobile ? (durata / (1000 * 60 * 60.0)) * prezzo : (durata / (1000 * 60 * 60 * 24.0)) * prezzo;
 	
 	            lblPrezzoTotale.setText(String.format("Prezzo totale: €%.2f", prezzoTotale));
-            	
+            	lblPrezzoTotale.setFont(new Font("Arial", Font.BOLD, 22));
             	return;
             
         } catch (Exception e) {

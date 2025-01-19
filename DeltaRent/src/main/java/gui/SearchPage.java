@@ -208,9 +208,9 @@ public class SearchPage extends JPanel {
 		return panel;
 	}
 
-	private static JPanel creaPannelloVeicolo(String marca, String modello, boolean disponibile, int prezzoOrario, int prezzoGiornaliero, String pathImg) {
+	private static JPanel creaPannelloVeicolo(String marca, String modello, boolean disponibile, int prezzoOrario, int prezzoGiornaliero, String pathImg, String alimentazione) {
 		JPanel panel = new JPanel();
-		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+		panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
 		panel.setBackground(new Color(60, 87, 121));
 		panel.setBorder(new LineBorder(new Color(216, 195, 182), 3, true));
 
@@ -240,11 +240,33 @@ public class SearchPage extends JPanel {
 		} else {
 			lblPrezzo.setText("Prezzo \u20ac/day: €" + prezzoGiornaliero);
 		}
+		
+		JLabel Alimentazione  = new JLabel();
+		JLabel Alimentazione2  = new JLabel();
+		if (alimentazione == "Benzina")
+		{
+			Alimentazione.setIcon(resizeImageIcon("benzina.png", 20, 20));
+		}else if(alimentazione == "Diesel") 
+		{
+			Alimentazione.setIcon(resizeImageIcon("diesel.png", 20, 20));
+		}else if(alimentazione == "Elettrica") 
+		{
+			Alimentazione.setIcon(resizeImageIcon("elettrica.png", 20, 20));
+		}else if(alimentazione == "Ibrida") 
+		{
+			Alimentazione.setIcon(resizeImageIcon("elettrica.png", 20, 20));
+			Alimentazione2.setIcon(resizeImageIcon("benzina.png", 20, 20));
+		}else if(alimentazione == "GPL") 
+		{
+			Alimentazione.setIcon(resizeImageIcon("gpl.png", 20, 20));
+		}
 		lblPrezzo.setForeground(Color.WHITE);
 		lblPrezzo.setAlignmentX(Component.CENTER_ALIGNMENT);
 		lblPrezzo.setFont(font);
 		lblPrezzo.setBorder(BorderFactory.createEmptyBorder(0, 0, bottomMargin, 0)); // Margine inferiore
-
+		
+		panel.add(Alimentazione);
+		panel.add(Alimentazione2);
 		panel.add(lblImg);
 		panel.add(lblMarcaModello);
 		panel.add(lblDisponibile);
@@ -254,7 +276,7 @@ public class SearchPage extends JPanel {
 	}
 
 	private static JPanel creaPannelloVeicolo(Automobile auto) {
-		JPanel panel = creaPannelloVeicolo(auto.getMarca(), auto.getModello(), auto.getDisponibile(), auto.getPrezzoOrario(), -1, auto.getPathImg());
+		JPanel panel = creaPannelloVeicolo(auto.getMarca(), auto.getModello(), auto.getDisponibile(), auto.getPrezzoOrario(), -1, auto.getPathImg(),auto.getAlimentazione());
 
 		panel.addMouseListener(new MouseAdapter() {
 			@Override
@@ -268,7 +290,7 @@ public class SearchPage extends JPanel {
 	}
 
 	private static JPanel creaPannelloVeicolo(Furgone furgone) {
-		JPanel panel = creaPannelloVeicolo(furgone.getMarca(), furgone.getModello(), furgone.getDisponibile(), -1, furgone.getPrezzoGiornaliero(), furgone.getPathImg());
+		JPanel panel = creaPannelloVeicolo(furgone.getMarca(), furgone.getModello(), furgone.getDisponibile(), -1, furgone.getPrezzoGiornaliero(), furgone.getPathImg(),furgone.getAlimentazione());
 
 		panel.addMouseListener(new MouseAdapter() {
 			@Override

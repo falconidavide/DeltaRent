@@ -5,8 +5,6 @@ public class Main {
         PaginaCaricamento paginaCaricamento = new PaginaCaricamento();
         paginaCaricamento.setVisible(true);
         new HomePage().setVisible(true);
-        
- 
         // Chiudi PaginaCaricamento e apri HomePage
         paginaCaricamento.dispose();
     
