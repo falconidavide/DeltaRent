@@ -22,7 +22,6 @@ import java.awt.event.MouseEvent;
 public class SearchPage extends JPanel {
 	static JComboBox<String> modelComboBox;
 	static JComboBox<String> brandComboBox;
-	static JCheckBox availableOnlyCheckBox;
 	private static JPanel vehicleDisplayPanel;
 	static List<Automobile> automobili = null;
 	static List<Furgone> furgoni = null;
@@ -32,8 +31,6 @@ public class SearchPage extends JPanel {
 		// Inizializza i componenti
 		modelComboBox = new JComboBox<>();
 		brandComboBox = new JComboBox<>();
-		availableOnlyCheckBox = new JCheckBox("Solo veicoli disponibili");
-		availableOnlyCheckBox.setSelected(true);
 
 		// Inizializza il combo box per l'ordinamento
 		sortComboBox = new JComboBox<>(new String[] { "Ordina per", "Prezzo Crescente", "Prezzo Decrescente", "Alfabetico Crescente", "Alfabetico Decrescente" });
@@ -78,10 +75,6 @@ public class SearchPage extends JPanel {
 
 		filterPanel.add(Box.createHorizontalStrut(15));
 
-		availableOnlyCheckBox.setForeground(new Color(0, 0, 0));
-		availableOnlyCheckBox.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
-		filterPanel.add(availableOnlyCheckBox);
-
 		filterPanel.add(Box.createHorizontalStrut(15));
 
 		// Aggiungi il combo box per l'ordinamento
@@ -118,10 +111,6 @@ public class SearchPage extends JPanel {
 		});
 
 		modelComboBox.addActionListener(e -> {
-			mostraVeicoli();
-		});
-
-		availableOnlyCheckBox.addActionListener(e -> {
 			mostraVeicoli();
 		});
 
@@ -163,7 +152,6 @@ public class SearchPage extends JPanel {
 
 		String marcaSelezionata = (String) brandComboBox.getSelectedItem();
 		String modelloSelezionato = (String) modelComboBox.getSelectedItem();
-		boolean availableOnly = availableOnlyCheckBox.isSelected();
 
 		// Ordina le liste dei veicoli in base all'opzione selezionata
 		String sortingOption = (String) sortComboBox.getSelectedItem();
@@ -191,13 +179,13 @@ public class SearchPage extends JPanel {
 
 		if (Utente.isLoggato()) {
 			if (Utente.getIsPrivato()) {
-				mostraAuto(marcaSelezionata, modelloSelezionato, availableOnly);
+				mostraAuto(marcaSelezionata, modelloSelezionato);
 			} else {
-				mostraFurgoni(marcaSelezionata, modelloSelezionato, availableOnly);
+				mostraFurgoni(marcaSelezionata, modelloSelezionato);
 			}
 		} else {
-			mostraAuto(marcaSelezionata, modelloSelezionato, availableOnly);
-			mostraFurgoni(marcaSelezionata, modelloSelezionato, availableOnly);
+			mostraAuto(marcaSelezionata, modelloSelezionato);
+			mostraFurgoni(marcaSelezionata, modelloSelezionato);
 		}
 
 		// Aggiungi pannelli vuoti (segnaposto) per mantenere il layout quadrato
@@ -311,25 +299,25 @@ public class SearchPage extends JPanel {
 		}
 	}
 
-	private static void mostraAuto(String marcaSelezionata, String modelloSelezionato, boolean availableOnly) {
+	private static void mostraAuto(String marcaSelezionata, String modelloSelezionato) {
 		for (Automobile auto : automobili) {
 			if ((marcaSelezionata == null || marcaSelezionata.equals("Tutte le Marche")
 					|| auto.getMarca().equals(marcaSelezionata))
 					&& (modelloSelezionato == null || modelloSelezionato.equals("Tutti i Modelli")
 							|| auto.getModello().equals(modelloSelezionato))
-					&& (!availableOnly || auto.getDisponibile())) {
+					&& (auto.getDisponibile())) {
 				vehicleDisplayPanel.add(creaPannelloVeicolo(auto));
 			}
 		}
 	}
 
-	private static void mostraFurgoni(String marcaSelezionata, String modelloSelezionato, boolean availableOnly) {
+	private static void mostraFurgoni(String marcaSelezionata, String modelloSelezionato) {
 		for (Furgone furgone : furgoni) {
 			if ((marcaSelezionata == null || marcaSelezionata.equals("Tutte le Marche")
 					|| furgone.getMarca().equals(marcaSelezionata))
 					&& (modelloSelezionato == null || modelloSelezionato.equals("Tutti i Modelli")
 							|| furgone.getModello().equals(modelloSelezionato))
-					&& (!availableOnly || furgone.getDisponibile())) {
+					&& (furgone.getDisponibile())) {
 				vehicleDisplayPanel.add(creaPannelloVeicolo(furgone));
 			}
 		}

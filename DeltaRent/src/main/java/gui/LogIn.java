@@ -23,6 +23,7 @@ public class LogIn extends JPanel {
 	private JTextField dataNascitaFieldReg;
 	private JTextField emailFieldRegUser;
 	private JTextField passwordFieldRegUser;
+	private JTabbedPane tabbedPane;
 
 	public LogIn() {
 		setLayout(new BorderLayout());
@@ -56,7 +57,7 @@ public class LogIn extends JPanel {
 		lblRegister.setForeground(new Color(216, 195, 182));
 		lblRegister.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-		JTabbedPane tabbedPane = new JTabbedPane();
+		tabbedPane = new JTabbedPane();
 		JPanel panel_1 = new JPanel();
 		panel_1.setForeground(new Color(216, 195, 182));
 		panel_1.setBorder(new LineBorder(new Color(216, 195, 182), 4, true));
@@ -177,7 +178,7 @@ public class LogIn extends JPanel {
 		rightColumn.add(Box.createRigidArea(new Dimension(0, 20)));
 		rightColumn.add(tabbedPane);
 		JPanel panel = new JPanel();
-		panel.setBorder(new LineBorder(new Color(216, 195, 182), 2, true));
+		panel.setBorder(new LineBorder(new Color(216, 195, 182), 4, true));
 		panel.setBackground(new Color(62, 88, 121));
 		tabbedPane.add("Privato", panel);
 		tabbedPane.setBackgroundAt(1, new Color(216, 195, 182));
@@ -219,7 +220,7 @@ public class LogIn extends JPanel {
 		lblDataDiNascita.setForeground(new Color(216, 195, 182));
 		lblDataDiNascita.setFont(new Font("Arial", Font.PLAIN, 15));
 		lblDataDiNascita.setAlignmentX(0.5f);
-		lblDataDiNascita.setBounds(99, 119, 116, 18);
+		lblDataDiNascita.setBounds(99, 119, 238, 18);
 		panel.add(lblDataDiNascita);
 
 		JLabel lblEmailRegUser = new JLabel("E-mail");
@@ -235,14 +236,6 @@ public class LogIn extends JPanel {
 		lblPasswordRegUser.setAlignmentX(0.5f);
 		lblPasswordRegUser.setBounds(99, 241, 116, 18);
 		panel.add(lblPasswordRegUser);
-		
-
-		JLabel lblPasswordRequirementsRegUser = new JLabel("(almeno 8 caratteri, almeno 1 maiuscolo ed 1 minuscolo, almeno un numero, almeno un carattere speciale)");
-		lblPasswordRequirementsRegUser.setForeground(new Color(216, 195, 182));
-		lblPasswordRequirementsRegUser.setFont(new Font("Arial", Font.PLAIN, 15));
-		lblPasswordRequirementsRegUser.setAlignmentX(0.5f);
-		lblPasswordRequirementsRegUser.setBounds(99, 259, 300, 18);
-		panel.add(lblPasswordRequirementsRegUser);
 
 		cognomeFieldReg = new JTextField();
 		cognomeFieldReg.setMaximumSize(new Dimension(300, 30));
@@ -273,7 +266,7 @@ public class LogIn extends JPanel {
 		passwordFieldRegUser.setBorder(null);
 		passwordFieldRegUser.setBackground(new Color(245, 239, 231));
 		passwordFieldRegUser.setAlignmentX(0.5f);
-		passwordFieldRegUser.setBounds(99, 277, 300, 31);
+		passwordFieldRegUser.setBounds(99, 258, 300, 31);
 		panel.add(passwordFieldRegUser);
 
 		btnLogin.addActionListener(new ActionListener() {
@@ -358,6 +351,12 @@ public class LogIn extends JPanel {
 
 		btnRegistrati_1.setEnabled(false);
 		btnRegistrati.setEnabled(false);
+		
+		JLabel lblPasswordRequirementsRegUser_1 = new JLabel("- Almeno 8 caratteri \n- Almeno 1 maiuscolo ed 1 minuscolo \n- Almeno un numero \n- Almeno un carattere speciale");
+		lblPasswordRequirementsRegUser_1.setForeground(new Color(216, 195, 182));
+		lblPasswordRequirementsRegUser_1.setFont(new Font("Arial", Font.PLAIN, 15));
+		lblPasswordRequirementsRegUser_1.setAlignmentX(Component.CENTER_ALIGNMENT);
+		rightColumn.add(lblPasswordRequirementsRegUser_1);
 
 		DocumentListener aziendaListener = new DocumentListener() {
 			public void insertUpdate(DocumentEvent e) {
@@ -441,5 +440,11 @@ public class LogIn extends JPanel {
 	
 	public static boolean isValidDate(String date) {
 		return date.matches("(0[1-9]|[12][0-9]|3[01])[\\/](0[1-9]|1[012])[\\/](19|20)\\d\\d");
+	}
+	public Dimension getTabbedPaneMaximumSize() {
+		return tabbedPane.getMaximumSize();
+	}
+	public void setTabbedPaneMaximumSize(Dimension maximumSize) {
+		tabbedPane.setMaximumSize(maximumSize);
 	}
 }
