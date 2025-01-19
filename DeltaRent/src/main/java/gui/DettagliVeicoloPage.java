@@ -25,7 +25,9 @@ import java.util.Properties;
 public class DettagliVeicoloPage extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JLabel lblMarcaModello;
-    private JLabel lblAlimentazione;
+	private JLabel lblImmagineAlimentazione; 
+	private JLabel lblImmagineAlimentazione2;
+	private JLabel lblAlimentazione;
     private JLabel lblDisponibile= new JLabel();
     private JLabel lblPrezzo;
     private JLabel lblImg;
@@ -123,6 +125,7 @@ public class DettagliVeicoloPage extends JPanel {
         gbc.gridy = 0;
         gbc.gridheight = 1;
         gbc.insets = new Insets(5, 5, 5, 5); // Spazio ridotto tra gli altri componenti
+        
         infoPanel.add(lblMarcaModello, gbc);
 
         lblAlimentazione = new JLabel(alimentazione);
@@ -130,7 +133,41 @@ public class DettagliVeicoloPage extends JPanel {
         lblAlimentazione.setFont(font);
         gbc.gridy = 1;
         infoPanel.add(lblAlimentazione, gbc);
-
+        
+        lblImmagineAlimentazione = new JLabel();
+        lblImmagineAlimentazione2 = new JLabel();
+	    switch (alimentazione) {
+        case "Benzina":
+        	lblImmagineAlimentazione.setIcon(SearchPage.resizeImageIcon("benzina.png", 35, 35));
+        	lblImmagineAlimentazione2.setIcon(null);
+            break;
+        case "Diesel":
+        	lblImmagineAlimentazione.setIcon(SearchPage.resizeImageIcon("diesel.png", 35, 35));
+        	lblImmagineAlimentazione2.setIcon(null);
+            break;
+        case "Elettrica":
+        	lblImmagineAlimentazione.setIcon(SearchPage.resizeImageIcon("elettrica.png", 35, 35));
+        	lblImmagineAlimentazione2.setIcon(null);
+            break;
+        case "Ibrida":
+        	lblImmagineAlimentazione.setIcon(SearchPage.resizeImageIcon("elettrica.png", 35, 35));
+        	lblImmagineAlimentazione2.setIcon(SearchPage.resizeImageIcon("benzina.png", 35, 35));
+            break;
+        case "gpl":
+        	lblImmagineAlimentazione.setIcon(SearchPage.resizeImageIcon("gpl.png", 35, 35));
+        	lblImmagineAlimentazione2.setIcon(null);
+            break;
+    }
+	    JPanel alimentazionePanel = new JPanel();
+	    alimentazionePanel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 0)); // Distanza di 5 pixel
+	    alimentazionePanel.setBackground(new Color(60, 87, 121));
+	    alimentazionePanel.add(lblImmagineAlimentazione);
+	    if (lblImmagineAlimentazione2.getIcon() != null) {
+	        alimentazionePanel.add(lblImmagineAlimentazione2);
+	    }
+	    gbc.gridy = 2;
+	    infoPanel.add(alimentazionePanel, gbc);
+        
         lblPrezzo = new JLabel(isAutomobile ? "Prezzo €/h: €" + prezzo : "Prezzo €/day: €" + prezzo);
         lblPrezzo.setForeground(Color.WHITE);
         lblPrezzo.setFont(font);
