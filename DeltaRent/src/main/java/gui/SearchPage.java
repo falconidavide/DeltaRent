@@ -23,6 +23,7 @@ import java.awt.event.MouseEvent;
 public class SearchPage extends JPanel {
 	static JComboBox<String> modelComboBox;
 	static JComboBox<String> brandComboBox;
+	static JComboBox<String> supplyComboBox;
 	private static JPanel vehicleDisplayPanel;
 	static List<Automobile> automobili = null;
 	static List<Furgone> furgoni = null;
@@ -32,6 +33,7 @@ public class SearchPage extends JPanel {
 		// Inizializza i componenti
 		modelComboBox = new JComboBox<>();
 		brandComboBox = new JComboBox<>();
+		supplyComboBox = new JComboBox<>();
 
 		// Inizializza il combo box per l'ordinamento
 		sortComboBox = new JComboBox<>(new String[] { "Ordina per", "Prezzo Crescente", "Prezzo Decrescente", "Alfabetico Crescente", "Alfabetico Decrescente" });
@@ -75,6 +77,12 @@ public class SearchPage extends JPanel {
 		filterPanel.add(modelComboBox);
 
 		filterPanel.add(Box.createHorizontalStrut(15));
+		
+		JLabel lblAlimentazione = new JLabel("Alimentazione");
+		lblAlimentazione.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
+		lblAlimentazione.setForeground(Color.WHITE);
+		filterPanel.add(lblAlimentazione);
+		filterPanel.add(supplyComboBox);
 
 		filterPanel.add(Box.createHorizontalStrut(15));
 
@@ -99,6 +107,7 @@ public class SearchPage extends JPanel {
 		add(rightColumn, BorderLayout.NORTH);
 		add(container, BorderLayout.CENTER);
 
+		aggiornaComboBoxAlimentazione();
 		aggiornaComboBoxMarche();
 		aggiornaComboBoxModelli(null);
 		mostraVeicoli();
@@ -108,6 +117,10 @@ public class SearchPage extends JPanel {
 		brandComboBox.addActionListener(e -> {
 			String selectedBrand = (String) brandComboBox.getSelectedItem();
 			aggiornaComboBoxModelli(selectedBrand);
+			mostraVeicoli();
+		});
+		
+		supplyComboBox.addActionListener(e -> {
 			mostraVeicoli();
 		});
 
@@ -128,16 +141,24 @@ public class SearchPage extends JPanel {
 		}
 	}
 
-	private void aggiornaComboBoxModelli(String marca) {
+	private void aggiornaComboBoxModelli(String alimetazine) {
 		modelComboBox.removeAllItems();
-		if (marca != null && !marca.equals("Tutte le Marche")) {
-			List<String> modelli = GestoreVeicoli.getModelliByMarca(marca);
+		if (alimetazine != null && !alimetazine.equals("Tutte le Marche")) {
+			List<String> modelli = GestoreVeicoli.getModelliByMarca(alimetazine);
 			modelComboBox.addItem("Tutti i Modelli");
 			for (String modello : modelli) {
 				modelComboBox.addItem(modello);
 			}
 		} else {
 			modelComboBox.addItem("Tutti i Modelli");
+		}
+	}
+	private void aggiornaComboBoxAlimentazione() {
+		List<String> alimentazioni = GestoreVeicoli.getAlimentazioneVeicoli();
+		supplyComboBox.removeAllItems();
+		supplyComboBox.addItem("Tutte le Alimentazioni");
+		for (String alimentazione : alimentazioni) {
+			supplyComboBox.addItem(alimentazione);
 		}
 	}
 
@@ -153,7 +174,8 @@ public class SearchPage extends JPanel {
 
 		String marcaSelezionata = (String) brandComboBox.getSelectedItem();
 		String modelloSelezionato = (String) modelComboBox.getSelectedItem();
-
+		String alimentazioneSelezionata = (String) supplyComboBox.getSelectedItem();
+		
 		// Ordina le liste dei veicoli in base all'opzione selezionata
 		String sortingOption = (String) sortComboBox.getSelectedItem();
 		if (sortingOption != null) {
@@ -180,13 +202,13 @@ public class SearchPage extends JPanel {
 
 		if (Utente.isLoggato()) {
 			if (Utente.getIsPrivato()) {
-				mostraAuto(marcaSelezionata, modelloSelezionato);
+				mostraAuto(marcaSelezionata, modelloSelezionato, alimentazioneSelezionata);
 			} else {
-				mostraFurgoni(marcaSelezionata, modelloSelezionato);
+				mostraFurgoni(marcaSelezionata, modelloSelezionato, alimentazioneSelezionata);
 			}
 		} else {
-			mostraAuto(marcaSelezionata, modelloSelezionato);
-			mostraFurgoni(marcaSelezionata, modelloSelezionato);
+			mostraAuto(marcaSelezionata, modelloSelezionato, alimentazioneSelezionata);
+			mostraFurgoni(marcaSelezionata, modelloSelezionato, alimentazioneSelezionata);
 		}
 
 		// Aggiungi pannelli vuoti (segnaposto) per mantenere il layout quadrato
@@ -209,70 +231,85 @@ public class SearchPage extends JPanel {
 	}
 
 	private static JPanel creaPannelloVeicolo(String marca, String modello, boolean disponibile, int prezzoOrario, int prezzoGiornaliero, String pathImg, String alimentazione) {
-		JPanel panel = new JPanel();
-		panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
-		panel.setBackground(new Color(60, 87, 121));
-		panel.setBorder(new LineBorder(new Color(216, 195, 182), 3, true));
+	    JPanel panel = new JPanel();
+	    panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
+	    panel.setBackground(new Color(60, 87, 121));
+	    panel.setBorder(new LineBorder(new Color(216, 195, 182), 3, true));
 
-		JLabel lblImg = new JLabel();
-		lblImg.setIcon(resizeImageIcon(pathImg, 200, 150)); // Ridimensiona l'immagine mantenendo le proporzioni
-		lblImg.setAlignmentX(Component.CENTER_ALIGNMENT);
+	    JLabel lblImg = new JLabel();
+	    lblImg.setIcon(resizeImageIcon(pathImg, 200, 150)); // Ridimensiona l'immagine mantenendo le proporzioni
+	    lblImg.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-		Font font = new Font("Arial", Font.BOLD, 18); // Font più grande e grassetto
-		int bottomMargin = 10; // Margine inferiore
+	    Font font = new Font("Arial", Font.BOLD, 18); // Font più grande e grassetto
+	    int bottomMargin = 10; // Margine inferiore
 
-		JLabel lblMarcaModello = new JLabel(marca + " " + modello);
-		lblMarcaModello.setForeground(Color.WHITE);
-		lblMarcaModello.setAlignmentX(Component.CENTER_ALIGNMENT);
-		lblMarcaModello.setFont(font);
-		lblMarcaModello.setBorder(BorderFactory.createEmptyBorder(0, 0, bottomMargin, 0)); // Margine inferiore
+	    JLabel lblMarcaModello = new JLabel(marca + " " + modello);
+	    lblMarcaModello.setForeground(Color.WHITE);
+	    lblMarcaModello.setAlignmentX(Component.CENTER_ALIGNMENT);
+	    lblMarcaModello.setFont(font);
+	    lblMarcaModello.setBorder(BorderFactory.createEmptyBorder(0, 0, bottomMargin, 0)); // Margine inferiore
 
-		JLabel lblDisponibile = new JLabel();
-		lblDisponibile.setText(disponibile ? "Disponibile" : "Non Disponibile");
-		lblDisponibile.setForeground(disponibile ? Color.GREEN : Color.RED);
-		lblDisponibile.setAlignmentX(Component.CENTER_ALIGNMENT);
-		lblDisponibile.setFont(font);
-		lblDisponibile.setBorder(BorderFactory.createEmptyBorder(0, 0, bottomMargin, 0)); // Margine inferiore
+	    JLabel lblDisponibile = new JLabel();
+	    lblDisponibile.setText(disponibile ? "Disponibile" : "Non Disponibile");
+	    lblDisponibile.setForeground(disponibile ? Color.GREEN : Color.RED);
+	    lblDisponibile.setAlignmentX(Component.CENTER_ALIGNMENT);
+	    lblDisponibile.setFont(font);
+	    lblDisponibile.setBorder(BorderFactory.createEmptyBorder(0, 0, bottomMargin, 0)); // Margine inferiore
 
-		JLabel lblPrezzo = new JLabel();
-		if (prezzoOrario != -1) {
-			lblPrezzo.setText("Prezzo \u20ac/h: €" + prezzoOrario);
-		} else {
-			lblPrezzo.setText("Prezzo \u20ac/day: €" + prezzoGiornaliero);
-		}
-		
-		JLabel Alimentazione  = new JLabel();
-		JLabel Alimentazione2  = new JLabel();
-		if (alimentazione == "Benzina")
-		{
-			Alimentazione.setIcon(resizeImageIcon("benzina.png", 20, 20));
-		}else if(alimentazione == "Diesel") 
-		{
-			Alimentazione.setIcon(resizeImageIcon("diesel.png", 20, 20));
-		}else if(alimentazione == "Elettrica") 
-		{
-			Alimentazione.setIcon(resizeImageIcon("elettrica.png", 20, 20));
-		}else if(alimentazione == "Ibrida") 
-		{
-			Alimentazione.setIcon(resizeImageIcon("elettrica.png", 20, 20));
-			Alimentazione2.setIcon(resizeImageIcon("benzina.png", 20, 20));
-		}else if(alimentazione == "GPL") 
-		{
-			Alimentazione.setIcon(resizeImageIcon("gpl.png", 20, 20));
-		}
-		lblPrezzo.setForeground(Color.WHITE);
-		lblPrezzo.setAlignmentX(Component.CENTER_ALIGNMENT);
-		lblPrezzo.setFont(font);
-		lblPrezzo.setBorder(BorderFactory.createEmptyBorder(0, 0, bottomMargin, 0)); // Margine inferiore
-		
-		panel.add(Alimentazione);
-		panel.add(Alimentazione2);
-		panel.add(lblImg);
-		panel.add(lblMarcaModello);
-		panel.add(lblDisponibile);
-		panel.add(lblPrezzo);
+	    JLabel lblPrezzo = new JLabel();
+	    if (prezzoOrario != -1) {
+	        lblPrezzo.setText("Prezzo \u20ac/h: €" + prezzoOrario);
+	    } else {
+	        lblPrezzo.setText("Prezzo \u20ac/day: €" + prezzoGiornaliero);
+	    }
+	    lblPrezzo.setForeground(Color.WHITE);
+	    lblPrezzo.setAlignmentX(Component.CENTER_ALIGNMENT);
+	    lblPrezzo.setFont(font);
+	    lblPrezzo.setBorder(BorderFactory.createEmptyBorder(0, 0, bottomMargin, 0)); // Margine inferiore
 
-		return panel;
+	    // Creazione delle etichette Alimentazione
+	    JLabel Alimentazione = new JLabel();
+	    JLabel Alimentazione2 = new JLabel();
+	    switch (alimentazione) {
+	        case "Benzina":
+	            Alimentazione.setIcon(resizeImageIcon("benzina.png", 35, 35));
+	            Alimentazione2.setIcon(null);
+	            break;
+	        case "Diesel":
+	            Alimentazione.setIcon(resizeImageIcon("diesel.png", 35, 35));
+	            Alimentazione2.setIcon(null);
+	            break;
+	        case "Elettrica":
+	            Alimentazione.setIcon(resizeImageIcon("elettrica.png", 35, 35));
+	            Alimentazione2.setIcon(null);
+	            break;
+	        case "Ibrida":
+	            Alimentazione.setIcon(resizeImageIcon("elettrica.png", 35, 35));
+	            Alimentazione2.setIcon(resizeImageIcon("benzina.png", 35, 35));
+	            break;
+	        case "gpl":
+	            Alimentazione.setIcon(resizeImageIcon("gpl.png", 35, 35));
+	            Alimentazione2.setIcon(null);
+	            break;
+	    }
+
+	    // Posizionamento delle etichette Alimentazione e Alimentazione2
+	    JPanel alimentazionePanel = new JPanel();
+	    alimentazionePanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 0)); // Distanza di 5 pixel
+	    alimentazionePanel.setBackground(panel.getBackground());
+	    alimentazionePanel.add(Alimentazione);
+	    if (Alimentazione2.getIcon() != null) {
+	        alimentazionePanel.add(Alimentazione2);
+	    }
+
+	    panel.add(Box.createRigidArea(new Dimension(0, 10)));
+	    panel.add(alimentazionePanel);
+	    panel.add(lblImg);
+	    panel.add(lblMarcaModello);
+	    panel.add(lblDisponibile);
+	    panel.add(lblPrezzo);
+
+	    return panel;
 	}
 
 	private static JPanel creaPannelloVeicolo(Automobile auto) {
@@ -320,25 +357,32 @@ public class SearchPage extends JPanel {
 	        }
 	    }
 
-	private static void mostraAuto(String marcaSelezionata, String modelloSelezionato) {
+	private static void mostraAuto(String marcaSelezionata, String modelloSelezionato, String AlimentazioneSelezionata) {
 		for (Automobile auto : automobili) {
-			if ((marcaSelezionata == null || marcaSelezionata.equals("Tutte le Marche")
-					|| auto.getMarca().equals(marcaSelezionata))
+			if ((marcaSelezionata == null || marcaSelezionata.equals("Tutte le Marche") || auto.getMarca().equals(marcaSelezionata))
 					&& (modelloSelezionato == null || modelloSelezionato.equals("Tutti i Modelli")
 							|| auto.getModello().equals(modelloSelezionato))
-					&& (auto.getDisponibile())) {
+					&& (auto.getDisponibile())
+					&& (auto.getAlimentazione().equals(AlimentazioneSelezionata) 
+							|| AlimentazioneSelezionata == null 
+							|| AlimentazioneSelezionata.equals("Tutte le Alimentazioni"))) {
 				vehicleDisplayPanel.add(creaPannelloVeicolo(auto));
 			}
 		}
 	}
 
-	private static void mostraFurgoni(String marcaSelezionata, String modelloSelezionato) {
+	private static void mostraFurgoni(String marcaSelezionata, String modelloSelezionato, String AlimentazioneSelezionata) {
 		for (Furgone furgone : furgoni) {
-			if ((marcaSelezionata == null || marcaSelezionata.equals("Tutte le Marche")
-					|| furgone.getMarca().equals(marcaSelezionata))
-					&& (modelloSelezionato == null || modelloSelezionato.equals("Tutti i Modelli")
+			if ((marcaSelezionata == null 
+							|| marcaSelezionata.equals("Tutte le Marche")
+							|| furgone.getMarca().equals(marcaSelezionata))
+					&& (modelloSelezionato == null 
+							|| modelloSelezionato.equals("Tutti i Modelli")
 							|| furgone.getModello().equals(modelloSelezionato))
-					&& (furgone.getDisponibile())) {
+					&& (furgone.getDisponibile())
+					&& (furgone.getAlimentazione().equals(AlimentazioneSelezionata) 
+							|| AlimentazioneSelezionata == null 
+							|| AlimentazioneSelezionata.equals("Tutte le Alimentazioni"))) {
 				vehicleDisplayPanel.add(creaPannelloVeicolo(furgone));
 			}
 		}

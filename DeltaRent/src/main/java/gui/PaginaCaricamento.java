@@ -27,7 +27,7 @@ public class PaginaCaricamento extends JFrame {
 
         // Etichetta con immagine
         JLabel lblNewLabel = new JLabel("");
-        lblNewLabel.setIcon(new ImageIcon("appIcon2.png"));
+        lblNewLabel.setIcon(new ImageIcon("/Users/andreabirolini/Documents/GitHub/DeltaRent/DeltaRent/img/appIcon2.png"));
         lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
         getContentPane().add(lblNewLabel, BorderLayout.CENTER);
 
@@ -55,7 +55,7 @@ public class PaginaCaricamento extends JFrame {
             public void run() {
                 if (progress <= 100) {
                     progressBar.setValue(progress);
-                    progress += 4; // Incremento progressivo
+                    progress += 3; // Incremento progressivo
                 } else {
                     timer.cancel();
                 }

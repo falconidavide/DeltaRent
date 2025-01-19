@@ -95,6 +95,30 @@ public class GestoreVeicoli {
 		 */
 		return marche;
 	}
+	
+	public static List<String> getAlimentazioneVeicoli() {
+
+		List<String> alimentazioni = new ArrayList<>();
+
+		try {
+			String query = "SELECT DISTINCT alimentazione FROM Veicolo";
+			try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(query)) {
+				while (rs.next()) {
+					String alimentazione = rs.getString("alimentazione");
+					alimentazioni.add(alimentazione);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		/*
+		 * for (Furgone veicolo : furgoni) { System.out.println("Targa: " +
+		 * veicolo.getTarga() + ", Marca: " + veicolo.getMarca() + ", Modello: " +
+		 * veicolo.getModello() + ", Disponibile: " + veicolo.getDisponibile() +
+		 * ", Prezzo giornaliero: " + veicolo.getPrezzoGiornaliero()); }
+		 */
+		return alimentazioni;
+	}
 
 	public static List<String> getModelliByMarca(String marca) {
 
