@@ -9,6 +9,7 @@ import veicolo.Furgone;
 import veicolo.Veicolo;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeListener;
 import org.jdatepicker.impl.*;
@@ -56,7 +57,7 @@ public class DettagliVeicoloPage extends JPanel {
 
     private void setupPanel() {
         setLayout(new GridBagLayout());
-        setBackground(new Color(60, 87, 121));
+        setBackground(new Color(28, 51, 84));
     }
 
     private void populatePanel(Object veicolo, boolean isAutomobile) {
@@ -104,7 +105,7 @@ public class DettagliVeicoloPage extends JPanel {
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(10, 10, 10, 10);
         gbc.fill = GridBagConstraints.HORIZONTAL;
-
+        infoPanel.setBorder(new LineBorder(new Color(216, 195, 182), 3, true));
         lblImg = new JLabel();
         lblImg.setIcon(SearchPage.resizeImageIcon(imgPath, 300, 225)); // Ingrandisci l'immagine
         gbc.gridx = 0;
@@ -147,7 +148,7 @@ public class DettagliVeicoloPage extends JPanel {
             BorderFactory.createTitledBorder(null, " Prenotazione ", TitledBorder.LEFT, TitledBorder.CENTER, null, Color.white),
             BorderFactory.createEmptyBorder(5, 20, 10, 20) // Padding di 15 px su tutti i lati
         ));
-
+        datePanel.setBorder(new LineBorder(new Color(216, 195, 182), 3, true));
         datePickerInizio = createDatePicker();
         datePickerFine = createDatePicker();
 
@@ -200,7 +201,7 @@ public class DettagliVeicoloPage extends JPanel {
         gbc.insets = new Insets(10, 10, 10, 10);
         gbc.fill = GridBagConstraints.HORIZONTAL;
         bottomPanel.setBackground(new Color(60, 87, 121));
-
+        bottomPanel.setBorder(new LineBorder(new Color(216, 195, 182), 3, true));
         // Aggiungi lblDisponibile centrato
         lblDisponibile.setFont(new Font("Arial", Font.BOLD, 22));
         gbc.gridx = 0;

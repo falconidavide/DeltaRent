@@ -5,6 +5,7 @@ import veicolo.Automobile;
 import veicolo.Furgone;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 
 import db.GestoreVeicoli;
 
@@ -88,7 +89,7 @@ public class SearchPage extends JPanel {
 		container.getVerticalScrollBar().setUnitIncrement(16);
 		JPanel panel_1 = new JPanel();
 		container.setViewportView(panel_1);
-		panel_1.setBackground(new Color(60, 87, 121));
+		panel_1.setBackground(new Color(28, 51, 84));
 		panel_1.setLayout(new GridLayout(0, 3, 10, 10)); // Imposta un layout con 3 colonne
 
 		// Pannello di visualizzazione dei veicoli
@@ -202,7 +203,7 @@ public class SearchPage extends JPanel {
 
 	private static JPanel creaPannelloSegnaposto() { // crea pannello vuoto
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(60, 87, 121));
+		panel.setBackground(new Color(28, 51, 84));
 		panel.setBorder(BorderFactory.createLineBorder(Color.WHITE, 0));
 		return panel;
 	}
@@ -211,7 +212,7 @@ public class SearchPage extends JPanel {
 		JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 		panel.setBackground(new Color(60, 87, 121));
-		panel.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
+		panel.setBorder(new LineBorder(new Color(216, 195, 182), 3, true));
 
 		JLabel lblImg = new JLabel();
 		lblImg.setIcon(resizeImageIcon(pathImg, 200, 150)); // Ridimensiona l'immagine mantenendo le proporzioni
