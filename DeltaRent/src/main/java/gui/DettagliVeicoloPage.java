@@ -95,115 +95,132 @@ public class DettagliVeicoloPage extends JPanel {
         });
     }
 
-    private JPanel createInfoPanel(Object veicolo, boolean isAutomobile) {
-        String[] imgPaths = isAutomobile ? ((Automobile) veicolo).getPathImgs() : ((Furgone) veicolo).getPathImgs();
-        String marca = isAutomobile ? ((Automobile) veicolo).getMarca() : ((Furgone) veicolo).getMarca();
-        String modello = isAutomobile ? ((Automobile) veicolo).getModello() : ((Furgone) veicolo).getModello();
-        String alimentazione = isAutomobile ? ((Automobile) veicolo).getAlimentazione() : ((Furgone) veicolo).getAlimentazione();
-        double prezzo = isAutomobile ? ((Automobile) veicolo).getPrezzoOrario() : ((Furgone) veicolo).getPrezzoGiornaliero();
 
-        JPanel infoPanel = new JPanel(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(10, 10, 10, 10);
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        infoPanel.setBorder(new LineBorder(new Color(216, 195, 182), 3, true));
-        infoPanel.setSize(700, 500);
+ private JPanel createInfoPanel(Object veicolo, boolean isAutomobile) {
+     String[] imgPaths = isAutomobile ? ((Automobile) veicolo).getPathImgs() : ((Furgone) veicolo).getPathImgs();
+     String marca = isAutomobile ? ((Automobile) veicolo).getMarca() : ((Furgone) veicolo).getMarca();
+     String modello = isAutomobile ? ((Automobile) veicolo).getModello() : ((Furgone) veicolo).getModello();
+     String alimentazione = isAutomobile ? ((Automobile) veicolo).getAlimentazione() : ((Furgone) veicolo).getAlimentazione();
+     double prezzo = isAutomobile ? ((Automobile) veicolo).getPrezzoOrario() : ((Furgone) veicolo).getPrezzoGiornaliero();
 
-        // CardLayout per scorrere le immagini
-        JPanel imagePanel = new JPanel(new CardLayout());
-        imagePanel.setBackground(new Color(60, 87, 121));
-        for (String imgPath : imgPaths) {
-            JLabel imgLabel = new JLabel();
-            imgLabel.setIcon(SearchPage.resizeImageIcon(imgPath, 340, 225));
-            imagePanel.add(imgLabel);
-        }
+     JPanel infoPanel = new JPanel(new GridBagLayout());
+     GridBagConstraints gbc = new GridBagConstraints();
+     gbc.insets = new Insets(10, 10, 10, 10);
+     gbc.fill = GridBagConstraints.HORIZONTAL;
+     infoPanel.setBorder(new LineBorder(new Color(216, 195, 182), 3, true));
+     infoPanel.setSize(700, 500);
 
-        // Pulsanti per navigare tra le immagini
-        JButton btnPrev = new JButton("Indietro");
-        JButton btnNext = new JButton("Avanti");
-        
-        btnPrev.addActionListener(e -> {
-            CardLayout cl = (CardLayout) imagePanel.getLayout();
-            cl.previous(imagePanel);
-        });
+     // CardLayout per scorrere le immagini
+     JPanel imagePanel = new JPanel(new CardLayout());
+     imagePanel.setBackground(new Color(60, 87, 121));
 
-        btnNext.addActionListener(e -> {
-            CardLayout cl = (CardLayout) imagePanel.getLayout();
-            cl.next(imagePanel);
-        });
+     JProgressBar progressBar = new JProgressBar(0, imgPaths.length - 1);
+     progressBar.setValue(0); // Valore iniziale
+     progressBar.setBackground(new Color(200, 200, 200));
+   
+     for (String imgPath : imgPaths) {
+         JLabel imgLabel = new JLabel();
+         imgLabel.setIcon(SearchPage.resizeImageIcon(imgPath, 340, 225));
+         imagePanel.add(imgLabel);
+     }
 
-        // Aggiungi il pannello immagine e i pulsanti
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.gridheight = 4;
-        infoPanel.add(imagePanel, gbc);
+     // Pulsanti per navigare tra le immagini
+     JButton btnPrev = new JButton("Indietro");
+     JButton btnNext = new JButton("Avanti");
 
-        JPanel navigationPanel = new JPanel();
-        navigationPanel.add(btnPrev);
-        navigationPanel.add(btnNext);
-        gbc.gridy = 4;
-        infoPanel.add(navigationPanel, gbc);
+     btnPrev.addActionListener(e -> {
+         CardLayout cl = (CardLayout) imagePanel.getLayout();
+         cl.previous(imagePanel);
+         int currentIndex = (progressBar.getValue() - 1 + imgPaths.length) % imgPaths.length;
+         progressBar.setValue(currentIndex);
+     });
 
-        // Altri dettagli del veicolo
-        Font font = new Font("Arial", Font.BOLD, 22);
+     btnNext.addActionListener(e -> {
+         CardLayout cl = (CardLayout) imagePanel.getLayout();
+         cl.next(imagePanel);
+         int currentIndex = (progressBar.getValue() + 1) % imgPaths.length;
+         progressBar.setValue(currentIndex);
+     });
 
-        lblMarcaModello = new JLabel(marca + " " + modello);
-        lblMarcaModello.setForeground(Color.WHITE);
-        lblMarcaModello.setFont(font);
-        gbc.gridx = 1;
-        gbc.gridy = 0;
-        gbc.gridheight = 1;
-        infoPanel.add(lblMarcaModello, gbc);
+     // Aggiungi il pannello immagine e i pulsanti
+     gbc.gridx = 0;
+     gbc.gridy = 0;
+     gbc.gridheight = 4;
+     infoPanel.add(imagePanel, gbc);
 
-        lblAlimentazione = new JLabel(alimentazione);
-        lblAlimentazione.setForeground(Color.WHITE);
-        lblAlimentazione.setFont(font);
-        gbc.gridy = 1;
-        infoPanel.add(lblAlimentazione, gbc);
+     // Aggiungi la barra progressiva
+     gbc.gridy = 4;
+     gbc.anchor = GridBagConstraints.CENTER;
+     gbc.fill = GridBagConstraints.HORIZONTAL;
 
-        lblImmagineAlimentazione = new JLabel();
-        lblImmagineAlimentazione2 = new JLabel();
-        switch (alimentazione) {
-            case "Benzina":
-                lblImmagineAlimentazione.setIcon(SearchPage.resizeImageIcon("benzina.png", 35, 35));
-                lblImmagineAlimentazione2.setIcon(null);
-                break;
-            case "Diesel":
-                lblImmagineAlimentazione.setIcon(SearchPage.resizeImageIcon("diesel.png", 35, 35));
-                lblImmagineAlimentazione2.setIcon(null);
-                break;
-            case "Elettrica":
-                lblImmagineAlimentazione.setIcon(SearchPage.resizeImageIcon("elettrica.png", 35, 35));
-                lblImmagineAlimentazione2.setIcon(null);
-                break;
-            case "Ibrida":
-                lblImmagineAlimentazione.setIcon(SearchPage.resizeImageIcon("elettrica.png", 35, 35));
-                lblImmagineAlimentazione2.setIcon(SearchPage.resizeImageIcon("benzina.png", 35, 35));
-                break;
-            case "gpl":
-                lblImmagineAlimentazione.setIcon(SearchPage.resizeImageIcon("gpl.png", 35, 35));
-                lblImmagineAlimentazione2.setIcon(null);
-                break;
-        }
-        JPanel alimentazionePanel = new JPanel();
-        alimentazionePanel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 0));
-        alimentazionePanel.setBackground(new Color(60, 87, 121));
-        alimentazionePanel.add(lblImmagineAlimentazione);
-        if (lblImmagineAlimentazione2.getIcon() != null) {
-            alimentazionePanel.add(lblImmagineAlimentazione2);
-        }
-        gbc.gridy = 2;
-        infoPanel.add(alimentazionePanel, gbc);
+     JPanel navigationPanel = new JPanel();
+     navigationPanel.add(progressBar);
+     navigationPanel.add(btnPrev);
+     navigationPanel.add(btnNext);
+     navigationPanel.setBackground(new Color(60, 87, 121));
+     gbc.gridy = 4;
+     infoPanel.add(navigationPanel, gbc);
 
-        lblPrezzo = new JLabel(isAutomobile ? "Prezzo €/h: €" + prezzo : "Prezzo €/day: €" + prezzo);
-        lblPrezzo.setForeground(Color.WHITE);
-        lblPrezzo.setFont(font);
-        gbc.gridy = 3;
-        infoPanel.add(lblPrezzo, gbc);
+     // Altri dettagli del veicolo
+     Font font = new Font("Arial", Font.BOLD, 22);
 
-        infoPanel.setBackground(new Color(60, 87, 121));
-        return infoPanel;
-    }
+     lblMarcaModello = new JLabel(marca + " " + modello);
+     lblMarcaModello.setForeground(Color.WHITE);
+     lblMarcaModello.setFont(font);
+     gbc.gridx = 1;
+     gbc.gridy = 0;
+     gbc.gridheight = 1;
+     infoPanel.add(lblMarcaModello, gbc);
+
+     lblAlimentazione = new JLabel(alimentazione);
+     lblAlimentazione.setForeground(Color.WHITE);
+     lblAlimentazione.setFont(font);
+     gbc.gridy = 1;
+     infoPanel.add(lblAlimentazione, gbc);
+
+     lblImmagineAlimentazione = new JLabel();
+     lblImmagineAlimentazione2 = new JLabel();
+     switch (alimentazione) {
+         case "Benzina":
+             lblImmagineAlimentazione.setIcon(SearchPage.resizeImageIcon("benzina.png", 35, 35));
+             lblImmagineAlimentazione2.setIcon(null);
+             break;
+         case "Diesel":
+             lblImmagineAlimentazione.setIcon(SearchPage.resizeImageIcon("diesel.png", 35, 35));
+             lblImmagineAlimentazione2.setIcon(null);
+             break;
+         case "Elettrica":
+             lblImmagineAlimentazione.setIcon(SearchPage.resizeImageIcon("elettrica.png", 35, 35));
+             lblImmagineAlimentazione2.setIcon(null);
+             break;
+         case "Ibrida":
+             lblImmagineAlimentazione.setIcon(SearchPage.resizeImageIcon("elettrica.png", 35, 35));
+             lblImmagineAlimentazione2.setIcon(SearchPage.resizeImageIcon("benzina.png", 35, 35));
+             break;
+         case "gpl":
+             lblImmagineAlimentazione.setIcon(SearchPage.resizeImageIcon("gpl.png", 35, 35));
+             lblImmagineAlimentazione2.setIcon(null);
+             break;
+     }
+     JPanel alimentazionePanel = new JPanel();
+     alimentazionePanel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 0));
+     alimentazionePanel.setBackground(new Color(60, 87, 121));
+     alimentazionePanel.add(lblImmagineAlimentazione);
+     if (lblImmagineAlimentazione2.getIcon() != null) {
+         alimentazionePanel.add(lblImmagineAlimentazione2);
+     }
+     gbc.gridy = 2;
+     infoPanel.add(alimentazionePanel, gbc);
+
+     lblPrezzo = new JLabel(isAutomobile ? "Prezzo €/h: €" + prezzo : "Prezzo €/day: €" + prezzo);
+     lblPrezzo.setForeground(Color.WHITE);
+     lblPrezzo.setFont(font);
+     gbc.gridy = 3;
+     infoPanel.add(lblPrezzo, gbc);
+
+     infoPanel.setBackground(new Color(60, 87, 121));
+     return infoPanel;
+ }
 
 
     private JPanel createDatePanel(double prezzo, boolean isAutomobile) {
