@@ -301,6 +301,7 @@ public class SearchPage extends JPanel {
 	    if (Alimentazione2.getIcon() != null) {
 	        alimentazionePanel.add(Alimentazione2);
 	    }
+	    alimentazionePanel.add(Box.createHorizontalStrut(5));
 
 	    panel.add(Box.createRigidArea(new Dimension(0, 10)));
 	    panel.add(alimentazionePanel);
