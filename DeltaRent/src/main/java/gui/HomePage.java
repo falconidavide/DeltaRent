@@ -24,6 +24,7 @@ public class HomePage extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(1200, 950);
 		setMinimumSize(new Dimension(900, 700));
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
 		setLocationRelativeTo(null);
 		ImageIcon appIcon = new ImageIcon("img/appIcon.png"); // Sostituisci con il percorso corretto
 		setIconImage(appIcon.getImage());
@@ -39,16 +40,15 @@ public class HomePage extends JFrame {
 		leftColumn.setLayout(new BoxLayout(leftColumn, BoxLayout.Y_AXIS));
 		leftColumn.setBorder(BorderFactory.createLineBorder(new Color(216, 195, 182), 3, true));
 
-		JLabel avatarLabel = new JLabel(new ImageIcon("path/to/avatar/image")); // Sostituisci con il percorso immagine
-		avatarLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		//JLabel avatarLabel = new JLabel(new ImageIcon("path/to/avatar/image")); // Sostituisci con il percorso immagine
+		//avatarLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 		JButton btnDeltaRent = createUniformButton("DeltaRent");
 		JButton btnRentCar = createUniformButton("Noleggia");
 		JButton btnViewBookings = createUniformButton("Prenotazioni");
 
 		JButton btnProfile = createUniformButton("");
-		ImageIcon userIcon = new ImageIcon(
-				new ImageIcon("img/userIcon.png").getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH));
+		ImageIcon userIcon = new ImageIcon(new ImageIcon("img/userIcon.png").getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH));
 		btnProfile.setIcon(userIcon);
 
 		// Pulsante di logout
@@ -64,7 +64,7 @@ public class HomePage extends JFrame {
 		});
 
 		// Aggiunta dei pulsanti
-		leftColumn.add(avatarLabel);
+		//leftColumn.add(avatarLabel);
 		leftColumn.add(Box.createRigidArea(new Dimension(0, 40)));
 		leftColumn.add(btnDeltaRent);
 		leftColumn.add(Box.createRigidArea(new Dimension(0, 20))); // Spaziatura
@@ -174,7 +174,7 @@ public class HomePage extends JFrame {
 		homePanel.add(bannerLabel);
 		homePanel.add(Box.createRigidArea(new Dimension(0, 40)));
 		homePanel.add(lblWelcome);
-		homePanel.add(Box.createRigidArea(new Dimension(0, 100)));
+		homePanel.add(Box.createRigidArea(new Dimension(0, 50)));
 
 		// Sezione con icone e descrizioni
 		JPanel featuresPanel = new JPanel();
