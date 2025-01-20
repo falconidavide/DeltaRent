@@ -295,7 +295,7 @@ public class SearchPage extends JPanel {
 
 
 	    JPanel alimentazionePanel = new JPanel();
-	    alimentazionePanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 0)); // Distanza di 5 pixel
+	    alimentazionePanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 0)); // Distanza di 5 pixel
 	    alimentazionePanel.setBackground(panel.getBackground());
 	    alimentazionePanel.add(Alimentazione);
 	    if (Alimentazione2.getIcon() != null) {

@@ -5,6 +5,8 @@ import javax.swing.*;
 import db.GestionePrenotazioni;
 
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import utente.Utente;
 
@@ -165,15 +167,16 @@ public class HomePage extends JFrame {
 		bannerLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 		lblWelcome = new JLabel("Benvenuto su DeltaRent!");
-		lblWelcome.setFont(new Font("Arial", Font.BOLD, 36));
+		lblWelcome.setFont(new Font("Arial", Font.BOLD, 55));
 		lblWelcome.setHorizontalAlignment(SwingConstants.CENTER);
 		lblWelcome.setForeground(new Color(32, 52, 85));
 		lblWelcome.setAlignmentX(Component.CENTER_ALIGNMENT);
-
+		
+		homePanel.add(Box.createRigidArea(new Dimension(0, 40)));
 		homePanel.add(bannerLabel);
-		homePanel.add(Box.createRigidArea(new Dimension(0, 20)));
+		homePanel.add(Box.createRigidArea(new Dimension(0, 40)));
 		homePanel.add(lblWelcome);
-		homePanel.add(Box.createRigidArea(new Dimension(0, 20)));
+		homePanel.add(Box.createRigidArea(new Dimension(0, 100)));
 
 		// Sezione con icone e descrizioni
 		JPanel featuresPanel = new JPanel();
