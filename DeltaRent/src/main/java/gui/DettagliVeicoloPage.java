@@ -125,9 +125,9 @@ public class DettagliVeicoloPage extends JPanel {
      }
 
      // Pulsanti per navigare tra le immagini
-     JButton btnPrev = new JButton("Indietro");
-     JButton btnNext = new JButton("Avanti");
-
+     JButton btnPrev = new JButton("<");
+     JButton btnNext = new JButton(">");
+     
      btnPrev.addActionListener(e -> {
          CardLayout cl = (CardLayout) imagePanel.getLayout();
          cl.previous(imagePanel);
@@ -154,8 +154,8 @@ public class DettagliVeicoloPage extends JPanel {
      gbc.fill = GridBagConstraints.HORIZONTAL;
 
      JPanel navigationPanel = new JPanel();
-     navigationPanel.add(progressBar);
      navigationPanel.add(btnPrev);
+     navigationPanel.add(progressBar);
      navigationPanel.add(btnNext);
      navigationPanel.setBackground(new Color(60, 87, 121));
      gbc.gridy = 4;
