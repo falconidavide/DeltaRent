@@ -5,17 +5,15 @@ public class Veicolo {
 	private String targa;
 	private String marca;
 	private String modello;
-	private Boolean disponibile;
 	private String pathImg;
 	private String alimentazione;
 	private String[] pathImgs;
 	private String descrizione;
 
-	public Veicolo(String targa, String marca, String modello, Boolean disponibile, String pathImg, String alimentazione, String[] pathImgs, String descrizione) {
+	public Veicolo(String targa, String marca, String modello, String pathImg, String alimentazione, String[] pathImgs, String descrizione) {
 		this.targa = targa;
 		this.marca = marca;
 		this.modello = modello;
-		this.disponibile = disponibile;
 		this.pathImg = pathImg;
 		this.alimentazione = alimentazione;
 		this.descrizione = descrizione;
@@ -44,14 +42,6 @@ public class Veicolo {
 
 	public void setModello(String modello) {
 		this.modello = modello;
-	}
-
-	public Boolean getDisponibile() {
-		return disponibile;
-	}
-
-	public void setDisponibile(Boolean disponibile) {
-		this.disponibile = disponibile;
 	}
 
 	public String getPathImg() {

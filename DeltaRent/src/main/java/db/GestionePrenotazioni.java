@@ -47,7 +47,6 @@ public class GestionePrenotazioni {
 					String targa2 = rs2.getString("targa");
 					String marca = rs2.getString("marca");
 					String modello = rs2.getString("modello");
-					boolean disponibile = rs2.getBoolean("disponibile");
 					int prezzoOrario = rs2.getInt("prezzoOrario");
 					String pathImg = rs2.getString("pathImg");
 					String alimentazione = rs2.getString("alimentazione");
@@ -56,7 +55,7 @@ public class GestionePrenotazioni {
 		                // Leggi e processa il campo pathImgs
 		            String pathImgsString = rs2.getString("pathImgs");
 		            String[] pathImgs = pathImgsString != null ? pathImgsString.split("\\n") : new String[0];
-					auto = new Automobile(targa2, marca, modello, disponibile, prezzoOrario, pathImg, alimentazione,pathImgs,descrizione);
+					auto = new Automobile(targa2, marca, modello, prezzoOrario, pathImg, alimentazione,pathImgs,descrizione);
 
 				}
 				Prenotazione prenotazione = new Prenotazione(id, inizioPrenotazione, finePrenotazione, HomePage.loggedUser, auto, dataPrenotazione, prezzo);
@@ -147,7 +146,6 @@ public class GestionePrenotazioni {
 					String targa2 = rs2.getString("targa");
 					String marca = rs2.getString("marca");
 					String modello = rs2.getString("modello");
-					boolean disponibile = rs2.getBoolean("disponibile");
 					int prezzoOrario = rs2.getInt("prezzoOrario");
 					String pathImg = rs2.getString("pathImg");
 					String alimentazione = rs2.getString("alimentazione");
@@ -156,7 +154,7 @@ public class GestionePrenotazioni {
 		                // Leggi e processa il campo pathImgs
 		            String pathImgsString = rs2.getString("pathImgs");
 		            String[] pathImgs = pathImgsString != null ? pathImgsString.split("\\n") : new String[0];
-					auto = new Automobile(targa2, marca, modello, disponibile, prezzoOrario, pathImg, alimentazione,pathImgs,descrizione);
+					auto = new Automobile(targa2, marca, modello, prezzoOrario, pathImg, alimentazione,pathImgs,descrizione);
 
 				}
 				Prenotazione prenotazione = new Prenotazione(id, inizioPrenotazione, finePrenotazione, HomePage.loggedUser, auto, dataPrenotazione, prezzo);
