@@ -13,7 +13,11 @@ public class GestionePrenotazioni {
 	// Metodo per ottenere tutte le prenotazioni passate per un utente
 	public List<Prenotazione> getPrenotazioniPassate(String emailUtente) {
 		List<Prenotazione> prenotazioni = new ArrayList<>();
-		String query = "SELECT * FROM Prenotazione WHERE emailUtente = ? AND inizioPrenotazione <= date('now')";
+		String query = "SELECT * \r\n"
+				+ "FROM Prenotazione \r\n"
+				+ "WHERE emailUtente = ? \r\n"
+				+ "  AND SUBSTR(inizioPrenotazione, 7, 4) || '-' || SUBSTR(inizioPrenotazione, 4, 2) || '-' || SUBSTR(inizioPrenotazione, 1, 2) || ' ' || SUBSTR(inizioPrenotazione, 12, 5) <= datetime('now');\r\n"
+				+ "";
 
 		try {
 			Connection conn = DatabaseConnection.getConnection();
@@ -111,7 +115,10 @@ public class GestionePrenotazioni {
 	public List<Prenotazione> getPrenotazioniFuture(String emailUtente) {
 
 		List<Prenotazione> prenotazioni = new ArrayList<>();
-		String query = "SELECT * FROM Prenotazione WHERE emailUtente = ? AND inizioPrenotazione > date('now')";
+		String query = "SELECT * \r\n"
+				+ "FROM Prenotazione \r\n"
+				+ "WHERE emailUtente = ? \r\n"
+				+ "  AND SUBSTR(inizioPrenotazione, 7, 4) || '-' || SUBSTR(inizioPrenotazione, 4, 2) || '-' || SUBSTR(inizioPrenotazione, 1, 2) || ' ' || SUBSTR(inizioPrenotazione, 12, 5) > datetime('now');\r\n";
 		try {
 			Connection conn = DatabaseConnection.getConnection();
 
