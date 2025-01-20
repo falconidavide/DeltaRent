@@ -8,9 +8,6 @@ import org.junit.jupiter.api.Test;
 import db.Registration;
 import gui.LogIn;
 
-/**
- * Unit test for simple App.
- */
 public class AppTest {
 
 	/**
@@ -40,5 +37,21 @@ public class AppTest {
 	@Test
 	public void testPasswords() {
 		assertTrue(LogIn.isValidPassword("Provaa1!"));
+	}
+	
+	@Test
+	public void testPartitaIVA() {
+		assertTrue(LogIn.isValidPIVA("57546750662"));
+		assertTrue(LogIn.isValidPIVA("74164650405"));
+		assertFalse(LogIn.isValidPIVA("prova"));
+		assertFalse(LogIn.isValidPIVA("1896115351"));
+	}
+	
+	@Test
+	public void testDataNascita() {
+		assertTrue(LogIn.isValidDate("01/01/2025"));
+		assertTrue(LogIn.isValidDate("31/01/2025"));
+		assertFalse(LogIn.isValidDate("50/01/2025"));
+		assertFalse(LogIn.isValidDate("10/13/2025"));
 	}
 }
