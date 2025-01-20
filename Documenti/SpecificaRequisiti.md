@@ -1,7 +1,7 @@
 
 ## 1. Introduzione
 
-**1.1 Obiettivo:** l'obiettivo del progetto DeltaRent è sviluppare una piattaforma intuitiva per il noleggio di automobili, accessibile sia a privati che ad aziende, che consenta di gestire account, prenotazioni, e pagamenti in modo efficiente.
+**1.1 Obiettivo:** l'obiettivo del progetto DeltaRent è sviluppare una piattaforma intuitiva per il noleggio di automobili, accessibile sia a privati che ad aziende, che consenta di gestire account, e prenotazioni in modo efficiente.
 
 **1.2 Scopo:** lo scopo del progetto è fornire un sistema moderno, scalabile e intuitivo per il noleggio di veicoli, migliorando la gestione interna e l'esperienza utente, attraverso l'integrazione di funzionalità avanzate come la gestione dello storico dei noleggi e un sistema di ricerca basato su filtri.
 
@@ -28,7 +28,7 @@
 
 ## 2. Descrizione generale
 
-**2.1 Prospettiva del prodotto:** il prodotto finale sarà un'interfaccia applicativa in grado di permettere agli utenti di gestire il proprio profilo, di visualizzare le automobili disponibili al noleggio. La piattaforma offre una sezione personale per l'utente che mostra i veicoli preferiti e i veicoli attualmente noleggiati dall'utente stesso. L'interfaccia offre inoltre all'utente una sezione per permettere di cercare un veicolo attraverso dei filtri, come il colore o il tipo di carrozzeria. Gli utenti, che possono essere privati o azienda, potranno accedere oppure, se non hanno già creato un account, registrarsi fornendo le informazioni necessarie in base al tipo di utenza. 
+**2.1 Prospettiva del prodotto:** il prodotto finale sarà un'interfaccia applicativa in grado di permettere agli utenti di gestire il proprio profilo, di visualizzare le automobili disponibili al noleggio. La piattaforma offre una sezione personale per l'utente che mostra lo storico dei veicoli noleggiati dall'utente stesso. L'interfaccia offre inoltre all'utente una sezione per permettere di cercare un veicolo attraverso dei filtri, come il modello di auto o il tipo di alimentazione. Gli utenti, che possono essere privati o azienda, potranno accedere oppure, se non hanno già creato un account, registrarsi fornendo le informazioni necessarie in base al tipo di utenza. 
 
 **2.2 Funzioni del prodotto:** Le principali funzioni del prodotto saranno inerenti al noleggio auto, l'utente potrà programmare l'inizio di un noleggio piuttosto che terminarne un'altro, potrà selezionare dei veicoli da aggiungere alla lista dei veicoli preferiti, l'utente potrà inoltre visualizzare una prospettiva della rata mensile che pagherà in base ai servizi complementari del noleggio e aggiungendo il periodo del noleggio potrà visualizzare il prezzo finale per il noleggio. Viene controllata la sicurezza della password durante la fase di registrazione.
 
