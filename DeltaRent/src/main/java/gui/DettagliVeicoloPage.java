@@ -280,7 +280,7 @@ public class DettagliVeicoloPage extends JPanel {
     private JPanel createBottomPanel(double prezzo, boolean isAutomobile) {
         JPanel bottomPanel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(10, 10, 10, 10);
+        gbc.insets = new Insets(0, 10, 15, 10);
         gbc.fill = GridBagConstraints.HORIZONTAL;
         bottomPanel.setBackground(new Color(60, 87, 121));
         bottomPanel.setBorder(new LineBorder(new Color(216, 195, 182), 3, true));
