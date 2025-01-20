@@ -15,6 +15,7 @@ public class PaginaCaricamento extends JFrame {
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setSize(1200, 950);
         setMinimumSize(new Dimension(900, 700));
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
         ImageIcon appIcon = new ImageIcon("img/appIcon.png"); // Sostituisci con il percorso corretto
         setIconImage(appIcon.getImage());
