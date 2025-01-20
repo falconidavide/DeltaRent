@@ -19,8 +19,8 @@ import javax.imageio.ImageIO;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-@SuppressWarnings("serial")
 public class SearchPage extends JPanel {
+	private static final long serialVersionUID = 1L;
 	static JComboBox<String> modelComboBox;
 	static JComboBox<String> brandComboBox;
 	static JComboBox<String> supplyComboBox;

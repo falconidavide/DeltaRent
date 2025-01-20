@@ -10,7 +10,7 @@ import utente.Utente;
 
 public class HomePage extends JFrame {
 	private static final long serialVersionUID = 1L;
-	protected static CardLayout cardLayout;
+	public static CardLayout cardLayout;
 	protected static JPanel mainContentPanel;
 	static boolean logged = false; // Stato del login
 	public static Utente loggedUser; // Oggetto utente loggato

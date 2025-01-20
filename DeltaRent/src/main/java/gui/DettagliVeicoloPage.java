@@ -10,8 +10,9 @@ import veicolo.Veicolo;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
-import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeListener;
+import javax.swing.text.Position;
+
 import org.jdatepicker.impl.*;
 
 import java.awt.*;
@@ -55,8 +56,14 @@ public class DettagliVeicoloPage extends JPanel {
     }
 
     private void setupPanel() {
-        setLayout(new GridBagLayout());
+        //setLayout(new GridBagLayout());
+        setLayout(new BorderLayout());
         setBackground(new Color(28, 51, 84));
+        // Aggiunta del pulsante "wrna alla Ricerca" nel metodo populatePanel
+        JButton btnTornaIndietro = new JButton("Torna alla Ricerca");
+        btnTornaIndietro.setFont(new Font("Arial", Font.BOLD, 18));
+        btnTornaIndietro.addActionListener(e -> HomePage.cardLayout.show(HomePage.mainContentPanel, "rentCar"));
+        add(btnTornaIndietro);
     }
 
     private void populatePanel(Object veicolo, boolean isAutomobile) {

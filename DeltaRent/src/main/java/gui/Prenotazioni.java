@@ -169,7 +169,7 @@ public class Prenotazioni extends JPanel {
             annullaButton.setAlignmentX(Component.CENTER_ALIGNMENT);
             annullaButton.addActionListener(e -> {
                 // Logica per annullare la prenotazione
-                gestionePrenotazioni.annullaPrenotazione(prenotazione);
+                GestionePrenotazioni.annullaPrenotazione(prenotazione);
                 JOptionPane.showMessageDialog(this, "Prenotazione annullata con successo!", "Successo", JOptionPane.INFORMATION_MESSAGE);
                 // Aggiorna la lista delle prenotazioni
                 updatePrenotazioniPanel();
