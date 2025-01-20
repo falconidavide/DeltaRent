@@ -38,6 +38,7 @@ public class DettagliVeicoloPage extends JPanel {
     private Veicolo veicolo;
     private Utente utente; // Supponiamo che l'utente sia già disponibile
 	private boolean disponibile;
+	private double prezzoTotale;
 
     public DettagliVeicoloPage(Automobile auto, Utente utente) {
         this.veicolo = auto;
@@ -385,7 +386,7 @@ public class DettagliVeicoloPage extends JPanel {
 	          
 	
 	            long durata = fine.getTime() - inizio.getTime();
-	            double prezzoTotale = isAutomobile ? (durata / (1000 * 60 * 60.0)) * prezzo : (durata / (1000 * 60 * 60 * 24.0)) * prezzo;
+	            prezzoTotale = isAutomobile ? (durata / (1000 * 60 * 60.0)) * prezzo : (durata / (1000 * 60 * 60 * 24.0)) * prezzo;
 	
 	            lblPrezzoTotale.setText(String.format("Prezzo totale: €%.2f", prezzoTotale));
             	lblPrezzoTotale.setFont(new Font("Arial", Font.BOLD, 22));
@@ -448,8 +449,7 @@ public class DettagliVeicoloPage extends JPanel {
                 JOptionPane.showMessageDialog(this, "Errore: Data di fine non valida");
                 return;
             }
-
-            Prenotazione prenotazione = new Prenotazione(inizio, fine, utente, veicolo);
+            Prenotazione prenotazione = new Prenotazione(inizio, fine, utente, veicolo, prezzoTotale);
             Prenota prenota = new Prenota();
             prenota.aggiungiPrenotazione(prenotazione);
 

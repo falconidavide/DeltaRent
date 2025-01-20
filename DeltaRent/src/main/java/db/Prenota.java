@@ -13,7 +13,7 @@ public class Prenota {
 	private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd-MM-yyyy HH:mm");
 
 	public void aggiungiPrenotazione(Prenotazione prenotazione) throws SQLException {
-		String query = "INSERT INTO Prenotazione (inizioPrenotazione, finePrenotazione, emailUtente, targa, dataPrenotazione) VALUES (?, ?, ?, ?, ?)";
+		String query = "INSERT INTO Prenotazione (inizioPrenotazione, finePrenotazione, emailUtente, targa, dataPrenotazione, prezzo) VALUES (?, ?, ?, ?, ?, ?)";
 
 		try {
 			Connection conn = DatabaseConnection.getConnection();
@@ -28,6 +28,7 @@ public class Prenota {
 			stmt.setString(3, prenotazione.getUtente().getEmail());
 			stmt.setString(4, prenotazione.getVeicolo().getTarga());
 			stmt.setString(5, now);
+			stmt.setDouble(6, prenotazione.getPrezzo());
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			System.err.println("Errore durante la connessione al database: " + e.getMessage());

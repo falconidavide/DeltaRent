@@ -11,21 +11,24 @@ public class Prenotazione {
 	private Utente utente;
 	private Veicolo veicolo;
 	private String dataPrenotazione;
+	private double prezzo;
 
-	public Prenotazione(int ID, String inizio, String fine, Utente utente, Veicolo veicolo, String dataPrenotazione) {
+	public Prenotazione(int ID, String inizio, String fine, Utente utente, Veicolo veicolo, String dataPrenotazione, double prezzo) {
 		this.inizioPrenotazione = inizio;
 		this.finePrenotazione = fine;
 		this.utente = utente;
 		this.veicolo = veicolo;
 		this.ID = ID;
 		this.dataPrenotazione = dataPrenotazione;
+		this.prezzo=prezzo;
 	}
 
-	public Prenotazione(String inizio, String fine, Utente utente, Veicolo veicolo) {
+	public Prenotazione(String inizio, String fine, Utente utente, Veicolo veicolo, double prezzo) {
 		this.inizioPrenotazione = inizio;
 		this.finePrenotazione = fine;
 		this.utente = utente;
 		this.veicolo = veicolo;
+		this.prezzo=prezzo;
 	}
 
 	// Metodo per ottenere la data di inizio prenotazione
@@ -67,5 +70,14 @@ public class Prenotazione {
 
 	public void setDataPrenotazione(String dataPrenotazione) {
 		this.dataPrenotazione = dataPrenotazione;
+	}
+
+	public double getPrezzo() {
+		// TODO Auto-generated method stub
+		return prezzo;
+	}
+
+	public void setPrezzo(float prezzo) {
+		this.prezzo = prezzo;
 	}
 }
