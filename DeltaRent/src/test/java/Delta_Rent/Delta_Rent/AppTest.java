@@ -36,7 +36,11 @@ public class AppTest {
 	
 	@Test
 	public void testPasswords() {
-		assertTrue(LogIn.isValidPassword("Provaa1!"));
+		assertTrue(LogIn.isValidPassword("ProvaProva1!"));
+		assertTrue(LogIn.isValidPassword("1!Abc@23"));
+		assertFalse(LogIn.isValidPassword("ciao"));
+		assertFalse(LogIn.isValidPassword("provaprova123!"));
+		assertFalse(LogIn.isValidPassword("Provaprova123"));
 	}
 	
 	@Test
