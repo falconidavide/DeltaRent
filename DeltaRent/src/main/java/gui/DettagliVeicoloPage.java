@@ -223,10 +223,11 @@ public class DettagliVeicoloPage extends JPanel {
         JPanel datePanel = new JPanel(new GridLayout(2, 3, 10, 10));
         datePanel.setBackground(new Color(60, 87, 121));
         datePanel.setBorder(BorderFactory.createCompoundBorder(
-            BorderFactory.createTitledBorder(null, " Prenotazione ", TitledBorder.LEFT, TitledBorder.CENTER, null, Color.white),
-            BorderFactory.createEmptyBorder(5, 20, 10, 20)
+        	BorderFactory.createLineBorder(new Color(216, 195, 182), 3, true),
+            //BorderFactory.createTitledBorder(null, " Prenotazione ", TitledBorder.LEFT, TitledBorder.CENTER, null, Color.white),
+            BorderFactory.createEmptyBorder(20, 20, 20, 20) // Padding aggiunto
         ));
-        datePanel.setBorder(new LineBorder(new Color(216, 195, 182), 3, true));
+
         datePickerInizio = createDatePicker();
         datePickerFine = createDatePicker();
 
@@ -274,6 +275,7 @@ public class DettagliVeicoloPage extends JPanel {
 
         return datePanel;
     }
+
 
     private JPanel createBottomPanel(double prezzo, boolean isAutomobile) {
         JPanel bottomPanel = new JPanel(new GridBagLayout());

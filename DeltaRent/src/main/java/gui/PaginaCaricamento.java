@@ -6,10 +6,10 @@ import java.awt.*;
 import java.util.Timer;
 import java.util.TimerTask;
 
-@SuppressWarnings("serial")
 public class PaginaCaricamento extends JFrame {
+	private static final long serialVersionUID = 1L;
 
-    public PaginaCaricamento() {
+	public PaginaCaricamento() {
 
         setTitle("DeltaRent - Home");
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
