@@ -27,7 +27,7 @@ public class PaginaCaricamento extends JFrame {
 
         // Etichetta con immagine
         JLabel lblNewLabel = new JLabel("");
-        lblNewLabel.setIcon(new ImageIcon("/Users/andreabirolini/Documents/GitHub/DeltaRent/DeltaRent/img/appIcon2.png"));
+        lblNewLabel.setIcon(new ImageIcon("./img/appIcon2.png"));
         lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
         getContentPane().add(lblNewLabel, BorderLayout.CENTER);
 
