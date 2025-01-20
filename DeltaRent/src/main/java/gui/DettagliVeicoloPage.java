@@ -23,12 +23,12 @@ import java.util.Date;
 import java.util.Properties;
 
 public class DettagliVeicoloPage extends JPanel {
-	private static final long serialVersionUID = 1L;
-	private JLabel lblMarcaModello;
-	private JLabel lblImmagineAlimentazione; 
-	private JLabel lblImmagineAlimentazione2;
-	private JLabel lblAlimentazione;
-    private JLabel lblDisponibile= new JLabel();
+    private static final long serialVersionUID = 1L;
+    private JLabel lblMarcaModello;
+    private JLabel lblImmagineAlimentazione; 
+    private JLabel lblImmagineAlimentazione2;
+    private JLabel lblAlimentazione;
+    private JLabel lblDisponibile = new JLabel();
     private JLabel lblPrezzo;
     private JLabel lblPrezzoTotale;
     private JButton btnNoleggia;
@@ -36,9 +36,9 @@ public class DettagliVeicoloPage extends JPanel {
     private JComboBox<String> comboOraInizio, comboOraFine;
     private boolean isSettingDate = false;
     private Veicolo veicolo;
-    private Utente utente; // Supponiamo che l'utente sia già disponibile
-	private boolean disponibile;
-	private double prezzoTotale;
+    private Utente utente;
+    private boolean disponibile;
+    private double prezzoTotale;
 
     public DettagliVeicoloPage(Automobile auto, Utente utente) {
         this.veicolo = auto;
@@ -47,9 +47,6 @@ public class DettagliVeicoloPage extends JPanel {
         populatePanel(auto, true);
     }
 
-    /**
-     * @wbp.parser.constructor
-     */
     public DettagliVeicoloPage(Furgone furgone, Utente utente) {
         this.veicolo = furgone;
         this.utente = utente;
@@ -96,140 +93,138 @@ public class DettagliVeicoloPage extends JPanel {
         });
     }
 
+    private JPanel createInfoPanel(Object veicolo, boolean isAutomobile) {
+        String[] imgPaths = isAutomobile ? ((Automobile) veicolo).getPathImgs() : ((Furgone) veicolo).getPathImgs();
+        String marca = isAutomobile ? ((Automobile) veicolo).getMarca() : ((Furgone) veicolo).getMarca();
+        String modello = isAutomobile ? ((Automobile) veicolo).getModello() : ((Furgone) veicolo).getModello();
+        String alimentazione = isAutomobile ? ((Automobile) veicolo).getAlimentazione() : ((Furgone) veicolo).getAlimentazione();
+        double prezzo = isAutomobile ? ((Automobile) veicolo).getPrezzoOrario() : ((Furgone) veicolo).getPrezzoGiornaliero();
 
- private JPanel createInfoPanel(Object veicolo, boolean isAutomobile) {
-     String[] imgPaths = isAutomobile ? ((Automobile) veicolo).getPathImgs() : ((Furgone) veicolo).getPathImgs();
-     String marca = isAutomobile ? ((Automobile) veicolo).getMarca() : ((Furgone) veicolo).getMarca();
-     String modello = isAutomobile ? ((Automobile) veicolo).getModello() : ((Furgone) veicolo).getModello();
-     String alimentazione = isAutomobile ? ((Automobile) veicolo).getAlimentazione() : ((Furgone) veicolo).getAlimentazione();
-     double prezzo = isAutomobile ? ((Automobile) veicolo).getPrezzoOrario() : ((Furgone) veicolo).getPrezzoGiornaliero();
+        JPanel infoPanel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(10, 10, 10, 10);
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        infoPanel.setBorder(new LineBorder(new Color(216, 195, 182), 3, true));
+        infoPanel.setSize(700, 500);
 
-     JPanel infoPanel = new JPanel(new GridBagLayout());
-     GridBagConstraints gbc = new GridBagConstraints();
-     gbc.insets = new Insets(10, 10, 10, 10);
-     gbc.fill = GridBagConstraints.HORIZONTAL;
-     infoPanel.setBorder(new LineBorder(new Color(216, 195, 182), 3, true));
-     infoPanel.setSize(700, 500);
+        // CardLayout per scorrere le immagini
+        JPanel imagePanel = new JPanel(new CardLayout());
+        imagePanel.setBackground(new Color(60, 87, 121));
 
-     // CardLayout per scorrere le immagini
-     JPanel imagePanel = new JPanel(new CardLayout());
-     imagePanel.setBackground(new Color(60, 87, 121));
+        JProgressBar progressBar = new JProgressBar(0, imgPaths.length - 1);
+        progressBar.setValue(0); // Valore iniziale
+        progressBar.setBackground(new Color(200, 200, 200));
 
-     JProgressBar progressBar = new JProgressBar(0, imgPaths.length - 1);
-     progressBar.setValue(0); // Valore iniziale
-     progressBar.setBackground(new Color(200, 200, 200));
-   
-     for (String imgPath : imgPaths) {
-         JLabel imgLabel = new JLabel();
-         imgLabel.setIcon(SearchPage.resizeImageIcon(imgPath, 340, 225));
-         imagePanel.add(imgLabel);
-     }
+        for (String imgPath : imgPaths) {
+            JLabel imgLabel = new JLabel();
+            imgLabel.setIcon(SearchPage.resizeImageIcon(imgPath, 340, 225));
+            imagePanel.add(imgLabel);
+        }
 
-     // Pulsanti per navigare tra le immagini
-     JButton btnPrev = new JButton("<");
-     JButton btnNext = new JButton(">");
-     
-     btnPrev.addActionListener(e -> {
-         CardLayout cl = (CardLayout) imagePanel.getLayout();
-         cl.previous(imagePanel);
-         int currentIndex = (progressBar.getValue() - 1 + imgPaths.length) % imgPaths.length;
-         progressBar.setValue(currentIndex);
-     });
+        // Pulsanti per navigare tra le immagini
+        JButton btnPrev = new JButton("<");
+        JButton btnNext = new JButton(">");
 
-     btnNext.addActionListener(e -> {
-         CardLayout cl = (CardLayout) imagePanel.getLayout();
-         cl.next(imagePanel);
-         int currentIndex = (progressBar.getValue() + 1) % imgPaths.length;
-         progressBar.setValue(currentIndex);
-     });
+        btnPrev.addActionListener(e -> {
+            CardLayout cl = (CardLayout) imagePanel.getLayout();
+            cl.previous(imagePanel);
+            int currentIndex = (progressBar.getValue() - 1 + imgPaths.length) % imgPaths.length;
+            progressBar.setValue(currentIndex);
+        });
 
-     // Aggiungi il pannello immagine e i pulsanti
-     gbc.gridx = 0;
-     gbc.gridy = 0;
-     gbc.gridheight = 4;
-     infoPanel.add(imagePanel, gbc);
+        btnNext.addActionListener(e -> {
+            CardLayout cl = (CardLayout) imagePanel.getLayout();
+            cl.next(imagePanel);
+            int currentIndex = (progressBar.getValue() + 1) % imgPaths.length;
+            progressBar.setValue(currentIndex);
+        });
 
-     // Aggiungi la barra progressiva
-     gbc.gridy = 4;
-     gbc.anchor = GridBagConstraints.CENTER;
-     gbc.fill = GridBagConstraints.HORIZONTAL;
+        // Aggiungi il pannello immagine e i pulsanti
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.gridheight = 4;
+        infoPanel.add(imagePanel, gbc);
 
-     JPanel navigationPanel = new JPanel();
-     navigationPanel.add(btnPrev);
-     navigationPanel.add(progressBar);
-     navigationPanel.add(btnNext);
-     navigationPanel.setBackground(new Color(60, 87, 121));
-     gbc.gridy = 4;
-     infoPanel.add(navigationPanel, gbc);
+        // Aggiungi la barra progressiva
+        gbc.gridy = 4;
+        gbc.anchor = GridBagConstraints.CENTER;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
 
-     // Altri dettagli del veicolo
-     Font font = new Font("Arial", Font.BOLD, 22);
+        JPanel navigationPanel = new JPanel();
+        navigationPanel.add(btnPrev);
+        navigationPanel.add(progressBar);
+        navigationPanel.add(btnNext);
+        navigationPanel.setBackground(new Color(60, 87, 121));
+        gbc.gridy = 4;
+        infoPanel.add(navigationPanel, gbc);
 
-     lblMarcaModello = new JLabel(marca + " " + modello);
-     lblMarcaModello.setForeground(Color.WHITE);
-     lblMarcaModello.setFont(font);
-     gbc.gridx = 1;
-     gbc.gridy = 0;
-     gbc.gridheight = 1;
-     infoPanel.add(lblMarcaModello, gbc);
+        // Altri dettagli del veicolo
+        Font font = new Font("Arial", Font.BOLD, 22);
 
-     lblAlimentazione = new JLabel(alimentazione);
-     lblAlimentazione.setForeground(Color.WHITE);
-     lblAlimentazione.setFont(font);
-     gbc.gridy = 1;
-     infoPanel.add(lblAlimentazione, gbc);
+        lblMarcaModello = new JLabel(marca + " " + modello);
+        lblMarcaModello.setForeground(Color.WHITE);
+        lblMarcaModello.setFont(font);
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        gbc.gridheight = 1;
+        infoPanel.add(lblMarcaModello, gbc);
 
-     lblImmagineAlimentazione = new JLabel();
-     lblImmagineAlimentazione2 = new JLabel();
-     switch (alimentazione) {
-         case "Benzina":
-             lblImmagineAlimentazione.setIcon(SearchPage.resizeImageIcon("benzina.png", 35, 35));
-             lblImmagineAlimentazione2.setIcon(null);
-             break;
-         case "Diesel":
-             lblImmagineAlimentazione.setIcon(SearchPage.resizeImageIcon("diesel.png", 35, 35));
-             lblImmagineAlimentazione2.setIcon(null);
-             break;
-         case "Elettrica":
-             lblImmagineAlimentazione.setIcon(SearchPage.resizeImageIcon("elettrica.png", 35, 35));
-             lblImmagineAlimentazione2.setIcon(null);
-             break;
-         case "Ibrida":
-             lblImmagineAlimentazione.setIcon(SearchPage.resizeImageIcon("elettrica.png", 35, 35));
-             lblImmagineAlimentazione2.setIcon(SearchPage.resizeImageIcon("benzina.png", 35, 35));
-             break;
-         case "gpl":
-             lblImmagineAlimentazione.setIcon(SearchPage.resizeImageIcon("gpl.png", 35, 35));
-             lblImmagineAlimentazione2.setIcon(null);
-             break;
-     }
-     JPanel alimentazionePanel = new JPanel();
-     alimentazionePanel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 0));
-     alimentazionePanel.setBackground(new Color(60, 87, 121));
-     alimentazionePanel.add(lblImmagineAlimentazione);
-     if (lblImmagineAlimentazione2.getIcon() != null) {
-         alimentazionePanel.add(lblImmagineAlimentazione2);
-     }
-     gbc.gridy = 2;
-     infoPanel.add(alimentazionePanel, gbc);
+        lblAlimentazione = new JLabel(alimentazione);
+        lblAlimentazione.setForeground(Color.WHITE);
+        lblAlimentazione.setFont(font);
+        gbc.gridy = 1;
+        infoPanel.add(lblAlimentazione, gbc);
 
-     lblPrezzo = new JLabel(isAutomobile ? "Prezzo €/h: €" + prezzo : "Prezzo €/day: €" + prezzo);
-     lblPrezzo.setForeground(Color.WHITE);
-     lblPrezzo.setFont(font);
-     gbc.gridy = 3;
-     infoPanel.add(lblPrezzo, gbc);
+        lblImmagineAlimentazione = new JLabel();
+        lblImmagineAlimentazione2 = new JLabel();
+        switch (alimentazione) {
+            case "Benzina":
+                lblImmagineAlimentazione.setIcon(SearchPage.resizeImageIcon("benzina.png", 35, 35));
+                lblImmagineAlimentazione2.setIcon(null);
+                break;
+            case "Diesel":
+                lblImmagineAlimentazione.setIcon(SearchPage.resizeImageIcon("diesel.png", 35, 35));
+                lblImmagineAlimentazione2.setIcon(null);
+                break;
+            case "Elettrica":
+                lblImmagineAlimentazione.setIcon(SearchPage.resizeImageIcon("elettrica.png", 35, 35));
+                lblImmagineAlimentazione2.setIcon(null);
+                break;
+            case "Ibrida":
+                lblImmagineAlimentazione.setIcon(SearchPage.resizeImageIcon("elettrica.png", 35, 35));
+                lblImmagineAlimentazione2.setIcon(SearchPage.resizeImageIcon("benzina.png", 35, 35));
+                break;
+            case "GPL":
+                lblImmagineAlimentazione.setIcon(SearchPage.resizeImageIcon("gpl.png", 35, 35));
+                lblImmagineAlimentazione2.setIcon(null);
+                break;
+        }
+        JPanel alimentazionePanel = new JPanel();
+        alimentazionePanel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 0));
+        alimentazionePanel.setBackground(new Color(60, 87, 121));
+        alimentazionePanel.add(lblImmagineAlimentazione);
+        if (lblImmagineAlimentazione2.getIcon() != null) {
+            alimentazionePanel.add(lblImmagineAlimentazione2);
+        }
+        gbc.gridy = 2;
+        infoPanel.add(alimentazionePanel, gbc);
 
-     infoPanel.setBackground(new Color(60, 87, 121));
-     return infoPanel;
- }
+        lblPrezzo = new JLabel(isAutomobile ? "Prezzo €/h: €" + prezzo : "Prezzo €/day: €" + prezzo);
+        lblPrezzo.setForeground(Color.WHITE);
+        lblPrezzo.setFont(font);
+        gbc.gridy = 3;
+        infoPanel.add(lblPrezzo, gbc);
 
+        infoPanel.setBackground(new Color(60, 87, 121));
+        return infoPanel;
+    }
 
     private JPanel createDatePanel(double prezzo, boolean isAutomobile) {
         JPanel datePanel = new JPanel(new GridLayout(2, 3, 10, 10));
         datePanel.setBackground(new Color(60, 87, 121));
         datePanel.setBorder(BorderFactory.createCompoundBorder(
             BorderFactory.createTitledBorder(null, " Prenotazione ", TitledBorder.LEFT, TitledBorder.CENTER, null, Color.white),
-            BorderFactory.createEmptyBorder(5, 20, 10, 20) // Padding di 15 px su tutti i lati
+            BorderFactory.createEmptyBorder(5, 20, 10, 20)
         ));
         datePanel.setBorder(new LineBorder(new Color(216, 195, 182), 3, true));
         datePickerInizio = createDatePicker();
@@ -281,7 +276,7 @@ public class DettagliVeicoloPage extends JPanel {
     }
 
     private JPanel createBottomPanel(double prezzo, boolean isAutomobile) {
-        JPanel bottomPanel = new JPanel(new GridBagLayout()); // Usa GridBagLayout
+        JPanel bottomPanel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(10, 10, 10, 10);
         gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -298,13 +293,13 @@ public class DettagliVeicoloPage extends JPanel {
         // Aggiungi lblPrezzoTotale centrato
         lblPrezzoTotale = new JLabel("Prezzo totale: €0");
         lblPrezzoTotale.setForeground(Color.WHITE);
-        lblPrezzoTotale.setFont(new Font("Arial", Font.BOLD, 18)); // Mantieni lo stesso font
+        lblPrezzoTotale.setFont(new Font("Arial", Font.BOLD, 18));
         gbc.gridy = 1;
         bottomPanel.add(lblPrezzoTotale, gbc);
 
         // Aggiungi btnNoleggia centrato
         btnNoleggia = new JButton("Noleggia");
-        btnNoleggia.setFont(new Font("Arial", Font.BOLD, 18)); // Aumenta la dimensione del font per il bottone
+        btnNoleggia.setFont(new Font("Arial", Font.BOLD, 18));
         gbc.gridy = 2;
         bottomPanel.add(btnNoleggia, gbc);
 
@@ -316,15 +311,14 @@ public class DettagliVeicoloPage extends JPanel {
         properties.put("text.today", "Oggi");
         properties.put("text.month", "Mese");
         properties.put("text.year", "Anno");
-        
+
         UtilDateModel model = new UtilDateModel();
-        model.setValue(new Date()); // Imposta la data corrente
+        model.setValue(new Date());
         model.setSelected(true);
 
         JDatePanelImpl datePanel = new JDatePanelImpl(model, properties);
         JDatePickerImpl datePicker = new JDatePickerImpl(datePanel, new DateComponentFormatter());
 
-        // Non permettere di selezionare date già passate
         datePicker.getModel().addChangeListener(e -> {
             if (isSettingDate) return;
             isSettingDate = true;
@@ -352,7 +346,7 @@ public class DettagliVeicoloPage extends JPanel {
             comboBox.addItem(String.format("%02d:00", h));
             comboBox.addItem(String.format("%02d:30", h));
         }
-        comboBox.setSelectedIndex(0); // Imposta all'ora corrente
+        comboBox.setSelectedIndex(0);
         return comboBox;
     }
 
@@ -367,36 +361,33 @@ public class DettagliVeicoloPage extends JPanel {
             SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
             Date inizio = sdf.parse(new SimpleDateFormat("dd-MM-yyyy").format(dataInizio) + " " + oraInizio);
             Date fine = sdf.parse(new SimpleDateFormat("dd-MM-yyyy").format(dataFine) + " " + oraFine);
-            
-            disponibile=Disponibilita.verificaDisponibilita(veicolo, inizio, fine);
-            
+
+            disponibile = Disponibilita.verificaDisponibilita(veicolo, inizio, fine);
+
             lblDisponibile.setText(disponibile ? "Disponibile" : "Non Disponibile");
             lblDisponibile.setForeground(disponibile ? Color.GREEN : Color.RED);
             lblDisponibile.setFont(new Font("Arial", Font.BOLD, 22));
-            
 
-	            if (fine.before(inizio)) {
-	                lblPrezzoTotale.setText("Errore: Data di fine non valida");
-	                btnNoleggia.setEnabled(false);
-	                return;
-	            } else {
-	            	if(disponibile)
-	                btnNoleggia.setEnabled(true);
-	            }
-	          
-	
-	            long durata = fine.getTime() - inizio.getTime();
-	            prezzoTotale = isAutomobile ? (durata / (1000 * 60 * 60.0)) * prezzo : (durata / (1000 * 60 * 60 * 24.0)) * prezzo;
-	
-	            lblPrezzoTotale.setText(String.format("Prezzo totale: €%.2f", prezzoTotale));
-            	lblPrezzoTotale.setFont(new Font("Arial", Font.BOLD, 22));
-            	return;
-            
+            if (fine.before(inizio)) {
+                lblPrezzoTotale.setText("Errore: Data di fine non valida");
+                btnNoleggia.setEnabled(false);
+                return;
+            } else {
+                if (disponibile)
+                    btnNoleggia.setEnabled(true);
+            }
+
+            long durata = fine.getTime() - inizio.getTime();
+            prezzoTotale = isAutomobile ? (durata / (1000 * 60 * 60.0)) * prezzo : (durata / (1000 * 60 * 60 * 24.0)) * prezzo;
+
+            lblPrezzoTotale.setText(String.format("Prezzo totale: €%.2f", prezzoTotale));
+            lblPrezzoTotale.setFont(new Font("Arial", Font.BOLD, 22));
+            return;
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Errore nel calcolo del prezzo.");
         }
     }
-
 
     private void creaPrenotazione() {
         if (!Utente.isLoggato()) {
@@ -405,41 +396,33 @@ public class DettagliVeicoloPage extends JPanel {
         }
 
         try {
-        	// Ottieni il valore dal date picker
-        	 Date dataInizioDate = (Date) datePickerInizio.getModel().getValue();
-        	 
-        	 String dataInizio=null;
-        	 String dataFine=null;
+            Date dataInizioDate = (Date) datePickerInizio.getModel().getValue();
+            String dataInizio = null;
+            String dataFine = null;
 
-        	 // Verifica che il valore non sia null
-        	 if (dataInizioDate != null) {
-        	     // Converte il valore in una stringa formattata
-        	     SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-        	     dataInizio = sdf.format(dataInizioDate);
-        	 } else {
-        	     System.out.println("Nessuna data selezionata nel date picker.");
-        	 }
-        	 
-        	 Date dataFineDate = (Date) datePickerFine.getModel().getValue();
+            if (dataInizioDate != null) {
+                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                dataInizio = sdf.format(dataInizioDate);
+            } else {
+                System.out.println("Nessuna data selezionata nel date picker.");
+            }
 
-        	 // Verifica che il valore non sia null
-        	 if (dataFineDate != null) {
-        	     // Converte il valore in una stringa formattata
-        	     SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-        	     dataFine = sdf.format(dataFineDate);
-        	 } else {
-        	     System.out.println("Nessuna data selezionata nel date picker.");
-        	 }
+            Date dataFineDate = (Date) datePickerFine.getModel().getValue();
 
-        	String oraInizio = (String) comboOraInizio.getSelectedItem();
-        	String oraFine = (String) comboOraFine.getSelectedItem();
+            if (dataFineDate != null) {
+                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                dataFine = sdf.format(dataFineDate);
+            } else {
+                System.out.println("Nessuna data selezionata nel date picker.");
+            }
 
-        	// Combina data e ora in formato stringa
-        	String inizio = dataInizio + " " + oraInizio;
-        	String fine = dataFine + " " + oraFine;
+            String oraInizio = (String) comboOraInizio.getSelectedItem();
+            String oraFine = (String) comboOraFine.getSelectedItem();
 
-        	// Validazione (opzionale): Verifica se il formato è corretto
-        	SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+            String inizio = dataInizio + " " + oraInizio;
+            String fine = dataFine + " " + oraFine;
+
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
         	sdf.setLenient(false); // Per rendere più rigoroso il parsing
         	
         	Date dataInizioD = sdf.parse(inizio);
