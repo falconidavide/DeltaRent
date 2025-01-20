@@ -11,7 +11,7 @@ import veicolo.Automobile;
 public class GestionePrenotazioni {
 
 	// Metodo per ottenere tutte le prenotazioni passate per un utente
-	public List<Prenotazione> getPrenotazioniPassate(String emailUtente) {
+	public static List<Prenotazione> getPrenotazioniPassate(String emailUtente) {
 		List<Prenotazione> prenotazioni = new ArrayList<>();
 		String query = "SELECT * \r\n"
 				+ "FROM Prenotazione \r\n"
@@ -112,7 +112,7 @@ public class GestionePrenotazioni {
 		}
 	}
 
-	public List<Prenotazione> getPrenotazioniFuture(String emailUtente) {
+	public static List<Prenotazione> getPrenotazioniFuture(String emailUtente) {
 
 		List<Prenotazione> prenotazioni = new ArrayList<>();
 		String query = "SELECT * \r\n"

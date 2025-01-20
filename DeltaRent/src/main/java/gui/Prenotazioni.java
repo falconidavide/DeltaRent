@@ -13,17 +13,16 @@ import java.util.List;
 
 public class Prenotazioni extends JPanel {
     private static final long serialVersionUID = 1L;
-    private GestionePrenotazioni gestionePrenotazioni;
-    private String emailUtente;
-    private JPanel prenotazioniPanel;
+	private String emailUtente;
 
     public Prenotazioni(GestionePrenotazioni gestionePrenotazioni, String emailUtente) {
-        this.gestionePrenotazioni = gestionePrenotazioni;
-        this.emailUtente = emailUtente;
-        initializeUI();
+        List<Prenotazione> prenotazioniPassate = gestionePrenotazioni.getPrenotazioniPassate(emailUtente);
+        List<Prenotazione> prenotazioniFuture = gestionePrenotazioni.getPrenotazioniFuture(emailUtente);
+        this.emailUtente=emailUtente;
+        initializeUI(prenotazioniPassate, prenotazioniFuture);
     }
 
-    private void initializeUI() {
+    private void initializeUI(List<Prenotazione> prenotazioniPassate, List<Prenotazione> prenotazioniFuture) {
         setLayout(new BorderLayout());
         setBackground(Color.DARK_GRAY);
 
@@ -34,36 +33,30 @@ public class Prenotazioni extends JPanel {
         add(titolo, BorderLayout.NORTH);
 
         // Pannello principale di prenotazioni
-        prenotazioniPanel = new JPanel();
+        JPanel prenotazioniPanel = new JPanel();
         prenotazioniPanel.setLayout(new BoxLayout(prenotazioniPanel, BoxLayout.Y_AXIS));
         prenotazioniPanel.setBackground(new Color(32, 52, 85));
         prenotazioniPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
-        updatePrenotazioniPanel();
+        // Sezione prenotazioni future
+        JPanel prenotazioniFuturePanel = createSectionPanel("Prenotazioni Future\n", prenotazioniFuture, true);
+        prenotazioniPanel.add(prenotazioniFuturePanel);
+
+        // Separatore
+        JSeparator separator = new JSeparator(SwingConstants.HORIZONTAL);
+        separator.setMaximumSize(new Dimension(Integer.MAX_VALUE, 1));
+        separator.setForeground(Color.WHITE);
+        prenotazioniPanel.add(separator);
+
+        // Sezione prenotazioni passate
+        JPanel prenotazioniPassatePanel = createSectionPanel("Prenotazioni Passate", prenotazioniPassate, false);
+        prenotazioniPanel.add(prenotazioniPassatePanel);
 
         // ScrollPane per rendere scrollabile il pannello delle prenotazioni
         JScrollPane scrollPane = new JScrollPane(prenotazioniPanel);
         scrollPane.getVerticalScrollBar().setUnitIncrement(16);
         scrollPane.getViewport().setBackground(new Color(32, 52, 85)); // Imposta lo sfondo dello scrollPane
         add(scrollPane, BorderLayout.CENTER);
-    }
-
-    private void updatePrenotazioniPanel() {
-        prenotazioniPanel.removeAll();
-
-        List<Prenotazione> prenotazioniFuture = gestionePrenotazioni.getPrenotazioniFuture(emailUtente);
-        List<Prenotazione> prenotazioniPassate = gestionePrenotazioni.getPrenotazioniPassate(emailUtente);
-
-        // Sezione prenotazioni future
-        JPanel prenotazioniFuturePanel = createSectionPanel("Prenotazioni Future", prenotazioniFuture, true);
-        prenotazioniPanel.add(prenotazioniFuturePanel);
-
-        // Sezione prenotazioni passate
-        JPanel prenotazioniPassatePanel = createSectionPanel("Prenotazioni Passate", prenotazioniPassate, false);
-        prenotazioniPanel.add(prenotazioniPassatePanel);
-
-        prenotazioniPanel.revalidate();
-        prenotazioniPanel.repaint();
     }
 
     private JPanel createSectionPanel(String title, List<Prenotazione> prenotazioni, boolean isFuture) {
@@ -79,29 +72,30 @@ public class Prenotazioni extends JPanel {
         sectionPanel.add(sectionTitle, BorderLayout.NORTH);
 
         // Pannello delle prenotazioni
-        JPanel prenotazioniInnerPanel = new JPanel();
-        prenotazioniInnerPanel.setLayout(new GridLayout(0, 3, 10, 10)); // Layout con 3 righe e 3 colonne
-        prenotazioniInnerPanel.setBackground(new Color(32, 52, 85));
+        JPanel prenotazioniPanel = new JPanel();
+        prenotazioniPanel.setLayout(new GridLayout(0, 3, 10, 10)); // Layout con 3 righe e 3 colonne
+        prenotazioniPanel.setBackground(new Color(32, 52, 85));
 
         if (prenotazioni.isEmpty()) {
-            JLabel noPrenotazioniLabel = new JLabel("Nessuna prenotazione.", SwingConstants.CENTER);
-            noPrenotazioniLabel.setForeground(Color.WHITE);
-            noPrenotazioniLabel.setFont(new Font("Arial", Font.PLAIN, 20));
-            prenotazioniInnerPanel.add(noPrenotazioniLabel);
+            JLabel noPrenotazioniLabel = new JLabel("Nessuna prenotazione", SwingConstants.CENTER);
+            noPrenotazioniLabel.setForeground(Color.RED);
+            noPrenotazioniLabel.setFont(new Font("Arial", Font.BOLD, 20));
+            noPrenotazioniLabel.setBorder(BorderFactory.createLineBorder(Color.RED, 2));
+            prenotazioniPanel.add(noPrenotazioniLabel);
         } else {
             for (Prenotazione prenotazione : prenotazioni) {
-                prenotazioniInnerPanel.add(createPrenotazionePanel(prenotazione, isFuture));
+                prenotazioniPanel.add(createPrenotazionePanel(prenotazione, isFuture));
             }
 
             // Aggiungi pannelli vuoti (segnaposto) per mantenere il layout rettangolare
             int totalPrenotazioni = prenotazioni.size();
             int totalSlots = (totalPrenotazioni + 2) / 3 * 3; // Calcola il numero di slot necessario per completare le righe
             for (int i = totalPrenotazioni; i < totalSlots; i++) {
-                prenotazioniInnerPanel.add(creaPannelloSegnaposto());
+                prenotazioniPanel.add(creaPannelloSegnaposto());
             }
         }
 
-        sectionPanel.add(prenotazioniInnerPanel, BorderLayout.CENTER);
+        sectionPanel.add(prenotazioniPanel, BorderLayout.CENTER);
         return sectionPanel;
     }
 
@@ -172,7 +166,7 @@ public class Prenotazioni extends JPanel {
                 GestionePrenotazioni.annullaPrenotazione(prenotazione);
                 JOptionPane.showMessageDialog(this, "Prenotazione annullata con successo!", "Successo", JOptionPane.INFORMATION_MESSAGE);
                 // Aggiorna la lista delle prenotazioni
-                updatePrenotazioniPanel();
+                initializeUI(GestionePrenotazioni.getPrenotazioniPassate(emailUtente), GestionePrenotazioni.getPrenotazioniFuture(emailUtente));
             });
             detailsPanel.add(annullaButton);
         }

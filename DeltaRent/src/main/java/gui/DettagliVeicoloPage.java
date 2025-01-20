@@ -54,40 +54,27 @@ public class DettagliVeicoloPage extends JPanel {
     }
 
     private void setupPanel() {
-        //setLayout(new GridBagLayout());
         setLayout(new BorderLayout());
         setBackground(new Color(28, 51, 84));
-        // Aggiunta del pulsante "wrna alla Ricerca" nel metodo populatePanel
         JButton btnTornaIndietro = new JButton("Torna alla Ricerca");
         btnTornaIndietro.setFont(new Font("Arial", Font.BOLD, 18));
         btnTornaIndietro.addActionListener(e -> HomePage.cardLayout.show(HomePage.mainContentPanel, "rentCar"));
-        add(btnTornaIndietro);
+        add(btnTornaIndietro, BorderLayout.NORTH); // Aggiungi il vincolo BorderLayout.NORTH
     }
 
     private void populatePanel(Object veicolo, boolean isAutomobile) {
         double prezzo = isAutomobile ? ((Automobile) veicolo).getPrezzoOrario() : ((Furgone) veicolo).getPrezzoGiornaliero();
 
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(10, 10, 10, 10);
-        gbc.fill = GridBagConstraints.HORIZONTAL;
+        setLayout(new BorderLayout()); // Imposta il layout a BorderLayout
 
         JPanel infoPanel = createInfoPanel(veicolo, isAutomobile);
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.gridwidth = 3;
-        add(infoPanel, gbc);
+        add(infoPanel, BorderLayout.CENTER); // Usa BorderLayout.CENTER per infoPanel
 
         JPanel datePanel = createDatePanel(prezzo, isAutomobile);
-        gbc.gridx = 0;
-        gbc.gridy = 1;
-        gbc.gridwidth = 3;
-        add(datePanel, gbc);
+        add(datePanel, BorderLayout.NORTH); // Usa BorderLayout.NORTH per datePanel
 
         JPanel bottomPanel = createBottomPanel(prezzo, isAutomobile);
-        gbc.gridx = 0;
-        gbc.gridy = 2;
-        gbc.gridwidth = 3;
-        add(bottomPanel, gbc);
+        add(bottomPanel, BorderLayout.SOUTH); // Usa BorderLayout.SOUTH per bottomPanel
 
         // Aggiungi il listener al pulsante "Noleggia"
         btnNoleggia.addActionListener(new ActionListener() {
