@@ -11,8 +11,6 @@ import veicolo.Veicolo;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import javax.swing.event.ChangeListener;
-import javax.swing.text.Position;
-
 import org.jdatepicker.impl.*;
 
 import java.awt.*;

@@ -54,11 +54,11 @@ public class SearchPage extends JPanel {
 
 		JLabel lblSubtitle = new JLabel("Scegli la tua prossima auto da noleggiare", SwingConstants.CENTER);
 		lblSubtitle.setForeground(new Color(216, 195, 182));
-		lblSubtitle.setFont(new Font("Arial", Font.PLAIN, 30));
+		lblSubtitle.setFont(new Font("Arial", Font.BOLD, 50));
 		lblSubtitle.setBorder(BorderFactory.createEmptyBorder(0, 0, 20, 0)); // Aggiungi margine inferiore per distanziamento
 		searchPanel.add(lblSubtitle, BorderLayout.NORTH);
 
-		JPanel filterPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 10));
+		JPanel filterPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
 		filterPanel.setBackground(new Color(62, 88, 121));
 		filterPanel.setBorder(BorderFactory.createLineBorder(new Color(216, 195, 182), 3));
 
