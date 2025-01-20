@@ -10,7 +10,6 @@ import veicolo.Veicolo;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
-import javax.swing.border.TitledBorder;
 import javax.swing.event.ChangeListener;
 import org.jdatepicker.impl.*;
 
@@ -369,8 +368,9 @@ public class DettagliVeicoloPage extends JPanel {
             lblDisponibile.setText(disponibile ? "Disponibile" : "Non Disponibile");
             lblDisponibile.setForeground(disponibile ? Color.GREEN : Color.RED);
             lblDisponibile.setFont(new Font("Arial", Font.BOLD, 22));
+            
 
-            if (fine.before(inizio)) {
+            if (fine.before(inizio) || fine.compareTo(inizio)==0) {
                 lblPrezzoTotale.setText("Errore: Data di fine non valida");
                 btnNoleggia.setEnabled(false);
                 return;
@@ -430,7 +430,7 @@ public class DettagliVeicoloPage extends JPanel {
         	Date dataInizioD = sdf.parse(inizio);
             Date dataFineD = sdf.parse(fine);
         
-            if (dataFineD.before(dataInizioD)) {
+            if (dataFineD.before(dataInizioD) || dataFineD.compareTo(dataInizioD)==0) {
                 JOptionPane.showMessageDialog(this, "Errore: Data di fine non valida");
                 return;
             }
