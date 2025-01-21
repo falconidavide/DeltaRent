@@ -40,17 +40,17 @@ public class LogIn extends JPanel {
 
         JTextField emailField = new JTextField();
         emailField.setBackground(new Color(245, 239, 231));
-        emailField.setMaximumSize(new Dimension(400, 30)); // Aumenta la larghezza a 400
+        emailField.setMaximumSize(new Dimension(300, 30));
         emailField.setBorder(null);
 
         JPasswordField passwordField = new JPasswordField();
         passwordField.setBackground(new Color(245, 239, 231));
-        passwordField.setMaximumSize(new Dimension(400, 30)); // Aumenta la larghezza a 400
+        passwordField.setMaximumSize(new Dimension(300, 30));
         passwordField.setBorder(null);
 
         JSeparator separator = new JSeparator();
         separator.setForeground(new Color(245, 239, 231));
-        separator.setMaximumSize(new Dimension(400, 10)); // Aumenta la larghezza a 400
+        separator.setMaximumSize(new Dimension(300, 10));
 
         JLabel lblRegister = new JLabel("Non ti sei mai registrato?");
         lblRegister.setFont(new Font("Lucida Grande", Font.PLAIN, 30));
@@ -73,7 +73,7 @@ public class LogIn extends JPanel {
         btnRegistrati_1.setContentAreaFilled(true);
         btnRegistrati_1.setBorderPainted(true);
         btnRegistrati_1.setAlignmentX(0.5f);
-        btnRegistrati_1.setBounds(150, 350, 188, 29); // Modifica la posizione e la dimensione
+        btnRegistrati_1.setBounds(150, 302, 188, 29);
         panel_1.add(btnRegistrati_1);
 
         JLabel lblNomeAzienda = new JLabel("Nome Azienda");
@@ -105,37 +105,39 @@ public class LogIn extends JPanel {
         panel_1.add(lblPassword_1);
 
         nomeAziendaFieldReg = new JTextField();
-        nomeAziendaFieldReg.setMaximumSize(new Dimension(400, 30)); // Aumenta la larghezza a 400
+        nomeAziendaFieldReg.setMaximumSize(new Dimension(300, 30));
         nomeAziendaFieldReg.setBorder(null);
         nomeAziendaFieldReg.setBackground(new Color(245, 239, 231));
         nomeAziendaFieldReg.setAlignmentX(0.5f);
-        nomeAziendaFieldReg.setBounds(88, 41, 400, 30);
+        nomeAziendaFieldReg.setBounds(88, 41, 300, 30);
         panel_1.add(nomeAziendaFieldReg);
 
         emailFieldReg = new JTextField();
-        emailFieldReg.setMaximumSize(new Dimension(400, 30)); // Aumenta la larghezza a 400
+        emailFieldReg.setMaximumSize(new Dimension(300, 30));
         emailFieldReg.setBorder(null);
         emailFieldReg.setBackground(new Color(245, 239, 231));
         emailFieldReg.setAlignmentX(0.5f);
-        emailFieldReg.setBounds(88, 171, 400, 30);
+        emailFieldReg.setBounds(88, 171, 300, 30);
         panel_1.add(emailFieldReg);
 
         partitaIvaFieldReg = new JTextField();
-        partitaIvaFieldReg.setMaximumSize(new Dimension(400, 30)); // Aumenta la larghezza a 400
+        partitaIvaFieldReg.setMaximumSize(new Dimension(300, 30));
         partitaIvaFieldReg.setBorder(null);
         partitaIvaFieldReg.setBackground(new Color(245, 239, 231));
         partitaIvaFieldReg.setAlignmentX(0.5f);
-        partitaIvaFieldReg.setBounds(88, 106, 400, 30);
+        partitaIvaFieldReg.setBounds(88, 106, 300, 30);
         panel_1.add(partitaIvaFieldReg);
 
         passwordFieldReg = new JPasswordField();
-        passwordFieldReg.setMaximumSize(new Dimension(400, 30)); // Aumenta la larghezza a 400
+        passwordFieldReg.setMaximumSize(new Dimension(300, 30));
         passwordFieldReg.setBorder(null);
         passwordFieldReg.setBackground(new Color(245, 239, 231));
         passwordFieldReg.setAlignmentX(0.5f);
-        passwordFieldReg.setBounds(88, 232, 400, 30);
+        passwordFieldReg.setBounds(88, 232, 300, 30);
+        passwordFieldReg.setToolTipText("<html>- Almeno 8 caratteri<br>- Almeno 1 maiuscolo ed 1 minuscolo<br>- Almeno un numero<br>- Almeno un carattere speciale<html>");
         panel_1.add(passwordFieldReg);
-        tabbedPane.setMaximumSize(new Dimension(600, 500)); // Aumenta la dimensione del tabbed pane
+
+        tabbedPane.setMaximumSize(new Dimension(500, 400));
 
         Component rigidArea_1 = Box.createRigidArea(new Dimension(0, 70));
         rightColumn.add(rigidArea_1);
@@ -177,6 +179,7 @@ public class LogIn extends JPanel {
         rightColumn.add(lblRegister);
         rightColumn.add(Box.createRigidArea(new Dimension(0, 20)));
         rightColumn.add(tabbedPane);
+
         JPanel panel = new JPanel();
         panel.setBorder(new LineBorder(new Color(216, 195, 182), 4, true));
         panel.setBackground(new Color(62, 88, 121));
@@ -187,10 +190,10 @@ public class LogIn extends JPanel {
 
         nomeFieldReg = new JTextField();
         nomeFieldReg.setBackground(new Color(245, 239, 231));
-        nomeFieldReg.setMaximumSize(new Dimension(400, 30)); // Aumenta la larghezza a 400
+        nomeFieldReg.setMaximumSize(new Dimension(300, 30));
         nomeFieldReg.setBorder(null);
         nomeFieldReg.setAlignmentX(0.5f);
-        nomeFieldReg.setBounds(99, 24, 400, 31);
+        nomeFieldReg.setBounds(99, 24, 300, 31);
         panel.add(nomeFieldReg);
 
         JButton btnRegistrati = new JButton("Registrati");
@@ -199,7 +202,7 @@ public class LogIn extends JPanel {
         btnRegistrati.setContentAreaFilled(true);
         btnRegistrati.setBorderPainted(true);
         btnRegistrati.setAlignmentX(0.5f);
-        btnRegistrati.setBounds(150, 350, 188, 29); // Modifica la posizione e la dimensione
+        btnRegistrati.setBounds(150, 302, 188, 29);
         panel.add(btnRegistrati);
 
         JLabel lblNome = new JLabel("Nome");
@@ -223,6 +226,15 @@ public class LogIn extends JPanel {
         lblDataDiNascita.setBounds(99, 119, 238, 18);
         panel.add(lblDataDiNascita);
 
+        dataNascitaFieldReg = new JTextField();
+        dataNascitaFieldReg.setMaximumSize(new Dimension(300, 30));
+        dataNascitaFieldReg.setBorder(null);
+        dataNascitaFieldReg.setBackground(new Color(245, 239, 231));
+        dataNascitaFieldReg.setAlignmentX(0.5f);
+        dataNascitaFieldReg.setBounds(99, 137, 300, 31);
+        dataNascitaFieldReg.setToolTipText("Formato: GG/MM/AAAA"); // Aggiungi il tooltip
+        panel.add(dataNascitaFieldReg);
+
         JLabel lblEmailRegUser = new JLabel("E-mail");
         lblEmailRegUser.setForeground(new Color(216, 195, 182));
         lblEmailRegUser.setFont(new Font("Arial", Font.PLAIN, 15));
@@ -238,42 +250,29 @@ public class LogIn extends JPanel {
         panel.add(lblPasswordRegUser);
 
         cognomeFieldReg = new JTextField();
-        cognomeFieldReg.setMaximumSize(new Dimension(400, 30)); // Aumenta la larghezza a 400
+        cognomeFieldReg.setMaximumSize(new Dimension(300, 30));
         cognomeFieldReg.setBorder(null);
         cognomeFieldReg.setBackground(new Color(245, 239, 231));
         cognomeFieldReg.setAlignmentX(0.5f);
-        cognomeFieldReg.setBounds(99, 80, 400, 31);
+        cognomeFieldReg.setBounds(99, 80, 300, 31);
         panel.add(cognomeFieldReg);
 
-        dataNascitaFieldReg = new JTextField();
-        dataNascitaFieldReg.setMaximumSize(new Dimension(400, 30)); // Aumenta la larghezza a 400
-        dataNascitaFieldReg.setBorder(null);
-        dataNascitaFieldReg.setBackground(new Color(245, 239, 231));
-        dataNascitaFieldReg.setAlignmentX(0.5f);
-        dataNascitaFieldReg.setBounds(99, 137, 400, 31);
-        panel.add(dataNascitaFieldReg);
-        dataNascitaFieldReg.setToolTipText("Formato: GG/MM/AAAA"); // Aggiungi il tooltip
-
         emailFieldRegUser = new JTextField();
-        emailFieldRegUser.setMaximumSize(new Dimension(400, 30)); // Aumenta la larghezza a 400
+        emailFieldRegUser.setMaximumSize(new Dimension(300, 30));
         emailFieldRegUser.setBorder(null);
         emailFieldRegUser.setBackground(new Color(245, 239, 231));
         emailFieldRegUser.setAlignmentX(0.5f);
-        emailFieldRegUser.setBounds(99, 198, 400, 31);
+        emailFieldRegUser.setBounds(99, 198, 300, 31);
         panel.add(emailFieldRegUser);
 
-        passwordFieldRegUser = new JPasswordField(); // Rimane JPasswordField
-        passwordFieldRegUser.setMaximumSize(new Dimension(400, 30)); // Aumenta la larghezza a 400
+        passwordFieldRegUser = new JPasswordField();
+        passwordFieldRegUser.setMaximumSize(new Dimension(300, 30));
         passwordFieldRegUser.setBorder(null);
         passwordFieldRegUser.setBackground(new Color(245, 239, 231));
         passwordFieldRegUser.setAlignmentX(0.5f);
-        passwordFieldRegUser.setBounds(99, 258, 400, 31); // Assicurati che le dimensioni siano adeguate
+        passwordFieldRegUser.setBounds(99, 258, 300, 31);
+        passwordFieldRegUser.setToolTipText("<html>- Almeno 8 caratteri<br>- Almeno 1 maiuscolo ed 1 minuscolo<br>- Almeno un numero<br>- Almeno un carattere speciale<html>");
         panel.add(passwordFieldRegUser);
-
-        // Tooltip con i dettagli della password
-        String passwordDetails = "<html>- Almeno 8 caratteri<br>- Almeno 1 maiuscola ed 1 minuscola<br>- Almeno un numero<br>- Almeno un carattere speciale<html>";
-        passwordFieldRegUser.setToolTipText(passwordDetails);
-        passwordFieldReg.setToolTipText(passwordDetails);
 
         btnLogin.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
