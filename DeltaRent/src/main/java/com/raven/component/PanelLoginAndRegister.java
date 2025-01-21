@@ -157,20 +157,19 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
 	private JPanel createAziendaPanel() {
 		JPanel panel = new JPanel(new MigLayout("wrap", "push[center]push", "push[]10[]10[]10[]10[]push"));
 
-		txtNomeAzienda.setPrefixIcon(new ImageIcon(getClass().getResource("/com/raven/icon/user.png")));
+		txtNomeAzienda.setPrefixIcon(new ImageIcon(getClass().getResource("img/user.png")));
 		txtNomeAzienda.setHint("Nome Azienda");
 		panel.add(txtNomeAzienda, "w 60%");
 
-		// txtPartitaIVA.setPrefixIcon(new
-		// ImageIcon(getClass().getResource("/com/raven/icon/piva.png")));
+		//txtPartitaIVA.setPrefixIcon(new ImageIcon(getClass().getResource("img/piva.png")));
 		txtPartitaIVA.setHint("Partita IVA");
 		panel.add(txtPartitaIVA, "w 60%");
 
-		txtEmailAzienda.setPrefixIcon(new ImageIcon(getClass().getResource("/com/raven/icon/mail.png")));
+		txtEmailAzienda.setPrefixIcon(new ImageIcon(getClass().getResource("img/mail.png")));
 		txtEmailAzienda.setHint("Email");
 		panel.add(txtEmailAzienda, "w 60%");
 
-		txtPasswordAzienda.setPrefixIcon(new ImageIcon(getClass().getResource("/com/raven/icon/pass.png")));
+		txtPasswordAzienda.setPrefixIcon(new ImageIcon(getClass().getResource("img/pass.png")));
 		txtPasswordAzienda.setHint("Password");
 		panel.add(txtPasswordAzienda, "w 60%");
 		txtPasswordAzienda.setToolTipText("<html>- Almeno 8 caratteri<br>- Almeno 1 maiuscolo ed 1 minuscolo<br>- Almeno un numero<br>- Almeno un carattere speciale<html>");
@@ -212,11 +211,11 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
 	private JPanel createPrivatoPanel() {
 		JPanel panel = new JPanel(new MigLayout("wrap", "push[center]push", "push[]10[]10[]10[]10[]10[]push"));
 
-		txtNome.setPrefixIcon(new ImageIcon(getClass().getResource("/com/raven/icon/user.png")));
+		txtNome.setPrefixIcon(new ImageIcon(getClass().getResource("img/user.png")));
 		txtNome.setHint("Nome");
 		panel.add(txtNome, "w 60%");
 
-		txtCognome.setPrefixIcon(new ImageIcon(getClass().getResource("/com/raven/icon/user.png")));
+		txtCognome.setPrefixIcon(new ImageIcon(getClass().getResource("img/user.png")));
 		txtCognome.setHint("Cognome");
 		panel.add(txtCognome, "w 60%");
 
@@ -226,11 +225,11 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
 		panel.add(txtDataNascita, "w 60%");
 		txtDataNascita.setToolTipText("Formato: GG/MM/AAAA");
 
-		txtEmailPrivato.setPrefixIcon(new ImageIcon(getClass().getResource("/com/raven/icon/mail.png")));
+		txtEmailPrivato.setPrefixIcon(new ImageIcon(getClass().getResource("img/mail.png")));
 		txtEmailPrivato.setHint("Email");
 		panel.add(txtEmailPrivato, "w 60%");
 
-		txtPasswordPrivato.setPrefixIcon(new ImageIcon(getClass().getResource("/com/raven/icon/pass.png")));
+		txtPasswordPrivato.setPrefixIcon(new ImageIcon(getClass().getResource("img/pass.png")));
 		txtPasswordPrivato.setHint("Password");
 		panel.add(txtPasswordPrivato, "w 60%");
 		txtPasswordPrivato.setToolTipText("<html>- Almeno 8 caratteri<br>- Almeno 1 maiuscolo ed 1 minuscolo<br>- Almeno un numero<br>- Almeno un carattere speciale<html>");
@@ -281,12 +280,12 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         login.add(label);
 
         MyTextField txtEmail = new MyTextField();
-        txtEmail.setPrefixIcon(new ImageIcon(getClass().getResource("/com/raven/icon/mail.png")));
+        txtEmail.setPrefixIcon(new ImageIcon(getClass().getResource("img/mail.png")));
         txtEmail.setHint("Email");
         login.add(txtEmail, "w 60%");
 
         MyPasswordField txtPass = new MyPasswordField();
-        txtPass.setPrefixIcon(new ImageIcon(getClass().getResource("/com/raven/icon/pass.png")));
+        txtPass.setPrefixIcon(new ImageIcon(getClass().getResource("img/pass.png")));
         txtPass.setHint("Password");
         login.add(txtPass, "w 60%");
 
