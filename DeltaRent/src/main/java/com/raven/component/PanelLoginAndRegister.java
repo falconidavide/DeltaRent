@@ -6,7 +6,6 @@ import com.raven.swing.MyTextField;
 
 import db.Registration;
 import gui.HomePage;
-import gui.LogIn;
 import gui.SearchPage;
 
 import java.awt.Color;
@@ -142,12 +141,14 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
 
 	private void initRegister() {
 		register.setLayout(new MigLayout("wrap", "push[center]push", "push[]25[]push"));
+		register.setBackground(new Color(250,250,250));
 		JLabel label = new JLabel("Crea un Account");
 		label.setFont(new Font("sansserif", 1, 30));
-		label.setForeground(new Color(7, 164, 121));
+		label.setForeground(new Color(45, 64, 98));
 		register.add(label);
 
 		JTabbedPane tabbedPane = new JTabbedPane();
+		tabbedPane.setBackground(new Color(45, 64, 98));
 		tabbedPane.addTab("Azienda", createAziendaPanel());
 		tabbedPane.addTab("Privato", createPrivatoPanel());
 
@@ -156,25 +157,34 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
 
 	private JPanel createAziendaPanel() {
 		JPanel panel = new JPanel(new MigLayout("wrap", "push[center]push", "push[]10[]10[]10[]10[]push"));
-
+			
 		txtNomeAzienda.setPrefixIcon(new ImageIcon("img/user.png"));
 		txtNomeAzienda.setHint("Nome Azienda");
+		txtNomeAzienda.setBackground(new Color(135, 143, 170));
+		txtNomeAzienda.setForeground(new Color(250, 250, 250));
 		panel.add(txtNomeAzienda, "w 60%");
 
 		//txtPartitaIVA.setPrefixIcon(new ImageIcon("img/piva.png"));
 		txtPartitaIVA.setHint("Partita IVA");
+		txtPartitaIVA.setBackground(new Color(135, 143, 170));
+		txtPartitaIVA.setForeground(new Color(250, 250, 250));
 		panel.add(txtPartitaIVA, "w 60%");
 
 		txtEmailAzienda.setPrefixIcon(new ImageIcon("img/mail.png"));
 		txtEmailAzienda.setHint("Email");
+		txtEmailAzienda.setBackground(new Color(135, 143, 170));
+		txtEmailAzienda.setForeground(new Color(250, 250, 250));
 		panel.add(txtEmailAzienda, "w 60%");
 
 		txtPasswordAzienda.setPrefixIcon(new ImageIcon("img/pass.png"));
 		txtPasswordAzienda.setHint("Password");
+		txtPasswordAzienda.setBackground(new Color(135, 143, 170));
+		txtPasswordAzienda.setForeground(new Color(250, 250, 250));
 		panel.add(txtPasswordAzienda, "w 60%");
 		txtPasswordAzienda.setToolTipText("<html>- Almeno 8 caratteri<br>- Almeno 1 maiuscolo ed 1 minuscolo<br>- Almeno un numero<br>- Almeno un carattere speciale<html>");
 
-		cmdAzienda.setBackground(new Color(7, 164, 121));
+		cmdAzienda.setBackground(new Color(45, 64, 98));
+		cmdAzienda.setForeground(new Color(250, 250, 250));
 		cmdAzienda.setForeground(new Color(250, 250, 250));
 		cmdAzienda.setText("ISCRIVITI");
 		cmdAzienda.setEnabled(false);
@@ -212,29 +222,39 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
 		JPanel panel = new JPanel(new MigLayout("wrap", "push[center]push", "push[]10[]10[]10[]10[]10[]push"));
 
 		txtNome.setPrefixIcon(new ImageIcon("img/user.png"));
+		txtNome.setBackground(new Color(135, 143, 170));
+		txtNome.setForeground(new Color(250, 250, 250));
 		txtNome.setHint("Nome");
 		panel.add(txtNome, "w 60%");
 
 		txtCognome.setPrefixIcon(new ImageIcon("img/user.png"));
+		txtCognome.setBackground(new Color(135, 143, 170));
+		txtCognome.setForeground(new Color(250, 250, 250));
 		txtCognome.setHint("Cognome");
 		panel.add(txtCognome, "w 60%");
 
 		// txtDataNascita.setPrefixIcon(new
 		// ImageIcon("img/date.png"));
+		txtDataNascita.setBackground(new Color(135, 143, 170));
+		txtDataNascita.setForeground(new Color(250, 250, 250));
 		txtDataNascita.setHint("Data di Nascita");
 		panel.add(txtDataNascita, "w 60%");
 		txtDataNascita.setToolTipText("Formato: GG/MM/AAAA");
 
 		txtEmailPrivato.setPrefixIcon(new ImageIcon("img/mail.png"));
+		txtEmailPrivato.setBackground(new Color(135, 143, 170));
+		txtEmailPrivato.setForeground(new Color(250, 250, 250));
 		txtEmailPrivato.setHint("Email");
 		panel.add(txtEmailPrivato, "w 60%");
 
 		txtPasswordPrivato.setPrefixIcon(new ImageIcon("img/pass.png"));
+		txtPasswordPrivato.setBackground(new Color(135, 143, 170));
+		txtPasswordPrivato.setForeground(new Color(250, 250, 250));
 		txtPasswordPrivato.setHint("Password");
 		panel.add(txtPasswordPrivato, "w 60%");
 		txtPasswordPrivato.setToolTipText("<html>- Almeno 8 caratteri<br>- Almeno 1 maiuscolo ed 1 minuscolo<br>- Almeno un numero<br>- Almeno un carattere speciale<html>");
 
-		cmdPrivato.setBackground(new Color(7, 164, 121));
+		cmdPrivato.setBackground(new Color(45, 64, 98));
 		cmdPrivato.setForeground(new Color(250, 250, 250));
 		cmdPrivato.setText("ISCRIVITI");
 		cmdPrivato.setEnabled(false);
@@ -276,17 +296,21 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         login.setLayout(new MigLayout("wrap", "push[center]push", "push[]25[]10[]10[]25[]push"));
         JLabel label = new JLabel("Accedi");
         label.setFont(new Font("sansserif", 1, 30));
-        label.setForeground(new Color(7, 164, 121));
+        label.setForeground(new Color(45, 64, 98));
         login.add(label);
 
         MyTextField txtEmail = new MyTextField();
         txtEmail.setPrefixIcon(new ImageIcon("img/mail.png"));
         txtEmail.setHint("Email");
+        txtEmail.setBackground(new Color(135, 143, 170));
+        txtEmail.setForeground(new Color(250, 250, 250));
         login.add(txtEmail, "w 60%");
 
         MyPasswordField txtPass = new MyPasswordField();
         txtPass.setPrefixIcon(new ImageIcon("img/pass.png"));
         txtPass.setHint("Password");
+        txtPass.setBackground(new Color(135, 143, 170));
+        txtPass.setForeground(new Color(250, 250, 250));
         login.add(txtPass, "w 60%");
 
         JButton cmdForget = new JButton("Hai dimenticato la password?");
@@ -297,7 +321,7 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         login.add(cmdForget);
 
         Button cmd = new Button();
-        cmd.setBackground(new Color(7, 164, 121));
+        cmd.setBackground(new Color(45, 64, 98));
         cmd.setForeground(new Color(250, 250, 250));
         cmd.setText("ACCEDI");
         login.add(cmd, "w 40%, h 40");
@@ -339,7 +363,7 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         }
     }
 
-	@SuppressWarnings("unchecked")
+	
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 

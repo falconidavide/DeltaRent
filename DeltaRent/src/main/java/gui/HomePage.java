@@ -36,7 +36,7 @@ public class HomePage extends JFrame {
 
 		// Colonna sinistra
 		JPanel leftColumn = new JPanel();
-		leftColumn.setBackground(new Color(62, 88, 121));
+		leftColumn.setBackground(new Color(45, 64, 98));
 		leftColumn.setLayout(new BoxLayout(leftColumn, BoxLayout.Y_AXIS));
 		leftColumn.setBorder(BorderFactory.createLineBorder(new Color(216, 195, 182), 3, true));
 
