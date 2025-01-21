@@ -208,7 +208,7 @@ public class DettagliVeicoloPage extends JPanel {
 
         lblPrezzo = new JLabel(isAutomobile ? "Prezzo €/h: €" + prezzo : "Prezzo €/day: €" + prezzo);
         lblPrezzo.setForeground(Color.WHITE);
-        lblPrezzo.setFont(font);
+        lblPrezzo.setFont(new Font("sansserif", Font.BOLD, 18));
         gbc.gridy = 3;
         infoPanel.add(lblPrezzo, gbc);
 
@@ -233,14 +233,14 @@ public class DettagliVeicoloPage extends JPanel {
         comboOraFine.setSelectedIndex(0);
 
         JLabel dataInizioLbl = new JLabel("DATA INIZIO:");
-        dataInizioLbl.setFont(new Font("Arial", Font.BOLD, 18));
+        dataInizioLbl.setFont(new Font("sansserif", Font.BOLD, 18));
         dataInizioLbl.setForeground(Color.white);
         datePanel.add(dataInizioLbl);
         datePanel.add(datePickerInizio);
         datePanel.add(comboOraInizio);
 
         JLabel dataFineLbl = new JLabel("DATA FINE:");
-        dataFineLbl.setFont(new Font("Arial", Font.BOLD, 18));
+        dataFineLbl.setFont(new Font("sansserif", Font.BOLD, 18));
         dataFineLbl.setForeground(Color.white);
         datePanel.add(dataFineLbl);
         datePanel.add(datePickerFine);
