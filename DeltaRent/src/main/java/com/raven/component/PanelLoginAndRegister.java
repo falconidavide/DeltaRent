@@ -156,6 +156,7 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
 	}
 
 	private JPanel createAziendaPanel() {
+		
 		JPanel panel = new JPanel(new MigLayout("wrap", "push[center]push", "push[]10[]10[]10[]10[]push"));
 			
 		txtNomeAzienda.setPrefixIcon(new ImageIcon("img/user.png"));
@@ -219,6 +220,7 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
 	}
 
 	private JPanel createPrivatoPanel() {
+		
 		JPanel panel = new JPanel(new MigLayout("wrap", "push[center]push", "push[]10[]10[]10[]10[]10[]push"));
 
 		txtNome.setPrefixIcon(new ImageIcon("img/user.png"));
