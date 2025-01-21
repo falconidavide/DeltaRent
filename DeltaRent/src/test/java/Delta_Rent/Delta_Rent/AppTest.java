@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
+import com.raven.component.PanelLoginAndRegister;
+
 import db.Registration;
 import gui.LogIn;
 
@@ -25,37 +27,37 @@ public class AppTest {
 
 	@Test
 	public void testEmails() {
-		assertTrue(LogIn.isValidEmail("d.falconi2@studenti.unibg.it"));
-		assertTrue(LogIn.isValidEmail("davide-falconi@gmail.com"));
-		assertTrue(LogIn.isValidEmail("1234567890@gmail.com"));
-		assertFalse(LogIn.isValidEmail("indirizzo"));
-		assertFalse(LogIn.isValidEmail("@gmail.com"));
-		assertFalse(LogIn.isValidEmail("davide falconi@gmail.com"));
-		assertFalse(LogIn.isValidEmail("d.falconi@gmail"));
+		assertTrue(PanelLoginAndRegister.isValidEmail("d.falconi2@studenti.unibg.it"));
+		assertTrue(PanelLoginAndRegister.isValidEmail("davide-falconi@gmail.com"));
+		assertTrue(PanelLoginAndRegister.isValidEmail("1234567890@gmail.com"));
+		assertFalse(PanelLoginAndRegister.isValidEmail("indirizzo"));
+		assertFalse(PanelLoginAndRegister.isValidEmail("@gmail.com"));
+		assertFalse(PanelLoginAndRegister.isValidEmail("davide falconi@gmail.com"));
+		assertFalse(PanelLoginAndRegister.isValidEmail("d.falconi@gmail"));
 	}
 	
 	@Test
 	public void testPasswords() {
-		assertTrue(LogIn.isValidPassword("ProvaProva1!"));
-		assertTrue(LogIn.isValidPassword("1!Abc@23"));
-		assertFalse(LogIn.isValidPassword("ciao"));
-		assertFalse(LogIn.isValidPassword("provaprova123!"));
-		assertFalse(LogIn.isValidPassword("Provaprova123"));
+		assertTrue(PanelLoginAndRegister.isValidPassword("ProvaProva1!"));
+		assertTrue(PanelLoginAndRegister.isValidPassword("1!Abc@23"));
+		assertFalse(PanelLoginAndRegister.isValidPassword("ciao"));
+		assertFalse(PanelLoginAndRegister.isValidPassword("provaprova123!"));
+		assertFalse(PanelLoginAndRegister.isValidPassword("Provaprova123"));
 	}
 	
 	@Test
 	public void testPartitaIVA() {
-		assertTrue(LogIn.isValidPIVA("57546750662"));
-		assertTrue(LogIn.isValidPIVA("74164650405"));
-		assertFalse(LogIn.isValidPIVA("prova"));
-		assertFalse(LogIn.isValidPIVA("1896115351"));
+		assertTrue(PanelLoginAndRegister.isValidPIVA("57546750662"));
+		assertTrue(PanelLoginAndRegister.isValidPIVA("74164650405"));
+		assertFalse(PanelLoginAndRegister.isValidPIVA("prova"));
+		assertFalse(PanelLoginAndRegister.isValidPIVA("1896115351"));
 	}
 	
 	@Test
 	public void testDataNascita() {
-		assertTrue(LogIn.isValidDate("01/01/2025"));
-		assertTrue(LogIn.isValidDate("31/01/2025"));
-		assertFalse(LogIn.isValidDate("50/01/2025"));
-		assertFalse(LogIn.isValidDate("10/13/2025"));
+		assertTrue(PanelLoginAndRegister.isValidDate("01/01/2025"));
+		assertTrue(PanelLoginAndRegister.isValidDate("31/01/2025"));
+		assertFalse(PanelLoginAndRegister.isValidDate("50/01/2025"));
+		assertFalse(PanelLoginAndRegister.isValidDate("10/13/2025"));
 	}
 }
