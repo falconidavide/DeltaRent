@@ -57,6 +57,8 @@ L'architettura del progetto DeltaRent è stata concepita seguendo un approccio m
 
 &nbsp;
 ## 3. Testing
+
+- Rigorosi test manuali per verificare il corretto funzionamento del progetto, anche su diversi sistemi operativi
 - Test per la validità dei dati di registrazione per un utente
 - Test per la validità della email
 - Test riguardante i requisiti di sicurezza per la password (minimo 8 caratteri, almeno una lettera maiuscola ed una minuscola, almeno un numero ed un carattere speciale)
