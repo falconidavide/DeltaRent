@@ -117,7 +117,7 @@ public class DateChooser extends JPanel {
 
     public void setThemeColor(Color themeColor) {
         this.themeColor = themeColor;
-    }
+    }//colore date inizio e fine 
 
     public SimpleDateFormat getDateFormat() {
         return dateFormat;
@@ -504,7 +504,7 @@ public class DateChooser extends JPanel {
         add(labelCurrentDate);
     }
 
-    private void showDate() {
+    public void showDate() {
         panelDate.removeAll();
         int month = monthToIndex(spMonth.getValue().toString());
         int year = Integer.parseInt(spYear.getValue().toString());
