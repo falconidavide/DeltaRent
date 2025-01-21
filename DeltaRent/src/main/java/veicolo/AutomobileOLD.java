@@ -1,10 +1,10 @@
 package veicolo;
 
-public class Automobile extends Veicolo {
+public class AutomobileOLD extends Veicolo {
 
 	private int prezzoOrario;
 
-	public Automobile(String targa, String marca, String modello, int prezzoO, String pathImg, String alimentazione, String[] pathImgs, String descrizione) {
+	public AutomobileOLD(String targa, String marca, String modello, int prezzoO, String pathImg, String alimentazione, String[] pathImgs, String descrizione) {
 		super(targa, marca, modello, pathImg, alimentazione, pathImgs, descrizione);
 		this.prezzoOrario = prezzoO;
 	}

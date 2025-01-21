@@ -25,13 +25,18 @@
         <ownedAttribute xmi:type="uml:Property" xmi:id="_husa4LZtEe-iFImpIBBa2w" name="modello" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
-        <ownedAttribute xmi:type="uml:Property" xmi:id="_d3pl8LZvEe-iFImpIBBa2w" name="disponibile" visibility="private">
-          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
-        </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_OZ1rANM1Ee-Lf90WAPPk0g" name="pathImg" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
         <ownedAttribute xmi:type="uml:Property" xmi:id="_TYjnwNM1Ee-Lf90WAPPk0g" name="alimentazione" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_ewSkkNfhEe-2-8HUargmZw" name="pathImgs" visibility="private">
+          <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_lmSzENfhEe-2-8HUargmZw"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_locvMNfhEe-2-8HUargmZw" value="*"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_vpv1ANfhEe-2-8HUargmZw" name="descrizione" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
         </ownedAttribute>
       </packagedElement>
@@ -40,6 +45,11 @@
         <ownedAttribute xmi:type="uml:Property" xmi:id="_b4tCcLZuEe-iFImpIBBa2w" name="prezzoOrario" visibility="private">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
         </ownedAttribute>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="_82HIoNfhEe-2-8HUargmZw" name="getPrezzoOrario">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="_zUfL8NfiEe-2-8HUargmZw" name="prezzoOrario" direction="return">
+            <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+          </ownedParameter>
+        </ownedOperation>
       </packagedElement>
       <packagedElement xmi:type="uml:Class" xmi:id="_WHAwoLZuEe-iFImpIBBa2w" name="Prenotazione">
         <ownedAttribute xmi:type="uml:Property" xmi:id="_ADpxsLZvEe-iFImpIBBa2w" name="inizioPrenotazione" visibility="private">
