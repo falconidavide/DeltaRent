@@ -11,11 +11,11 @@ import utente.Utente;
 public class HomePage extends JFrame {
 	private static final long serialVersionUID = 1L;
 	public static CardLayout cardLayout;
-	protected static JPanel mainContentPanel;
-	static boolean logged = false; // Stato del login
+	public static JPanel mainContentPanel;
+	public static boolean logged = false; // Stato del login
 	public static Utente loggedUser; // Oggetto utente loggato
 	private JPanel gestioneAccount; // Pannello gestioneAccount
-	protected static JButton btnLogout; // Pulsante di logout
+	public static JButton btnLogout; // Pulsante di logout
 	private static JLabel lblWelcome = new JLabel("Benvenuto su DeltaRent!");
 
 	public HomePage() {
