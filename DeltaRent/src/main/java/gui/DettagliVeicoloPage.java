@@ -1,3 +1,4 @@
+
 package gui;
 
 import db.Prenota;
@@ -70,11 +71,16 @@ public class DettagliVeicoloPage extends JPanel {
         JPanel infoPanel = createInfoPanel(veicolo, isAutomobile);
         add(infoPanel, BorderLayout.CENTER); // Usa BorderLayout.CENTER per infoPanel
 
+        JPanel dateAndBottomPanel = new JPanel();
+        dateAndBottomPanel.setLayout(new BoxLayout(dateAndBottomPanel, BoxLayout.Y_AXIS));
+
         JPanel datePanel = createDatePanel(prezzo, isAutomobile);
-        add(datePanel, BorderLayout.NORTH); // Usa BorderLayout.NORTH per datePanel
+        dateAndBottomPanel.add(datePanel); // Aggiungi il datePanel al dateAndBottomPanel
 
         JPanel bottomPanel = createBottomPanel(prezzo, isAutomobile);
-        add(bottomPanel, BorderLayout.SOUTH); // Usa BorderLayout.SOUTH per bottomPanel
+        dateAndBottomPanel.add(bottomPanel); // Aggiungi il bottomPanel al dateAndBottomPanel
+
+        add(dateAndBottomPanel, BorderLayout.SOUTH); // Usa BorderLayout.SOUTH per dateAndBottomPanel
 
         // Aggiungi il listener al pulsante "Noleggia"
         btnNoleggia.addActionListener(new ActionListener() {
@@ -84,7 +90,6 @@ public class DettagliVeicoloPage extends JPanel {
             }
         });
     }
-
     private JPanel createInfoPanel(Object veicolo, boolean isAutomobile) {
         String[] imgPaths = isAutomobile ? ((Automobile) veicolo).getPathImgs() : ((Furgone) veicolo).getPathImgs();
         String marca = isAutomobile ? ((Automobile) veicolo).getMarca() : ((Furgone) veicolo).getMarca();
@@ -215,7 +220,7 @@ public class DettagliVeicoloPage extends JPanel {
         JPanel datePanel = new JPanel(new GridLayout(2, 3, 10, 10));
         datePanel.setBackground(new Color(60, 87, 121));
         datePanel.setBorder(BorderFactory.createCompoundBorder(
-        	BorderFactory.createLineBorder(new Color(216, 195, 182), 3, true),
+            BorderFactory.createLineBorder(new Color(216, 195, 182), 3, true),
             //BorderFactory.createTitledBorder(null, " Prenotazione ", TitledBorder.LEFT, TitledBorder.CENTER, null, Color.white),
             BorderFactory.createEmptyBorder(20, 20, 20, 20) // Padding aggiunto
         ));
@@ -268,26 +273,31 @@ public class DettagliVeicoloPage extends JPanel {
         return datePanel;
     }
 
-
     private JPanel createBottomPanel(double prezzo, boolean isAutomobile) {
         JPanel bottomPanel = new JPanel(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(0, 10, 15, 10);
+        gbc.insets = new Insets(10, 10, 15, 10); // Aggiungi un margine superiore di 10 pixel
         gbc.fill = GridBagConstraints.HORIZONTAL;
         bottomPanel.setBackground(new Color(60, 87, 121));
         bottomPanel.setBorder(new LineBorder(new Color(216, 195, 182), 3, true));
+
         // Aggiungi lblDisponibile centrato
         lblDisponibile.setFont(new Font("Arial", Font.BOLD, 22));
+        lblDisponibile.setHorizontalAlignment(SwingConstants.CENTER);
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridwidth = GridBagConstraints.REMAINDER;
         gbc.anchor = GridBagConstraints.CENTER;
+        gbc.weightx = 1.0;
+        gbc.weighty = 1.0;
         bottomPanel.add(lblDisponibile, gbc);
 
         // Aggiungi lblPrezzoTotale centrato
         lblPrezzoTotale = new JLabel("Prezzo totale: €0");
+        lblPrezzoTotale.setHorizontalAlignment(SwingConstants.CENTER);
         lblPrezzoTotale.setForeground(Color.WHITE);
         lblPrezzoTotale.setFont(new Font("Arial", Font.BOLD, 18));
+        gbc.insets = new Insets(0, 10, 15, 10); // Resetta gli insets per gli altri componenti
         gbc.gridy = 1;
         bottomPanel.add(lblPrezzoTotale, gbc);
 
@@ -295,11 +305,13 @@ public class DettagliVeicoloPage extends JPanel {
         btnNoleggia = new JButton("Noleggia");
         btnNoleggia.setFont(new Font("Arial", Font.BOLD, 18));
         gbc.gridy = 2;
+        gbc.fill = GridBagConstraints.NONE; // Imposta il fill a NONE per il pulsante
+        gbc.anchor = GridBagConstraints.CENTER;
         bottomPanel.add(btnNoleggia, gbc);
 
         return bottomPanel;
     }
-
+    
     private JDatePickerImpl createDatePicker() {
         Properties properties = new Properties();
         properties.put("text.today", "Oggi");
@@ -343,7 +355,6 @@ public class DettagliVeicoloPage extends JPanel {
         comboBox.setSelectedIndex(0);
         return comboBox;
     }
-
     private void calcolaPrezzo(double prezzo, boolean isAutomobile) {
         try {
             Date dataInizio = (Date) datePickerInizio.getModel().getValue();
