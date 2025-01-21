@@ -48,19 +48,19 @@ public class SearchPage extends JPanel {
 		rightColumn.setLayout(new BoxLayout(rightColumn, BoxLayout.Y_AXIS));
 
 		// Pannello di ricerca
-		JPanel searchPanel = new JPanel(new BorderLayout());
-		searchPanel.setBackground(new Color(32, 52, 85));
+		JPanel searchPanel = new GradientPanel(new Color(28, 51, 84), new Color(48, 69, 100));
+		searchPanel.setLayout(new BorderLayout());
 		searchPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
 		JLabel lblSubtitle = new JLabel("Scegli la tua prossima auto da noleggiare", SwingConstants.CENTER);
-		lblSubtitle.setForeground(new Color(216, 195, 182));
-		lblSubtitle.setFont(new Font("Arial", Font.BOLD, 50));
+		lblSubtitle.setForeground(new Color(250, 250, 250));
+		lblSubtitle.setFont(new Font("sansserif", 1,  50));
 		lblSubtitle.setBorder(BorderFactory.createEmptyBorder(0, 0, 20, 0)); // Aggiungi margine inferiore per distanziamento
 		searchPanel.add(lblSubtitle, BorderLayout.NORTH);
 
 		JPanel filterPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
 		filterPanel.setBackground(new Color(62, 88, 121));
-		filterPanel.setBorder(BorderFactory.createLineBorder(new Color(216, 195, 182), 3));
+		filterPanel.setBorder(BorderFactory.createLineBorder(new Color(250, 250, 250), 1));
 
 		JLabel lblMarca = new JLabel("Marca");
 		lblMarca.setFont(new Font("Lucida Grande", Font.PLAIN, 17));
@@ -226,6 +226,7 @@ public class SearchPage extends JPanel {
 	private static JPanel creaPannelloSegnaposto() { // crea pannello vuoto
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(28, 51, 84));
+		panel.setVisible(false);
 		return panel;
 	}
 
@@ -233,7 +234,7 @@ public class SearchPage extends JPanel {
 	    JPanel panel = new JPanel();
 	    panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
 	    panel.setBackground(new Color(60, 87, 121));
-	    panel.setBorder(new LineBorder(new Color(216, 195, 182), 3, true));
+	    panel.setBorder(new LineBorder(new Color(216, 195, 182), 0, true));
 
 	    JLabel lblImg = new JLabel();
 	    lblImg.setIcon(resizeImageIcon(pathImg, 200, 150)); // Ridimensiona l'immagine mantenendo le proporzioni
