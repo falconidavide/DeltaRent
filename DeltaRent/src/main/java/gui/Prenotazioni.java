@@ -16,8 +16,8 @@ public class Prenotazioni extends JPanel {
 	private String emailUtente;
 
     public Prenotazioni(GestionePrenotazioni gestionePrenotazioni, String emailUtente) {
-        List<Prenotazione> prenotazioniPassate = gestionePrenotazioni.getPrenotazioniPassate(emailUtente);
-        List<Prenotazione> prenotazioniFuture = gestionePrenotazioni.getPrenotazioniFuture(emailUtente);
+        List<Prenotazione> prenotazioniPassate = GestionePrenotazioni.getPrenotazioniPassate(emailUtente);
+        List<Prenotazione> prenotazioniFuture = GestionePrenotazioni.getPrenotazioniFuture(emailUtente);
         this.emailUtente=emailUtente;
         initializeUI(prenotazioniPassate, prenotazioniFuture);
     }

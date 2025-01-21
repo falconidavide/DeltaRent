@@ -69,7 +69,7 @@ public class GestioneAccount extends JPanel {
         gbc.gridx = 0;
         gbc.gridy = 0;
 
-        Boolean isPrivato = HomePage.loggedUser.getIsPrivato();
+        Boolean isPrivato = Utente.getIsPrivato();
         if (isPrivato) {
             addUserInfo(userPanel, "Nome", HomePage.loggedUser.getNome(), gbc);
             gbc.gridy++;
@@ -85,7 +85,7 @@ public class GestioneAccount extends JPanel {
         gbc.gridy++;
         
         String utenza;
-        if(HomePage.loggedUser.getIsPrivato()) {
+        if(Utente.getIsPrivato()) {
         	utenza="Privato";
         }else {
         	utenza="Aziendale";

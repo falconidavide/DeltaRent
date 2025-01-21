@@ -3,12 +3,8 @@ package util;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import db.DatabaseConnection;
 import utente.Utente;
-import veicolo.Veicolo;
 
 public class TotaleNoleggi {
 	
