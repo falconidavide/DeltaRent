@@ -51,6 +51,7 @@
               <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
             </ownedParameter>
           </ownedOperation>
+          <nestedClassifier xmi:type="uml:PrimitiveType" xmi:id="_CyGEQNf1Ee-PVpqW8PpIig"/>
         </packagedElement>
         <packagedElement xmi:type="uml:Class" xmi:id="_WHAwoLZuEe-iFImpIBBa2w" name="Prenotazione">
           <ownedAttribute xmi:type="uml:Property" xmi:id="_ADpxsLZvEe-iFImpIBBa2w" name="inizioPrenotazione" visibility="private">
