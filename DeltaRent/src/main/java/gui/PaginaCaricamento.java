@@ -10,57 +10,50 @@ public class PaginaCaricamento extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	public PaginaCaricamento() {
+	    setTitle("DeltaRent - Home");
+	    setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+	    setSize(1200, 950);
+	    setMinimumSize(new Dimension(900, 700));
+	    setExtendedState(JFrame.MAXIMIZED_BOTH);
+	    setLocationRelativeTo(null);
+	    ImageIcon appIcon = new ImageIcon("img/appIcon.png");
+	    setIconImage(appIcon.getImage());
 
-        setTitle("DeltaRent - Home");
-        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        setSize(1200, 950);
-        setMinimumSize(new Dimension(900, 700));
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
-        setLocationRelativeTo(null);
-        ImageIcon appIcon = new ImageIcon("img/appIcon.png"); // Sostituisci con il percorso corretto
-        setIconImage(appIcon.getImage());
+	    getContentPane().setBackground(new Color(220, 241, 255));
+	    getContentPane().setLayout(new GridBagLayout()); // Usa GridBagLayout per centrare gli elementi
 
-        // Pannello di caricamento
-        JPanel pan1 = new JPanel();
-        pan1.setBackground(getForeground());
-        getContentPane().setBackground(new Color(220, 241, 255));
-        getContentPane().setLayout(new BorderLayout(0, 0));
+	    // Configura il layout manager
+	    GridBagConstraints gbc = new GridBagConstraints();
+	    gbc.gridx = 0;
+	    gbc.gridy = GridBagConstraints.RELATIVE;
+	    gbc.anchor = GridBagConstraints.CENTER;
+	    gbc.insets = new Insets(10, 0, 20, 0);
 
-        // Etichetta con immagine
-        JLabel lblNewLabel = new JLabel("");
-        lblNewLabel.setIcon(new ImageIcon("./img/appIcon2.png"));
-        lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        getContentPane().add(lblNewLabel, BorderLayout.CENTER);
+	    JLabel lblImage = new JLabel("");
+	    lblImage.setIcon(new ImageIcon("./img/appIcon2.png"));
+	    getContentPane().add(lblImage, gbc);
 
-        // Barra di caricamento
-        JProgressBar progressBar = new JProgressBar(0, 100);
-        progressBar.setEnabled(true);
-        progressBar.setForeground(new Color(20, 68, 136));
-        progressBar.setPreferredSize(new Dimension(150, 20));
-        progressBar.setBorderPainted(false);
-        progressBar.setBackground(new Color(220, 241, 255));
+	    JLabel lblLoading = new JLabel("Caricamento in corso.");
+	    lblLoading.setFont(new Font("Arial", Font.PLAIN, 20));
+	    lblLoading.setForeground(Color.BLACK);
+	    getContentPane().add(lblLoading, gbc);
+	    
+	    
+	    // Timer per aggiornare il testo
+	    Timer timer = new Timer();
+	    timer.scheduleAtFixedRate(new TimerTask() {
+	        private int dotCount = 0;
 
-        // Pannello per centrare la barra sotto l'immagine
-        JPanel loadingPanel = new JPanel();
-        loadingPanel.setBackground(new Color(220, 241, 255));
-        loadingPanel.add(progressBar);
+	        @Override
+	        public void run() {
+	            SwingUtilities.invokeLater(() -> {
+	                dotCount = (dotCount % 3) + 1; // Incrementa i punti ciclicamente da 1 a 3
+	                String dots = ".".repeat(dotCount); // Crea una stringa con il numero appropriato di punti
+	                lblLoading.setText("Caricamento in corso" + dots);
+	            });
+	        }
+	    }, 0, 500); // Aggiorna ogni 500 millisecondi (mezzo secondo)
+	}
 
-        getContentPane().add(loadingPanel, BorderLayout.SOUTH);
 
-        // Timer per aggiornare la barra di progresso
-        Timer timer = new Timer();
-        timer.scheduleAtFixedRate(new TimerTask() {
-            int progress = 0;
-
-            @Override
-            public void run() {
-                if (progress <= 100) {
-                    progressBar.setValue(progress);
-                    progress += 3; // Incremento progressivo
-                } else {
-                    timer.cancel();
-                }
-            }
-        }, 0, 70); // Aggiornamenti ogni 70 millisecondi per completare in 0,7 secondi
-    }
 }

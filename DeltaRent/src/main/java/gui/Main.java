@@ -4,10 +4,8 @@ public class Main {
     public static void main(String[] args) {
         PaginaCaricamento paginaCaricamento = new PaginaCaricamento();
         paginaCaricamento.setVisible(true);
-        new HomePage().setVisible(true);
-        
-        // Chiudi PaginaCaricamento e apri HomePage
+        HomePage homePage = new HomePage();
+        homePage.setVisible(true);
         paginaCaricamento.dispose();
-    
     }
 }
