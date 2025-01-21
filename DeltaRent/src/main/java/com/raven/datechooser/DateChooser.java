@@ -504,7 +504,7 @@ public class DateChooser extends JPanel {
         add(labelCurrentDate);
     }
 
-    public void showDate() {
+    private void showDate() {
         panelDate.removeAll();
         int month = monthToIndex(spMonth.getValue().toString());
         int year = Integer.parseInt(spYear.getValue().toString());

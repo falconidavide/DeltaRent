@@ -229,7 +229,6 @@ public class DettagliVeicoloPage extends JPanel {
         gbc.anchor = GridBagConstraints.CENTER;
 
         dateChooser = new DateChooser();
-        dateChooser.showDate();
         dateChooser.setThemeColor(getBackground());
         dateChooser.setDateFormat(new SimpleDateFormat("dd-MM-yyyy"));
         dateChooser.setPreferredSize(new Dimension(450, 260)); // Imposta la dimensione preferita
