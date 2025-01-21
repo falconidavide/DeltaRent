@@ -41,5 +41,9 @@
 	<classpathentry kind="lib" path="com.jgoodies.common_1.8.1.v20240327-0800.jar"/>
 	<classpathentry kind="lib" path="miglayout-4.0.jar"/>
 	<classpathentry kind="lib" path="TimingFramework-0.55.jar"/>
+	<classpathentry kind="lib" path="datechooser-swing-1.4.2.jar"/>
+	<classpathentry kind="lib" path="flatlaf-3.4.1.jar"/>
+	<classpathentry kind="lib" path="flatlaf-extras-3.4.1.jar"/>
+	<classpathentry kind="lib" path="jsvg-1.4.0.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

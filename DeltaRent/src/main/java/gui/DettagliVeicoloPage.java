@@ -1,4 +1,3 @@
-
 package gui;
 
 import db.Prenota;
@@ -11,16 +10,16 @@ import veicolo.Veicolo;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
-import javax.swing.event.ChangeListener;
-import org.jdatepicker.impl.*;
+import com.raven.datechooser.DateBetween;
+import com.raven.datechooser.DateChooser;
+import com.raven.datechooser.listener.DateChooserAction;
+import com.raven.datechooser.listener.DateChooserListener;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.Properties;
 
 public class DettagliVeicoloPage extends JPanel {
     private static final long serialVersionUID = 1L;
@@ -32,7 +31,7 @@ public class DettagliVeicoloPage extends JPanel {
     private JLabel lblPrezzo;
     private JLabel lblPrezzoTotale;
     private JButton btnNoleggia;
-    private JDatePickerImpl datePickerInizio, datePickerFine;
+    private DateChooser dateChooser;
     private JComboBox<String> comboOraInizio, comboOraFine;
     private boolean isSettingDate = false;
     private Veicolo veicolo;
@@ -217,61 +216,80 @@ public class DettagliVeicoloPage extends JPanel {
     }
 
     private JPanel createDatePanel(double prezzo, boolean isAutomobile) {
-        JPanel datePanel = new JPanel(new GridLayout(2, 3, 10, 10));
+        JPanel datePanel = new JPanel(new GridBagLayout());
         datePanel.setBackground(new Color(60, 87, 121));
         datePanel.setBorder(BorderFactory.createCompoundBorder(
             BorderFactory.createLineBorder(new Color(216, 195, 182), 3, true),
-            //BorderFactory.createTitledBorder(null, " Prenotazione ", TitledBorder.LEFT, TitledBorder.CENTER, null, Color.white),
             BorderFactory.createEmptyBorder(20, 20, 20, 20) // Padding aggiunto
         ));
 
-        datePickerInizio = createDatePicker();
-        datePickerFine = createDatePicker();
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(10, 10, 10, 10);
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.anchor = GridBagConstraints.CENTER;
+
+        dateChooser = new DateChooser();
+        dateChooser.setDateFormat(new SimpleDateFormat("dd-MM-yyyy"));
+        dateChooser.setPreferredSize(new Dimension(450, 260)); // Imposta la dimensione preferita
+        dateChooser.setDateSelectionMode(DateChooser.DateSelectionMode.BETWEEN_DATE_SELECTED);
 
         comboOraInizio = createHourComboBox();
         comboOraFine = createHourComboBox();
         comboOraFine.setSelectedIndex(0);
 
-        JLabel dataInizioLbl = new JLabel("DATA INIZIO:");
-        dataInizioLbl.setFont(new Font("sansserif", Font.BOLD, 18));
-        dataInizioLbl.setForeground(Color.white);
-        datePanel.add(dataInizioLbl);
-        datePanel.add(datePickerInizio);
-        datePanel.add(comboOraInizio);
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.gridwidth = 2;
+        datePanel.add(dateChooser, gbc);
 
-        JLabel dataFineLbl = new JLabel("DATA FINE:");
-        dataFineLbl.setFont(new Font("sansserif", Font.BOLD, 18));
-        dataFineLbl.setForeground(Color.white);
-        datePanel.add(dataFineLbl);
-        datePanel.add(datePickerFine);
-        datePanel.add(comboOraFine);
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.gridwidth = 1;
+        datePanel.add(new JLabel("Ora Inizio:"), gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 1;
+        datePanel.add(comboOraInizio, gbc);
+
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        datePanel.add(new JLabel("Ora Fine:"), gbc);
+
+        gbc.gridx = 1;
+        gbc.gridy = 2;
+        datePanel.add(comboOraFine, gbc);
 
         // Listener per aggiornare il prezzo totale in diretta
-        ActionListener updatePriceListener = e -> calcolaPrezzo(prezzo, isAutomobile);
-        ChangeListener startDateListener = e -> {
-            if (isSettingDate) return;
-            isSettingDate = true;
-            calcolaPrezzo(prezzo, isAutomobile);
-            // Assicurati che la data di fine non sia prima della data di inizio
-            Date startDate = (Date) datePickerInizio.getModel().getValue();
-            Date endDate = (Date) datePickerFine.getModel().getValue();
-            if (endDate != null && endDate.before(startDate)) {
-                setDateValue(datePickerFine, startDate);
+        dateChooser.addActionDateChooserListener(new DateChooserListener() {
+            @Override
+            public void dateChanged(Date date, DateChooserAction action) {
+                if (isSettingDate) return;
+                isSettingDate = true;
+
+                // Calcola il prezzo totale
+                calcolaPrezzo(prezzo, isAutomobile);
+
+                isSettingDate = false;
             }
-            isSettingDate = false;
-        };
-        datePickerInizio.getModel().addChangeListener(startDateListener);
-        datePickerFine.getModel().addChangeListener(e -> {
-            if (isSettingDate) return;
-            isSettingDate = true;
-            calcolaPrezzo(prezzo, isAutomobile);
-            isSettingDate = false;
+
+            @Override
+            public void dateBetweenChanged(DateBetween dateBetween, DateChooserAction action) {
+                if (isSettingDate) return;
+                isSettingDate = true;
+
+                // Calcola il prezzo totale
+                calcolaPrezzo(prezzo, isAutomobile);
+
+                isSettingDate = false;
+            }
         });
-        comboOraInizio.addActionListener(updatePriceListener);
-        comboOraFine.addActionListener(updatePriceListener);
+
+        comboOraInizio.addActionListener(e -> calcolaPrezzo(prezzo, isAutomobile));
+        comboOraFine.addActionListener(e -> calcolaPrezzo(prezzo, isAutomobile));
 
         return datePanel;
     }
+
 
     private JPanel createBottomPanel(double prezzo, boolean isAutomobile) {
         JPanel bottomPanel = new JPanel(new GridBagLayout());
@@ -311,40 +329,7 @@ public class DettagliVeicoloPage extends JPanel {
 
         return bottomPanel;
     }
-    
-    private JDatePickerImpl createDatePicker() {
-        Properties properties = new Properties();
-        properties.put("text.today", "Oggi");
-        properties.put("text.month", "Mese");
-        properties.put("text.year", "Anno");
 
-        UtilDateModel model = new UtilDateModel();
-        model.setValue(new Date());
-        model.setSelected(true);
-
-        JDatePanelImpl datePanel = new JDatePanelImpl(model, properties);
-        JDatePickerImpl datePicker = new JDatePickerImpl(datePanel, new DateComponentFormatter());
-
-        datePicker.getModel().addChangeListener(e -> {
-            if (isSettingDate) return;
-            isSettingDate = true;
-            Date selectedDate = (Date) datePicker.getModel().getValue();
-            if (selectedDate.before(new Date())) {
-                setDateValue(datePicker, new Date());
-            }
-            isSettingDate = false;
-        });
-
-        return datePicker;
-    }
-
-    private void setDateValue(JDatePickerImpl datePicker, Date date) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        UtilDateModel model = (UtilDateModel) datePicker.getModel();
-        model.setDate(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
-        model.setSelected(true);
-    }
 
     private JComboBox<String> createHourComboBox() {
         JComboBox<String> comboBox = new JComboBox<>();
@@ -355,26 +340,25 @@ public class DettagliVeicoloPage extends JPanel {
         comboBox.setSelectedIndex(0);
         return comboBox;
     }
+
     private void calcolaPrezzo(double prezzo, boolean isAutomobile) {
         try {
-            Date dataInizio = (Date) datePickerInizio.getModel().getValue();
-            Date dataFine = (Date) datePickerFine.getModel().getValue();
+            DateBetween dateBetween = dateChooser.getSelectedDateBetween();
 
             String oraInizio = (String) comboOraInizio.getSelectedItem();
             String oraFine = (String) comboOraFine.getSelectedItem();
 
             SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
-            Date inizio = sdf.parse(new SimpleDateFormat("dd-MM-yyyy").format(dataInizio) + " " + oraInizio);
-            Date fine = sdf.parse(new SimpleDateFormat("dd-MM-yyyy").format(dataFine) + " " + oraFine);
+            Date inizio = sdf.parse(new SimpleDateFormat("dd-MM-yyyy").format(dateBetween.getFromDate()) + " " + oraInizio);
+            Date fine = sdf.parse(new SimpleDateFormat("dd-MM-yyyy").format(dateBetween.getToDate()) + " " + oraFine);
 
             disponibile = Disponibilita.verificaDisponibilita(veicolo, inizio, fine);
 
             lblDisponibile.setText(disponibile ? "Disponibile" : "Non Disponibile");
             lblDisponibile.setForeground(disponibile ? Color.GREEN : Color.RED);
             lblDisponibile.setFont(new Font("Arial", Font.BOLD, 22));
-            
 
-            if (fine.before(inizio) || fine.compareTo(inizio)==0) {
+            if (fine.before(inizio) || fine.compareTo(inizio) == 0) {
                 lblPrezzoTotale.setText("Errore: Data di fine non valida");
                 btnNoleggia.setEnabled(false);
                 return;
@@ -402,22 +386,14 @@ public class DettagliVeicoloPage extends JPanel {
         }
 
         try {
-            Date dataInizioDate = (Date) datePickerInizio.getModel().getValue();
+            DateBetween dateBetween = dateChooser.getSelectedDateBetween();
             String dataInizio = null;
             String dataFine = null;
 
-            if (dataInizioDate != null) {
+            if (dateBetween != null) {
                 SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-                dataInizio = sdf.format(dataInizioDate);
-            } else {
-                System.out.println("Nessuna data selezionata nel date picker.");
-            }
-
-            Date dataFineDate = (Date) datePickerFine.getModel().getValue();
-
-            if (dataFineDate != null) {
-                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-                dataFine = sdf.format(dataFineDate);
+                dataInizio = sdf.format(dateBetween.getFromDate());
+                dataFine = sdf.format(dateBetween.getToDate());
             } else {
                 System.out.println("Nessuna data selezionata nel date picker.");
             }
@@ -429,12 +405,12 @@ public class DettagliVeicoloPage extends JPanel {
             String fine = dataFine + " " + oraFine;
 
             SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
-        	sdf.setLenient(false); // Per rendere più rigoroso il parsing
-        	
-        	Date dataInizioD = sdf.parse(inizio);
+            sdf.setLenient(false); // Per rendere più rigoroso il parsing
+
+            Date dataInizioD = sdf.parse(inizio);
             Date dataFineD = sdf.parse(fine);
-        
-            if (dataFineD.before(dataInizioD) || dataFineD.compareTo(dataInizioD)==0) {
+
+            if (dataFineD.before(dataInizioD) || dataFineD.compareTo(dataInizioD) == 0) {
                 JOptionPane.showMessageDialog(this, "Errore: Data di fine non valida");
                 return;
             }
@@ -445,7 +421,7 @@ public class DettagliVeicoloPage extends JPanel {
             JOptionPane.showMessageDialog(this, "Prenotazione effettuata con successo!");
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage()+"Errore nella creazione della prenotazione.");
-		}
-	}
+            JOptionPane.showMessageDialog(this, e.getMessage() + "Errore nella creazione della prenotazione.");
+        }
+    }
 }
