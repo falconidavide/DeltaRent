@@ -4,6 +4,7 @@ import db.GestionePrenotazioni;
 import java.awt.*;
 import utente.Utente;
 import com.raven.swing.ButtonOutLine;
+import com.raven.swing.Button;
 
 public class HomePage extends JFrame {
     private static final long serialVersionUID = 1L;
@@ -183,15 +184,17 @@ public class HomePage extends JFrame {
         homePanel.add(Box.createRigidArea(new Dimension(0, 20)));
 
         // Sezione con pulsante per esplorare la flotta
-        JButton btnExploreFleet = createTransparentButton("Esplora la nostra flotta");
+        JButton btnExploreFleet = new Button();
         btnExploreFleet.setPreferredSize(new Dimension(500, 100)); // Ingrandito
         btnExploreFleet.setMaximumSize(new Dimension(500, 100)); // Ingrandito
         btnExploreFleet.setMinimumSize(new Dimension(500, 100)); // Ingrandito
-        btnExploreFleet.setForeground(new Color(28, 51, 84));
-        
+        btnExploreFleet.setBackground(new Color(28, 51, 84));
+        btnExploreFleet.setForeground(new Color(250, 250, 250));
         btnExploreFleet.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnExploreFleet.addActionListener(e -> cardLayout.show(mainContentPanel, "rentCar"));
+        btnExploreFleet.setText("Esplora la nostra Flotta");
         btnExploreFleet.setFont(new Font("sansserif", 1, 25));
+        
         homePanel.add(btnExploreFleet);
         homePanel.add(Box.createRigidArea(new Dimension(0, 175)));
 
