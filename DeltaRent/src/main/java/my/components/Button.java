@@ -1,4 +1,4 @@
-package com.raven.swing;
+package my.components;
 
 import java.awt.AlphaComposite;
 import java.awt.Color;

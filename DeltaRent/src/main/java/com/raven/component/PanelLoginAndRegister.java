@@ -1,12 +1,11 @@
 package com.raven.component;
 
-import com.raven.swing.Button;
-import com.raven.swing.MyPasswordField;
-import com.raven.swing.MyTextField;
-
 import db.Registration;
 import gui.HomePage;
 import gui.SearchPage;
+import my.components.Button;
+import my.components.MyPasswordField;
+import my.components.MyTextField;
 
 import java.awt.Color;
 import java.awt.Cursor;

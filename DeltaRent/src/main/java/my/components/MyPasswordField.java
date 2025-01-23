@@ -1,4 +1,4 @@
-package com.raven.swing;
+package my.components;
 
 import java.awt.Color;
 import java.awt.FontMetrics;
