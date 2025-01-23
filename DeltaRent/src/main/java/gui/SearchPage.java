@@ -97,7 +97,7 @@ public class SearchPage extends JPanel {
 		container.getVerticalScrollBar().setUnitIncrement(16);
 		JPanel panel_1 = new JPanel();
 		container.setViewportView(panel_1);
-		panel_1.setBackground(new Color(28, 51, 84));
+		panel_1.setBackground(new Color(220, 241, 255));
 		panel_1.setLayout(new GridLayout(0, 3, 10, 10)); // Imposta un layout con 3 colonne
 
 		// Pannello di visualizzazione dei veicoli
@@ -244,7 +244,7 @@ public class SearchPage extends JPanel {
 	    int bottomMargin = 10; // Margine inferiore
 
 	    JLabel lblMarcaModello = new JLabel(marca + " " + modello);
-	    lblMarcaModello.setForeground(Color.WHITE);
+	    lblMarcaModello.setForeground(new Color(220, 241, 255));
 	    lblMarcaModello.setAlignmentX(Component.CENTER_ALIGNMENT);
 	    lblMarcaModello.setFont(font);
 	    lblMarcaModello.setBorder(BorderFactory.createEmptyBorder(0, 0, bottomMargin, 0)); // Margine inferiore

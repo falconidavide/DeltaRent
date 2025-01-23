@@ -1,8 +1,5 @@
 package gui;
 
-import db.GestionePrenotazioni;
-import utente.Utente;
-
 import java.awt.*;
 
 import javax.swing.JPanel;

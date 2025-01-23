@@ -1,6 +1,7 @@
 package gui;
 
 import db.Prenota;
+import my.components.ButtonOutLine;
 import prenotazione.Prenotazione;
 import utente.Utente;
 import util.Disponibilita;
@@ -30,7 +31,7 @@ public class DettagliVeicoloPage extends JPanel {
 	private JLabel lblDisponibile = new JLabel();
 	private JLabel lblPrezzo;
 	private JLabel lblPrezzoTotale;
-	private JButton btnNoleggia;
+	private ButtonOutLine btnNoleggia;
 	private DateChooser dateChooser;
 	private JComboBox<String> comboOraInizio, comboOraFine;
 	private boolean isSettingDate = false;
@@ -104,7 +105,7 @@ public class DettagliVeicoloPage extends JPanel {
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.insets = new Insets(10, 10, 10, 10);
 		gbc.fill = GridBagConstraints.HORIZONTAL;
-		infoPanel.setBorder(new LineBorder(new Color(216, 195, 182), 3, true));
+		infoPanel.setBorder(new LineBorder(new Color(216, 195, 182), 0, true));
 		infoPanel.setSize(700, 500);
 
 		// CardLayout per scorrere le immagini
@@ -122,8 +123,20 @@ public class DettagliVeicoloPage extends JPanel {
 		}
 
 		// Pulsanti per navigare tra le immagini
-		JButton btnPrev = new JButton("<");
-		JButton btnNext = new JButton(">");
+		JButton btnPrev = new ButtonOutLine();
+		btnPrev.setText("<");
+		btnPrev.setPreferredSize(new Dimension(50, 25));
+		btnPrev.setMaximumSize(new Dimension(50, 25));
+		btnPrev.setMinimumSize(new Dimension(50, 25));
+		btnPrev.setForeground(new Color(245,245,245));
+		btnPrev.setFont(new Font("sansserif", 1, 17));
+		JButton btnNext = new ButtonOutLine();
+		btnNext.setText(">");
+		btnNext.setPreferredSize(new Dimension(50, 25));
+		btnNext.setMaximumSize(new Dimension(50, 25));
+		btnNext.setMinimumSize(new Dimension(50, 25));
+		btnNext.setForeground(new Color(245,245,245));
+		btnNext.setFont(new Font("sansserif", 1, 17));
 
 		btnPrev.addActionListener(e -> {
 			CardLayout cl = (CardLayout) imagePanel.getLayout();
@@ -159,7 +172,7 @@ public class DettagliVeicoloPage extends JPanel {
 		infoPanel.add(navigationPanel, gbc);
 
 		// Altri dettagli del veicolo
-		Font font = new Font("Arial", Font.BOLD, 22);
+		Font font = new Font("sansserif", 1, 22);
 
 		lblMarcaModello = new JLabel(marca + " " + modello);
 		lblMarcaModello.setForeground(Color.WHITE);
@@ -211,7 +224,7 @@ public class DettagliVeicoloPage extends JPanel {
 
 		lblPrezzo = new JLabel(isAutomobile ? "Prezzo €/h: €" + prezzo : "Prezzo €/day: €" + prezzo);
 		lblPrezzo.setForeground(Color.WHITE);
-		lblPrezzo.setFont(new Font("sansserif", Font.BOLD, 18));
+		lblPrezzo.setFont(new Font("sansserif", 1, 18));
 		gbc.gridy = 3;
 		infoPanel.add(lblPrezzo, gbc);
 
@@ -223,7 +236,7 @@ public class DettagliVeicoloPage extends JPanel {
 		JPanel datePanel = new JPanel(new GridBagLayout());
 		datePanel.setBackground(new Color(60, 87, 121));
 		datePanel.setBorder(
-				BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(new Color(216, 195, 182), 3, true),
+				BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(new Color(216, 195, 182), 0, true),
 						BorderFactory.createEmptyBorder(20, 20, 20, 20) // Padding aggiunto
 				));
 
@@ -303,7 +316,7 @@ public class DettagliVeicoloPage extends JPanel {
 		gbc.insets = new Insets(10, 10, 15, 10); // Aggiungi un margine superiore di 10 pixel
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		bottomPanel.setBackground(new Color(60, 87, 121));
-		bottomPanel.setBorder(new LineBorder(new Color(216, 195, 182), 3, true));
+		bottomPanel.setBorder(new LineBorder(new Color(216, 195, 182), 0, true));
 
 		// Aggiungi lblDisponibile centrato
 		lblDisponibile.setFont(new Font("Arial", Font.BOLD, 22));
@@ -326,8 +339,13 @@ public class DettagliVeicoloPage extends JPanel {
 		bottomPanel.add(lblPrezzoTotale, gbc);
 
 		// Aggiungi btnNoleggia centrato
-		btnNoleggia = new JButton("Noleggia");
-		btnNoleggia.setFont(new Font("Arial", Font.BOLD, 18));
+		btnNoleggia = new ButtonOutLine();
+		btnNoleggia.setText("Noleggia");
+		btnNoleggia.setPreferredSize(new Dimension(250, 45));
+		btnNoleggia.setMaximumSize(new Dimension(250, 45));
+		btnNoleggia.setMinimumSize(new Dimension(250, 45));
+		btnNoleggia.setForeground(new Color(245,245,245));
+		btnNoleggia.setFont(new Font("sansserif", 1, 17));
 		gbc.gridy = 2;
 		gbc.fill = GridBagConstraints.NONE; // Imposta il fill a NONE per il pulsante
 		gbc.anchor = GridBagConstraints.CENTER;
