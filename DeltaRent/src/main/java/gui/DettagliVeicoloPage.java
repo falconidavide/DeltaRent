@@ -13,6 +13,7 @@ import javax.swing.*;
 import javax.swing.border.LineBorder;
 import com.raven.datechooser.DateBetween;
 import com.raven.datechooser.DateChooser;
+import com.raven.datechooser.DateSelectable;
 import com.raven.datechooser.listener.DateChooserAction;
 import com.raven.datechooser.listener.DateChooserListener;
 
@@ -250,6 +251,16 @@ public class DettagliVeicoloPage extends JPanel {
 		dateChooser.setDateFormat(new SimpleDateFormat("dd-MM-yyyy"));
 		dateChooser.setPreferredSize(new Dimension(450, 260)); // Imposta la dimensione preferita
 		dateChooser.setDateSelectionMode(DateChooser.DateSelectionMode.BETWEEN_DATE_SELECTED);
+		dateChooser.setDateSelectable(new DateSelectable() {
+			@Override
+			public boolean isDateSelectable(Date date) {
+				Date today = new Date();
+				if(date.before(today) && !isSameDay(date, today)) {
+					return false;
+				}
+				return true;
+			}
+		});
 
 		comboOraInizio = createHourComboBox();
 		comboOraFine = createHourComboBox();
@@ -281,11 +292,6 @@ public class DettagliVeicoloPage extends JPanel {
 		dateChooser.addActionDateChooserListener(new DateChooserListener() {
 			@Override
 			public void dateChanged(Date date, DateChooserAction action) {
-				Date today = new Date();
-				if(date.before(today)) {
-	                JOptionPane.showMessageDialog(datePanel, "Non puoi selezionare una data precedente a oggi.", "Errore data", JOptionPane.WARNING_MESSAGE);
-	                dateChooser.setSelectedDateBetween(null);
-				}
 				if (isSettingDate)
 					return;
 				isSettingDate = true;
@@ -298,14 +304,8 @@ public class DettagliVeicoloPage extends JPanel {
 
 			@Override
 			public void dateBetweenChanged(DateBetween dateBetween, DateChooserAction action) {
-				Date today = new Date();
-				if(dateBetween.getFromDate().before(today) || dateBetween.getToDate().before(today)) {
-	                JOptionPane.showMessageDialog(datePanel, "Non puoi selezionare una data precedente a oggi.", "Errore data", JOptionPane.WARNING_MESSAGE);
-	                prezzoErrore();
-				} else {
-					// Calcola il prezzo totale
-					calcolaPrezzo(prezzo, isAutomobile);
-				}
+				
+				calcolaPrezzo(prezzo, isAutomobile);
 				if (isSettingDate)
 					return;
 				isSettingDate = true;
@@ -374,12 +374,6 @@ public class DettagliVeicoloPage extends JPanel {
 		comboBox.setSelectedIndex(0);
 		return comboBox;
 	}
-	
-	private void prezzoErrore() {
-		lblPrezzoTotale.setText("Prezzo totale: Date non valide");
-		btnNoleggia.setEnabled(false);
-		
-	}
 
 	private void calcolaPrezzo(double prezzo, boolean isAutomobile) {
 		try {
@@ -400,7 +394,8 @@ public class DettagliVeicoloPage extends JPanel {
 			lblDisponibile.setFont(new Font("Arial", Font.BOLD, 22));
 
 			if (fine.before(inizio) || fine.compareTo(inizio) == 0) {
-				prezzoErrore();
+				lblPrezzoTotale.setText("Prezzo totale: Date non valide");
+				btnNoleggia.setEnabled(false);
 				return;
 			} else {
 				if (disponibile)
@@ -465,4 +460,10 @@ public class DettagliVeicoloPage extends JPanel {
 			JOptionPane.showMessageDialog(this, e.getMessage() + "Errore nella creazione della prenotazione.");
 		}
 	}
+	
+	private boolean isSameDay(Date date1, Date date2) {
+	    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+	    return sdf.format(date1).equals(sdf.format(date2));
+	}
+
 }
