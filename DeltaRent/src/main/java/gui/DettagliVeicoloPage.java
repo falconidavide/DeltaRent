@@ -281,6 +281,11 @@ public class DettagliVeicoloPage extends JPanel {
 		dateChooser.addActionDateChooserListener(new DateChooserListener() {
 			@Override
 			public void dateChanged(Date date, DateChooserAction action) {
+				Date today = new Date();
+				if(date.before(today)) {
+	                JOptionPane.showMessageDialog(datePanel, "Non puoi selezionare una data precedente a oggi.", "Errore data", JOptionPane.WARNING_MESSAGE);
+	                dateChooser.setSelectedDateBetween(null);
+				}
 				if (isSettingDate)
 					return;
 				isSettingDate = true;
@@ -293,12 +298,18 @@ public class DettagliVeicoloPage extends JPanel {
 
 			@Override
 			public void dateBetweenChanged(DateBetween dateBetween, DateChooserAction action) {
+				Date today = new Date();
+				if(dateBetween.getFromDate().before(today) || dateBetween.getToDate().before(today)) {
+	                JOptionPane.showMessageDialog(datePanel, "Non puoi selezionare una data precedente a oggi.", "Errore data", JOptionPane.WARNING_MESSAGE);
+	                prezzoErrore();
+				} else {
+					// Calcola il prezzo totale
+					calcolaPrezzo(prezzo, isAutomobile);
+				}
 				if (isSettingDate)
 					return;
 				isSettingDate = true;
 
-				// Calcola il prezzo totale
-				calcolaPrezzo(prezzo, isAutomobile);
 
 				isSettingDate = false;
 			}
@@ -363,6 +374,12 @@ public class DettagliVeicoloPage extends JPanel {
 		comboBox.setSelectedIndex(0);
 		return comboBox;
 	}
+	
+	private void prezzoErrore() {
+		lblPrezzoTotale.setText("Prezzo totale: Date non valide");
+		btnNoleggia.setEnabled(false);
+		
+	}
 
 	private void calcolaPrezzo(double prezzo, boolean isAutomobile) {
 		try {
@@ -383,8 +400,7 @@ public class DettagliVeicoloPage extends JPanel {
 			lblDisponibile.setFont(new Font("Arial", Font.BOLD, 22));
 
 			if (fine.before(inizio) || fine.compareTo(inizio) == 0) {
-				lblPrezzoTotale.setText("Errore: Data di fine non valida");
-				btnNoleggia.setEnabled(false);
+				prezzoErrore();
 				return;
 			} else {
 				if (disponibile)
