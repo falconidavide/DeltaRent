@@ -13,7 +13,6 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -150,6 +149,9 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
 		tabbedPane.setBackground(new Color(45, 64, 98));
 		tabbedPane.addTab("Azienda", createAziendaPanel());
 		tabbedPane.addTab("Privato", createPrivatoPanel());
+		tabbedPane.setBackgroundAt(0, new Color(200, 200, 200));
+		tabbedPane.setBackgroundAt(1, new Color(200, 200, 200));
+		
 
 		register.add(tabbedPane, "w 80%, h 80%");
 	}
@@ -158,7 +160,7 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
 		
 		JPanel panel = new JPanel(new MigLayout("wrap", "push[center]push", "push[]10[]10[]10[]10[]push"));
 			
-		txtNomeAzienda.setPrefixIcon(new ImageIcon("img/user.png"));
+		//txtNomeAzienda.setPrefixIcon(new ImageIcon("img/user.png"));
 		txtNomeAzienda.setHint("Nome Azienda");
 		txtNomeAzienda.setBackground(new Color(135, 143, 170));
 		txtNomeAzienda.setForeground(new Color(250, 250, 250));
@@ -170,13 +172,13 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
 		txtPartitaIVA.setForeground(new Color(250, 250, 250));
 		panel.add(txtPartitaIVA, "w 60%");
 
-		txtEmailAzienda.setPrefixIcon(new ImageIcon("img/mail.png"));
+		//txtEmailAzienda.setPrefixIcon(new ImageIcon("img/mail.png"));
 		txtEmailAzienda.setHint("Email");
 		txtEmailAzienda.setBackground(new Color(135, 143, 170));
 		txtEmailAzienda.setForeground(new Color(250, 250, 250));
 		panel.add(txtEmailAzienda, "w 60%");
 
-		txtPasswordAzienda.setPrefixIcon(new ImageIcon("img/pass.png"));
+		//txtPasswordAzienda.setPrefixIcon(new ImageIcon("img/pass.png"));
 		txtPasswordAzienda.setHint("Password");
 		txtPasswordAzienda.setBackground(new Color(135, 143, 170));
 		txtPasswordAzienda.setForeground(new Color(250, 250, 250));
@@ -222,13 +224,13 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
 		
 		JPanel panel = new JPanel(new MigLayout("wrap", "push[center]push", "push[]10[]10[]10[]10[]10[]push"));
 
-		txtNome.setPrefixIcon(new ImageIcon("img/user.png"));
+		//txtNome.setPrefixIcon(new ImageIcon("img/user.png"));
 		txtNome.setBackground(new Color(135, 143, 170));
 		txtNome.setForeground(new Color(250, 250, 250));
 		txtNome.setHint("Nome");
 		panel.add(txtNome, "w 60%");
 
-		txtCognome.setPrefixIcon(new ImageIcon("img/user.png"));
+		//txtCognome.setPrefixIcon(new ImageIcon("img/user.png"));
 		txtCognome.setBackground(new Color(135, 143, 170));
 		txtCognome.setForeground(new Color(250, 250, 250));
 		txtCognome.setHint("Cognome");
@@ -242,13 +244,13 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
 		panel.add(txtDataNascita, "w 60%");
 		txtDataNascita.setToolTipText("Formato: GG/MM/AAAA");
 
-		txtEmailPrivato.setPrefixIcon(new ImageIcon("img/mail.png"));
+		//txtEmailPrivato.setPrefixIcon(new ImageIcon("img/mail.png"));
 		txtEmailPrivato.setBackground(new Color(135, 143, 170));
 		txtEmailPrivato.setForeground(new Color(250, 250, 250));
 		txtEmailPrivato.setHint("Email");
 		panel.add(txtEmailPrivato, "w 60%");
 
-		txtPasswordPrivato.setPrefixIcon(new ImageIcon("img/pass.png"));
+		//txtPasswordPrivato.setPrefixIcon(new ImageIcon("img/pass.png"));
 		txtPasswordPrivato.setBackground(new Color(135, 143, 170));
 		txtPasswordPrivato.setForeground(new Color(250, 250, 250));
 		txtPasswordPrivato.setHint("Password");
@@ -301,14 +303,14 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         login.add(label);
 
         MyTextField txtEmail = new MyTextField();
-        txtEmail.setPrefixIcon(new ImageIcon("img/mail.png"));
+        //txtEmail.setPrefixIcon(new ImageIcon("img/mail.png"));
         txtEmail.setHint("Email");
         txtEmail.setBackground(new Color(135, 143, 170));
         txtEmail.setForeground(new Color(250, 250, 250));
         login.add(txtEmail, "w 60%");
 
         MyPasswordField txtPass = new MyPasswordField();
-        txtPass.setPrefixIcon(new ImageIcon("img/pass.png"));
+        //txtPass.setPrefixIcon(new ImageIcon("img/pass.png"));
         txtPass.setHint("Password");
         txtPass.setBackground(new Color(135, 143, 170));
         txtPass.setForeground(new Color(250, 250, 250));
