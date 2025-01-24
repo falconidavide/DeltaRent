@@ -36,14 +36,14 @@ public class PanelCover extends javax.swing.JPanel {
     }
 
     private void init() {
-        title = new JLabel("Welcome Back!");
+        title = new JLabel("Bentornato!");
         title.setFont(new Font("sansserif", 1, 30));
         title.setForeground(new Color(245, 245, 245));
         add(title);
-        description = new JLabel("To keep connected with us please");
+        description = new JLabel("Registrati coi tuoi dati");
         description.setForeground(new Color(245, 245, 245));
         add(description);
-        description1 = new JLabel("login with your personal info");
+        description1 = new JLabel("ed inizia a noleggiare!");
         description1.setForeground(new Color(245, 245, 245));
         add(description1);
         button = new ButtonOutLine();
@@ -121,15 +121,15 @@ public class PanelCover extends javax.swing.JPanel {
     public void login(boolean login) {
         if (this.isLogin != login) {
             if (login) {
-                title.setText("hello, Friend!");
-                description.setText("Enter your personal details");
-                description1.setText("and start journey with us");
-                button.setText("SIGN UP");
+                title.setText("Prima volta?");
+                description.setText("Registrati coi tuoi dati");
+                description1.setText("ed inizia a noleggiare!");
+                button.setText("Registrati");
             } else {
-                title.setText("Welcome Back!");
-                description.setText("To keep connected with us please");
-                description1.setText("login with your personal info");
-                button.setText("SIGN IN");
+                title.setText("Bentornato!");
+                description.setText("Per accedere, inserisci");
+                description1.setText("la mail e la password");
+                button.setText("Login");
             }
             this.isLogin = login;
         }
