@@ -12,8 +12,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 
 public class MyTextField extends JTextField {
+	private static final long serialVersionUID = 1L;
 
-    public String getHint() {
+	public String getHint() {
         return hint;
     }
 

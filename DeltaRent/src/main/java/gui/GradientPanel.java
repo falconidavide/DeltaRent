@@ -5,7 +5,8 @@ import java.awt.*;
 import javax.swing.JPanel;
 
 public class GradientPanel extends JPanel {
-    private Color color1;
+	private static final long serialVersionUID = 1L;
+	private Color color1;
     private Color color2;
 
     public GradientPanel(Color color1, Color color2) {

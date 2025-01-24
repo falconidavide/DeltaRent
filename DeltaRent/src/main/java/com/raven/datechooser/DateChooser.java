@@ -31,7 +31,9 @@ import java.util.Date;
 import java.util.List;
 
 public class DateChooser extends JPanel {
-    private final List<DateChooserListener> events = new ArrayList<>();
+	private static final long serialVersionUID = 1L;
+
+	private final List<DateChooserListener> events = new ArrayList<>();
 
     private DateSelectable dateSelectable;
     private RDate selectedDate;
@@ -403,7 +405,9 @@ public class DateChooser extends JPanel {
         numberEditor.getFormat().applyPattern("#0");
         AbstractDocument doc =
                 new PlainDocument() {
-                    @Override
+					private static final long serialVersionUID = 1L;
+
+					@Override
                     public void setDocumentFilter(DocumentFilter filter) {
                         if (filter instanceof DateChooserEditorDocumentFilter) {
                             super.setDocumentFilter(filter);
@@ -570,8 +574,8 @@ public class DateChooser extends JPanel {
     }
 
     public class ButtonDate extends JButton {
-
-        private RDate date;
+		private static final long serialVersionUID = 1L;
+		private RDate date;
         private boolean hover = false;
         private boolean selected = false;
 

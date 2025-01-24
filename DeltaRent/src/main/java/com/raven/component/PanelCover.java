@@ -16,8 +16,8 @@ import my.components.ButtonOutLine;
 import net.miginfocom.swing.MigLayout;
 
 public class PanelCover extends javax.swing.JPanel {
-
-    private final DecimalFormat df = new DecimalFormat("##0.###", DecimalFormatSymbols.getInstance(Locale.US));
+	private static final long serialVersionUID = 1L;
+	private final DecimalFormat df = new DecimalFormat("##0.###", DecimalFormatSymbols.getInstance(Locale.US));
     private ActionListener event;
     private MigLayout layout;
     private JLabel title;
@@ -59,8 +59,6 @@ public class PanelCover extends javax.swing.JPanel {
         add(button, "w 60%, h 40");
     }
 
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

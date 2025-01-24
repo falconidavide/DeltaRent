@@ -9,8 +9,9 @@ import javax.swing.JButton;
 import javax.swing.border.EmptyBorder;
 
 public class ButtonOutLine extends JButton {
+	private static final long serialVersionUID = 1L;
 
-    public ButtonOutLine() {
+	public ButtonOutLine() {
         setContentAreaFilled(false);
         setBorder(new EmptyBorder(5, 0, 5, 0));
         setBackground(Color.WHITE);

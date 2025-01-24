@@ -26,7 +26,7 @@ import net.miginfocom.swing.MigLayout;
 import utente.Utente;
 
 public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
-	
+	private static final long serialVersionUID = 1L;
 	private MyTextField txtNomeAzienda = new MyTextField();
 	private MyTextField txtPartitaIVA = new MyTextField();
 	private MyTextField txtEmailAzienda = new MyTextField();

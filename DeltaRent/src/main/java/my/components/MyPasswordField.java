@@ -12,8 +12,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JPasswordField;
 
 public class MyPasswordField extends JPasswordField {
+	private static final long serialVersionUID = 1L;
 
-    public String getHint() {
+	public String getHint() {
         return hint;
     }
 
