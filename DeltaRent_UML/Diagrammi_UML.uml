@@ -228,9 +228,9 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Model" xmi:id="_hrqGUMHkEe-xCsImyWa7Gw" name="Sequence Diagram">
       <packagedElement xmi:type="uml:Interaction" xmi:id="_qsf0sMHkEe-xCsImyWa7Gw" name="DeltaRent">
-        <lifeline xmi:type="uml:Lifeline" xmi:id="_1cWpoMHkEe-xCsImyWa7Gw" name="Utente" coveredBy="_bAjq0MHlEe-xCsImyWa7Gw _bDGBcMHlEe-xCsImyWa7Gw"/>
-        <lifeline xmi:type="uml:Lifeline" xmi:id="_8C-_YMHkEe-xCsImyWa7Gw" name="Sistema DeltaRent" coveredBy="_bAlgAMHlEe-xCsImyWa7Gw _SnOL4MHmEe-xCsImyWa7Gw _SohMYMHmEe-xCsImyWa7Gw _bDDlMMHlEe-xCsImyWa7Gw _bCtm8MHlEe-xCsImyWa7Gw"/>
-        <lifeline xmi:type="uml:Lifeline" xmi:id="_PKbxYMHlEe-xCsImyWa7Gw" name="Veicolo" coveredBy="_SnOy8MHmEe-xCsImyWa7Gw _SoglUMHmEe-xCsImyWa7Gw _SoWNQMHmEe-xCsImyWa7Gw"/>
+        <lifeline xmi:type="uml:Lifeline" xmi:id="_1cWpoMHkEe-xCsImyWa7Gw" name="Utente" coveredBy="_bAjq0MHlEe-xCsImyWa7Gw _NjeCQNsNEe-8PpYjENK_KQ _bDGBcMHlEe-xCsImyWa7Gw _Nj11sdsNEe-8PpYjENK_KQ"/>
+        <lifeline xmi:type="uml:Lifeline" xmi:id="_8C-_YMHkEe-xCsImyWa7Gw" name="Sistema DeltaRent" coveredBy="_bAlgAMHlEe-xCsImyWa7Gw _SnOL4MHmEe-xCsImyWa7Gw _bDDlMMHlEe-xCsImyWa7Gw _NjeCQdsNEe-8PpYjENK_KQ _Q5N2ENsNEe-8PpYjENK_KQ _SohMYMHmEe-xCsImyWa7Gw _Q5h_IdsNEe-8PpYjENK_KQ _Nj11sNsNEe-8PpYjENK_KQ _bCtm8MHlEe-xCsImyWa7Gw _NjvvENsNEe-8PpYjENK_KQ"/>
+        <lifeline xmi:type="uml:Lifeline" xmi:id="_PKbxYMHlEe-xCsImyWa7Gw" name="Veicolo" coveredBy="_SnOy8MHmEe-xCsImyWa7Gw _SoglUMHmEe-xCsImyWa7Gw _Q5N2EdsNEe-8PpYjENK_KQ _Q5h_INsNEe-8PpYjENK_KQ _SoWNQMHmEe-xCsImyWa7Gw _Q5gJ8NsNEe-8PpYjENK_KQ"/>
         <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_bAjq0MHlEe-xCsImyWa7Gw" name="Message4SendEvent" covered="_1cWpoMHkEe-xCsImyWa7Gw" message="_bAVBUMHlEe-xCsImyWa7Gw"/>
         <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_bAlgAMHlEe-xCsImyWa7Gw" name="Message4ReceiveEvent" covered="_8C-_YMHkEe-xCsImyWa7Gw" message="_bAVBUMHlEe-xCsImyWa7Gw"/>
         <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_bCtm8MHlEe-xCsImyWa7Gw" name="BehaviorExecutionSpecification7" covered="_8C-_YMHkEe-xCsImyWa7Gw" finish="_bDDlMMHlEe-xCsImyWa7Gw" start="_bAlgAMHlEe-xCsImyWa7Gw"/>
@@ -238,13 +238,27 @@
         <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_SnOy8MHmEe-xCsImyWa7Gw" name="Message11ReceiveEvent" covered="_PKbxYMHlEe-xCsImyWa7Gw" message="_SnLIkMHmEe-xCsImyWa7Gw"/>
         <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_SoWNQMHmEe-xCsImyWa7Gw" name="BehaviorExecutionSpecification14" covered="_PKbxYMHlEe-xCsImyWa7Gw" finish="_SoglUMHmEe-xCsImyWa7Gw" start="_SnOy8MHmEe-xCsImyWa7Gw"/>
         <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_SoglUMHmEe-xCsImyWa7Gw" name="Message16SendEvent" covered="_PKbxYMHlEe-xCsImyWa7Gw" message="_SoewIMHmEe-xCsImyWa7Gw"/>
-        <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_SohMYMHmEe-xCsImyWa7Gw" name="Message16ReceiveEvent" covered="_8C-_YMHkEe-xCsImyWa7Gw" message="_SoewIMHmEe-xCsImyWa7Gw"/>
         <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_bDDlMMHlEe-xCsImyWa7Gw" name="Message9SendEvent" covered="_8C-_YMHkEe-xCsImyWa7Gw" message="_bDBI8MHlEe-xCsImyWa7Gw"/>
+        <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_NjeCQNsNEe-8PpYjENK_KQ" name="Message18SendEvent" covered="_1cWpoMHkEe-xCsImyWa7Gw" message="_Njc0INsNEe-8PpYjENK_KQ"/>
+        <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_NjeCQdsNEe-8PpYjENK_KQ" name="Message18ReceiveEvent" covered="_8C-_YMHkEe-xCsImyWa7Gw" message="_Njc0INsNEe-8PpYjENK_KQ"/>
+        <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_NjvvENsNEe-8PpYjENK_KQ" name="BehaviorExecutionSpecification21" covered="_8C-_YMHkEe-xCsImyWa7Gw" finish="_Nj11sNsNEe-8PpYjENK_KQ" start="_NjeCQdsNEe-8PpYjENK_KQ"/>
+        <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_Q5N2ENsNEe-8PpYjENK_KQ" name="Message25SendEvent" covered="_8C-_YMHkEe-xCsImyWa7Gw" message="_Q5NPANsNEe-8PpYjENK_KQ"/>
+        <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_Q5N2EdsNEe-8PpYjENK_KQ" name="Message25ReceiveEvent" covered="_PKbxYMHlEe-xCsImyWa7Gw" message="_Q5NPANsNEe-8PpYjENK_KQ"/>
+        <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_Q5gJ8NsNEe-8PpYjENK_KQ" name="BehaviorExecutionSpecification28" covered="_PKbxYMHlEe-xCsImyWa7Gw" finish="_Q5h_INsNEe-8PpYjENK_KQ" start="_Q5N2EdsNEe-8PpYjENK_KQ"/>
+        <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_SohMYMHmEe-xCsImyWa7Gw" name="Message16ReceiveEvent" covered="_8C-_YMHkEe-xCsImyWa7Gw" message="_SoewIMHmEe-xCsImyWa7Gw"/>
         <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_bDGBcMHlEe-xCsImyWa7Gw" name="Message9ReceiveEvent" covered="_1cWpoMHkEe-xCsImyWa7Gw" message="_bDBI8MHlEe-xCsImyWa7Gw"/>
-        <message xmi:type="uml:Message" xmi:id="_bAVBUMHlEe-xCsImyWa7Gw" name="Richiesta noleggio(boolean isUtenteAziendale, Veicolo IDveicolo)" receiveEvent="_bAlgAMHlEe-xCsImyWa7Gw" sendEvent="_bAjq0MHlEe-xCsImyWa7Gw"/>
-        <message xmi:type="uml:Message" xmi:id="_bDBI8MHlEe-xCsImyWa7Gw" name="RispostaNoleggio" messageSort="reply" receiveEvent="_bDGBcMHlEe-xCsImyWa7Gw" sendEvent="_bDDlMMHlEe-xCsImyWa7Gw"/>
-        <message xmi:type="uml:Message" xmi:id="_SnLIkMHmEe-xCsImyWa7Gw" name="Controllo disponibilità" receiveEvent="_SnOy8MHmEe-xCsImyWa7Gw" sendEvent="_SnOL4MHmEe-xCsImyWa7Gw"/>
-        <message xmi:type="uml:Message" xmi:id="_SoewIMHmEe-xCsImyWa7Gw" name="Message16" messageSort="reply" receiveEvent="_SohMYMHmEe-xCsImyWa7Gw" sendEvent="_SoglUMHmEe-xCsImyWa7Gw"/>
+        <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_Q5h_INsNEe-8PpYjENK_KQ" name="Message30SendEvent" covered="_PKbxYMHlEe-xCsImyWa7Gw" message="_Q5hYENsNEe-8PpYjENK_KQ"/>
+        <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_Q5h_IdsNEe-8PpYjENK_KQ" name="Message30ReceiveEvent" covered="_8C-_YMHkEe-xCsImyWa7Gw" message="_Q5hYENsNEe-8PpYjENK_KQ"/>
+        <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_Nj11sNsNEe-8PpYjENK_KQ" name="Message23SendEvent" covered="_8C-_YMHkEe-xCsImyWa7Gw" message="_Nj1OoNsNEe-8PpYjENK_KQ"/>
+        <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_Nj11sdsNEe-8PpYjENK_KQ" name="Message23ReceiveEvent" covered="_1cWpoMHkEe-xCsImyWa7Gw" message="_Nj1OoNsNEe-8PpYjENK_KQ"/>
+        <message xmi:type="uml:Message" xmi:id="_bAVBUMHlEe-xCsImyWa7Gw" name="Richiesta noleggio(boolean isUtenteAziendale, Veicolo veicolo, DateBetween dateRichiesta)" receiveEvent="_bAlgAMHlEe-xCsImyWa7Gw" sendEvent="_bAjq0MHlEe-xCsImyWa7Gw"/>
+        <message xmi:type="uml:Message" xmi:id="_bDBI8MHlEe-xCsImyWa7Gw" name="RispostaDisponibilità" messageSort="reply" receiveEvent="_bDGBcMHlEe-xCsImyWa7Gw" sendEvent="_bDDlMMHlEe-xCsImyWa7Gw"/>
+        <message xmi:type="uml:Message" xmi:id="_SnLIkMHmEe-xCsImyWa7Gw" name="Controllo disponibilità(DateBetween dateRichiesta)" receiveEvent="_SnOy8MHmEe-xCsImyWa7Gw" sendEvent="_SnOL4MHmEe-xCsImyWa7Gw"/>
+        <message xmi:type="uml:Message" xmi:id="_SoewIMHmEe-xCsImyWa7Gw" name="Risposta disponibilità" messageSort="reply" receiveEvent="_SohMYMHmEe-xCsImyWa7Gw" sendEvent="_SoglUMHmEe-xCsImyWa7Gw"/>
+        <message xmi:type="uml:Message" xmi:id="_Njc0INsNEe-8PpYjENK_KQ" name="Noleggia veicolo(DateBetween dateNoleggio)" receiveEvent="_NjeCQdsNEe-8PpYjENK_KQ" sendEvent="_NjeCQNsNEe-8PpYjENK_KQ"/>
+        <message xmi:type="uml:Message" xmi:id="_Nj1OoNsNEe-8PpYjENK_KQ" name="Noleggio confermato" messageSort="reply" receiveEvent="_Nj11sdsNEe-8PpYjENK_KQ" sendEvent="_Nj11sNsNEe-8PpYjENK_KQ"/>
+        <message xmi:type="uml:Message" xmi:id="_Q5NPANsNEe-8PpYjENK_KQ" name="Segna noleggiato(DateBetween dateNoleggio)" receiveEvent="_Q5N2EdsNEe-8PpYjENK_KQ" sendEvent="_Q5N2ENsNEe-8PpYjENK_KQ"/>
+        <message xmi:type="uml:Message" xmi:id="_Q5hYENsNEe-8PpYjENK_KQ" name="Noleggio confermato" messageSort="reply" receiveEvent="_Q5h_IdsNEe-8PpYjENK_KQ" sendEvent="_Q5h_INsNEe-8PpYjENK_KQ"/>
       </packagedElement>
     </packagedElement>
     <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_-O6CALfsEe-d56vvJoR4og">
@@ -261,6 +275,5 @@
     </profileApplication>
   </uml:Model>
   <Codegen:GeneratorHint xmi:id="_S0ggUNfnEe-PVpqW8PpIig" base_Element="_fMuu4LY1Ee-xL_dcwtI9ow" generatorID="Standard Java">
-    <language xmi:type="Codegen:Language" href="pathmap://Codegen_PROFILES/languages.uml#_2Zt6YCjREeayco6FJ_OtTQ"/>
-  </Codegen:GeneratorHint>
+    <language xmi:type="Codegen:Language" href="pathmap://Codegen_PROFILES/languages.uml#_2Zt6YCjREeayco6FJ_OtTQ"/></Codegen:GeneratorHint>
 </xmi:XMI>
