@@ -5,10 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import com.raven.component.PanelLoginAndRegister;
-
 import db.Registration;
-import gui.LogIn;
 import util.Validatori;
 
 public class AppTest {
