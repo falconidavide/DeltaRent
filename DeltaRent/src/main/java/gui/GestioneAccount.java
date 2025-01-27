@@ -148,6 +148,7 @@ public class GestioneAccount extends JPanel {
         txtCurrentEmail.setBackground(new Color(245, 239, 231));
         txtCurrentEmail.setBorder(new RoundedBorder(10));
         txtCurrentEmail.setEditable(false);
+        txtCurrentEmail.getDocument().addDocumentListener(emailListener);
         gbc.gridx = 1;
         emailPanel.add(txtCurrentEmail, gbc);
 
@@ -162,6 +163,7 @@ public class GestioneAccount extends JPanel {
         txtNewEmail.setFont(new Font("Helvetica Neue", Font.PLAIN, 16));
         txtNewEmail.setBackground(new Color(245, 239, 231));
         txtNewEmail.setBorder(new RoundedBorder(10));
+        txtNewEmail.getDocument().addDocumentListener(emailListener);
         gbc.gridx = 1;
         emailPanel.add(txtNewEmail, gbc);
 
@@ -172,6 +174,7 @@ public class GestioneAccount extends JPanel {
         btnUpdateEmail.setFocusPainted(false);
         btnUpdateEmail.setBorder(new RoundedBorder(10));
         btnUpdateEmail.addActionListener(e -> updateEmail());
+        btnUpdateEmail.setEnabled(false);
         gbc.gridx = 1;
         gbc.gridy = 2;
         emailPanel.add(btnUpdateEmail, gbc);
@@ -342,21 +345,41 @@ public class GestioneAccount extends JPanel {
         }
     }
     
-
-	DocumentListener passwordListener = new DocumentListener() {
+	DocumentListener emailListener = new DocumentListener() {
         public void insertUpdate(DocumentEvent e) {
-            updateAziendaButton();
+        	updateEmailButton();
         }
 
         public void removeUpdate(DocumentEvent e) {
-            updateAziendaButton();
+        	updateEmailButton();
         }
 
         public void changedUpdate(DocumentEvent e) {
-            updateAziendaButton();
+        	updateEmailButton();
         }
 
-        public void updateAziendaButton() {
+        public void updateEmailButton() {
+			if(Validatori.isValidEmail(txtNewEmail.getText()) && !txtCurrentEmail.getText().equals("")) {
+				btnUpdateEmail.setEnabled(true);
+			} else {
+				btnUpdateEmail.setEnabled(false);
+			}
+        }
+    };
+	DocumentListener passwordListener = new DocumentListener() {
+        public void insertUpdate(DocumentEvent e) {
+            updatePasswordButton();
+        }
+
+        public void removeUpdate(DocumentEvent e) {
+        	updatePasswordButton();
+        }
+
+        public void changedUpdate(DocumentEvent e) {
+        	updatePasswordButton();
+        }
+
+        public void updatePasswordButton() {
 			if(Validatori.isValidPassword( String.valueOf(txtNewPassword.getPassword())) && !String.valueOf(txtOldPassword.getPassword()).equals("")) {
 				btnChangePassword.setEnabled(true);
 			} else {
