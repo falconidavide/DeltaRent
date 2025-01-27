@@ -3,10 +3,13 @@ package gui;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 import db.DatabaseConnection;
 import utente.Utente;
 import util.TotaleNoleggi;
+import util.Validatori;
 
 import java.sql.*;
 
@@ -197,6 +200,7 @@ public class GestioneAccount extends JPanel {
         txtOldPassword.setFont(new Font("Helvetica Neue", Font.PLAIN, 16));
         txtOldPassword.setBackground(new Color(245, 239, 231));
         txtOldPassword.setBorder(new RoundedBorder(10));
+        txtOldPassword.getDocument().addDocumentListener(passwordListener);
         gbc.gridx = 1;
         passwordPanel.add(txtOldPassword, gbc);
 
@@ -211,6 +215,7 @@ public class GestioneAccount extends JPanel {
         txtNewPassword.setFont(new Font("Helvetica Neue", Font.PLAIN, 16));
         txtNewPassword.setBackground(new Color(245, 239, 231));
         txtNewPassword.setBorder(new RoundedBorder(10));
+        txtNewPassword.getDocument().addDocumentListener(passwordListener);
         gbc.gridx = 1;
         passwordPanel.add(txtNewPassword, gbc);
 
@@ -220,10 +225,30 @@ public class GestioneAccount extends JPanel {
         btnChangePassword.setForeground(new Color(255, 255, 255));
         btnChangePassword.setFocusPainted(false);
         btnChangePassword.setBorder(new RoundedBorder(10));
+        btnChangePassword.setEnabled(false);
         btnChangePassword.addActionListener(e -> changePassword());
         gbc.gridx = 1;
         gbc.gridy = 2;
         passwordPanel.add(btnChangePassword, gbc);
+        
+        /*
+        txtNewPassword.addActionListener(e -> {
+        	System.out.println(String.valueOf( txtNewPassword.getPassword()));
+        	System.out.println(txtNewPassword.getPassword());
+			if(Validatori.isValidPassword( String.valueOf( txtNewPassword.getPassword() ) )) {
+				btnChangePassword.setEnabled(true);
+			} else {
+				btnChangePassword.setEnabled(false);
+			}
+		});
+        txtOldPassword.addActionListener(e -> {
+			if(Validatori.isValidPassword( String.valueOf( txtNewPassword.getPassword() ) )) {
+				btnChangePassword.setEnabled(true);
+			} else {
+				btnChangePassword.setEnabled(false);
+			}
+		});
+		*/
 
         return passwordPanel;
     }
@@ -316,4 +341,27 @@ public class GestioneAccount extends JPanel {
             g.drawRoundRect(x, y, width - 1, height - 1, radius, radius);
         }
     }
+    
+
+	DocumentListener passwordListener = new DocumentListener() {
+        public void insertUpdate(DocumentEvent e) {
+            updateAziendaButton();
+        }
+
+        public void removeUpdate(DocumentEvent e) {
+            updateAziendaButton();
+        }
+
+        public void changedUpdate(DocumentEvent e) {
+            updateAziendaButton();
+        }
+
+        public void updateAziendaButton() {
+			if(Validatori.isValidPassword( String.valueOf(txtNewPassword.getPassword())) && !String.valueOf(txtOldPassword.getPassword()).equals("")) {
+				btnChangePassword.setEnabled(true);
+			} else {
+				btnChangePassword.setEnabled(false);
+			}
+        }
+    };
 }
