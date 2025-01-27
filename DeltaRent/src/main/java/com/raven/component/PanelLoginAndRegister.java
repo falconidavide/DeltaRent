@@ -23,6 +23,7 @@ import javax.swing.event.DocumentListener;
 
 import net.miginfocom.swing.MigLayout;
 import utente.Utente;
+import util.Validatori;
 
 public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
 	private static final long serialVersionUID = 1L;
@@ -107,16 +108,17 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
 
 	// Metodo per verificare se tutti i campi sono riempiti
 	private boolean areAllFieldsFilledForAzienda() {
-	    return !txtNomeAzienda.getText().trim().isEmpty() && isValidPIVA(txtPartitaIVA.getText().trim())
-	            && isValidEmail(txtEmailAzienda.getText().trim()) && isValidPassword(new String(txtPasswordAzienda.getPassword()).trim());
+	    return !txtNomeAzienda.getText().trim().isEmpty() && Validatori.isValidPIVA(txtPartitaIVA.getText().trim())
+	            && Validatori.isValidEmail(txtEmailAzienda.getText().trim()) && Validatori.isValidPassword(new String(txtPasswordAzienda.getPassword()).trim());
 	}
 
 	private boolean areAllFieldsFilledForPrivato() {
 	    return !txtNome.getText().trim().isEmpty() && !txtCognome.getText().trim().isEmpty()
-	            && isValidDate(txtDataNascita.getText().trim()) && isValidEmail(txtEmailPrivato.getText().trim())
-	            && isValidPassword(new String(txtPasswordPrivato.getPassword()).trim());
+	            && Validatori.isValidDate(txtDataNascita.getText().trim()) && Validatori.isValidEmail(txtEmailPrivato.getText().trim())
+	            && Validatori.isValidPassword(new String(txtPasswordPrivato.getPassword()).trim());
 	}
 
+	/*
 	// Metodo per validare l'email
 	public static boolean isValidEmail(String email) {
 	    return email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
@@ -136,6 +138,7 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
 	public static boolean isValidDate(String date) {
 	    return date.matches("(0[1-9]|[12][0-9]|3[01])[\\/](0[1-9]|1[012])[\\/](19|20)\\d\\d");
 	}
+	*/
 
 	private void initRegister() {
 		register.setLayout(new MigLayout("wrap", "push[center]push", "push[]25[]push"));
