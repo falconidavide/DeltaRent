@@ -25,23 +25,22 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class DettagliVeicoloPage extends JPanel {
-    private static final long serialVersionUID = 1L;
-    private JLabel lblMarcaModello;
-    private JLabel lblImmagineAlimentazione;
-    private JLabel lblImmagineAlimentazione2;
-    private JLabel lblAlimentazione;
-    private Button btnDisponibile; // Cambiato da JLabel a Button
-    private JLabel lblPrezzo;
-    private ButtonOutLine btnNoleggia;
-    private DateChooser dateChooser;
-    private JComboBox<String> comboOraInizio, comboOraFine;
-    private boolean isSettingDate = false;
-    private Veicolo veicolo;
-    private Utente utente;
-    private boolean disponibile;
-    private double prezzoTotale;
-    public Button btnPrezzoTotale;
-	
+	private static final long serialVersionUID = 1L;
+	private JLabel lblMarcaModello;
+	private JLabel lblImmagineAlimentazione;
+	private JLabel lblImmagineAlimentazione2;
+	private JLabel lblAlimentazione;
+	private Button btnDisponibile; // Cambiato da JLabel a Button
+	private JLabel lblPrezzo;
+	private ButtonOutLine btnNoleggia;
+	private DateChooser dateChooser;
+	private JComboBox<String> comboOraInizio, comboOraFine;
+	private boolean isSettingDate = false;
+	private Veicolo veicolo;
+	private Utente utente;
+	private boolean disponibile;
+	private double prezzoTotale;
+	public Button btnPrezzoTotale;
 
 	public DettagliVeicoloPage(Automobile auto, Utente utente) {
 		this.veicolo = auto;
@@ -67,51 +66,49 @@ public class DettagliVeicoloPage extends JPanel {
 				: ((Furgone) veicolo).getPrezzoGiornaliero();
 
 		setLayout(new BorderLayout()); // Imposta il layout a BorderLayout
-		
+
 		JPanel infoAndDescriptionPanel = new JPanel();
 		infoAndDescriptionPanel.setLayout(new BoxLayout(infoAndDescriptionPanel, BoxLayout.Y_AXIS));
 		infoAndDescriptionPanel.setBackground(new Color(60, 87, 121));
-		
-		
-		JPanel buttonPanel = new JPanel(); 
+
+		JPanel buttonPanel = new JPanel();
 		buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.X_AXIS));
 		buttonPanel.setBackground(new Color(60, 87, 121));
 		infoAndDescriptionPanel.add(Box.createRigidArea(new Dimension(0, 20)));
 		infoAndDescriptionPanel.add(buttonPanel);
-		
+
 		Button btnTornaIndietro = new Button();
 		btnTornaIndietro.setFont(new Font("sansserif", Font.BOLD, 18));
 		btnTornaIndietro.setPreferredSize(new Dimension(250, 45));
 		btnTornaIndietro.setMaximumSize(new Dimension(250, 45));
 		btnTornaIndietro.setMinimumSize(new Dimension(250, 45));
-		btnTornaIndietro.setForeground(new Color(245,245,245));
+		btnTornaIndietro.setForeground(new Color(245, 245, 245));
 		btnTornaIndietro.addActionListener(e -> HomePage.cardLayout.show(HomePage.mainContentPanel, "rentCar"));
 		btnTornaIndietro.setBackground(new Color(45, 64, 98));
 		btnTornaIndietro.setText("Torna alla Ricerca");
-		
-		
+
 		buttonPanel.add(Box.createRigidArea(new Dimension(20, 0)));
 		buttonPanel.add(btnTornaIndietro);
 		buttonPanel.add(Box.createHorizontalGlue());
-		
+
 		JPanel infoPanel = createInfoPanel(veicolo, isAutomobile);
 		infoAndDescriptionPanel.add(infoPanel); // Usa BorderLayout.CENTER per infoPanel
-		
-		JPanel descriptionPanel = new JPanel(); 
+
+		JPanel descriptionPanel = new JPanel();
 		descriptionPanel.setBackground(new Color(60, 87, 121));
 		descriptionPanel.add(Box.createRigidArea(new Dimension(0, 150)));
 		infoAndDescriptionPanel.add(descriptionPanel); // Usa BorderLayout.CENTER per infoPanel
-		
+
 		JPanel dateAndBottomPanel = new JPanel();
 		dateAndBottomPanel.setBackground(new Color(60, 87, 121));
 		dateAndBottomPanel.setLayout(new BoxLayout(dateAndBottomPanel, BoxLayout.Y_AXIS));
 
 		JLabel titledate = new JLabel("Scegli le tue date");
-        titledate.setFont(new Font("sansserif", 1, 45));
-        titledate.setForeground(Color.WHITE);
-        titledate.setAlignmentX(CENTER_ALIGNMENT);
-        
-		JPanel dateTitlePanel = new JPanel(); 
+		titledate.setFont(new Font("sansserif", 1, 45));
+		titledate.setForeground(Color.WHITE);
+		titledate.setAlignmentX(CENTER_ALIGNMENT);
+
+		JPanel dateTitlePanel = new JPanel();
 		dateTitlePanel.setLayout(new BoxLayout(dateTitlePanel, BoxLayout.Y_AXIS));
 		dateTitlePanel.setBackground(new Color(60, 87, 121));
 		dateTitlePanel.add(Box.createRigidArea(new Dimension(0, 40)));
@@ -123,7 +120,7 @@ public class DettagliVeicoloPage extends JPanel {
 
 		JPanel bottomPanel = createBottomPanel(prezzo, isAutomobile);
 		dateAndBottomPanel.add(bottomPanel); // Aggiungi il bottomPanel al dateAndBottomPanel
-		
+
 		add(dateAndBottomPanel, BorderLayout.EAST); // Usa BorderLayout.SOUTH per dateAndBottomPanel
 		add(infoAndDescriptionPanel, BorderLayout.CENTER); // Usa BorderLayout.SOUTH per dateAndBottomPanel
 
@@ -159,13 +156,27 @@ public class DettagliVeicoloPage extends JPanel {
 		imagePanel.setPreferredSize(new Dimension(600, 400));
 		imagePanel.setBackground(new Color(60, 87, 121));
 
-		JProgressBar progressBar = new JProgressBar(0, imgPaths.length - 1);
+		JProgressBar progressBar;
+
+		if (imgPaths.length != 0) {
+
+			progressBar = new JProgressBar(0, imgPaths.length - 1);
+		} else {
+			progressBar = new JProgressBar(0, 1);
+		}
 		progressBar.setValue(0); // Valore iniziale
 		progressBar.setBackground(new Color(200, 200, 200));
 
+		JLabel imgLabel = new JLabel();
+
 		for (String imgPath : imgPaths) {
-			JLabel imgLabel = new JLabel();
+			imgLabel = new JLabel();
 			imgLabel.setIcon(SearchPage.resizeImageIcon(imgPath, 500, 333));
+			imagePanel.add(imgLabel);
+		}
+
+		if (imgPaths.length == 0) {
+			imgLabel.setIcon(SearchPage.resizeImageIcon(null, 500, 333));
 			imagePanel.add(imgLabel);
 		}
 
@@ -175,7 +186,7 @@ public class DettagliVeicoloPage extends JPanel {
 		btnPrev.setPreferredSize(new Dimension(75, 35));
 		btnPrev.setMaximumSize(new Dimension(75, 35));
 		btnPrev.setMinimumSize(new Dimension(75, 35));
-		btnPrev.setForeground(new Color(245,245,245));
+		btnPrev.setForeground(new Color(245, 245, 245));
 		btnPrev.setBackground(new Color(45, 64, 98));
 		btnPrev.setFont(new Font("sansserif", 1, 17));
 		Button btnNext = new Button();
@@ -183,21 +194,29 @@ public class DettagliVeicoloPage extends JPanel {
 		btnNext.setPreferredSize(new Dimension(75, 35));
 		btnNext.setMaximumSize(new Dimension(75, 35));
 		btnNext.setMinimumSize(new Dimension(75, 35));
-		btnNext.setForeground(new Color(245,245,245));
+		btnNext.setForeground(new Color(245, 245, 245));
 		btnNext.setBackground(new Color(45, 64, 98));
 		btnNext.setFont(new Font("sansserif", 1, 17));
 
 		btnPrev.addActionListener(e -> {
 			CardLayout cl = (CardLayout) imagePanel.getLayout();
 			cl.previous(imagePanel);
-			int currentIndex = (progressBar.getValue() - 1 + imgPaths.length) % imgPaths.length;
+			int currentIndex;
+			if (imgPaths.length != 0)
+				currentIndex = (progressBar.getValue() + 1) % imgPaths.length;
+			else
+				currentIndex = 0;
 			progressBar.setValue(currentIndex);
 		});
 
 		btnNext.addActionListener(e -> {
 			CardLayout cl = (CardLayout) imagePanel.getLayout();
 			cl.next(imagePanel);
-			int currentIndex = (progressBar.getValue() + 1) % imgPaths.length;
+			int currentIndex;
+			if (imgPaths.length != 0)
+				currentIndex = (progressBar.getValue() + 1) % imgPaths.length;
+			else
+				currentIndex = 0;
 			progressBar.setValue(currentIndex);
 		});
 
@@ -305,7 +324,7 @@ public class DettagliVeicoloPage extends JPanel {
 			@Override
 			public boolean isDateSelectable(Date date) {
 				Date today = new Date();
-				if(date.before(today) && !isSameDay(date, today)) {
+				if (date.before(today) && !isSameDay(date, today)) {
 					return false;
 				}
 				return true;
@@ -315,7 +334,7 @@ public class DettagliVeicoloPage extends JPanel {
 		comboOraInizio = createHourComboBox();
 		comboOraFine = createHourComboBox();
 		comboOraFine.setSelectedIndex(0);
-		
+
 		gbc.gridx = 0;
 		gbc.gridy = 1;
 		gbc.gridwidth = 2;
@@ -324,11 +343,11 @@ public class DettagliVeicoloPage extends JPanel {
 		gbc.gridx = 0;
 		gbc.gridy = 2;
 		gbc.gridwidth = 1;
-		
+
 		JLabel orainizio = new JLabel("Ora Inizio:");
 		orainizio.setFont(new Font("sansserif", 1, 18));
 		orainizio.setForeground(Color.WHITE);
-		datePanel.add(Box.createRigidArea(new Dimension(0, 75)),gbc);
+		datePanel.add(Box.createRigidArea(new Dimension(0, 75)), gbc);
 		datePanel.add(orainizio, gbc);
 
 		gbc.gridx = 1;
@@ -337,7 +356,7 @@ public class DettagliVeicoloPage extends JPanel {
 
 		gbc.gridx = 0;
 		gbc.gridy = 3;
-		
+
 		JLabel orafine = new JLabel("Ora Fine:");
 		orafine.setFont(new Font("sansserif", 1, 18));
 		orafine.setForeground(Color.WHITE);
@@ -363,12 +382,11 @@ public class DettagliVeicoloPage extends JPanel {
 
 			@Override
 			public void dateBetweenChanged(DateBetween dateBetween, DateChooserAction action) {
-				
+
 				calcolaPrezzo(prezzo, isAutomobile);
 				if (isSettingDate)
 					return;
 				isSettingDate = true;
-
 
 				isSettingDate = false;
 			}
@@ -381,59 +399,59 @@ public class DettagliVeicoloPage extends JPanel {
 	}
 
 	private JPanel createBottomPanel(double prezzo, boolean isAutomobile) {
-	    JPanel bottomPanel = new JPanel(new GridBagLayout());
-	    GridBagConstraints gbc = new GridBagConstraints();
-	    gbc.insets = new Insets(10, 10, 15, 10); // Aggiungi un margine superiore di 10 pixel
-	    gbc.fill = GridBagConstraints.NONE; // Non riempire orizzontalmente
-	    bottomPanel.setBackground(new Color(60, 87, 121));
-	    bottomPanel.setBorder(new LineBorder(new Color(216, 195, 182), 0, true));
+		JPanel bottomPanel = new JPanel(new GridBagLayout());
+		GridBagConstraints gbc = new GridBagConstraints();
+		gbc.insets = new Insets(10, 10, 15, 10); // Aggiungi un margine superiore di 10 pixel
+		gbc.fill = GridBagConstraints.NONE; // Non riempire orizzontalmente
+		bottomPanel.setBackground(new Color(60, 87, 121));
+		bottomPanel.setBorder(new LineBorder(new Color(216, 195, 182), 0, true));
 
-	    // Inizializza btnDisponibile come campo di istanza
-	    btnDisponibile = new Button();
-	    btnDisponibile.setPreferredSize(new Dimension(350, 45));
-	    btnDisponibile.setMaximumSize(new Dimension(350, 45));
-	    btnDisponibile.setMinimumSize(new Dimension(350, 45));
-	    btnDisponibile.setForeground(new Color(0, 0, 0)); // Testo nero
-	    btnDisponibile.setFont(new Font("sansserif", 1, 25));
-	    btnDisponibile.setHorizontalAlignment(SwingConstants.CENTER);
-	    
-	    gbc.gridx = 0;
-	    gbc.gridy = 0;
-	    gbc.gridwidth = GridBagConstraints.REMAINDER;
-	    gbc.anchor = GridBagConstraints.CENTER; // Centro il bottone
-	    gbc.weightx = 1.0;
-	    gbc.weighty = 1.0;
-	    bottomPanel.add(btnDisponibile, gbc);
+		// Inizializza btnDisponibile come campo di istanza
+		btnDisponibile = new Button();
+		btnDisponibile.setPreferredSize(new Dimension(350, 45));
+		btnDisponibile.setMaximumSize(new Dimension(350, 45));
+		btnDisponibile.setMinimumSize(new Dimension(350, 45));
+		btnDisponibile.setForeground(new Color(0, 0, 0)); // Testo nero
+		btnDisponibile.setFont(new Font("sansserif", 1, 25));
+		btnDisponibile.setHorizontalAlignment(SwingConstants.CENTER);
 
-	    // Aggiungi lblPrezzoTotale centrato
-	    btnPrezzoTotale = new Button();
-	    btnPrezzoTotale.setPreferredSize(new Dimension(350, 45));
-	    btnPrezzoTotale.setMaximumSize(new Dimension(350, 45));
-	    btnPrezzoTotale.setMinimumSize(new Dimension(350, 45));
-	    btnPrezzoTotale.setForeground(new Color(245, 245, 245));
-	    btnPrezzoTotale.setBackground(new Color(45, 64, 98));
-	    btnPrezzoTotale.setText("--");
-	    btnPrezzoTotale.setFont(new Font("sansserif", 1, 25));
-	    btnPrezzoTotale.setHorizontalAlignment(SwingConstants.CENTER);
-	    
-	    gbc.insets = new Insets(0, 10, 15, 10); // Resetta gli insets per gli altri componenti
-	    gbc.gridy = 1;
-	    bottomPanel.add(btnPrezzoTotale, gbc);
+		gbc.gridx = 0;
+		gbc.gridy = 0;
+		gbc.gridwidth = GridBagConstraints.REMAINDER;
+		gbc.anchor = GridBagConstraints.CENTER; // Centro il bottone
+		gbc.weightx = 1.0;
+		gbc.weighty = 1.0;
+		bottomPanel.add(btnDisponibile, gbc);
 
-	    // Aggiungi btnNoleggia centrato
-	    btnNoleggia = new ButtonOutLine();
-	    btnNoleggia.setText("Noleggia");
-	    btnNoleggia.setPreferredSize(new Dimension(350, 45));
-	    btnNoleggia.setMaximumSize(new Dimension(350, 45));
-	    btnNoleggia.setMinimumSize(new Dimension(350, 45));
-	    btnNoleggia.setForeground(new Color(245, 245, 245));
-	    btnNoleggia.setFont(new Font("sansserif", 1, 25));
-	    gbc.gridy = 2;
-	    gbc.fill = GridBagConstraints.NONE; // Imposta il fill a NONE per il pulsante
-	    gbc.anchor = GridBagConstraints.CENTER;
-	    bottomPanel.add(btnNoleggia, gbc);
+		// Aggiungi lblPrezzoTotale centrato
+		btnPrezzoTotale = new Button();
+		btnPrezzoTotale.setPreferredSize(new Dimension(350, 45));
+		btnPrezzoTotale.setMaximumSize(new Dimension(350, 45));
+		btnPrezzoTotale.setMinimumSize(new Dimension(350, 45));
+		btnPrezzoTotale.setForeground(new Color(245, 245, 245));
+		btnPrezzoTotale.setBackground(new Color(45, 64, 98));
+		btnPrezzoTotale.setText("--");
+		btnPrezzoTotale.setFont(new Font("sansserif", 1, 25));
+		btnPrezzoTotale.setHorizontalAlignment(SwingConstants.CENTER);
 
-	    return bottomPanel;
+		gbc.insets = new Insets(0, 10, 15, 10); // Resetta gli insets per gli altri componenti
+		gbc.gridy = 1;
+		bottomPanel.add(btnPrezzoTotale, gbc);
+
+		// Aggiungi btnNoleggia centrato
+		btnNoleggia = new ButtonOutLine();
+		btnNoleggia.setText("Noleggia");
+		btnNoleggia.setPreferredSize(new Dimension(350, 45));
+		btnNoleggia.setMaximumSize(new Dimension(350, 45));
+		btnNoleggia.setMinimumSize(new Dimension(350, 45));
+		btnNoleggia.setForeground(new Color(245, 245, 245));
+		btnNoleggia.setFont(new Font("sansserif", 1, 25));
+		gbc.gridy = 2;
+		gbc.fill = GridBagConstraints.NONE; // Imposta il fill a NONE per il pulsante
+		gbc.anchor = GridBagConstraints.CENTER;
+		bottomPanel.add(btnNoleggia, gbc);
+
+		return bottomPanel;
 	}
 
 	private JComboBox<String> createHourComboBox() {
@@ -446,48 +464,48 @@ public class DettagliVeicoloPage extends JPanel {
 		return comboBox;
 	}
 
-	 private void calcolaPrezzo(double prezzo, boolean isAutomobile) {
-	        try {
-	            DateBetween dateBetween = dateChooser.getSelectedDateBetween();
+	private void calcolaPrezzo(double prezzo, boolean isAutomobile) {
+		try {
+			DateBetween dateBetween = dateChooser.getSelectedDateBetween();
 
-	            String oraInizio = (String) comboOraInizio.getSelectedItem();
-	            String oraFine = (String) comboOraFine.getSelectedItem();
+			String oraInizio = (String) comboOraInizio.getSelectedItem();
+			String oraFine = (String) comboOraFine.getSelectedItem();
 
-	            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
-	            Date inizio = sdf
-	                    .parse(new SimpleDateFormat("dd-MM-yyyy").format(dateBetween.getFromDate()) + " " + oraInizio);
-	            Date fine = sdf.parse(new SimpleDateFormat("dd-MM-yyyy").format(dateBetween.getToDate()) + " " + oraFine);
+			SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+			Date inizio = sdf
+					.parse(new SimpleDateFormat("dd-MM-yyyy").format(dateBetween.getFromDate()) + " " + oraInizio);
+			Date fine = sdf.parse(new SimpleDateFormat("dd-MM-yyyy").format(dateBetween.getToDate()) + " " + oraFine);
 
-	            disponibile = Disponibilita.verificaDisponibilita(veicolo, inizio, fine);
+			disponibile = Disponibilita.verificaDisponibilita(veicolo, inizio, fine);
 
-	            if (disponibile) {
-	                btnDisponibile.setText("Disponibile");
-	                btnDisponibile.setBackground(new Color(0, 150, 0)); // Verde
-	            } else {
-	                btnDisponibile.setText("Non Disponibile");
-	                btnDisponibile.setBackground(new Color(150, 0, 0)); // Rosso
-	            }
+			if (disponibile) {
+				btnDisponibile.setText("Disponibile");
+				btnDisponibile.setBackground(new Color(0, 150, 0)); // Verde
+			} else {
+				btnDisponibile.setText("Non Disponibile");
+				btnDisponibile.setBackground(new Color(150, 0, 0)); // Rosso
+			}
 
-	            if (fine.before(inizio) || fine.compareTo(inizio) == 0) {
-	                btnPrezzoTotale.setText("Date non valide");
-	                btnNoleggia.setEnabled(false);
-	                return;
-	            } else {
-	                if (disponibile)
-	                    btnNoleggia.setEnabled(true);
-	            }
+			if (fine.before(inizio) || fine.compareTo(inizio) == 0) {
+				btnPrezzoTotale.setText("Date non valide");
+				btnNoleggia.setEnabled(false);
+				return;
+			} else {
+				if (disponibile)
+					btnNoleggia.setEnabled(true);
+			}
 
-	            long durata = fine.getTime() - inizio.getTime();
-	            prezzoTotale = isAutomobile ? (durata / (1000 * 60 * 60.0)) * prezzo
-	                    : (durata / (1000 * 60 * 60 * 24.0)) * prezzo;
+			long durata = fine.getTime() - inizio.getTime();
+			prezzoTotale = isAutomobile ? (durata / (1000 * 60 * 60.0)) * prezzo
+					: (durata / (1000 * 60 * 60 * 24.0)) * prezzo;
 
-	            btnPrezzoTotale.setText(String.format("€%.2f", prezzoTotale));
-	            return;
+			btnPrezzoTotale.setText(String.format("€%.2f", prezzoTotale));
+			return;
 
-	        } catch (Exception e) {
-	            JOptionPane.showMessageDialog(this, "Errore nel calcolo del prezzo.");
-	        }
-	    }
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(this, "Errore nel calcolo del prezzo.");
+		}
+	}
 
 	private void creaPrenotazione() {
 		if (!Utente.isLoggato()) {
@@ -534,10 +552,10 @@ public class DettagliVeicoloPage extends JPanel {
 			JOptionPane.showMessageDialog(this, e.getMessage() + "Errore nella creazione della prenotazione.");
 		}
 	}
-	
+
 	private boolean isSameDay(Date date1, Date date2) {
-	    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-	    return sdf.format(date1).equals(sdf.format(date2));
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+		return sdf.format(date1).equals(sdf.format(date2));
 	}
 
 }

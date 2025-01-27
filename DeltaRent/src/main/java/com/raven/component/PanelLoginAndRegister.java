@@ -26,298 +26,259 @@ import utente.Utente;
 import util.Validatori;
 
 public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
-	private static final long serialVersionUID = 1L;
-	private MyTextField txtNomeAzienda = new MyTextField();
-	private MyTextField txtPartitaIVA = new MyTextField();
-	private MyTextField txtEmailAzienda = new MyTextField();
-	private MyPasswordField txtPasswordAzienda = new MyPasswordField();
-	private MyTextField txtNome = new MyTextField();
-	private MyTextField txtCognome = new MyTextField();
-	private MyTextField txtDataNascita = new MyTextField();
-	private MyTextField txtEmailPrivato = new MyTextField();
-	private MyPasswordField txtPasswordPrivato = new MyPasswordField();
-	private Button cmdAzienda = new Button();
-	private Button cmdPrivato = new Button();
-	
-	
-	
-	
+    private static final long serialVersionUID = 1L;
+    private MyTextField txtNomeAzienda = new MyTextField();
+    private MyTextField txtPartitaIVA = new MyTextField();
+    private MyTextField txtEmailAzienda = new MyTextField();
+    private MyPasswordField txtPasswordAzienda = new MyPasswordField();
+    private MyTextField txtNome = new MyTextField();
+    private MyTextField txtCognome = new MyTextField();
+    private MyTextField txtDataNascita = new MyTextField();
+    private MyTextField txtEmailPrivato = new MyTextField();
+    private MyPasswordField txtPasswordPrivato = new MyPasswordField();
+    private Button cmdAzienda = new Button();
+    private Button cmdPrivato = new Button();
+    private MyTextField txtEmailLogin = new MyTextField(); // Campo email nel pannello di login
+    private MyPasswordField txtPasswordLogin = new MyPasswordField(); // Campo password nel pannello di login
 
-	public PanelLoginAndRegister() {
-		initComponents();
-		initRegister();
-		initLogin();
-		login.setVisible(false);
-		register.setVisible(true);
-		
-		DocumentListener aziendaListener = new DocumentListener() {
-	        public void insertUpdate(DocumentEvent e) {
-	            updateAziendaButton();
-	        }
+    public PanelLoginAndRegister() {
+        initComponents();
+        initRegister();
+        initLogin();
+        login.setVisible(false);
+        register.setVisible(true);
 
-	        public void removeUpdate(DocumentEvent e) {
-	            updateAziendaButton();
-	        }
+        DocumentListener aziendaListener = new DocumentListener() {
+            public void insertUpdate(DocumentEvent e) {
+                updateAziendaButton();
+            }
 
-	        public void changedUpdate(DocumentEvent e) {
-	            updateAziendaButton();
-	        }
+            public void removeUpdate(DocumentEvent e) {
+                updateAziendaButton();
+            }
 
-	        public void updateAziendaButton() {
-	            if (areAllFieldsFilledForAzienda()) {
-	                cmdAzienda.setEnabled(true);
-	            } else {
-	            	cmdAzienda.setEnabled(false);
-	            }
-	        }
-	    };
+            public void changedUpdate(DocumentEvent e) {
+                updateAziendaButton();
+            }
 
-	    DocumentListener privatoListener = new DocumentListener() {
-	        public void insertUpdate(DocumentEvent e) {
-	            updatePrivatoButton();
-	        }
+            public void updateAziendaButton() {
+                if (areAllFieldsFilledForAzienda()) {
+                    cmdAzienda.setEnabled(true);
+                } else {
+                    cmdAzienda.setEnabled(false);
+                }
+            }
+        };
 
-	        public void removeUpdate(DocumentEvent e) {
-	            updatePrivatoButton();
-	        }
+        DocumentListener privatoListener = new DocumentListener() {
+            public void insertUpdate(DocumentEvent e) {
+                updatePrivatoButton();
+            }
 
-	        public void changedUpdate(DocumentEvent e) {
-	            updatePrivatoButton();
-	        }
+            public void removeUpdate(DocumentEvent e) {
+                updatePrivatoButton();
+            }
 
-	        public void updatePrivatoButton() {
-	            if (areAllFieldsFilledForPrivato()) {
-	            	cmdPrivato.setEnabled(true);
-	            } else {
-	            	cmdPrivato.setEnabled(false);
-	            }
-	        }
-	    };
+            public void changedUpdate(DocumentEvent e) {
+                updatePrivatoButton();
+            }
 
-	    txtNomeAzienda.getDocument().addDocumentListener(aziendaListener);
-	    txtPartitaIVA.getDocument().addDocumentListener(aziendaListener);
-	    txtEmailAzienda.getDocument().addDocumentListener(aziendaListener);
-	    txtPasswordAzienda.getDocument().addDocumentListener(aziendaListener);
+            public void updatePrivatoButton() {
+                if (areAllFieldsFilledForPrivato()) {
+                    cmdPrivato.setEnabled(true);
+                } else {
+                    cmdPrivato.setEnabled(false);
+                }
+            }
+        };
 
-	    txtNome.getDocument().addDocumentListener(privatoListener);
-	    txtCognome.getDocument().addDocumentListener(privatoListener);
-	    txtDataNascita.getDocument().addDocumentListener(privatoListener);
-	    txtEmailPrivato.getDocument().addDocumentListener(privatoListener);
-	    txtPasswordPrivato.getDocument().addDocumentListener(privatoListener);
-	}
+        txtNomeAzienda.getDocument().addDocumentListener(aziendaListener);
+        txtPartitaIVA.getDocument().addDocumentListener(aziendaListener);
+        txtEmailAzienda.getDocument().addDocumentListener(aziendaListener);
+        txtPasswordAzienda.getDocument().addDocumentListener(aziendaListener);
 
-	// Metodo per verificare se tutti i campi sono riempiti
-	private boolean areAllFieldsFilledForAzienda() {
-	    return !txtNomeAzienda.getText().trim().isEmpty() && Validatori.isValidPIVA(txtPartitaIVA.getText().trim())
-	            && Validatori.isValidEmail(txtEmailAzienda.getText().trim()) && Validatori.isValidPassword(new String(txtPasswordAzienda.getPassword()).trim());
-	}
+        txtNome.getDocument().addDocumentListener(privatoListener);
+        txtCognome.getDocument().addDocumentListener(privatoListener);
+        txtDataNascita.getDocument().addDocumentListener(privatoListener);
+        txtEmailPrivato.getDocument().addDocumentListener(privatoListener);
+        txtPasswordPrivato.getDocument().addDocumentListener(privatoListener);
+    }
 
-	private boolean areAllFieldsFilledForPrivato() {
-	    return !txtNome.getText().trim().isEmpty() && !txtCognome.getText().trim().isEmpty()
-	            && Validatori.isValidDate(txtDataNascita.getText().trim()) && Validatori.isValidEmail(txtEmailPrivato.getText().trim())
-	            && Validatori.isValidPassword(new String(txtPasswordPrivato.getPassword()).trim());
-	}
+    // Metodo per verificare se tutti i campi sono riempiti
+    private boolean areAllFieldsFilledForAzienda() {
+        return !txtNomeAzienda.getText().trim().isEmpty() && Validatori.isValidPIVA(txtPartitaIVA.getText().trim())
+                && Validatori.isValidEmail(txtEmailAzienda.getText().trim()) && Validatori.isValidPassword(new String(txtPasswordAzienda.getPassword()).trim());
+    }
 
-	/*
-	// Metodo per validare l'email
-	public static boolean isValidEmail(String email) {
-	    return email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
-	}
+    private boolean areAllFieldsFilledForPrivato() {
+        return !txtNome.getText().trim().isEmpty() && !txtCognome.getText().trim().isEmpty()
+                && Validatori.isValidDate(txtDataNascita.getText().trim()) && Validatori.isValidEmail(txtEmailPrivato.getText().trim())
+                && Validatori.isValidPassword(new String(txtPasswordPrivato.getPassword()).trim());
+    }
 
-	// Metodo per validare la password
-	public static boolean isValidPassword(String password) {
-	    return password.matches("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$");
-	}
+    // Metodo per impostare l'email nel campo di login
+    public void setEmailLogin(String email) {
+        txtEmailLogin.setText(email);
+    }
 
-	// Metodo per validare la partita IVA
-	public static boolean isValidPIVA(String PIVA) {
-	    return PIVA.matches("^[0-9]{11}$");
-	}
+    private void initRegister() {
+        register.setLayout(new MigLayout("wrap", "push[center]push", "push[]25[]push"));
+        register.setBackground(new Color(250, 250, 250));
+        JLabel label = new JLabel("Crea un Account");
+        label.setFont(new Font("sansserif", 1, 30));
+        label.setForeground(new Color(45, 64, 98));
+        register.add(label);
 
-	// Metodo per validare la data
-	public static boolean isValidDate(String date) {
-	    return date.matches("(0[1-9]|[12][0-9]|3[01])[\\/](0[1-9]|1[012])[\\/](19|20)\\d\\d");
-	}
-	*/
+        JTabbedPane tabbedPane = new JTabbedPane();
+        tabbedPane.setBackground(new Color(45, 64, 98));
+        tabbedPane.addTab("Azienda", createAziendaPanel());
+        tabbedPane.addTab("Privato", createPrivatoPanel());
+        tabbedPane.setBackgroundAt(0, new Color(200, 200, 200));
+        tabbedPane.setBackgroundAt(1, new Color(200, 200, 200));
 
-	private void initRegister() {
-		register.setLayout(new MigLayout("wrap", "push[center]push", "push[]25[]push"));
-		register.setBackground(new Color(250,250,250));
-		JLabel label = new JLabel("Crea un Account");
-		label.setFont(new Font("sansserif", 1, 30));
-		label.setForeground(new Color(45, 64, 98));
-		register.add(label);
+        register.add(tabbedPane, "w 80%, h 80%");
+    }
 
-		JTabbedPane tabbedPane = new JTabbedPane();
-		tabbedPane.setBackground(new Color(45, 64, 98));
-		tabbedPane.addTab("Azienda", createAziendaPanel());
-		tabbedPane.addTab("Privato", createPrivatoPanel());
-		tabbedPane.setBackgroundAt(0, new Color(200, 200, 200));
-		tabbedPane.setBackgroundAt(1, new Color(200, 200, 200));
-		
+    private JPanel createAziendaPanel() {
+        JPanel panel = new JPanel(new MigLayout("wrap", "push[center]push", "push[]10[]10[]10[]10[]push"));
 
-		register.add(tabbedPane, "w 80%, h 80%");
-	}
+        txtNomeAzienda.setHint("Nome Azienda");
+        txtNomeAzienda.setBackground(new Color(135, 143, 170));
+        txtNomeAzienda.setForeground(new Color(250, 250, 250));
+        panel.add(txtNomeAzienda, "w 60%");
 
-	private JPanel createAziendaPanel() {
-		
-		JPanel panel = new JPanel(new MigLayout("wrap", "push[center]push", "push[]10[]10[]10[]10[]push"));
-			
-		//txtNomeAzienda.setPrefixIcon(new ImageIcon("img/user.png"));
-		txtNomeAzienda.setHint("Nome Azienda");
-		txtNomeAzienda.setBackground(new Color(135, 143, 170));
-		txtNomeAzienda.setForeground(new Color(250, 250, 250));
-		panel.add(txtNomeAzienda, "w 60%");
+        txtPartitaIVA.setHint("Partita IVA");
+        txtPartitaIVA.setBackground(new Color(135, 143, 170));
+        txtPartitaIVA.setForeground(new Color(250, 250, 250));
+        panel.add(txtPartitaIVA, "w 60%");
 
-		//txtPartitaIVA.setPrefixIcon(new ImageIcon("img/piva.png"));
-		txtPartitaIVA.setHint("Partita IVA");
-		txtPartitaIVA.setBackground(new Color(135, 143, 170));
-		txtPartitaIVA.setForeground(new Color(250, 250, 250));
-		panel.add(txtPartitaIVA, "w 60%");
+        txtEmailAzienda.setHint("Email");
+        txtEmailAzienda.setBackground(new Color(135, 143, 170));
+        txtEmailAzienda.setForeground(new Color(250, 250, 250));
+        panel.add(txtEmailAzienda, "w 60%");
 
-		//txtEmailAzienda.setPrefixIcon(new ImageIcon("img/mail.png"));
-		txtEmailAzienda.setHint("Email");
-		txtEmailAzienda.setBackground(new Color(135, 143, 170));
-		txtEmailAzienda.setForeground(new Color(250, 250, 250));
-		panel.add(txtEmailAzienda, "w 60%");
+        txtPasswordAzienda.setHint("Password");
+        txtPasswordAzienda.setBackground(new Color(135, 143, 170));
+        txtPasswordAzienda.setForeground(new Color(250, 250, 250));
+        panel.add(txtPasswordAzienda, "w 60%");
+        txtPasswordAzienda.setToolTipText("<html>- Almeno 8 caratteri<br>- Almeno 1 maiuscolo ed 1 minuscolo<br>- Almeno un numero<br>- Almeno un carattere speciale<html>");
 
-		//txtPasswordAzienda.setPrefixIcon(new ImageIcon("img/pass.png"));
-		txtPasswordAzienda.setHint("Password");
-		txtPasswordAzienda.setBackground(new Color(135, 143, 170));
-		txtPasswordAzienda.setForeground(new Color(250, 250, 250));
-		panel.add(txtPasswordAzienda, "w 60%");
-		txtPasswordAzienda.setToolTipText("<html>- Almeno 8 caratteri<br>- Almeno 1 maiuscolo ed 1 minuscolo<br>- Almeno un numero<br>- Almeno un carattere speciale<html>");
+        cmdAzienda.setBackground(new Color(45, 64, 98));
+        cmdAzienda.setForeground(new Color(250, 250, 250));
+        cmdAzienda.setText("ISCRIVITI");
+        cmdAzienda.setEnabled(false);
+        panel.add(cmdAzienda, "w 40%, h 40");
 
-		cmdAzienda.setBackground(new Color(45, 64, 98));
-		cmdAzienda.setForeground(new Color(250, 250, 250));
-		cmdAzienda.setForeground(new Color(250, 250, 250));
-		cmdAzienda.setText("ISCRIVITI");
-		cmdAzienda.setEnabled(false);
-		panel.add(cmdAzienda, "w 40%, h 40");
+        ActionListener lAzienda = new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String email = txtEmailAzienda.getText();
+                String password = new String(txtPasswordAzienda.getPassword());
+                String nomeAzienda = txtNomeAzienda.getText();
+                String partitaIva = txtPartitaIVA.getText();
 
-		ActionListener lAzienda = new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String email = txtEmailAzienda.getText();
-				String password = new String(txtPasswordAzienda.getPassword());
-				String nomeAzienda = txtNomeAzienda.getText();
-				String partitaIva = txtPartitaIVA.getText();
+                if (Registration.registerUser(email, password, null, null, null, nomeAzienda, partitaIva)) {
+                    JOptionPane.showMessageDialog(PanelLoginAndRegister.this, "Registrazione completata.", "Registrazione", JOptionPane.INFORMATION_MESSAGE);
+                    txtEmailAzienda.setText("");
+                    txtPasswordAzienda.setText("");
+                    txtNomeAzienda.setText("");
+                    txtPartitaIVA.setText("");
 
-				if (Registration.registerUser(email, password, null, null, null, nomeAzienda, partitaIva)) {
-					// Registrazione riuscita, mostra un messaggio di conferma
-					JOptionPane.showMessageDialog(PanelLoginAndRegister.this, "Registrazione completata.",
-							"Registrazione", JOptionPane.INFORMATION_MESSAGE);
-					txtEmailAzienda.setText("");
-					txtPasswordAzienda.setText("");
-					txtNomeAzienda.setText("");
-					txtPartitaIVA.setText("");
-				} else {
-					// Registrazione fallita, mostra un messaggio di errore
-					JOptionPane.showMessageDialog(PanelLoginAndRegister.this, "Errore durante la registrazione.",
-							"Errore di registrazione", JOptionPane.ERROR_MESSAGE);
-				}
-			}
-		};
+                    // Passa al pannello di login e imposta l'email
+                    setEmailLogin(email);
+                    firePropertyChange("switchToLogin", false, true);
+                } else {
+                    JOptionPane.showMessageDialog(PanelLoginAndRegister.this, "Errore durante la registrazione.", "Errore di registrazione", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        };
 
-		cmdAzienda.addActionListener(lAzienda);
+        cmdAzienda.addActionListener(lAzienda);
 
-		return panel;
-	}
+        return panel;
+    }
 
-	private JPanel createPrivatoPanel() {
-		
-		JPanel panel = new JPanel(new MigLayout("wrap", "push[center]push", "push[]10[]10[]10[]10[]10[]push"));
+    private JPanel createPrivatoPanel() {
+        JPanel panel = new JPanel(new MigLayout("wrap", "push[center]push", "push[]10[]10[]10[]10[]10[]push"));
 
-		//txtNome.setPrefixIcon(new ImageIcon("img/user.png"));
-		txtNome.setBackground(new Color(135, 143, 170));
-		txtNome.setForeground(new Color(250, 250, 250));
-		txtNome.setHint("Nome");
-		panel.add(txtNome, "w 60%");
+        txtNome.setBackground(new Color(135, 143, 170));
+        txtNome.setForeground(new Color(250, 250, 250));
+        txtNome.setHint("Nome");
+        panel.add(txtNome, "w 60%");
 
-		//txtCognome.setPrefixIcon(new ImageIcon("img/user.png"));
-		txtCognome.setBackground(new Color(135, 143, 170));
-		txtCognome.setForeground(new Color(250, 250, 250));
-		txtCognome.setHint("Cognome");
-		panel.add(txtCognome, "w 60%");
+        txtCognome.setBackground(new Color(135, 143, 170));
+        txtCognome.setForeground(new Color(250, 250, 250));
+        txtCognome.setHint("Cognome");
+        panel.add(txtCognome, "w 60%");
 
-		// txtDataNascita.setPrefixIcon(new
-		// ImageIcon("img/date.png"));
-		txtDataNascita.setBackground(new Color(135, 143, 170));
-		txtDataNascita.setForeground(new Color(250, 250, 250));
-		txtDataNascita.setHint("Data di Nascita");
-		panel.add(txtDataNascita, "w 60%");
-		txtDataNascita.setToolTipText("Formato: GG/MM/AAAA");
+        txtDataNascita.setBackground(new Color(135, 143, 170));
+        txtDataNascita.setForeground(new Color(250, 250, 250));
+        txtDataNascita.setHint("Data di Nascita");
+        panel.add(txtDataNascita, "w 60%");
+        txtDataNascita.setToolTipText("Formato: GG/MM/AAAA");
 
-		//txtEmailPrivato.setPrefixIcon(new ImageIcon("img/mail.png"));
-		txtEmailPrivato.setBackground(new Color(135, 143, 170));
-		txtEmailPrivato.setForeground(new Color(250, 250, 250));
-		txtEmailPrivato.setHint("Email");
-		panel.add(txtEmailPrivato, "w 60%");
+        txtEmailPrivato.setBackground(new Color(135, 143, 170));
+        txtEmailPrivato.setForeground(new Color(250, 250, 250));
+        txtEmailPrivato.setHint("Email");
+        panel.add(txtEmailPrivato, "w 60%");
 
-		//txtPasswordPrivato.setPrefixIcon(new ImageIcon("img/pass.png"));
-		txtPasswordPrivato.setBackground(new Color(135, 143, 170));
-		txtPasswordPrivato.setForeground(new Color(250, 250, 250));
-		txtPasswordPrivato.setHint("Password");
-		panel.add(txtPasswordPrivato, "w 60%");
-		txtPasswordPrivato.setToolTipText("<html>- Almeno 8 caratteri<br>- Almeno 1 maiuscolo ed 1 minuscolo<br>- Almeno un numero<br>- Almeno un carattere speciale<html>");
+        txtPasswordPrivato.setBackground(new Color(135, 143, 170));
+        txtPasswordPrivato.setForeground(new Color(250, 250, 250));
+        txtPasswordPrivato.setHint("Password");
+        panel.add(txtPasswordPrivato, "w 60%");
+        txtPasswordPrivato.setToolTipText("<html>- Almeno 8 caratteri<br>- Almeno 1 maiuscolo ed 1 minuscolo<br>- Almeno un numero<br>- Almeno un carattere speciale<html>");
 
-		cmdPrivato.setBackground(new Color(45, 64, 98));
-		cmdPrivato.setForeground(new Color(250, 250, 250));
-		cmdPrivato.setText("ISCRIVITI");
-		cmdPrivato.setEnabled(false);
-		panel.add(cmdPrivato, "w 40%, h 40");
+        cmdPrivato.setBackground(new Color(45, 64, 98));
+        cmdPrivato.setForeground(new Color(250, 250, 250));
+        cmdPrivato.setText("ISCRIVITI");
+        cmdPrivato.setEnabled(false);
+        panel.add(cmdPrivato, "w 40%, h 40");
 
-		ActionListener lPrivato = new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String email = txtEmailPrivato.getText();
-				String password = new String(txtPasswordPrivato.getPassword());
-				String nome = txtNome.getText();
-				String cognome = txtCognome.getText();
-				String dataNascita = txtDataNascita.getText();
+        ActionListener lPrivato = new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String email = txtEmailPrivato.getText();
+                String password = new String(txtPasswordPrivato.getPassword());
+                String nome = txtNome.getText();
+                String cognome = txtCognome.getText();
+                String dataNascita = txtDataNascita.getText();
 
-				if (Registration.registerUser(email, password, nome, cognome, dataNascita, null, null)) {
-					// Registrazione riuscita, mostra un messaggio di conferma
-					JOptionPane.showMessageDialog(PanelLoginAndRegister.this, "Registrazione completata.",
-							"Registrazione", JOptionPane.INFORMATION_MESSAGE);
-					txtEmailPrivato.setText("");
-					txtPasswordPrivato.setText("");
-					txtNome.setText("");
-					txtCognome.setText("");
-					txtDataNascita.setText("");
-				} else {
-					// Registrazione fallita, mostra un messaggio di errore
-					JOptionPane.showMessageDialog(PanelLoginAndRegister.this, "Errore durante la registrazione.",
-							"Errore di registrazione", JOptionPane.ERROR_MESSAGE);
-				}
-			}
-		};
+                if (Registration.registerUser(email, password, nome, cognome, dataNascita, null, null)) {
+                    JOptionPane.showMessageDialog(PanelLoginAndRegister.this, "Registrazione completata.", "Registrazione", JOptionPane.INFORMATION_MESSAGE);
+                    txtEmailPrivato.setText("");
+                    txtPasswordPrivato.setText("");
+                    txtNome.setText("");
+                    txtCognome.setText("");
+                    txtDataNascita.setText("");
 
-		cmdPrivato.addActionListener(lPrivato);
+                    // Passa al pannello di login e imposta l'email
+                    setEmailLogin(email);
+                    firePropertyChange("switchToLogin", false, true);
+                } else {
+                    JOptionPane.showMessageDialog(PanelLoginAndRegister.this, "Errore durante la registrazione.", "Errore di registrazione", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        };
 
-		return panel;
-	}
+        cmdPrivato.addActionListener(lPrivato);
 
+        return panel;
+    }
 
-    
-	private void initLogin() {
+    private void initLogin() {
         login.setLayout(new MigLayout("wrap", "push[center]push", "push[]25[]10[]10[]25[]push"));
         JLabel label = new JLabel("Accedi");
         label.setFont(new Font("sansserif", 1, 30));
         label.setForeground(new Color(45, 64, 98));
         login.add(label);
 
-        MyTextField txtEmail = new MyTextField();
-        //txtEmail.setPrefixIcon(new ImageIcon("img/mail.png"));
-        txtEmail.setHint("Email");
-        txtEmail.setBackground(new Color(135, 143, 170));
-        txtEmail.setForeground(new Color(250, 250, 250));
-        login.add(txtEmail, "w 60%");
+        txtEmailLogin.setHint("Email");
+        txtEmailLogin.setBackground(new Color(135, 143, 170));
+        txtEmailLogin.setForeground(new Color(250, 250, 250));
+        login.add(txtEmailLogin, "w 60%");
 
-        MyPasswordField txtPass = new MyPasswordField();
-        //txtPass.setPrefixIcon(new ImageIcon("img/pass.png"));
-        txtPass.setHint("Password");
-        txtPass.setBackground(new Color(135, 143, 170));
-        txtPass.setForeground(new Color(250, 250, 250));
-        login.add(txtPass, "w 60%");
+        txtPasswordLogin.setHint("Password");
+        txtPasswordLogin.setBackground(new Color(135, 143, 170));
+        txtPasswordLogin.setForeground(new Color(250, 250, 250));
+        login.add(txtPasswordLogin, "w 60%");
 
         JButton cmdForget = new JButton("Hai dimenticato la password?");
         cmdForget.setForeground(new Color(100, 100, 100));
@@ -331,35 +292,29 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         cmd.setForeground(new Color(250, 250, 250));
         cmd.setText("ACCEDI");
         login.add(cmd, "w 40%, h 40");
-        
-        
+
         cmd.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String email = txtEmail.getText();
-                String password = new String(txtPass.getPassword());
+                String email = txtEmailLogin.getText();
+                String password = new String(txtPasswordLogin.getPassword());
                 Utente user = Utente.getUserByEmailAndPassword(email, password);
                 if (user != null) {
-                    // Pulisci form di login
-                	txtEmail.setText("");
-                	txtPass.setText("");
-
-                    // Salva l'utente loggato come singleton
+                    txtEmailLogin.setText("");
+                    txtPasswordLogin.setText("");
                     HomePage.loggedUser = user;
-                    // Login riuscito, apri la pagina principale
                     HomePage.logged = true;
                     HomePage.btnLogout.setVisible(true);
                     SearchPage.mostraVeicoli();
                     HomePage.aggiornaMessaggioBenvenuto();
                     HomePage.cardLayout.show(HomePage.mainContentPanel, "home");
                 } else {
-                    // Login fallito, mostra un messaggio di errore
                     JOptionPane.showMessageDialog(PanelLoginAndRegister.this, "Credenziali errate.", "Errore di accesso", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
     }
 
-	public void showRegister(boolean show) {
+    public void showRegister(boolean show) {
         if (show) {
             register.setVisible(true);
             login.setVisible(false);
@@ -369,10 +324,8 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         }
     }
 
-	
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
         login = new javax.swing.JPanel();
         register = new javax.swing.JPanel();
 
@@ -409,8 +362,8 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         add(register, "card2");
     }// </editor-fold>//GEN-END:initComponents
 
-	// Variables declaration - do not modify//GEN-BEGIN:variables
-	private javax.swing.JPanel login;
-	private javax.swing.JPanel register;
-	// End of variables declaration//GEN-END:variables
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel login;
+    private javax.swing.JPanel register;
+    // End of variables declaration//GEN-END:variables
 }

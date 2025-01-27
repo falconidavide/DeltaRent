@@ -7,6 +7,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
@@ -27,12 +29,11 @@ public class LogIn extends JPanel {
     private final double coverSize = 40;
     private final double loginSize = 60;
     private JLayeredPane bg;
-    
+    private Animator animator;
+
     public LogIn() {
         initComponents();
         init();
-        
-        
     }
 
     private void initComponents() {
@@ -48,6 +49,17 @@ public class LogIn extends JPanel {
         layout = new MigLayout("fill, insets 0");
         cover = new PanelCover();
         loginAndRegister = new PanelLoginAndRegister();
+        
+        // Add PropertyChangeListener to listen for the "switchToLogin" event
+        loginAndRegister.addPropertyChangeListener("switchToLogin", new PropertyChangeListener() {
+            @Override
+            public void propertyChange(PropertyChangeEvent evt) {
+                if (!animator.isRunning()) {
+                    animator.start();
+                }
+            }
+        });
+
         TimingTarget target = new TimingTargetAdapter() {
             @Override
             public void timingEvent(float fraction) {
@@ -91,7 +103,7 @@ public class LogIn extends JPanel {
                 isLogin = !isLogin;
             }
         };
-        Animator animator = new Animator(800, target);
+        animator = new Animator(800, target);
         animator.setAcceleration(0.5f);
         animator.setDeceleration(0.5f);
         animator.setResolution(0);  //  for smooth animation
