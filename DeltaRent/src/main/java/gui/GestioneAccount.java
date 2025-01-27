@@ -275,9 +275,13 @@ public class GestioneAccount extends JPanel {
                 } else {
                     JOptionPane.showMessageDialog(this, "Errore durante l'aggiornamento dell'email.", "Errore", JOptionPane.ERROR_MESSAGE);
                 }
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-                JOptionPane.showMessageDialog(this, "Errore nel database.", "Errore", JOptionPane.ERROR_MESSAGE);
+            } 
+            catch (SQLException ex) {
+            	if (ex.getMessage().contains("UNIQUE") || ex.getMessage().contains("PRIMARY KEY")) {
+            		JOptionPane.showMessageDialog(this, "Email già registrata.", "Errore", JOptionPane.ERROR_MESSAGE);
+                } else {
+                	JOptionPane.showMessageDialog(this, "Errore nel database." + ex.getMessage(), "Errore", JOptionPane.ERROR_MESSAGE);
+                }
             }
         }
     }
