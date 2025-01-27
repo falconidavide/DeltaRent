@@ -43,7 +43,7 @@ public class HomePage extends JFrame {
         JButton btnViewBookings = createTransparentButton("Prenotazioni");
 
         JButton btnProfile = createTransparentButton("");
-        ImageIcon userIcon = new ImageIcon(new ImageIcon("img/userIcon.png").getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH));
+        ImageIcon userIcon = new ImageIcon(new ImageIcon("img/profilowhite.png").getImage().getScaledInstance(30, 30, Image.SCALE_SMOOTH));
         btnProfile.setIcon(userIcon);
 
         // Pulsante di logout
@@ -59,7 +59,7 @@ public class HomePage extends JFrame {
         });
 
         // Aggiunta dei pulsanti
-        leftColumn.add(Box.createRigidArea(new Dimension(0, 40)));
+        leftColumn.add(Box.createRigidArea(new Dimension(0, 20)));
         leftColumn.add(btnDeltaRent);
         leftColumn.add(Box.createRigidArea(new Dimension(0, 20))); // Spaziatura
         leftColumn.add(btnRentCar);
