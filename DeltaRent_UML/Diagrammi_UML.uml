@@ -196,6 +196,13 @@
       <ownedEnd xmi:type="uml:Property" xmi:id="_A4Ri4rfrEe-d56vvJoR4og" name="venire riconsegnato" type="__ZFBALfqEe-d56vvJoR4og" association="_A4Q70LfrEe-d56vvJoR4og"/>
       <ownedEnd xmi:type="uml:Property" xmi:id="_A4Ri47frEe-d56vvJoR4og" name="veicolo" type="_K3AHwLfpEe-d56vvJoR4og" association="_A4Q70LfrEe-d56vvJoR4og"/>
     </packagedElement>
+    <packagedElement xmi:type="uml:Association" xmi:id="_0_NDQN1yEe-brNypAPaS0g" memberEnd="_0_PfgN1yEe-brNypAPaS0g _0_QGkN1yEe-brNypAPaS0g">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_0_O4cN1yEe-brNypAPaS0g" source="org.eclipse.papyrus">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_0_O4cd1yEe-brNypAPaS0g" key="nature" value="UML_Nature"/>
+      </eAnnotations>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_0_PfgN1yEe-brNypAPaS0g" name="esplora flotta" type="_y-Xz8N1yEe-brNypAPaS0g" association="_0_NDQN1yEe-brNypAPaS0g"/>
+      <ownedEnd xmi:type="uml:Property" xmi:id="_0_QGkN1yEe-brNypAPaS0g" name="utente" type="_iutZMLfoEe-d56vvJoR4og" association="_0_NDQN1yEe-brNypAPaS0g"/>
+    </packagedElement>
   </packagedElement>
   <packagedElement xmi:type="uml:Model" xmi:id="_oiVn4LfsEe-d56vvJoR4og" name="State Machine Diagram">
     <packagedElement xmi:type="uml:StateMachine" xmi:id="_s6c3oLfsEe-d56vvJoR4og" name="DeltaRent">
@@ -384,13 +391,6 @@
       <message xmi:type="uml:Message" xmi:id="_j92W4N15Ee-ROcTa9md9gA" name="Inserisci prenotazione" receiveEvent="_j9298d15Ee-ROcTa9md9gA" sendEvent="_j9298N15Ee-ROcTa9md9gA"/>
       <message xmi:type="uml:Message" xmi:id="_j-Tp4N15Ee-ROcTa9md9gA" messageSort="reply" receiveEvent="_j-UQ8d15Ee-ROcTa9md9gA" sendEvent="_j-UQ8N15Ee-ROcTa9md9gA"/>
     </packagedElement>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_0_NDQN1yEe-brNypAPaS0g" memberEnd="_0_PfgN1yEe-brNypAPaS0g _0_QGkN1yEe-brNypAPaS0g">
-    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_0_O4cN1yEe-brNypAPaS0g" source="org.eclipse.papyrus">
-      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_0_O4cd1yEe-brNypAPaS0g" key="nature" value="UML_Nature"/>
-    </eAnnotations>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_0_PfgN1yEe-brNypAPaS0g" name="esplora flotta" type="_y-Xz8N1yEe-brNypAPaS0g" association="_0_NDQN1yEe-brNypAPaS0g"/>
-    <ownedEnd xmi:type="uml:Property" xmi:id="_0_QGkN1yEe-brNypAPaS0g" name="utente" type="_iutZMLfoEe-d56vvJoR4og" association="_0_NDQN1yEe-brNypAPaS0g"/>
   </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_-O6CALfsEe-d56vvJoR4og">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_-PAvsLfsEe-d56vvJoR4og" source="http://www.eclipse.org/uml2/2.0.0/UML">
