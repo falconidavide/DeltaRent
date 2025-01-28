@@ -63,7 +63,7 @@ public class GestioneAccount extends JPanel {
 
         JPanel userPanel = new JPanel(new GridBagLayout());
         userPanel.setBackground(new Color(32, 52, 85));
-        userPanel.setBorder(new LineBorder(new Color(236, 240, 241), 2, true));
+        //userPanel.setBorder(new LineBorder(new Color(236, 240, 241), 2, true));
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(10, 20, 10, 20); // Aumenta gli spazi interni

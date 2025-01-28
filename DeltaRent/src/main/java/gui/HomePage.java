@@ -36,7 +36,10 @@ public class HomePage extends JFrame {
         // Colonna sinistra con sfondo a gradiente
         JPanel leftColumn = new GradientPanel(new Color(28, 51, 84), new Color(141, 148, 176));
         leftColumn.setLayout(new BoxLayout(leftColumn, BoxLayout.Y_AXIS));
-        leftColumn.setBorder(BorderFactory.createLineBorder(new Color(216, 195, 182), 0, true));
+        leftColumn.setBorder(BorderFactory.createCompoundBorder(
+        	    BorderFactory.createLineBorder(new Color(216, 195, 182), 0, true),
+        	    BorderFactory.createEmptyBorder(0, 20, 0, 20) // Margine di 20 pixel a destra
+        	));
 
         JButton btnDeltaRent = createTransparentButton("DeltaRent");
         JButton btnRentCar = createTransparentButton("Noleggia");

@@ -42,14 +42,16 @@ public class Button extends JButton {
         addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent me) {
-                targetSize = Math.max(getWidth(), getHeight()) * 2;
-                animatSize = 0;
-                pressedPoint = me.getPoint();
-                alpha = 0.5f;
-                if (animator.isRunning()) {
-                    animator.stop();
-                }
-                animator.start();
+            	if(isEnabled()) {
+                    targetSize = Math.max(getWidth(), getHeight()) * 2;
+                    animatSize = 0;
+                    pressedPoint = me.getPoint();
+                    alpha = 0.5f;
+                    if (animator.isRunning()) {
+                        animator.stop();
+                    }
+                    animator.start();
+            	}
             }
         });
         TimingTarget target = new TimingTargetAdapter() {
