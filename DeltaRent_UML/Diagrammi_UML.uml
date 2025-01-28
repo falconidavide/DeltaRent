@@ -386,10 +386,27 @@
     </packagedElement>
   </packagedElement>
   <packagedElement xmi:type="uml:Model" xmi:id="_BAebwN1-Ee-t6qO0T4bg7g" name="Communication Diagram">
-    <packagedElement xmi:type="uml:Interaction" xmi:id="_ZINl4N2AEe-hHuJkSIwFHg" name="Interaction1">
-      <lifeline xmi:type="uml:Lifeline" xmi:id="_bKIaUN2AEe-hHuJkSIwFHg" name="Utente"/>
-      <lifeline xmi:type="uml:Lifeline" xmi:id="_bwTpgN2AEe-hHuJkSIwFHg" name="Sistema DeltaRent"/>
-      <lifeline xmi:type="uml:Lifeline" xmi:id="_chZIMN2AEe-hHuJkSIwFHg" name="Database DeltaRent"/>
+    <packagedElement xmi:type="uml:Interaction" xmi:id="_ZINl4N2AEe-hHuJkSIwFHg" name="DeltaRent">
+      <lifeline xmi:type="uml:Lifeline" xmi:id="_bKIaUN2AEe-hHuJkSIwFHg" name="Utente" coveredBy="_xCt3MN2AEe-hHuJkSIwFHg _3puAYd2AEe-hHuJkSIwFHg _iJXA0N2BEe-GcqJscFqcWg"/>
+      <lifeline xmi:type="uml:Lifeline" xmi:id="_bwTpgN2AEe-hHuJkSIwFHg" name="Sistema DeltaRent" coveredBy="_xCt3Md2AEe-hHuJkSIwFHg _0lfaYN2AEe-hHuJkSIwFHg _3puncN2AEe-hHuJkSIwFHg _iJXn4N2BEe-GcqJscFqcWg"/>
+      <lifeline xmi:type="uml:Lifeline" xmi:id="_chZIMN2AEe-hHuJkSIwFHg" name="Database DeltaRent" coveredBy="_0lfaYd2AEe-hHuJkSIwFHg"/>
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_xCt3MN2AEe-hHuJkSIwFHg" name="Message4SendEvent" covered="_bKIaUN2AEe-hHuJkSIwFHg" message="_xCspEN2AEe-hHuJkSIwFHg"/>
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_xCt3Md2AEe-hHuJkSIwFHg" name="Message4ReceiveEvent" covered="_bwTpgN2AEe-hHuJkSIwFHg" message="_xCspEN2AEe-hHuJkSIwFHg"/>
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_0lfaYN2AEe-hHuJkSIwFHg" name="Message7SendEvent" covered="_bwTpgN2AEe-hHuJkSIwFHg" message="_0lezUN2AEe-hHuJkSIwFHg"/>
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_0lfaYd2AEe-hHuJkSIwFHg" name="Message7ReceiveEvent" covered="_chZIMN2AEe-hHuJkSIwFHg" message="_0lezUN2AEe-hHuJkSIwFHg"/>
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_3puAYd2AEe-hHuJkSIwFHg" name="Message10SendEvent" covered="_bKIaUN2AEe-hHuJkSIwFHg" message="_3puAYN2AEe-hHuJkSIwFHg"/>
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_3puncN2AEe-hHuJkSIwFHg" name="Message10ReceiveEvent" covered="_bwTpgN2AEe-hHuJkSIwFHg" message="_3puAYN2AEe-hHuJkSIwFHg"/>
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_iJXA0N2BEe-GcqJscFqcWg" name="Message14SendEvent" covered="_bKIaUN2AEe-hHuJkSIwFHg" message="_iJT9gN2BEe-GcqJscFqcWg"/>
+      <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_iJXn4N2BEe-GcqJscFqcWg" name="Message14ReceiveEvent" covered="_bwTpgN2AEe-hHuJkSIwFHg" message="_iJT9gN2BEe-GcqJscFqcWg"/>
+      <message xmi:type="uml:Message" xmi:id="_xCspEN2AEe-hHuJkSIwFHg" name="1: Login" messageSort="asynchCall" receiveEvent="_xCt3Md2AEe-hHuJkSIwFHg" sendEvent="_xCt3MN2AEe-hHuJkSIwFHg"/>
+      <message xmi:type="uml:Message" xmi:id="_0lezUN2AEe-hHuJkSIwFHg" name="1.1: Controllo credenziali" messageSort="asynchCall" receiveEvent="_0lfaYd2AEe-hHuJkSIwFHg" sendEvent="_0lfaYN2AEe-hHuJkSIwFHg"/>
+      <message xmi:type="uml:Message" xmi:id="_3puAYN2AEe-hHuJkSIwFHg" name="2: Visualizzazione veicoli" messageSort="asynchCall" receiveEvent="_3puncN2AEe-hHuJkSIwFHg" sendEvent="_3puAYd2AEe-hHuJkSIwFHg"/>
+      <message xmi:type="uml:Message" xmi:id="_-w3pQN2AEe-hHuJkSIwFHg"/>
+      <message xmi:type="uml:Message" xmi:id="_iJT9gN2BEe-GcqJscFqcWg" name="3: Richiesta prenotazione" messageSort="asynchCall" receiveEvent="_iJXn4N2BEe-GcqJscFqcWg" sendEvent="_iJXA0N2BEe-GcqJscFqcWg"/>
+      <message xmi:type="uml:Message" xmi:id="_zmPucN2BEe-EpauB1mQsTg" name="3.1: Controllo disponibilità"/>
+      <message xmi:type="uml:Message" xmi:id="_DOgcwN2CEe-EpauB1mQsTg" name="4: Prenota veicolo"/>
+      <message xmi:type="uml:Message" xmi:id="_Gfo2UN2CEe-EpauB1mQsTg" name="4.1: Inserisci prenotazione"/>
+      <message xmi:type="uml:Message" xmi:id="_MlWQUN2CEe-EpauB1mQsTg" name="4: Prenota veicolo"/>
     </packagedElement>
   </packagedElement>
   <packagedElement xmi:type="uml:Model" xmi:id="_H29LYN1-Ee-t6qO0T4bg7g" name="Activity Diagram">
