@@ -1664,9 +1664,4 @@
       <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_j-WGId15Ee-ROcTa9md9gA" id="(0.5,0.6621735467565291)"/>
     </edges>
   </notation:Diagram>
-  <notation:Diagram xmi:id="_yQUTwN11Ee-brNypAPaS0g" type="PapyrusUMLSequenceDiagram" measurementUnit="Pixel">
-    <styles xmi:type="notation:StringValueStyle" xmi:id="_yQUTwd11Ee-brNypAPaS0g" name="diagram_compatibility_version" stringValue="1.4.0"/>
-    <styles xmi:type="notation:DiagramStyle" xmi:id="_yQUTwt11Ee-brNypAPaS0g"/>
-    <element xmi:type="uml:InteractionUse" href="Diagrammi_UML.uml#_rYdrIN11Ee-brNypAPaS0g"/>
-  </notation:Diagram>
 </xmi:XMI>
