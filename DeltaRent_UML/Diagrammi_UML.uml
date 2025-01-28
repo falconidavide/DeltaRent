@@ -494,7 +494,23 @@
     <packagedElement xmi:type="uml:Signal" xmi:id="_AigvkN2NEe-B1KYIBQv8Rw" name="Signal7"/>
     <packagedElement xmi:type="uml:Signal" xmi:id="_63db0N2NEe-B1KYIBQv8Rw" name="Signal8"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Model" xmi:id="_K9TRQN1-Ee-t6qO0T4bg7g" name="Component Diagram"/>
+  <packagedElement xmi:type="uml:Model" xmi:id="_K9TRQN1-Ee-t6qO0T4bg7g" name="Component Diagram">
+    <packagedElement xmi:type="uml:Component" xmi:id="_S1pQQN2vEe-mkbwKQrGBgA" name="DeltaRent">
+      <packagedElement xmi:type="uml:Component" xmi:id="_ZFv8YN2vEe-mkbwKQrGBgA" name="Disponibilità"/>
+      <packagedElement xmi:type="uml:Component" xmi:id="_rC9v4N2vEe-mkbwKQrGBgA" name="TotaleNoleggi"/>
+      <packagedElement xmi:type="uml:Component" xmi:id="_uMJuYN2vEe-mkbwKQrGBgA" name="Validatori"/>
+      <packagedElement xmi:type="uml:Component" xmi:id="_215LYN2vEe-mkbwKQrGBgA" name="LogIn">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_pSxvMN2wEe-mkbwKQrGBgA" aggregation="composite"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Component" xmi:id="_-tuqUN2vEe-mkbwKQrGBgA" name="DatabaseConnection"/>
+      <packagedElement xmi:type="uml:Component" xmi:id="_Cz840N2wEe-mkbwKQrGBgA" name="GestionePrenotazioni"/>
+      <packagedElement xmi:type="uml:Component" xmi:id="_FpfikN2wEe-mkbwKQrGBgA" name="GestoreVeicoli">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_wVwpwN2wEe-mkbwKQrGBgA" aggregation="composite"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Component" xmi:id="_HKFyoN2wEe-mkbwKQrGBgA" name="Prenota"/>
+      <packagedElement xmi:type="uml:Component" xmi:id="_IpX0EN2wEe-mkbwKQrGBgA" name="Registration"/>
+    </packagedElement>
+  </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_-O6CALfsEe-d56vvJoR4og">
     <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_-PAvsLfsEe-d56vvJoR4og" source="http://www.eclipse.org/uml2/2.0.0/UML">
       <references xmi:type="ecore:EPackage" href="pathmap://PAPYRUS_ACTIONLANGUAGE_PROFILE/ActionLanguage-Profile.profile.uml#_Kv8EIKFXEeS_KNX0nfvIVQ"/>
