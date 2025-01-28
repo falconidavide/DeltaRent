@@ -19,7 +19,7 @@ public class GestoreVeicoli {
 		public static List<Automobile> aggiornaListaAutomobili() {
 		    List<Automobile> automobili = new ArrayList<>();
 		    try {
-		        String query = "SELECT targa, marca, modello, prezzoOrario, pathImg, alimentazione, pathImgs, descrizione FROM Veicolo WHERE isFurgone=0";
+		        String query = "SELECT targa, marca, modello, prezzoOrario, pathImg, alimentazione, pathImgs FROM Veicolo WHERE isFurgone=0";
 		        try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(query)) {
 		            while (rs.next()) {
 		                String targa = rs.getString("targa");
@@ -28,11 +28,10 @@ public class GestoreVeicoli {
 		                int prezzoOrario = rs.getInt("prezzoOrario");
 		                String pathImg = rs.getString("pathImg");
 		                String alimentazione = rs.getString("alimentazione");
-		                String descrizione = rs.getString("descrizione");
 		                String pathImgsString = rs.getString("pathImgs");
 		                String[] pathImgs = pathImgsString != null ? pathImgsString.split("\\n") : new String[0];
 
-		                Automobile auto = new Automobile(targa, marca, modello, prezzoOrario, pathImg, alimentazione, pathImgs, descrizione);
+		                Automobile auto = new Automobile(targa, marca, modello, prezzoOrario, pathImg, alimentazione, pathImgs);
 		                automobili.add(auto);
 		            }
 		        }
@@ -46,7 +45,7 @@ public class GestoreVeicoli {
 
 	public static List<Furgone> aggiornaListaFurgoni() {
 		try {
-			String query = "SELECT targa, marca, modello, prezzoGiornaliero, pathImg, alimentazione, pathImgs, descrizione FROM Veicolo WHERE isFurgone=1";
+			String query = "SELECT targa, marca, modello, prezzoGiornaliero, pathImg, alimentazione, pathImgs FROM Veicolo WHERE isFurgone=1";
 			try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(query)) {
 				while (rs.next()) {
 					String targa = rs.getString("targa");
@@ -55,11 +54,10 @@ public class GestoreVeicoli {
 					int prezzoGiornaliero = rs.getInt("prezzoGiornaliero");
 					String pathImg = rs.getString("pathImg");
 					String alimentazione = rs.getString("alimentazione");
-					String descrizione = rs.getString("descrizione");
 	                String pathImgsString = rs.getString("pathImgs");
 	                String[] pathImgs = pathImgsString != null ? pathImgsString.split("\\n") : new String[0];
 
-					Furgone furgone = new Furgone(targa, marca, modello, prezzoGiornaliero, pathImg, alimentazione, pathImgs, descrizione);
+					Furgone furgone = new Furgone(targa, marca, modello, prezzoGiornaliero, pathImg, alimentazione, pathImgs);
 					furgoni.add(furgone);
 				}
 			}

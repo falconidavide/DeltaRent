@@ -4,8 +4,8 @@ public class Furgone extends Veicolo {
 
 	private int prezzoGiornaliero;
 
-	public Furgone(String targa, String marca, String modello, int prezzoG, String pathImg, String alimentazione, String[] pathImgs, String descrizione) {
-		super(targa, marca, modello, pathImg, alimentazione, pathImgs, descrizione);
+	public Furgone(String targa, String marca, String modello, int prezzoG, String pathImg, String alimentazione, String[] pathImgs) {
+		super(targa, marca, modello, pathImg, alimentazione, pathImgs);
 		this.prezzoGiornaliero = prezzoG;
 	}
 
