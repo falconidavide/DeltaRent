@@ -415,6 +415,7 @@ public class DettagliVeicoloPage extends JPanel {
 		btnDisponibile.setFont(new Font("sansserif", 1, 25));
 		btnDisponibile.setHorizontalAlignment(SwingConstants.CENTER);
 		btnDisponibile.setEnabled(false);
+		btnDisponibile.setFocusPainted(false);
 
 		gbc.gridx = 0;
 		gbc.gridy = 0;
@@ -435,6 +436,7 @@ public class DettagliVeicoloPage extends JPanel {
 		btnPrezzoTotale.setFont(new Font("sansserif", 1, 25));
 		btnPrezzoTotale.setHorizontalAlignment(SwingConstants.CENTER);
 		btnPrezzoTotale.setEnabled(false);
+		btnPrezzoTotale.setFocusPainted(false);
 
 		gbc.insets = new Insets(0, 10, 15, 10); // Resetta gli insets per gli altri componenti
 		gbc.gridy = 1;
@@ -448,6 +450,7 @@ public class DettagliVeicoloPage extends JPanel {
 		btnNoleggia.setMinimumSize(new Dimension(350, 45));
 		btnNoleggia.setForeground(new Color(245, 245, 245));
 		btnNoleggia.setFont(new Font("sansserif", 1, 25));
+		btnNoleggia.setFocusPainted(false);
 		gbc.gridy = 2;
 		gbc.fill = GridBagConstraints.NONE; // Imposta il fill a NONE per il pulsante
 		gbc.anchor = GridBagConstraints.CENTER;

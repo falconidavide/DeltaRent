@@ -35,6 +35,7 @@ public class Button extends JButton {
     private Color effectColor = new Color(255, 255, 255);
 
     public Button() {
+    	setFocusPainted(false);
         setContentAreaFilled(false);
         setBorder(new EmptyBorder(5, 0, 5, 0));
         setBackground(Color.WHITE);

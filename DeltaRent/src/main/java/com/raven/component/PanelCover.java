@@ -49,7 +49,8 @@ public class PanelCover extends javax.swing.JPanel {
         button = new ButtonOutLine();
         button.setBackground(new Color(255, 255, 255));
         button.setForeground(new Color(255, 255, 255));
-        button.setText("SIGN IN");
+        button.setText("Login");
+        button.setFocusPainted(false);
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {

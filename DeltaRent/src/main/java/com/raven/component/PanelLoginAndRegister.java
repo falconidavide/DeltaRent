@@ -145,6 +145,7 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         txtNomeAzienda.setHint("Nome Azienda");
         txtNomeAzienda.setBackground(new Color(135, 143, 170));
         txtNomeAzienda.setForeground(new Color(250, 250, 250));
+        
         panel.add(txtNomeAzienda, "w 60%");
 
         txtPartitaIVA.setHint("Partita IVA");

@@ -175,6 +175,9 @@ public class GestioneAccount extends JPanel {
         btnUpdateEmail.setBorder(new RoundedBorder(10));
         btnUpdateEmail.addActionListener(e -> updateEmail());
         btnUpdateEmail.setEnabled(false);
+        btnUpdateEmail.setBorder(null);
+        btnUpdateEmail.setPreferredSize(new Dimension(150, 25));
+        
         gbc.gridx = 1;
         gbc.gridy = 2;
         emailPanel.add(btnUpdateEmail, gbc);
@@ -229,6 +232,8 @@ public class GestioneAccount extends JPanel {
         btnChangePassword.setFocusPainted(false);
         btnChangePassword.setBorder(new RoundedBorder(10));
         btnChangePassword.setEnabled(false);
+        btnChangePassword.setBorder(null);
+        btnChangePassword.setPreferredSize(new Dimension(150, 25));
         btnChangePassword.addActionListener(e -> changePassword());
         gbc.gridx = 1;
         gbc.gridy = 2;
