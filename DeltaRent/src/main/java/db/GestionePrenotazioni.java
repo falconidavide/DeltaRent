@@ -54,12 +54,11 @@ public class GestionePrenotazioni {
 					int prezzoOrario = rs2.getInt("prezzoOrario");
 					String pathImg = rs2.getString("pathImg");
 					String alimentazione = rs2.getString("alimentazione");
-				    String descrizione = rs2.getString("descrizione");
 
 		                // Leggi e processa il campo pathImgs
 		            String pathImgsString = rs2.getString("pathImgs");
 		            String[] pathImgs = pathImgsString != null ? pathImgsString.split("\\n") : new String[0];
-					auto = new Automobile(targa2, marca, modello, prezzoOrario, pathImg, alimentazione,pathImgs,descrizione);
+					auto = new Automobile(targa2, marca, modello, prezzoOrario, pathImg, alimentazione,pathImgs);
 
 				}
 				Prenotazione prenotazione = new Prenotazione(id, inizioPrenotazione, finePrenotazione, HomePage.loggedUser, auto, dataPrenotazione, prezzo);
@@ -156,12 +155,11 @@ public class GestionePrenotazioni {
 					int prezzoOrario = rs2.getInt("prezzoOrario");
 					String pathImg = rs2.getString("pathImg");
 					String alimentazione = rs2.getString("alimentazione");
-				    String descrizione = rs2.getString("descrizione");
 
 		                // Leggi e processa il campo pathImgs
 		            String pathImgsString = rs2.getString("pathImgs");
 		            String[] pathImgs = pathImgsString != null ? pathImgsString.split("\\n") : new String[0];
-					auto = new Automobile(targa2, marca, modello, prezzoOrario, pathImg, alimentazione,pathImgs,descrizione);
+					auto = new Automobile(targa2, marca, modello, prezzoOrario, pathImg, alimentazione,pathImgs);
 
 				}
 				Prenotazione prenotazione = new Prenotazione(id, inizioPrenotazione, finePrenotazione, HomePage.loggedUser, auto, dataPrenotazione, prezzo);
