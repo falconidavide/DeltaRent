@@ -420,22 +420,79 @@
     </packagedElement>
   </packagedElement>
   <packagedElement xmi:type="uml:Model" xmi:id="_H29LYN1-Ee-t6qO0T4bg7g" name="Activity Diagram">
-    <packagedElement xmi:type="uml:Activity" xmi:id="_JIS3cN1-Ee-t6qO0T4bg7g" name="DeltaRent" node="_KPS3kN2FEe-CQtM0Fp4C1w _oc4QgN2FEe-CQtM0Fp4C1w _bjft0N2GEe-CQtM0Fp4C1w _trDJEN2GEe-CQtM0Fp4C1w _wB_LQN2GEe-CQtM0Fp4C1w _59ytEN2GEe-CQtM0Fp4C1w _8UoooN2GEe-CQtM0Fp4C1w">
-      <edge xmi:type="uml:ControlFlow" xmi:id="_jvvWgN2GEe-CQtM0Fp4C1w" target="_bjft0N2GEe-CQtM0Fp4C1w" source="_oc4QgN2FEe-CQtM0Fp4C1w"/>
+    <packagedElement xmi:type="uml:Activity" xmi:id="_JIS3cN1-Ee-t6qO0T4bg7g" name="DeltaRent" node="_KPS3kN2FEe-CQtM0Fp4C1w _oc4QgN2FEe-CQtM0Fp4C1w _bjft0N2GEe-CQtM0Fp4C1w _trDJEN2GEe-CQtM0Fp4C1w _wB_LQN2GEe-CQtM0Fp4C1w _8UoooN2GEe-CQtM0Fp4C1w _OU03oN2HEe-CQtM0Fp4C1w _VDfvEN2HEe-CQtM0Fp4C1w _iwr30N2HEe-CQtM0Fp4C1w _pBMMkN2HEe-CQtM0Fp4C1w _3J6awN2HEe-CQtM0Fp4C1w _D3Yy8N2IEe-CQtM0Fp4C1w _Oh504N2IEe-CQtM0Fp4C1w _zBohUN2IEe-CQtM0Fp4C1w _1zryMN2IEe-CQtM0Fp4C1w _4OtDIN2IEe-CQtM0Fp4C1w _CmO3oN2JEe-CQtM0Fp4C1w _Qq4eIN2JEe-CQtM0Fp4C1w _RyqlkN2JEe-CQtM0Fp4C1w _59ytEN2GEe-CQtM0Fp4C1w _zD9VMN2LEe-CQtM0Fp4C1w _6n19YN2LEe-CQtM0Fp4C1w _wh2vYN2MEe-B1KYIBQv8Rw _2kuQwN2MEe-B1KYIBQv8Rw _7LV2kN2MEe-B1KYIBQv8Rw _ATUdAN2NEe-B1KYIBQv8Rw _Ih7dMN2NEe-B1KYIBQv8Rw _a9W2sN2NEe-B1KYIBQv8Rw _wOAw4N2NEe-B1KYIBQv8Rw _zoEc8N2NEe-B1KYIBQv8Rw _3_a3sN2NEe-B1KYIBQv8Rw _6uOnUN2NEe-B1KYIBQv8Rw _XxgwUN2OEe-B1KYIBQv8Rw _bSBpsN2OEe-B1KYIBQv8Rw">
+      <edge xmi:type="uml:ControlFlow" xmi:id="_jvvWgN2GEe-CQtM0Fp4C1w" target="_wh2vYN2MEe-B1KYIBQv8Rw" source="_oc4QgN2FEe-CQtM0Fp4C1w"/>
       <edge xmi:type="uml:ControlFlow" xmi:id="_r5cokN2GEe-CQtM0Fp4C1w" target="_oc4QgN2FEe-CQtM0Fp4C1w" source="_KPS3kN2FEe-CQtM0Fp4C1w"/>
       <edge xmi:type="uml:ControlFlow" xmi:id="_3wcEsN2GEe-CQtM0Fp4C1w" target="_wB_LQN2GEe-CQtM0Fp4C1w" source="_trDJEN2GEe-CQtM0Fp4C1w"/>
       <edge xmi:type="uml:ControlFlow" xmi:id="_ADF3YN2HEe-CQtM0Fp4C1w" name="[utente non loggato]" target="_8UoooN2GEe-CQtM0Fp4C1w" source="_wB_LQN2GEe-CQtM0Fp4C1w"/>
       <edge xmi:type="uml:ControlFlow" xmi:id="_BYLbAN2HEe-CQtM0Fp4C1w" name="[utente loggato]" target="_59ytEN2GEe-CQtM0Fp4C1w" source="_wB_LQN2GEe-CQtM0Fp4C1w"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_TD4nwN2HEe-CQtM0Fp4C1w" target="_OU03oN2HEe-CQtM0Fp4C1w" source="_8UoooN2GEe-CQtM0Fp4C1w"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_llL_wN2HEe-CQtM0Fp4C1w" target="_iwr30N2HEe-CQtM0Fp4C1w" source="_VDfvEN2HEe-CQtM0Fp4C1w"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_yE3zkN2HEe-CQtM0Fp4C1w" name="[informazioni valide]" target="_pBMMkN2HEe-CQtM0Fp4C1w" source="_iwr30N2HEe-CQtM0Fp4C1w"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_6GaBEN2HEe-CQtM0Fp4C1w" name="[informazioni non valide]" target="_3J6awN2HEe-CQtM0Fp4C1w" source="_iwr30N2HEe-CQtM0Fp4C1w"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_QiJOUN2IEe-CQtM0Fp4C1w" target="_Oh504N2IEe-CQtM0Fp4C1w" source="_D3Yy8N2IEe-CQtM0Fp4C1w"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_0XYMQN2IEe-CQtM0Fp4C1w" target="_zBohUN2IEe-CQtM0Fp4C1w" source="_Oh504N2IEe-CQtM0Fp4C1w"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_3eS54N2IEe-CQtM0Fp4C1w" target="_1zryMN2IEe-CQtM0Fp4C1w" source="_zBohUN2IEe-CQtM0Fp4C1w"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_-mHRIN2IEe-CQtM0Fp4C1w" target="_4OtDIN2IEe-CQtM0Fp4C1w" source="_1zryMN2IEe-CQtM0Fp4C1w"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_FCYJ8N2JEe-CQtM0Fp4C1w" target="_CmO3oN2JEe-CQtM0Fp4C1w" source="_4OtDIN2IEe-CQtM0Fp4C1w"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_Tyd6IN2JEe-CQtM0Fp4C1w" name="[orari disponibili]" target="_Qq4eIN2JEe-CQtM0Fp4C1w" source="_CmO3oN2JEe-CQtM0Fp4C1w"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_UcIiMN2JEe-CQtM0Fp4C1w" name="[orari non disponibili]" target="_RyqlkN2JEe-CQtM0Fp4C1w" source="_CmO3oN2JEe-CQtM0Fp4C1w"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_1JBkQN2LEe-CQtM0Fp4C1w" target="_Ih7dMN2NEe-B1KYIBQv8Rw" source="_59ytEN2GEe-CQtM0Fp4C1w"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_9rYm4N2LEe-CQtM0Fp4C1w" target="_6n19YN2LEe-CQtM0Fp4C1w" source="_Qq4eIN2JEe-CQtM0Fp4C1w"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="__gegQN2LEe-CQtM0Fp4C1w" target="_6n19YN2LEe-CQtM0Fp4C1w" source="_RyqlkN2JEe-CQtM0Fp4C1w"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_A1hAkN2MEe-CQtM0Fp4C1w" target="_1zryMN2IEe-CQtM0Fp4C1w" source="_6n19YN2LEe-CQtM0Fp4C1w"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_zECYQN2MEe-B1KYIBQv8Rw" target="_bjft0N2GEe-CQtM0Fp4C1w" source="_wh2vYN2MEe-B1KYIBQv8Rw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_85KqUN2MEe-B1KYIBQv8Rw" target="_7LV2kN2MEe-B1KYIBQv8Rw" source="_2kuQwN2MEe-B1KYIBQv8Rw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_LKk6cN2NEe-B1KYIBQv8Rw" target="_a9W2sN2NEe-B1KYIBQv8Rw" source="_Ih7dMN2NEe-B1KYIBQv8Rw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_drzZ8N2NEe-B1KYIBQv8Rw" target="_zD9VMN2LEe-CQtM0Fp4C1w" source="_a9W2sN2NEe-B1KYIBQv8Rw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_1uL04N2NEe-B1KYIBQv8Rw" target="_zoEc8N2NEe-B1KYIBQv8Rw" source="_wOAw4N2NEe-B1KYIBQv8Rw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_5rW1EN2NEe-B1KYIBQv8Rw" target="_3_a3sN2NEe-B1KYIBQv8Rw" source="_zoEc8N2NEe-B1KYIBQv8Rw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_9Rw7EN2NEe-B1KYIBQv8Rw" target="_6uOnUN2NEe-B1KYIBQv8Rw" source="_3_a3sN2NEe-B1KYIBQv8Rw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_IPZtUN2OEe-B1KYIBQv8Rw" target="_ATUdAN2NEe-B1KYIBQv8Rw" source="_7LV2kN2MEe-B1KYIBQv8Rw"/>
+      <edge xmi:type="uml:ControlFlow" xmi:id="_dS6jYN2OEe-B1KYIBQv8Rw" target="_bSBpsN2OEe-B1KYIBQv8Rw" source="_XxgwUN2OEe-B1KYIBQv8Rw"/>
       <node xmi:type="uml:InitialNode" xmi:id="_KPS3kN2FEe-CQtM0Fp4C1w" name="" outgoing="_r5cokN2GEe-CQtM0Fp4C1w"/>
-      <node xmi:type="uml:OpaqueAction" xmi:id="_oc4QgN2FEe-CQtM0Fp4C1w" name="Avvia programma" incoming="_r5cokN2GEe-CQtM0Fp4C1w" outgoing="_jvvWgN2GEe-CQtM0Fp4C1w"/>
-      <node xmi:type="uml:SendSignalAction" xmi:id="_bjft0N2GEe-CQtM0Fp4C1w" name="Attenti pressione pulsante" incoming="_jvvWgN2GEe-CQtM0Fp4C1w" signal="_by6C0N2GEe-CQtM0Fp4C1w"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_oc4QgN2FEe-CQtM0Fp4C1w" name="Mostra schermata di caricamento" incoming="_r5cokN2GEe-CQtM0Fp4C1w" outgoing="_jvvWgN2GEe-CQtM0Fp4C1w"/>
+      <node xmi:type="uml:SendSignalAction" xmi:id="_bjft0N2GEe-CQtM0Fp4C1w" name="Attesa pressione pulsante" incoming="_zECYQN2MEe-B1KYIBQv8Rw" signal="_by6C0N2GEe-CQtM0Fp4C1w"/>
       <node xmi:type="uml:AcceptEventAction" xmi:id="_trDJEN2GEe-CQtM0Fp4C1w" name="Pressione pulsante utente" outgoing="_3wcEsN2GEe-CQtM0Fp4C1w"/>
       <node xmi:type="uml:DecisionNode" xmi:id="_wB_LQN2GEe-CQtM0Fp4C1w" name="" incoming="_3wcEsN2GEe-CQtM0Fp4C1w" outgoing="_ADF3YN2HEe-CQtM0Fp4C1w _BYLbAN2HEe-CQtM0Fp4C1w"/>
-      <node xmi:type="uml:OpaqueAction" xmi:id="_59ytEN2GEe-CQtM0Fp4C1w" name="Mostra gestione utente" incoming="_BYLbAN2HEe-CQtM0Fp4C1w"/>
-      <node xmi:type="uml:OpaqueAction" xmi:id="_8UoooN2GEe-CQtM0Fp4C1w" name="Mostra pagina registrazione" incoming="_ADF3YN2HEe-CQtM0Fp4C1w"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_59ytEN2GEe-CQtM0Fp4C1w" name="Mostra pagina gestione utente" incoming="_BYLbAN2HEe-CQtM0Fp4C1w" outgoing="_1JBkQN2LEe-CQtM0Fp4C1w"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_8UoooN2GEe-CQtM0Fp4C1w" name="Mostra pagina login/registrazione" incoming="_ADF3YN2HEe-CQtM0Fp4C1w" outgoing="_TD4nwN2HEe-CQtM0Fp4C1w"/>
+      <node xmi:type="uml:SendSignalAction" xmi:id="_OU03oN2HEe-CQtM0Fp4C1w" name="Attendi registrazione" incoming="_TD4nwN2HEe-CQtM0Fp4C1w" signal="_OdqDgN2HEe-CQtM0Fp4C1w"/>
+      <node xmi:type="uml:AcceptEventAction" xmi:id="_VDfvEN2HEe-CQtM0Fp4C1w" name="Richiesta registrazione" outgoing="_llL_wN2HEe-CQtM0Fp4C1w"/>
+      <node xmi:type="uml:DecisionNode" xmi:id="_iwr30N2HEe-CQtM0Fp4C1w" incoming="_llL_wN2HEe-CQtM0Fp4C1w" outgoing="_yE3zkN2HEe-CQtM0Fp4C1w _6GaBEN2HEe-CQtM0Fp4C1w"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_pBMMkN2HEe-CQtM0Fp4C1w" name="Effettua registrazione" incoming="_yE3zkN2HEe-CQtM0Fp4C1w"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_3J6awN2HEe-CQtM0Fp4C1w" name="Errore dati inseriti" incoming="_6GaBEN2HEe-CQtM0Fp4C1w"/>
+      <node xmi:type="uml:AcceptEventAction" xmi:id="_D3Yy8N2IEe-CQtM0Fp4C1w" name="Pressione pulsante noleggia" outgoing="_QiJOUN2IEe-CQtM0Fp4C1w"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_Oh504N2IEe-CQtM0Fp4C1w" name="Mostra flotta" incoming="_QiJOUN2IEe-CQtM0Fp4C1w" outgoing="_0XYMQN2IEe-CQtM0Fp4C1w"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_zBohUN2IEe-CQtM0Fp4C1w" name="Selezione veicolo" incoming="_0XYMQN2IEe-CQtM0Fp4C1w" outgoing="_3eS54N2IEe-CQtM0Fp4C1w"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_1zryMN2IEe-CQtM0Fp4C1w" name="Mostra dettagli veicolo" incoming="_3eS54N2IEe-CQtM0Fp4C1w _A1hAkN2MEe-CQtM0Fp4C1w" outgoing="_-mHRIN2IEe-CQtM0Fp4C1w"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_4OtDIN2IEe-CQtM0Fp4C1w" name="Seleziona data e orario" incoming="_-mHRIN2IEe-CQtM0Fp4C1w" outgoing="_FCYJ8N2JEe-CQtM0Fp4C1w"/>
+      <node xmi:type="uml:DecisionNode" xmi:id="_CmO3oN2JEe-CQtM0Fp4C1w" incoming="_FCYJ8N2JEe-CQtM0Fp4C1w" outgoing="_Tyd6IN2JEe-CQtM0Fp4C1w _UcIiMN2JEe-CQtM0Fp4C1w"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_Qq4eIN2JEe-CQtM0Fp4C1w" name="Prenota veicolo" incoming="_Tyd6IN2JEe-CQtM0Fp4C1w" outgoing="_9rYm4N2LEe-CQtM0Fp4C1w"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_RyqlkN2JEe-CQtM0Fp4C1w" name="Mostra errore" incoming="_UcIiMN2JEe-CQtM0Fp4C1w" outgoing="__gegQN2LEe-CQtM0Fp4C1w"/>
+      <node xmi:type="uml:SendSignalAction" xmi:id="_zD9VMN2LEe-CQtM0Fp4C1w" name="Attesa pressione pulsante" incoming="_drzZ8N2NEe-B1KYIBQv8Rw"/>
+      <node xmi:type="uml:MergeNode" xmi:id="_6n19YN2LEe-CQtM0Fp4C1w" incoming="_9rYm4N2LEe-CQtM0Fp4C1w __gegQN2LEe-CQtM0Fp4C1w" outgoing="_A1hAkN2MEe-CQtM0Fp4C1w"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_wh2vYN2MEe-B1KYIBQv8Rw" name="Mostra schermata home" incoming="_jvvWgN2GEe-CQtM0Fp4C1w" outgoing="_zECYQN2MEe-B1KYIBQv8Rw"/>
+      <node xmi:type="uml:AcceptEventAction" xmi:id="_2kuQwN2MEe-B1KYIBQv8Rw" name="Pressione pulsante DeltaRent" outgoing="_85KqUN2MEe-B1KYIBQv8Rw"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_7LV2kN2MEe-B1KYIBQv8Rw" name="Mostra schermata home" incoming="_85KqUN2MEe-B1KYIBQv8Rw" outgoing="_IPZtUN2OEe-B1KYIBQv8Rw"/>
+      <node xmi:type="uml:SendSignalAction" xmi:id="_ATUdAN2NEe-B1KYIBQv8Rw" name="Attesa pressione pulsante" incoming="_IPZtUN2OEe-B1KYIBQv8Rw" signal="_AigvkN2NEe-B1KYIBQv8Rw"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_Ih7dMN2NEe-B1KYIBQv8Rw" name="Mostra pulsante logout" incoming="_1JBkQN2LEe-CQtM0Fp4C1w" outgoing="_LKk6cN2NEe-B1KYIBQv8Rw"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_a9W2sN2NEe-B1KYIBQv8Rw" name="Mostra schermata home" incoming="_LKk6cN2NEe-B1KYIBQv8Rw" outgoing="_drzZ8N2NEe-B1KYIBQv8Rw"/>
+      <node xmi:type="uml:AcceptEventAction" xmi:id="_wOAw4N2NEe-B1KYIBQv8Rw" name="Pressione pulsante logout" outgoing="_1uL04N2NEe-B1KYIBQv8Rw"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_zoEc8N2NEe-B1KYIBQv8Rw" name="Effettua logout" incoming="_1uL04N2NEe-B1KYIBQv8Rw" outgoing="_5rW1EN2NEe-B1KYIBQv8Rw"/>
+      <node xmi:type="uml:OpaqueAction" xmi:id="_3_a3sN2NEe-B1KYIBQv8Rw" name="Mostra schermata login" incoming="_5rW1EN2NEe-B1KYIBQv8Rw" outgoing="_9Rw7EN2NEe-B1KYIBQv8Rw"/>
+      <node xmi:type="uml:SendSignalAction" xmi:id="_6uOnUN2NEe-B1KYIBQv8Rw" name="Attesa pressione pulsante" incoming="_9Rw7EN2NEe-B1KYIBQv8Rw" signal="_63db0N2NEe-B1KYIBQv8Rw"/>
+      <node xmi:type="uml:AcceptEventAction" xmi:id="_XxgwUN2OEe-B1KYIBQv8Rw" name="Chiusura programma" outgoing="_dS6jYN2OEe-B1KYIBQv8Rw"/>
+      <node xmi:type="uml:ActivityFinalNode" xmi:id="_bSBpsN2OEe-B1KYIBQv8Rw" incoming="_dS6jYN2OEe-B1KYIBQv8Rw"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Signal" xmi:id="_T2Wb8N2GEe-CQtM0Fp4C1w" name="Attendi pressione pulsanti"/>
     <packagedElement xmi:type="uml:Signal" xmi:id="_by6C0N2GEe-CQtM0Fp4C1w" name="Signal2"/>
+    <packagedElement xmi:type="uml:Signal" xmi:id="_OdqDgN2HEe-CQtM0Fp4C1w" name="Signal3"/>
+    <packagedElement xmi:type="uml:Signal" xmi:id="_pSo3AN2JEe-CQtM0Fp4C1w" name="Signal4"/>
+    <packagedElement xmi:type="uml:Signal" xmi:id="_sMcq0N2LEe-CQtM0Fp4C1w" name="Signal5"/>
+    <packagedElement xmi:type="uml:Signal" xmi:id="_ZrD90N2MEe-CQtM0Fp4C1w" name="Signal6"/>
+    <packagedElement xmi:type="uml:Signal" xmi:id="_AigvkN2NEe-B1KYIBQv8Rw" name="Signal7"/>
+    <packagedElement xmi:type="uml:Signal" xmi:id="_63db0N2NEe-B1KYIBQv8Rw" name="Signal8"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Model" xmi:id="_K9TRQN1-Ee-t6qO0T4bg7g" name="Component Diagram"/>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_-O6CALfsEe-d56vvJoR4og">
