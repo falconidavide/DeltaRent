@@ -280,13 +280,6 @@ public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
         txtPasswordLogin.setForeground(new Color(250, 250, 250));
         login.add(txtPasswordLogin, "w 60%");
 
-        JButton cmdForget = new JButton("Hai dimenticato la password?");
-        cmdForget.setForeground(new Color(100, 100, 100));
-        cmdForget.setFont(new Font("sansserif", 1, 12));
-        cmdForget.setContentAreaFilled(false);
-        cmdForget.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        login.add(cmdForget);
-
         Button cmd = new Button();
         cmd.setBackground(new Color(45, 64, 98));
         cmd.setForeground(new Color(250, 250, 250));
