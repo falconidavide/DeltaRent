@@ -14,8 +14,4 @@ public class Furgone extends Veicolo {
 		return prezzoGiornaliero;
 	}
 
-	public void setPrezzoGiornaliero(int prezzoGiornaliero) {
-		this.prezzoGiornaliero = prezzoGiornaliero;
-	}
-
 }
