@@ -41,7 +41,7 @@ La struttura organizzativa si basa su una struttura flat, in cui i membri hanno 
 &nbsp;
 ## 2. Design
 
-L'architettura del progetto DeltaRent è stata concepita seguendo un approccio modulare per garantire la manutenibilità e la scalabilità del sistema. Il design è suddiviso nei seguenti componenti principali:
+L'architettura del progetto DeltaRent è stata concepita seguendo un approccio a strati, per garantire la manutenibilità e la scalabilità del sistema. Il design è suddiviso nei seguenti componenti principali:
 
 1. **Front-end**
     - Il front-end è progettato per essere user-friendly, con un layout responsive e compatibile con diversi dispositivi.
