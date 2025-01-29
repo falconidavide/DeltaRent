@@ -362,27 +362,29 @@ public class DettagliVeicoloPage extends JPanel {
 		gbc.gridy = 2;
 		gbc.gridwidth = 1;
 
-		JLabel orainizio = new JLabel("Ora Inizio:");
-		orainizio.setFont(new Font("sansserif", 1, 18));
-		orainizio.setForeground(Color.WHITE);
-		datePanel.add(Box.createRigidArea(new Dimension(0, 75)), gbc);
-		datePanel.add(orainizio, gbc);
+		if(veicolo instanceof Automobile) {
+			JLabel orainizio = new JLabel("Ora Inizio:");
+			orainizio.setFont(new Font("sansserif", 1, 18));
+			orainizio.setForeground(Color.WHITE);
+			datePanel.add(Box.createRigidArea(new Dimension(0, 75)), gbc);
+			datePanel.add(orainizio, gbc);
 
-		gbc.gridx = 1;
-		gbc.gridy = 2;
-		datePanel.add(comboOraInizio, gbc);
+			gbc.gridx = 1;
+			gbc.gridy = 2;
+			datePanel.add(comboOraInizio, gbc);
 
-		gbc.gridx = 0;
-		gbc.gridy = 3;
+			gbc.gridx = 0;
+			gbc.gridy = 3;
 
-		JLabel orafine = new JLabel("Ora Fine:");
-		orafine.setFont(new Font("sansserif", 1, 18));
-		orafine.setForeground(Color.WHITE);
-		datePanel.add(orafine, gbc);
+			JLabel orafine = new JLabel("Ora Fine:");
+			orafine.setFont(new Font("sansserif", 1, 18));
+			orafine.setForeground(Color.WHITE);
+			datePanel.add(orafine, gbc);
 
-		gbc.gridx = 1;
-		gbc.gridy = 3;
-		datePanel.add(comboOraFine, gbc);
+			gbc.gridx = 1;
+			gbc.gridy = 3;
+			datePanel.add(comboOraFine, gbc);
+		}
 
 		// Listener per aggiornare il prezzo totale in diretta
 		dateChooser.addActionDateChooserListener(new DateChooserListener() {
@@ -509,7 +511,7 @@ public class DettagliVeicoloPage extends JPanel {
 				btnDisponibile.setBackground(new Color(150, 0, 0)); // Rosso
 			}
 
-			if (fine.before(inizio) || fine.compareTo(inizio) == 0) {
+			if (fine.before(inizio)) {
 				btnPrezzoTotale.setText("Date non valide");
 				btnNoleggia.setEnabled(false);
 				return;
@@ -520,7 +522,8 @@ public class DettagliVeicoloPage extends JPanel {
 
 			long durata = fine.getTime() - inizio.getTime();
 			prezzoTotale = isAutomobile ? (durata / (1000 * 60 * 60.0)) * prezzo
-					: (durata / (1000 * 60 * 60 * 24.0)) * prezzo;
+					: ((durata+86400000) / (1000 * 60 * 60 * 24.0)) * prezzo;
+			System.out.println("Durata: " + durata);
 
 			btnPrezzoTotale.setText(String.format("€%.2f", prezzoTotale));
 			return;
@@ -535,44 +538,81 @@ public class DettagliVeicoloPage extends JPanel {
 			JOptionPane.showMessageDialog(this, "Devi essere loggato per poter noleggiare un veicolo.");
 			return;
 		}
+		
+		if(Utente.isPrivato()) {
+			try {
+				// Inserimento prenotazione per utente privato
+				DateBetween dateBetween = dateChooser.getSelectedDateBetween();
+				String dataInizio = null;
+				String dataFine = null;
 
-		try {
-			DateBetween dateBetween = dateChooser.getSelectedDateBetween();
-			String dataInizio = null;
-			String dataFine = null;
+				if (dateBetween != null) {
+					SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+					dataInizio = sdf.format(dateBetween.getFromDate());
+					dataFine = sdf.format(dateBetween.getToDate());
+				} else {
+					System.out.println("Nessuna data selezionata nel date picker.");
+				}
 
-			if (dateBetween != null) {
+				String oraInizio = (String) comboOraInizio.getSelectedItem();
+				String oraFine = (String) comboOraFine.getSelectedItem();
+
+				String inizio = dataInizio + " " + oraInizio;
+				String fine = dataFine + " " + oraFine;
+
+				SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+				sdf.setLenient(false); // Per rendere più rigoroso il parsing
+
+				Date dataInizioD = sdf.parse(inizio);
+				Date dataFineD = sdf.parse(fine);
+
+				if (dataFineD.before(dataInizioD) || dataFineD.compareTo(dataInizioD) == 0) {
+					JOptionPane.showMessageDialog(this, "Errore: Data di fine non valida");
+					return;
+				}
+				Prenotazione prenotazione = new Prenotazione(inizio, fine, utente, veicolo, prezzoTotale);
+				GestionePrenotazioni.aggiungiPrenotazione(prenotazione);
+
+				JOptionPane.showMessageDialog(this, "Prenotazione effettuata con successo!");
+
+			} catch (Exception e) {
+				JOptionPane.showMessageDialog(this, e.getMessage() + "Errore nella creazione della prenotazione.");
+			}
+		} else {
+			try {
+				// Inserimento prenotazione per utente aziendale
+				DateBetween dateBetween = dateChooser.getSelectedDateBetween();
+				String dataInizio = null;
+				String dataFine = null;
+
+				if (dateBetween != null) {
+					SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+					dataInizio = sdf.format(dateBetween.getFromDate());
+					dataFine = sdf.format(dateBetween.getToDate());
+				} else {
+					System.out.println("Nessuna data selezionata nel date picker.");
+				}
+
 				SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-				dataInizio = sdf.format(dateBetween.getFromDate());
-				dataFine = sdf.format(dateBetween.getToDate());
-			} else {
-				System.out.println("Nessuna data selezionata nel date picker.");
+				sdf.setLenient(false); // Per rendere più rigoroso il parsing
+
+				Date dataInizioD = sdf.parse(dataInizio);
+				Date dataFineD = sdf.parse(dataFine);
+
+				if (dataFineD.before(dataInizioD)) {
+					JOptionPane.showMessageDialog(this, "Errore: Data di fine non valida");
+					return;
+				}
+				Prenotazione prenotazione = new Prenotazione(dataInizio, dataFine, utente, veicolo, prezzoTotale);
+				GestionePrenotazioni.aggiungiPrenotazione(prenotazione);
+
+				JOptionPane.showMessageDialog(this, "Prenotazione effettuata con successo!");
+
+			} catch (Exception e) {
+				JOptionPane.showMessageDialog(this, e.getMessage() + "Errore nella creazione della prenotazione.");
 			}
-
-			String oraInizio = (String) comboOraInizio.getSelectedItem();
-			String oraFine = (String) comboOraFine.getSelectedItem();
-
-			String inizio = dataInizio + " " + oraInizio;
-			String fine = dataFine + " " + oraFine;
-
-			SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
-			sdf.setLenient(false); // Per rendere più rigoroso il parsing
-
-			Date dataInizioD = sdf.parse(inizio);
-			Date dataFineD = sdf.parse(fine);
-
-			if (dataFineD.before(dataInizioD) || dataFineD.compareTo(dataInizioD) == 0) {
-				JOptionPane.showMessageDialog(this, "Errore: Data di fine non valida");
-				return;
-			}
-			Prenotazione prenotazione = new Prenotazione(inizio, fine, utente, veicolo, prezzoTotale);
-			GestionePrenotazioni.aggiungiPrenotazione(prenotazione);
-
-			JOptionPane.showMessageDialog(this, "Prenotazione effettuata con successo!");
-
-		} catch (Exception e) {
-			JOptionPane.showMessageDialog(this, e.getMessage() + "Errore nella creazione della prenotazione.");
 		}
+
 	}
 
 	private boolean isSameDay(Date date1, Date date2) {
