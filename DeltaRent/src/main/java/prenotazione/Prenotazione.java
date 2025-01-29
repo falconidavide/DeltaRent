@@ -1,5 +1,11 @@
 package prenotazione;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+
+import db.DatabaseConnection;
 import utente.Utente;
 import veicolo.Veicolo;
 
@@ -80,4 +86,5 @@ public class Prenotazione {
 	public void setPrezzo(float prezzo) {
 		this.prezzo = prezzo;
 	}
+	
 }

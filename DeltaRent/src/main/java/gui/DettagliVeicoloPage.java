@@ -31,7 +31,7 @@ import com.raven.datechooser.DateSelectable;
 import com.raven.datechooser.listener.DateChooserAction;
 import com.raven.datechooser.listener.DateChooserListener;
 
-import db.Prenota;
+import db.GestionePrenotazioni;
 import my.components.Button;
 import my.components.ButtonOutLine;
 import prenotazione.Prenotazione;
@@ -566,8 +566,7 @@ public class DettagliVeicoloPage extends JPanel {
 				return;
 			}
 			Prenotazione prenotazione = new Prenotazione(inizio, fine, utente, veicolo, prezzoTotale);
-			Prenota prenota = new Prenota();
-			prenota.aggiungiPrenotazione(prenotazione);
+			GestionePrenotazioni.aggiungiPrenotazione(prenotazione);
 
 			JOptionPane.showMessageDialog(this, "Prenotazione effettuata con successo!");
 
