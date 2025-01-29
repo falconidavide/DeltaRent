@@ -218,7 +218,7 @@ public class SearchPage extends JPanel {
 		}
 
 		if (Utente.isLoggato()) {
-			if (Utente.getIsPrivato()) {
+			if (Utente.isPrivato()) {
 				mostraAuto(marcaSelezionata, modelloSelezionato, alimentazioneSelezionata);
 			} else {
 				mostraFurgoni(marcaSelezionata, modelloSelezionato, alimentazioneSelezionata);

@@ -113,7 +113,7 @@ public class Utente {
 		this.password = password;
 	}
 
-	public static boolean getIsPrivato() {
+	public static boolean isPrivato() {
 		return isPrivato;
 	}
 
