@@ -31,15 +31,15 @@ import com.raven.datechooser.DateSelectable;
 import com.raven.datechooser.listener.DateChooserAction;
 import com.raven.datechooser.listener.DateChooserListener;
 
+import business.prenotazione.Prenotazione;
+import business.utente.Utente;
+import business.veicolo.Automobile;
+import business.veicolo.Furgone;
+import business.veicolo.Veicolo;
 import db.GestionePrenotazioni;
 import my.components.Button;
 import my.components.ButtonOutLine;
-import prenotazione.Prenotazione;
-import utente.Utente;
-import util.Disponibilita;
-import veicolo.Automobile;
-import veicolo.Furgone;
-import veicolo.Veicolo;
+import business.util.Disponibilita;
 
 public class DettagliVeicoloPage extends JPanel {
 	private static final long serialVersionUID = 1L;

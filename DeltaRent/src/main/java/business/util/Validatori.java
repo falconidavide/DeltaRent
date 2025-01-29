@@ -1,4 +1,4 @@
-package util;
+package business.util;
 
 public class Validatori {
 	// Metodo per validare l'email

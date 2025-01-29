@@ -1,11 +1,11 @@
-package util;
+package business.util;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import business.utente.Utente;
 import db.DatabaseConnection;
-import utente.Utente;
 
 public class TotaleNoleggi {
 

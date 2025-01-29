@@ -1,4 +1,4 @@
-package veicolo;
+package business.veicolo;
 
 public class Veicolo {
 

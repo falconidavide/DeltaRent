@@ -1,4 +1,4 @@
-package utente;
+package business.utente;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,7 +23,7 @@ public class Utente {
 	public Utente(String email, String password, String nome, String cognome, String dataDiNascita, String nomeAzienda,
 			String partitaIVA, int isPrivato) {
 		this.email = email;
-		this.password = password;
+		this.setPassword(password);
 		this.nome = nome;
 		this.cognome = cognome;
 		this.dataDiNascita = dataDiNascita;
@@ -103,5 +103,13 @@ public class Utente {
 
 	public static String getDisplayName() {
 		return displayName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 }

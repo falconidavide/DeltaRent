@@ -1,4 +1,4 @@
-package util;
+package business.util;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,8 +6,8 @@ import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import business.veicolo.Veicolo;
 import db.DatabaseConnection;
-import veicolo.Veicolo;
 
 public class Disponibilita {
 

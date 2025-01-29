@@ -26,8 +26,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
 
+import business.prenotazione.Prenotazione;
 import db.GestionePrenotazioni;
-import prenotazione.Prenotazione;
 
 public class Prenotazioni extends JPanel {
 	private static final long serialVersionUID = 1L;

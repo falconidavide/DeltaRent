@@ -8,9 +8,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import business.prenotazione.Prenotazione;
+import business.veicolo.Automobile;
 import gui.HomePage;
-import prenotazione.Prenotazione;
-import veicolo.Automobile;
 
 public class GestionePrenotazioni {
 

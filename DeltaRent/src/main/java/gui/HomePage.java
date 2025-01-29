@@ -19,10 +19,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import business.utente.Utente;
 import db.GestionePrenotazioni;
 import my.components.Button;
 import my.components.ButtonOutLine;
-import utente.Utente;
 
 public class HomePage extends JFrame {
 	private static final long serialVersionUID = 1L;

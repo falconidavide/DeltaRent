@@ -19,9 +19,9 @@ import javax.swing.JTabbedPane;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
+import business.utente.Utente;
 import net.miginfocom.swing.MigLayout;
-import utente.Utente;
-import util.Validatori;
+import business.util.Validatori;
 
 public class PanelLoginAndRegister extends javax.swing.JLayeredPane {
     private static final long serialVersionUID = 1L;

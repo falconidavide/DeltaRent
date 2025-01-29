@@ -7,8 +7,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import veicolo.Automobile;
-import veicolo.Furgone;
+import business.veicolo.Automobile;
+import business.veicolo.Furgone;
 
 public class GestoreVeicoli {
 

@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 import db.Registration;
-import util.Validatori;
+import business.util.Validatori;
 
 public class AppTest {
 

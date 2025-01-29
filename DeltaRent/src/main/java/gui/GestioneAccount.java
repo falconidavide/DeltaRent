@@ -28,10 +28,10 @@ import javax.swing.border.LineBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
+import business.utente.Utente;
 import db.DatabaseConnection;
-import utente.Utente;
-import util.TotaleNoleggi;
-import util.Validatori;
+import business.util.TotaleNoleggi;
+import business.util.Validatori;
 
 public class GestioneAccount extends JPanel {
 	private static final long serialVersionUID = 1L;

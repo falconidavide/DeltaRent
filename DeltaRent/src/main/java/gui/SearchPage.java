@@ -28,10 +28,10 @@ import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
+import business.utente.Utente;
+import business.veicolo.Automobile;
+import business.veicolo.Furgone;
 import db.GestoreVeicoli;
-import utente.Utente;
-import veicolo.Automobile;
-import veicolo.Furgone;
 
 public class SearchPage extends JPanel {
 	private static final long serialVersionUID = 1L;
