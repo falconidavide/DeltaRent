@@ -43,10 +43,6 @@ public class Utente {
 		return email;
 	}
 
-	public String getPassword() {
-		return password;
-	}
-
 	public static Utente getUserByEmailAndPassword(String email, String password) {
 		try {
 			Connection conn = DatabaseConnection.getConnection();
@@ -69,48 +65,24 @@ public class Utente {
 		return nome;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
 	public String getCognome() {
 		return cognome;
-	}
-
-	public void setCognome(String cognome) {
-		this.cognome = cognome;
 	}
 
 	public String getDataDiNascita() {
 		return dataDiNascita;
 	}
 
-	public void setDataDiNascita(String dataDiNascita) {
-		this.dataDiNascita = dataDiNascita;
-	}
-
 	public String getNomeAzienda() {
 		return nomeAzienda;
-	}
-
-	public void setNomeAzienda(String nomeAzienda) {
-		this.nomeAzienda = nomeAzienda;
 	}
 
 	public String getPartitaIVA() {
 		return partitaIVA;
 	}
-
-	public void setPartitaIVA(String partitaIVA) {
-		this.partitaIVA = partitaIVA;
-	}
-
+	
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 	public static boolean isPrivato() {
