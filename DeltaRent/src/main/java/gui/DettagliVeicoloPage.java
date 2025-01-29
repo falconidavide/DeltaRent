@@ -218,15 +218,22 @@ public class DettagliVeicoloPage extends JPanel {
 		btnNext.setFont(new Font("sansserif", 1, 17));
 
 		btnPrev.addActionListener(e -> {
-			CardLayout cl = (CardLayout) imagePanel.getLayout();
-			cl.previous(imagePanel);
-			int currentIndex;
-			if (imgPaths.length != 0)
-				currentIndex = (progressBar.getValue() + 1) % imgPaths.length;
-			else
-				currentIndex = 0;
-			progressBar.setValue(currentIndex);
+		    CardLayout cl = (CardLayout) imagePanel.getLayout();
+		    cl.previous(imagePanel);
+		    
+		    int currentIndex;
+		    if (imgPaths.length != 0) {
+		        currentIndex = (progressBar.getValue() - 1);
+		        if (currentIndex < 0) {
+		            currentIndex = imgPaths.length - 1; // Torna all'ultima immagine
+		        }
+		    } else {
+		        currentIndex = 0;
+		    }
+
+		    progressBar.setValue(currentIndex);
 		});
+
 
 		btnNext.addActionListener(e -> {
 			CardLayout cl = (CardLayout) imagePanel.getLayout();
