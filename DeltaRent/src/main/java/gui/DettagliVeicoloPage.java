@@ -79,7 +79,7 @@ public class DettagliVeicoloPage extends JPanel {
 		setBackground(new Color(28, 51, 84));
 	}
 
-	private void populatePanel(Object veicolo, boolean isAutomobile) {
+	private void populatePanel(Veicolo veicolo, boolean isAutomobile) {
 		double prezzo = isAutomobile ? ((Automobile) veicolo).getPrezzoOrario()
 				: ((Furgone) veicolo).getPrezzoGiornaliero();
 
