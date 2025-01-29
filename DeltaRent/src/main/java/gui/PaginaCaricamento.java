@@ -16,8 +16,9 @@ import javax.swing.SwingUtilities;
 
 public class PaginaCaricamento extends JFrame {
 	private static final long serialVersionUID = 1L;
+	private static PaginaCaricamento instance;
 
-	public PaginaCaricamento() {
+	private PaginaCaricamento() {
 		setTitle("DeltaRent - Home");
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setSize(1200, 950);
@@ -62,4 +63,10 @@ public class PaginaCaricamento extends JFrame {
 		}, 0, 500); // Aggiorna ogni 500 millisecondi (mezzo secondo)
 	}
 
+	public static PaginaCaricamento getInstance() {
+		if (instance == null) {
+			instance = new PaginaCaricamento();
+		}
+		return instance;
+	}
 }
