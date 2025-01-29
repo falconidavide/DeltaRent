@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.Insets;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -25,7 +26,7 @@ public class PaginaCaricamento extends JFrame {
 		setMinimumSize(new Dimension(900, 700));
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
 		setLocationRelativeTo(null);
-		ImageIcon appIcon = new ImageIcon("img/appIcon.png");
+		ImageIcon appIcon = new ImageIcon("img/appIcon2.png");
 		setIconImage(appIcon.getImage());
 
 		getContentPane().setBackground(new Color(220, 241, 255));
@@ -39,11 +40,11 @@ public class PaginaCaricamento extends JFrame {
 		gbc.insets = new Insets(10, 0, 20, 0);
 
 		JLabel lblImage = new JLabel("");
-		lblImage.setIcon(new ImageIcon("./img/appIcon2.png"));
+		lblImage.setIcon(new ImageIcon("./img/appIcon3.png"));
 		getContentPane().add(lblImage, gbc);
 
 		JLabel lblLoading = new JLabel("Caricamento in corso.");
-		lblLoading.setFont(new Font("Arial", Font.PLAIN, 20));
+		lblLoading.setFont(new Font("Arial", Font.PLAIN, 40));
 		lblLoading.setForeground(Color.BLACK);
 		getContentPane().add(lblLoading, gbc);
 
