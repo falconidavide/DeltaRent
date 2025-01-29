@@ -1,5 +1,36 @@
 package gui;
 
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JProgressBar;
+import javax.swing.SwingConstants;
+import javax.swing.border.LineBorder;
+
+import com.raven.datechooser.DateBetween;
+import com.raven.datechooser.DateChooser;
+import com.raven.datechooser.DateSelectable;
+import com.raven.datechooser.listener.DateChooserAction;
+import com.raven.datechooser.listener.DateChooserListener;
+
 import db.Prenota;
 import my.components.Button;
 import my.components.ButtonOutLine;
@@ -9,20 +40,6 @@ import util.Disponibilita;
 import veicolo.Automobile;
 import veicolo.Furgone;
 import veicolo.Veicolo;
-
-import javax.swing.*;
-import javax.swing.border.LineBorder;
-import com.raven.datechooser.DateBetween;
-import com.raven.datechooser.DateChooser;
-import com.raven.datechooser.DateSelectable;
-import com.raven.datechooser.listener.DateChooserAction;
-import com.raven.datechooser.listener.DateChooserListener;
-
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class DettagliVeicoloPage extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -34,7 +51,8 @@ public class DettagliVeicoloPage extends JPanel {
 	private JLabel lblPrezzo;
 	private ButtonOutLine btnNoleggia;
 	private DateChooser dateChooser;
-	private JComboBox<String> comboOraInizio, comboOraFine;
+	private JComboBox<String> comboOraInizio;
+	private JComboBox<String> comboOraFine;
 	private boolean isSettingDate = false;
 	private Veicolo veicolo;
 	private Utente utente;

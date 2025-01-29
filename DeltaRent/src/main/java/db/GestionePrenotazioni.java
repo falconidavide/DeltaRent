@@ -1,13 +1,15 @@
 package db;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import gui.HomePage;
 import prenotazione.Prenotazione;
 import veicolo.Automobile;
-
 public class GestionePrenotazioni {
 
 	// Metodo per ottenere tutte le prenotazioni passate per un utente
@@ -27,7 +29,10 @@ public class GestionePrenotazioni {
 			ResultSet rs = stmt.executeQuery();
 
 			int id = 0;
-			String targa = null, dataPrenotazione = null, inizioPrenotazione = null, finePrenotazione = null;
+			String targa = null;
+			String dataPrenotazione = null;
+			String inizioPrenotazione = null;
+			String finePrenotazione = null;
 			double prezzo=0;
 
 			while (rs.next()) {
@@ -126,7 +131,10 @@ public class GestionePrenotazioni {
 			ResultSet rs = stmt.executeQuery();
 
 			int id = 0;
-			String targa = null, dataPrenotazione = null, inizioPrenotazione = null, finePrenotazione = null;
+			String targa = null;
+			String dataPrenotazione = null;
+			String inizioPrenotazione = null;
+			String finePrenotazione = null;
 			double prezzo=0;
 			
 		

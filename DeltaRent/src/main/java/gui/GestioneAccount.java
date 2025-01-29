@@ -1,7 +1,29 @@
 package gui;
 
-import java.awt.*;
-import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -11,13 +33,14 @@ import utente.Utente;
 import util.TotaleNoleggi;
 import util.Validatori;
 
-import java.sql.*;
-
 public class GestioneAccount extends JPanel {
     private static final long serialVersionUID = 1L;
-    private JTextField txtNewEmail, txtCurrentEmail;
-    private JPasswordField txtOldPassword, txtNewPassword;
-    private JButton btnUpdateEmail, btnChangePassword;
+    private JTextField txtNewEmail;
+	private JTextField txtCurrentEmail;
+    private JPasswordField txtOldPassword;
+	private JPasswordField txtNewPassword;
+    private JButton btnUpdateEmail;
+	private JButton btnChangePassword;
     private Connection connection;
 
     public GestioneAccount() {
@@ -96,7 +119,7 @@ public class GestioneAccount extends JPanel {
         
         addUserInfo(userPanel, "Tipo Utenza", utenza, gbc);
         gbc.gridy++;
-        addUserInfo(userPanel, "Totale Veicoli Noleggiati", ""+TotaleNoleggi.getTotaleNoleggi(HomePage.loggedUser), gbc);
+        addUserInfo(userPanel, "Totale Veicoli Noleggiati", Integer.toString(TotaleNoleggi.getTotaleNoleggi(HomePage.loggedUser)), gbc);
 
         return userPanel;
     }
@@ -355,20 +378,23 @@ public class GestioneAccount extends JPanel {
     }
     
 	DocumentListener emailListener = new DocumentListener() {
-        public void insertUpdate(DocumentEvent e) {
+        @Override
+		public void insertUpdate(DocumentEvent e) {
         	updateEmailButton();
         }
 
-        public void removeUpdate(DocumentEvent e) {
+        @Override
+		public void removeUpdate(DocumentEvent e) {
         	updateEmailButton();
         }
 
-        public void changedUpdate(DocumentEvent e) {
+        @Override
+		public void changedUpdate(DocumentEvent e) {
         	updateEmailButton();
         }
 
         public void updateEmailButton() {
-			if(Validatori.isValidEmail(txtNewEmail.getText()) && !txtCurrentEmail.getText().equals("")) {
+			if(Validatori.isValidEmail(txtNewEmail.getText()) && !"".equals(txtCurrentEmail.getText())) {
 				btnUpdateEmail.setEnabled(true);
 			} else {
 				btnUpdateEmail.setEnabled(false);
@@ -376,20 +402,23 @@ public class GestioneAccount extends JPanel {
         }
     };
 	DocumentListener passwordListener = new DocumentListener() {
-        public void insertUpdate(DocumentEvent e) {
+        @Override
+		public void insertUpdate(DocumentEvent e) {
             updatePasswordButton();
         }
 
-        public void removeUpdate(DocumentEvent e) {
+        @Override
+		public void removeUpdate(DocumentEvent e) {
         	updatePasswordButton();
         }
 
-        public void changedUpdate(DocumentEvent e) {
+        @Override
+		public void changedUpdate(DocumentEvent e) {
         	updatePasswordButton();
         }
 
         public void updatePasswordButton() {
-			if(Validatori.isValidPassword( String.valueOf(txtNewPassword.getPassword())) && !String.valueOf(txtOldPassword.getPassword()).equals("")) {
+			if(Validatori.isValidPassword( String.valueOf(txtNewPassword.getPassword())) && !"".equals(String.valueOf(txtOldPassword.getPassword()))) {
 				btnChangePassword.setEnabled(true);
 			} else {
 				btnChangePassword.setEnabled(false);

@@ -1,23 +1,37 @@
 package gui;
 
-import utente.Utente;
-import veicolo.Automobile;
-import veicolo.Furgone;
-
-import javax.swing.*;
-import javax.swing.border.LineBorder;
-
-import db.GestoreVeicoli;
-
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.Comparator;
 import java.util.List;
+
 import javax.imageio.ImageIO;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.SwingConstants;
+import javax.swing.border.LineBorder;
+
+import db.GestoreVeicoli;
+import utente.Utente;
+import veicolo.Automobile;
+import veicolo.Furgone;
 
 public class SearchPage extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -143,7 +157,7 @@ public class SearchPage extends JPanel {
 
 	private void aggiornaComboBoxModelli(String alimetazine) {
 		modelComboBox.removeAllItems();
-		if (alimetazine != null && !alimetazine.equals("Tutte le Marche")) {
+		if (alimetazine != null && !"Tutte le Marche".equals(alimetazine)) {
 			List<String> modelli = GestoreVeicoli.getModelliByMarca(alimetazine);
 			modelComboBox.addItem("Tutti i Modelli");
 			for (String modello : modelli) {
@@ -354,12 +368,12 @@ public class SearchPage extends JPanel {
 
 	private static void mostraAuto(String marcaSelezionata, String modelloSelezionato, String AlimentazioneSelezionata) {
 		for (Automobile auto : automobili) {
-			if ((marcaSelezionata == null || marcaSelezionata.equals("Tutte le Marche") || auto.getMarca().equals(marcaSelezionata))
-					&& (modelloSelezionato == null || modelloSelezionato.equals("Tutti i Modelli")
+			if ((marcaSelezionata == null || "Tutte le Marche".equals(marcaSelezionata) || auto.getMarca().equals(marcaSelezionata))
+					&& (modelloSelezionato == null || "Tutti i Modelli".equals(modelloSelezionato)
 							|| auto.getModello().equals(modelloSelezionato))
 					&& (auto.getAlimentazione().equals(AlimentazioneSelezionata) 
 							|| AlimentazioneSelezionata == null 
-							|| AlimentazioneSelezionata.equals("Tutte le Alimentazioni"))) {
+							|| "Tutte le Alimentazioni".equals(AlimentazioneSelezionata))) {
 				vehicleDisplayPanel.add(creaPannelloVeicolo(auto));
 			}
 		}
@@ -368,14 +382,14 @@ public class SearchPage extends JPanel {
 	private static void mostraFurgoni(String marcaSelezionata, String modelloSelezionato, String AlimentazioneSelezionata) {
 		for (Furgone furgone : furgoni) {
 			if ((marcaSelezionata == null 
-							|| marcaSelezionata.equals("Tutte le Marche")
+							|| "Tutte le Marche".equals(marcaSelezionata)
 							|| furgone.getMarca().equals(marcaSelezionata))
 					&& (modelloSelezionato == null 
-							|| modelloSelezionato.equals("Tutti i Modelli")
+							|| "Tutti i Modelli".equals(modelloSelezionato)
 							|| furgone.getModello().equals(modelloSelezionato))
 					&& (furgone.getAlimentazione().equals(AlimentazioneSelezionata) 
 							|| AlimentazioneSelezionata == null 
-							|| AlimentazioneSelezionata.equals("Tutte le Alimentazioni"))) {
+							|| "Tutte le Alimentazioni".equals(AlimentazioneSelezionata))) {
 				vehicleDisplayPanel.add(creaPannelloVeicolo(furgone));
 			}
 		}

@@ -1,8 +1,5 @@
 package gui;
 
-import com.raven.component.PanelCover;
-import com.raven.component.PanelLoginAndRegister;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -12,11 +9,18 @@ import java.beans.PropertyChangeListener;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
-import javax.swing.*;
-import net.miginfocom.swing.MigLayout;
+
+import javax.swing.JLayeredPane;
+import javax.swing.JPanel;
+
 import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
+
+import com.raven.component.PanelCover;
+import com.raven.component.PanelLoginAndRegister;
+
+import net.miginfocom.swing.MigLayout;
 
 public class LogIn extends JPanel {
     private static final long serialVersionUID = 1L;
