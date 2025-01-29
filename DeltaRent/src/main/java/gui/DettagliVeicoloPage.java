@@ -531,7 +531,6 @@ public class DettagliVeicoloPage extends JPanel {
 			long durata = fine.getTime() - inizio.getTime();
 			prezzoTotale = isAutomobile ? (durata / (1000 * 60 * 60.0)) * prezzo
 					: ((durata+86400000) / (1000 * 60 * 60 * 24.0)) * prezzo;
-			System.out.println("Durata: " + durata);
 
 			btnPrezzoTotale.setText(String.format("€%.2f", prezzoTotale));
 			return;

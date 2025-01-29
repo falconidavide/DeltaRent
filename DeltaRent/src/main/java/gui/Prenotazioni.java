@@ -32,15 +32,16 @@ import db.GestionePrenotazioni;
 public class Prenotazioni extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private String emailUtente;
+	private List<Prenotazione> prenotazioniPassate;
+	private List<Prenotazione> prenotazioniFuture;
+	JPanel prenotazioniFuturePanel;
+	JPanel prenotazioniPanel;
 
 	public Prenotazioni(GestionePrenotazioni gestionePrenotazioni, String emailUtente) {
-		List<Prenotazione> prenotazioniPassate = GestionePrenotazioni.getPrenotazioniPassate(emailUtente);
-		List<Prenotazione> prenotazioniFuture = GestionePrenotazioni.getPrenotazioniFuture(emailUtente);
+		prenotazioniPassate = GestionePrenotazioni.getPrenotazioniPassate(emailUtente);
+		prenotazioniFuture = GestionePrenotazioni.getPrenotazioniFuture(emailUtente);
 		this.emailUtente = emailUtente;
-		initializeUI(prenotazioniPassate, prenotazioniFuture);
-	}
-
-	private void initializeUI(List<Prenotazione> prenotazioniPassate, List<Prenotazione> prenotazioniFuture) {
+		
 		setLayout(new BorderLayout());
 		setBackground(Color.DARK_GRAY);
 
@@ -51,13 +52,13 @@ public class Prenotazioni extends JPanel {
 		add(titolo, BorderLayout.NORTH);
 
 		// Pannello principale di prenotazioni
-		JPanel prenotazioniPanel = new JPanel();
+		prenotazioniPanel = new JPanel();
 		prenotazioniPanel.setLayout(new BoxLayout(prenotazioniPanel, BoxLayout.Y_AXIS));
 		prenotazioniPanel.setBackground(new Color(32, 52, 85));
 		prenotazioniPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
 		// Sezione prenotazioni future
-		JPanel prenotazioniFuturePanel = createSectionPanel("Prenotazioni Future\n", prenotazioniFuture, true);
+		prenotazioniFuturePanel = createSectionPanel("Prenotazioni Future\n", prenotazioniFuture, true);
 		prenotazioniPanel.add(prenotazioniFuturePanel);
 
 		// Separatore
@@ -184,11 +185,19 @@ public class Prenotazioni extends JPanel {
 			annullaButton.addActionListener(e -> {
 				// Logica per annullare la prenotazione
 				GestionePrenotazioni.annullaPrenotazione(prenotazione);
+				
+				// Aggiorna la lista delle prenotazioni
+				prenotazioniFuture = GestionePrenotazioni.getPrenotazioniFuture(emailUtente);
+				prenotazioniPanel.remove(prenotazioniFuturePanel);
+				prenotazioniFuturePanel = createSectionPanel("Prenotazioni Future\n", prenotazioniFuture, true);
+				prenotazioniPanel.add(prenotazioniFuturePanel, 0);
+				prenotazioniPanel.revalidate();
+				prenotazioniPanel.repaint();
+				
+				// Mostra messaggio prenotazione annullata
 				JOptionPane.showMessageDialog(this, "Prenotazione annullata con successo!", "Successo",
 						JOptionPane.INFORMATION_MESSAGE);
-				// Aggiorna la lista delle prenotazioni
-				initializeUI(GestionePrenotazioni.getPrenotazioniPassate(emailUtente),
-						GestionePrenotazioni.getPrenotazioniFuture(emailUtente));
+				//initializeUI(GestionePrenotazioni.getPrenotazioniPassate(emailUtente), GestionePrenotazioni.getPrenotazioniFuture(emailUtente));
 			});
 			detailsPanel.add(annullaButton);
 		}
