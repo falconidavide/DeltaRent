@@ -255,7 +255,7 @@ public class SearchPage extends JPanel {
 		panel.setBorder(new LineBorder(new Color(216, 195, 182), 0, true));
 
 		JLabel lblImg = new JLabel();
-		lblImg.setIcon(resizeImageIcon(pathImg, 200, 150)); // Ridimensiona l'immagine mantenendo le proporzioni
+		lblImg.setIcon(resizeImageIcon(pathImg, 225, 150)); // Ridimensiona l'immagine mantenendo le proporzioni
 		lblImg.setAlignmentX(Component.CENTER_ALIGNMENT);
 
 		Font font = new Font("Arial", Font.BOLD, 18); // Font più grande e grassetto
