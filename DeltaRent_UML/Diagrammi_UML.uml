@@ -495,20 +495,159 @@
     <packagedElement xmi:type="uml:Signal" xmi:id="_63db0N2NEe-B1KYIBQv8Rw" name="Signal8"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Model" xmi:id="_K9TRQN1-Ee-t6qO0T4bg7g" name="Component Diagram">
-    <packagedElement xmi:type="uml:Component" xmi:id="_S1pQQN2vEe-mkbwKQrGBgA" name="DeltaRent">
-      <packagedElement xmi:type="uml:Component" xmi:id="_ZFv8YN2vEe-mkbwKQrGBgA" name="Disponibilità"/>
-      <packagedElement xmi:type="uml:Component" xmi:id="_rC9v4N2vEe-mkbwKQrGBgA" name="TotaleNoleggi"/>
-      <packagedElement xmi:type="uml:Component" xmi:id="_uMJuYN2vEe-mkbwKQrGBgA" name="Validatori"/>
-      <packagedElement xmi:type="uml:Component" xmi:id="_215LYN2vEe-mkbwKQrGBgA" name="LogIn">
-        <ownedAttribute xmi:type="uml:Port" xmi:id="_pSxvMN2wEe-mkbwKQrGBgA" aggregation="composite"/>
+    <packagedElement xmi:type="uml:Model" xmi:id="_sraqQN5FEe-sXqDKmtJXGQ" name="DeltaRent">
+      <packagedElement xmi:type="uml:Component" xmi:id="_S0DOMN5GEe-sXqDKmtJXGQ" name="Back-end">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_s6AGkN5KEe-sXqDKmtJXGQ" type="_S0DOMN5GEe-sXqDKmtJXGQ" aggregation="composite"/>
+        <nestedClassifier xmi:type="uml:Interface" xmi:id="_1XZRAN5HEe-sXqDKmtJXGQ" name="Gestione accesso al db">
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_HSKNcN5IEe-sXqDKmtJXGQ" name="getConnection" isStatic="true"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_OPek4N5IEe-sXqDKmtJXGQ" name="getPrenotazioniPassate" isStatic="true">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_sJYz4N5IEe-sXqDKmtJXGQ" name="emailUtente">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_hdi8QN5IEe-sXqDKmtJXGQ" name="aggiungiPrenotazione">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_gJGcYN5JEe-sXqDKmtJXGQ" name="emailUtente">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_j5b6cN5JEe-sXqDKmtJXGQ" name="targa">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_meFBcN5JEe-sXqDKmtJXGQ" name="inizioPrenotazione">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_oiKZEN5JEe-sXqDKmtJXGQ" name="finePrenotazione">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_jGvHoN5IEe-sXqDKmtJXGQ" name="cancellaPrenotazione">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_uOGoMN5JEe-sXqDKmtJXGQ" name="ID">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_GAR5YN5JEe-sXqDKmtJXGQ" name="annullaPrenotazione" isStatic="true">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_KO09cN5JEe-sXqDKmtJXGQ" name="prenotazione" type="_WHAwoLZuEe-iFImpIBBa2w"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_Mn8J4N5JEe-sXqDKmtJXGQ" name="aggiungiPrenotazione" isStatic="true">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_V5gb4N5JEe-sXqDKmtJXGQ" name="prenotazione" type="_WHAwoLZuEe-iFImpIBBa2w"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_wzNCMN5JEe-sXqDKmtJXGQ" name="getPrenotazioniFuture" isStatic="true">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_yxeswN5JEe-sXqDKmtJXGQ" name="emailUtente">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_3J_lIN5JEe-sXqDKmtJXGQ" name="aggiornaListaAutomobili" isStatic="true"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_49j0gN5JEe-sXqDKmtJXGQ" name="aggiornaListaFurgoni" isStatic="true"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_BS2EcN5KEe-sXqDKmtJXGQ" name="registerUser" isStatic="true">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_DhyBMN5KEe-sXqDKmtJXGQ" name="email">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_H9U_cN5KEe-sXqDKmtJXGQ" name="password">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_KJc4wN5KEe-sXqDKmtJXGQ" name="nome">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_LOM6UN5KEe-sXqDKmtJXGQ" name="cognome">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_OF1OwN5KEe-sXqDKmtJXGQ" name="dataNascita">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_RIknAN5KEe-sXqDKmtJXGQ" name="nomeAzienda">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_S-TZkN5KEe-sXqDKmtJXGQ" name="partitaIva">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedParameter>
+          </ownedOperation>
+        </nestedClassifier>
+        <packagedElement xmi:type="uml:Usage" xmi:id="_XSGxEN5KEe-sXqDKmtJXGQ" client="_S0DOMN5GEe-sXqDKmtJXGQ" supplier="_rinkQN5HEe-sXqDKmtJXGQ"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Component" xmi:id="_-tuqUN2vEe-mkbwKQrGBgA" name="DatabaseConnection"/>
-      <packagedElement xmi:type="uml:Component" xmi:id="_Cz840N2wEe-mkbwKQrGBgA" name="GestionePrenotazioni"/>
-      <packagedElement xmi:type="uml:Component" xmi:id="_FpfikN2wEe-mkbwKQrGBgA" name="GestoreVeicoli">
-        <ownedAttribute xmi:type="uml:Port" xmi:id="_wVwpwN2wEe-mkbwKQrGBgA" aggregation="composite"/>
+      <packagedElement xmi:type="uml:Component" xmi:id="_Vxa-QN5GEe-sXqDKmtJXGQ" name="Front-end">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_5M8e4N5KEe-sXqDKmtJXGQ" type="_Vxa-QN5GEe-sXqDKmtJXGQ" aggregation="composite"/>
+        <nestedClassifier xmi:type="uml:Interface" xmi:id="_lBXdwN5HEe-sXqDKmtJXGQ" name="Interfaccia con utente"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Component" xmi:id="_HKFyoN2wEe-mkbwKQrGBgA" name="Prenota"/>
-      <packagedElement xmi:type="uml:Component" xmi:id="_IpX0EN2wEe-mkbwKQrGBgA" name="Registration"/>
+      <packagedElement xmi:type="uml:Component" xmi:id="_wgTbsN5GEe-sXqDKmtJXGQ" name="Business">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_3tdpIN5KEe-sXqDKmtJXGQ" type="_wgTbsN5GEe-sXqDKmtJXGQ" aggregation="composite"/>
+        <nestedClassifier xmi:type="uml:Interface" xmi:id="_2zFy8N5HEe-sXqDKmtJXGQ" name="Gestione interna">
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_fYB54N5LEe-sXqDKmtJXGQ" name="verificaDisponibilita" isStatic="true">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_iTrysN5LEe-sXqDKmtJXGQ" name="veicolo" type="_NqlMULZtEe-iFImpIBBa2w"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_lwTDgN5LEe-sXqDKmtJXGQ" name="disponibile" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_pmJTsN5LEe-sXqDKmtJXGQ" name="dataInizio">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_rMe_YN5LEe-sXqDKmtJXGQ" name="dataFine">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_9pqFUN5LEe-sXqDKmtJXGQ" name="getTotaleNoleggi" isStatic="true">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_Avi4MN5MEe-sXqDKmtJXGQ" name="utente" type="_eePzQLZsEe-iFImpIBBa2w"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_Dd7KAN5MEe-sXqDKmtJXGQ" name="totale" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_E4zMkN5MEe-sXqDKmtJXGQ" name="isValidEmail" isStatic="true">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_HWNqMN5MEe-sXqDKmtJXGQ" name="email">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_JUNA4N5MEe-sXqDKmtJXGQ" name="valida" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_KuhCwN5MEe-sXqDKmtJXGQ" name="isValidPassword" isStatic="true">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_MvQygN5MEe-sXqDKmtJXGQ" name="password">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_OSijIN5MEe-sXqDKmtJXGQ" name="valida" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_PP_C0N5MEe-sXqDKmtJXGQ" name="isValidPIVA" isStatic="true">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_RwOyAN5MEe-sXqDKmtJXGQ" name="PIVA">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_S_rnsN5MEe-sXqDKmtJXGQ" name="valida" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_Uqp7wN5MEe-sXqDKmtJXGQ" name="isValidDate" isStatic="true">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_Xn6XEN5MEe-sXqDKmtJXGQ" name="date">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#EDate"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_YrpE8N5MEe-sXqDKmtJXGQ" name="valida" direction="return">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_agvlYN5MEe-sXqDKmtJXGQ" name="getPrezzoOrario"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_ezEWMN5MEe-sXqDKmtJXGQ" name="getPrezzoGiornaliero"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_tnjeMN5MEe-sXqDKmtJXGQ" name="getMarca"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_umS-YN5MEe-sXqDKmtJXGQ" name="getModello"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_vhDWcN5MEe-sXqDKmtJXGQ" name="getAlimentazione"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_4vIPkN5MEe-sXqDKmtJXGQ" name="getEmail"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_FXA9IN5NEe-sXqDKmtJXGQ" name="getUserByEmailAndPassword" isStatic="true">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_HkgIYN5NEe-sXqDKmtJXGQ" name="email">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_JNdDMN5NEe-sXqDKmtJXGQ" name="password">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedParameter>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_XGB8kN5NEe-sXqDKmtJXGQ" name="utente" type="_eePzQLZsEe-iFImpIBBa2w" direction="return"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_pc93oN5NEe-sXqDKmtJXGQ" name="getDisplayName" isStatic="true"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_vZOasN5NEe-sXqDKmtJXGQ" name="getNome"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_wP1SkN5NEe-sXqDKmtJXGQ" name="getCognome"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_xMMNIN5NEe-sXqDKmtJXGQ" name="getDataDiNascita"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_x_FCoN5NEe-sXqDKmtJXGQ" name="getNomeAzienda"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_zGc6YN5NEe-sXqDKmtJXGQ" name="getPartitaIVA"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_0E1OMN5NEe-sXqDKmtJXGQ" name="isPrivato" isStatic="true"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_07H9AN5NEe-sXqDKmtJXGQ" name="isLoggato" isStatic="true"/>
+        </nestedClassifier>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Component" xmi:id="_rinkQN5HEe-sXqDKmtJXGQ" name="DataBase"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_AoMvgN5LEe-sXqDKmtJXGQ" client="_5M8e4N5KEe-sXqDKmtJXGQ" supplier="_3tdpIN5KEe-sXqDKmtJXGQ"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_CynYoN5LEe-sXqDKmtJXGQ" client="_3tdpIN5KEe-sXqDKmtJXGQ" supplier="_s6AGkN5KEe-sXqDKmtJXGQ"/>
     </packagedElement>
   </packagedElement>
   <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_-O6CALfsEe-d56vvJoR4og">
