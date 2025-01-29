@@ -565,7 +565,31 @@
       </packagedElement>
       <packagedElement xmi:type="uml:Component" xmi:id="_Vxa-QN5GEe-sXqDKmtJXGQ" name="Front-end">
         <ownedAttribute xmi:type="uml:Port" xmi:id="_5M8e4N5KEe-sXqDKmtJXGQ" type="_Vxa-QN5GEe-sXqDKmtJXGQ" aggregation="composite"/>
-        <nestedClassifier xmi:type="uml:Interface" xmi:id="_lBXdwN5HEe-sXqDKmtJXGQ" name="Interfaccia con utente"/>
+        <nestedClassifier xmi:type="uml:Interface" xmi:id="_lBXdwN5HEe-sXqDKmtJXGQ" name="GUI">
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_nMP8wN5OEe-sXqDKmtJXGQ" name="populatePanel" visibility="private">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_pbfbgN5OEe-sXqDKmtJXGQ" name="veicolo" type="_NqlMULZtEe-iFImpIBBa2w"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_qabwAN5OEe-sXqDKmtJXGQ" name="isAutomobile">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_wCtnIN5OEe-sXqDKmtJXGQ" name="createInfoPanel" visibility="private">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_y658QN5OEe-sXqDKmtJXGQ" name="veicolo" type="_NqlMULZtEe-iFImpIBBa2w"/>
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_1B9IUN5OEe-sXqDKmtJXGQ" name="isAutomobile">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_9ekIQN5OEe-sXqDKmtJXGQ" name="changePassword" visibility="private"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_AkEgoN5PEe-sXqDKmtJXGQ" name="updateEmailButton"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_C01CUN5PEe-sXqDKmtJXGQ" name="updatePasswordButton"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_GV7KgN5PEe-sXqDKmtJXGQ" name="aggiornaMessaggioBenvenuto" isStatic="true"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_P4iJMN5PEe-sXqDKmtJXGQ" name="aggiornaComboBoxModelli" visibility="private">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="_TcWOMN5PEe-sXqDKmtJXGQ" name="alimentazione">
+              <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+            </ownedParameter>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_Vgcz8N5PEe-sXqDKmtJXGQ" name="aggiornaComboBoxAlimentazione" visibility="private"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="_Xg-hQN5PEe-sXqDKmtJXGQ" name="mostraVeicoli"/>
+        </nestedClassifier>
       </packagedElement>
       <packagedElement xmi:type="uml:Component" xmi:id="_wgTbsN5GEe-sXqDKmtJXGQ" name="Business">
         <ownedAttribute xmi:type="uml:Port" xmi:id="_3tdpIN5KEe-sXqDKmtJXGQ" type="_wgTbsN5GEe-sXqDKmtJXGQ" aggregation="composite"/>
