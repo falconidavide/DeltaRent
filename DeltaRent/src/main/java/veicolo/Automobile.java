@@ -27,8 +27,4 @@ public class Automobile extends Veicolo {
 	public int getPrezzoOrario() {
 		return prezzoOrario;
 	}
-
-	public void setPrezzoOrario(int prezzoOrario) {
-		this.prezzoOrario = prezzoOrario;
-	}
 }
