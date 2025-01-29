@@ -38,7 +38,7 @@ public class HomePage extends JFrame {
 		// Impostazioni della finestra principale
 		setTitle("DeltaRent - Home");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setMinimumSize(new Dimension(1800, 1000));
+		setSize(new Dimension(1800, 1000));
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
 		setLocationRelativeTo(null);
 		ImageIcon appIcon = new ImageIcon("img/appIcon.png"); // Sostituisci con il percorso corretto
