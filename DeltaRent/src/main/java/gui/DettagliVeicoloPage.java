@@ -189,12 +189,12 @@ public class DettagliVeicoloPage extends JPanel {
 
 		for (String imgPath : imgPaths) {
 			imgLabel = new JLabel();
-			imgLabel.setIcon(SearchPage.resizeImageIcon(imgPath, 500, 333));
+			imgLabel.setIcon(SearchPage.resizeImageIcon(imgPath, 450, 300));
 			imagePanel.add(imgLabel);
 		}
 
 		if (imgPaths.length == 0) {
-			imgLabel.setIcon(SearchPage.resizeImageIcon(null, 500, 333));
+			imgLabel.setIcon(SearchPage.resizeImageIcon(null, 450, 300));
 			imagePanel.add(imgLabel);
 		}
 
@@ -207,6 +207,7 @@ public class DettagliVeicoloPage extends JPanel {
 		btnPrev.setForeground(new Color(245, 245, 245));
 		btnPrev.setBackground(new Color(45, 64, 98));
 		btnPrev.setFont(new Font("sansserif", 1, 17));
+		
 		Button btnNext = new Button();
 		btnNext.setText(">");
 		btnNext.setPreferredSize(new Dimension(75, 35));
@@ -260,7 +261,7 @@ public class DettagliVeicoloPage extends JPanel {
 		infoPanel.add(navigationPanel, gbc);
 
 		// Altri dettagli del veicolo
-		Font font = new Font("sansserif", 1, 30);
+		Font font = new Font("sansserif", 1, 25);
 
 		lblMarcaModello = new JLabel(marca + " " + modello);
 		lblMarcaModello.setForeground(Color.WHITE);
