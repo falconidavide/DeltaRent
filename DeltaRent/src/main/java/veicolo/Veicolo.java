@@ -10,7 +10,8 @@ public class Veicolo {
 	private String[] pathImgs;
 	private String descrizione;
 
-	public Veicolo(String targa, String marca, String modello, String pathImg, String alimentazione, String[] pathImgs) {
+	public Veicolo(String targa, String marca, String modello, String pathImg, String alimentazione,
+			String[] pathImgs) {
 		this.targa = targa;
 		this.marca = marca;
 		this.modello = modello;

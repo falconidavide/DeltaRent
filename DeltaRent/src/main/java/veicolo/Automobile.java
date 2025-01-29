@@ -4,29 +4,30 @@
 
 package veicolo;
 
-
-
 /************************************************************/
 /**
  * 
  */
-public class Automobile extends Veicolo
- {
-				/**
-				 * 
-				 */
-				private int prezzoOrario;
-				public Automobile(String targa, String marca, String modello, int prezzoO, String pathImg, String alimentazione, String[] pathImgs) {
-					super(targa, marca, modello, pathImg, alimentazione, pathImgs);
-					this.prezzoOrario = prezzoO;
-				}
-	/**			
+public class Automobile extends Veicolo {
+	/**
 	 * 
-	 * @return 
+	 */
+	private int prezzoOrario;
+
+	public Automobile(String targa, String marca, String modello, int prezzoO, String pathImg, String alimentazione,
+			String[] pathImgs) {
+		super(targa, marca, modello, pathImg, alimentazione, pathImgs);
+		this.prezzoOrario = prezzoO;
+	}
+
+	/**
+	 * 
+	 * @return
 	 */
 	public int getPrezzoOrario() {
 		return prezzoOrario;
 	}
+
 	public void setPrezzoOrario(int prezzoOrario) {
 		this.prezzoOrario = prezzoOrario;
 	}

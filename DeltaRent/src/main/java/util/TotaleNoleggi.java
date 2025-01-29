@@ -8,10 +8,10 @@ import db.DatabaseConnection;
 import utente.Utente;
 
 public class TotaleNoleggi {
-	
+
 	public static int getTotaleNoleggi(Utente utente) {
-		
-		int totale=0;
+
+		int totale = 0;
 
 		String query = "SELECT count(*) as totale FROM Prenotazione WHERE emailUtente=?";
 
@@ -25,7 +25,7 @@ public class TotaleNoleggi {
 
 			// Se esiste almeno una tupla, imposta disponibile a false
 			if (rs.next()) {
-				totale=rs.getInt("totale");
+				totale = rs.getInt("totale");
 			}
 
 			rs.close();

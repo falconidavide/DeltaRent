@@ -16,32 +16,32 @@ public class GestoreVeicoli {
 	public static List<Automobile> automobili = new ArrayList<>();
 	public static List<Furgone> furgoni = new ArrayList<>();
 
-		public static List<Automobile> aggiornaListaAutomobili() {
-		    List<Automobile> automobili = new ArrayList<>();
-		    try {
-		        String query = "SELECT targa, marca, modello, prezzoOrario, pathImg, alimentazione, pathImgs FROM Veicolo WHERE isFurgone=0";
-		        try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(query)) {
-		            while (rs.next()) {
-		                String targa = rs.getString("targa");
-		                String marca = rs.getString("marca");
-		                String modello = rs.getString("modello");
-		                int prezzoOrario = rs.getInt("prezzoOrario");
-		                String pathImg = rs.getString("pathImg");
-		                String alimentazione = rs.getString("alimentazione");
-		                String pathImgsString = rs.getString("pathImgs");
-		                String[] pathImgs = pathImgsString != null ? pathImgsString.split("\\n") : new String[0];
+	public static List<Automobile> aggiornaListaAutomobili() {
+		List<Automobile> automobili = new ArrayList<>();
+		try {
+			String query = "SELECT targa, marca, modello, prezzoOrario, pathImg, alimentazione, pathImgs FROM Veicolo WHERE isFurgone=0";
+			try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(query)) {
+				while (rs.next()) {
+					String targa = rs.getString("targa");
+					String marca = rs.getString("marca");
+					String modello = rs.getString("modello");
+					int prezzoOrario = rs.getInt("prezzoOrario");
+					String pathImg = rs.getString("pathImg");
+					String alimentazione = rs.getString("alimentazione");
+					String pathImgsString = rs.getString("pathImgs");
+					String[] pathImgs = pathImgsString != null ? pathImgsString.split("\\n") : new String[0];
 
-		                Automobile auto = new Automobile(targa, marca, modello, prezzoOrario, pathImg, alimentazione, pathImgs);
-		                automobili.add(auto);
-		            }
-		        }
-		    } catch (SQLException e) {
-		        e.printStackTrace();
-		    }
-
-		    return automobili;
+					Automobile auto = new Automobile(targa, marca, modello, prezzoOrario, pathImg, alimentazione,
+							pathImgs);
+					automobili.add(auto);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 
+		return automobili;
+	}
 
 	public static List<Furgone> aggiornaListaFurgoni() {
 		try {
@@ -54,10 +54,11 @@ public class GestoreVeicoli {
 					int prezzoGiornaliero = rs.getInt("prezzoGiornaliero");
 					String pathImg = rs.getString("pathImg");
 					String alimentazione = rs.getString("alimentazione");
-	                String pathImgsString = rs.getString("pathImgs");
-	                String[] pathImgs = pathImgsString != null ? pathImgsString.split("\\n") : new String[0];
+					String pathImgsString = rs.getString("pathImgs");
+					String[] pathImgs = pathImgsString != null ? pathImgsString.split("\\n") : new String[0];
 
-					Furgone furgone = new Furgone(targa, marca, modello, prezzoGiornaliero, pathImg, alimentazione, pathImgs);
+					Furgone furgone = new Furgone(targa, marca, modello, prezzoGiornaliero, pathImg, alimentazione,
+							pathImgs);
 					furgoni.add(furgone);
 				}
 			}
@@ -82,15 +83,9 @@ public class GestoreVeicoli {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		/*
-		 * for (Furgone veicolo : furgoni) { System.out.println("Targa: " +
-		 * veicolo.getTarga() + ", Marca: " + veicolo.getMarca() + ", Modello: " +
-		 * veicolo.getModello() + ", Disponibile: " + veicolo.getDisponibile() +
-		 * ", Prezzo giornaliero: " + veicolo.getPrezzoGiornaliero()); }
-		 */
 		return marche;
 	}
-	
+
 	public static List<String> getAlimentazioneVeicoli() {
 
 		List<String> alimentazioni = new ArrayList<>();
@@ -106,12 +101,6 @@ public class GestoreVeicoli {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		/*
-		 * for (Furgone veicolo : furgoni) { System.out.println("Targa: " +
-		 * veicolo.getTarga() + ", Marca: " + veicolo.getMarca() + ", Modello: " +
-		 * veicolo.getModello() + ", Disponibile: " + veicolo.getDisponibile() +
-		 * ", Prezzo giornaliero: " + veicolo.getPrezzoGiornaliero()); }
-		 */
 		return alimentazioni;
 	}
 
@@ -130,12 +119,6 @@ public class GestoreVeicoli {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		/*
-		 * for (Furgone veicolo : furgoni) { System.out.println("Targa: " +
-		 * veicolo.getTarga() + ", Marca: " + veicolo.getMarca() + ", Modello: " +
-		 * veicolo.getModello() + ", Disponibile: " + veicolo.getDisponibile() +
-		 * ", Prezzo giornaliero: " + veicolo.getPrezzoGiornaliero()); }
-		 */
 		return modelli;
 	}
 }

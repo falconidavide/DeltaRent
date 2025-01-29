@@ -11,16 +11,14 @@ import java.util.List;
 import gui.HomePage;
 import prenotazione.Prenotazione;
 import veicolo.Automobile;
+
 public class GestionePrenotazioni {
 
 	// Metodo per ottenere tutte le prenotazioni passate per un utente
 	public static List<Prenotazione> getPrenotazioniPassate(String emailUtente) {
 		List<Prenotazione> prenotazioni = new ArrayList<>();
-		String query = "SELECT * \r\n"
-				+ "FROM Prenotazione \r\n"
-				+ "WHERE emailUtente = ? \r\n"
-				+ "  AND SUBSTR(inizioPrenotazione, 7, 4) || '-' || SUBSTR(inizioPrenotazione, 4, 2) || '-' || SUBSTR(inizioPrenotazione, 1, 2) || ' ' || SUBSTR(inizioPrenotazione, 12, 5) <= datetime('now');\r\n"
-				+ "";
+		String query = "SELECT * \r\n" + "FROM Prenotazione \r\n" + "WHERE emailUtente = ? \r\n"
+				+ "  AND SUBSTR(inizioPrenotazione, 7, 4) || '-' || SUBSTR(inizioPrenotazione, 4, 2) || '-' || SUBSTR(inizioPrenotazione, 1, 2) || ' ' || SUBSTR(inizioPrenotazione, 12, 5) <= datetime('now');\r\n";
 
 		try {
 			Connection conn = DatabaseConnection.getConnection();
@@ -34,7 +32,7 @@ public class GestionePrenotazioni {
 			String dataPrenotazione = null;
 			String inizioPrenotazione = null;
 			String finePrenotazione = null;
-			double prezzo=0;
+			double prezzo = 0;
 
 			while (rs.next()) {
 				id = rs.getInt("ID");
@@ -61,13 +59,14 @@ public class GestionePrenotazioni {
 					String pathImg = rs2.getString("pathImg");
 					String alimentazione = rs2.getString("alimentazione");
 
-		                // Leggi e processa il campo pathImgs
-		            String pathImgsString = rs2.getString("pathImgs");
-		            String[] pathImgs = pathImgsString != null ? pathImgsString.split("\\n") : new String[0];
-					auto = new Automobile(targa2, marca, modello, prezzoOrario, pathImg, alimentazione,pathImgs);
+					// Leggi e processa il campo pathImgs
+					String pathImgsString = rs2.getString("pathImgs");
+					String[] pathImgs = pathImgsString != null ? pathImgsString.split("\\n") : new String[0];
+					auto = new Automobile(targa2, marca, modello, prezzoOrario, pathImg, alimentazione, pathImgs);
 
 				}
-				Prenotazione prenotazione = new Prenotazione(id, inizioPrenotazione, finePrenotazione, HomePage.loggedUser, auto, dataPrenotazione, prezzo);
+				Prenotazione prenotazione = new Prenotazione(id, inizioPrenotazione, finePrenotazione,
+						HomePage.loggedUser, auto, dataPrenotazione, prezzo);
 				prenotazioni.add(prenotazione);
 
 			}
@@ -79,7 +78,8 @@ public class GestionePrenotazioni {
 	}
 
 	// Metodo per aggiungere una nuova prenotazione
-	public boolean aggiungiPrenotazione(String emailUtente, String targa, String inizioPrenotazione, String finePrenotazione) {
+	public boolean aggiungiPrenotazione(String emailUtente, String targa, String inizioPrenotazione,
+			String finePrenotazione) {
 		String query = "INSERT INTO Prenotazione (emailUtente, targa, dataPrenotazione, inizioPrenotazione, finePrenotazione) VALUES (?, ?, DATE('now'), ?, ?)";
 
 		try (Connection conn = DatabaseConnection.getConnection();
@@ -120,9 +120,7 @@ public class GestionePrenotazioni {
 	public static List<Prenotazione> getPrenotazioniFuture(String emailUtente) {
 
 		List<Prenotazione> prenotazioni = new ArrayList<>();
-		String query = "SELECT * \r\n"
-				+ "FROM Prenotazione \r\n"
-				+ "WHERE emailUtente = ? \r\n"
+		String query = "SELECT * \r\n" + "FROM Prenotazione \r\n" + "WHERE emailUtente = ? \r\n"
 				+ "  AND SUBSTR(inizioPrenotazione, 7, 4) || '-' || SUBSTR(inizioPrenotazione, 4, 2) || '-' || SUBSTR(inizioPrenotazione, 1, 2) || ' ' || SUBSTR(inizioPrenotazione, 12, 5) > datetime('now');\r\n";
 		try {
 			Connection conn = DatabaseConnection.getConnection();
@@ -136,9 +134,8 @@ public class GestionePrenotazioni {
 			String dataPrenotazione = null;
 			String inizioPrenotazione = null;
 			String finePrenotazione = null;
-			double prezzo=0;
-			
-		
+			double prezzo = 0;
+
 			while (rs.next()) {
 				id = rs.getInt("ID");
 				targa = rs.getString("targa");
@@ -146,7 +143,6 @@ public class GestionePrenotazioni {
 				inizioPrenotazione = rs.getString("inizioPrenotazione");
 				finePrenotazione = rs.getString("finePrenotazione");
 				prezzo = rs.getDouble("prezzo");
-				
 
 				String query2 = "SELECT * FROM Veicolo WHERE targa = ?";
 
@@ -165,13 +161,14 @@ public class GestionePrenotazioni {
 					String pathImg = rs2.getString("pathImg");
 					String alimentazione = rs2.getString("alimentazione");
 
-		                // Leggi e processa il campo pathImgs
-		            String pathImgsString = rs2.getString("pathImgs");
-		            String[] pathImgs = pathImgsString != null ? pathImgsString.split("\\n") : new String[0];
-					auto = new Automobile(targa2, marca, modello, prezzoOrario, pathImg, alimentazione,pathImgs);
+					// Leggi e processa il campo pathImgs
+					String pathImgsString = rs2.getString("pathImgs");
+					String[] pathImgs = pathImgsString != null ? pathImgsString.split("\\n") : new String[0];
+					auto = new Automobile(targa2, marca, modello, prezzoOrario, pathImg, alimentazione, pathImgs);
 
 				}
-				Prenotazione prenotazione = new Prenotazione(id, inizioPrenotazione, finePrenotazione, HomePage.loggedUser, auto, dataPrenotazione, prezzo);
+				Prenotazione prenotazione = new Prenotazione(id, inizioPrenotazione, finePrenotazione,
+						HomePage.loggedUser, auto, dataPrenotazione, prezzo);
 				prenotazioni.add(prenotazione);
 
 			}
@@ -183,22 +180,22 @@ public class GestionePrenotazioni {
 	}
 
 	public static void annullaPrenotazione(Prenotazione prenotazione) {
-		
+
 		try {
 			Connection conn = DatabaseConnection.getConnection();
-			
-			String query="DELETE FROM Prenotazione WHERE id=?";
+
+			String query = "DELETE FROM Prenotazione WHERE id=?";
 
 			PreparedStatement stmt = conn.prepareStatement(query);
 			stmt.setInt(1, prenotazione.getID());
 			stmt.executeUpdate();
-			
-		}catch (SQLException e) {
+
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
-	
+
 	public static void aggiungiPrenotazione(Prenotazione prenotazione) throws SQLException {
 		String query = "INSERT INTO Prenotazione (inizioPrenotazione, finePrenotazione, emailUtente, targa, dataPrenotazione, prezzo) VALUES (?, ?, ?, ?, ?, ?)";
 

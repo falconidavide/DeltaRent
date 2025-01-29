@@ -20,7 +20,8 @@ public class Utente {
 	private static boolean isLoggato = false;
 	private static String displayName = "";
 
-	public Utente(String email, String password, String nome, String cognome, String dataDiNascita, String nomeAzienda, String partitaIVA, int isPrivato) {
+	public Utente(String email, String password, String nome, String cognome, String dataDiNascita, String nomeAzienda,
+			String partitaIVA, int isPrivato) {
 		this.email = email;
 		this.password = password;
 		this.nome = nome;
