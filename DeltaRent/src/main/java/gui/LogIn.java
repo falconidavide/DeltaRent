@@ -17,9 +17,8 @@ import org.jdesktop.animation.timing.Animator;
 import org.jdesktop.animation.timing.TimingTarget;
 import org.jdesktop.animation.timing.TimingTargetAdapter;
 
-import com.raven.component.PanelCover;
-import com.raven.component.PanelLoginAndRegister;
-
+import component.PanelCover;
+import component.PanelLoginAndRegister;
 import net.miginfocom.swing.MigLayout;
 
 public class LogIn extends JPanel {

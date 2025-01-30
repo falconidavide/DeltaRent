@@ -442,7 +442,7 @@ public class DettagliVeicoloPage extends JPanel {
 		btnDisponibile.setForeground(new Color(0, 0, 0)); // Testo nero
 		btnDisponibile.setFont(new Font("sansserif", 1, 25));
 		btnDisponibile.setHorizontalAlignment(SwingConstants.CENTER);
-		btnDisponibile.setEnabled(false);
+		btnDisponibile.setEnabled(true);
 		btnDisponibile.setFocusPainted(false);
 
 		gbc.gridx = 0;
@@ -463,7 +463,7 @@ public class DettagliVeicoloPage extends JPanel {
 		btnPrezzoTotale.setText("--");
 		btnPrezzoTotale.setFont(new Font("sansserif", 1, 25));
 		btnPrezzoTotale.setHorizontalAlignment(SwingConstants.CENTER);
-		btnPrezzoTotale.setEnabled(false);
+		btnPrezzoTotale.setEnabled(true);
 		btnPrezzoTotale.setFocusPainted(false);
 
 		gbc.insets = new Insets(0, 10, 15, 10); // Resetta gli insets per gli altri componenti

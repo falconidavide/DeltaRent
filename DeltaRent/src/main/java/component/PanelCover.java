@@ -1,4 +1,4 @@
-package com.raven.component;
+package component;
 
 import java.awt.Color;
 import java.awt.Font;
